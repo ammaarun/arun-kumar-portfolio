@@ -9,7 +9,10 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
+import { Services } from './components/Services';
 import { Experience } from './components/Experience';
+import { Blog } from './components/Blog';
+import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CommandMenu } from './components/CommandMenu';
@@ -25,7 +28,6 @@ function MainPublicPortfolio() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Keyboard shortcut for Cmd+K / Ctrl+K
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -49,7 +51,10 @@ function MainPublicPortfolio() {
         <About />
         <Skills />
         <Projects onSelectProject={(project) => setSelectedProject(project)} />
+        <Services />
         <Experience />
+        <Blog />
+        <Testimonials />
         <Contact />
       </main>
 
