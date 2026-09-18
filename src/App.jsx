@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
+import { DataProvider } from './context/DataContext';
+
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -12,7 +16,11 @@ import { CommandMenu } from './components/CommandMenu';
 import { ResumeModal } from './components/ResumeModal';
 import { ProjectModal } from './components/ProjectModal';
 
-export default function App() {
+import { AdminLogin } from './admin/AdminLogin';
+import { ProtectedRoute } from './admin/ProtectedRoute';
+import { AdminDashboardPlaceholder } from './admin/AdminDashboard';
+
+function MainPublicPortfolio() {
   const [commandOpen, setCommandOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -30,46 +38,69 @@ export default function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0a0d14] dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-emerald-500 selection:text-white">
-        
-        {/* Sticky Header Navbar */}
-        <Navbar 
-          onOpenCommand={() => setCommandOpen(true)}
-          onOpenResume={() => setResumeOpen(true)}
-        />
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0a0d14] dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-emerald-500 selection:text-white">
+      <Navbar 
+        onOpenCommand={() => setCommandOpen(true)}
+        onOpenResume={() => setResumeOpen(true)}
+      />
 
-        {/* Main Content Sections */}
-        <main>
-          <Hero onOpenResume={() => setResumeOpen(true)} />
-          <About />
-          <Skills />
-          <Projects onSelectProject={(project) => setSelectedProject(project)} />
-          <Experience />
-          <Contact />
-        </main>
+      <main>
+        <Hero onOpenResume={() => setResumeOpen(true)} />
+        <About />
+        <Skills />
+        <Projects onSelectProject={(project) => setSelectedProject(project)} />
+        <Experience />
+        <Contact />
+      </main>
 
-        {/* Footer */}
-        <Footer />
+      <Footer />
 
-        {/* Interactive Modals */}
-        <CommandMenu 
-          isOpen={commandOpen}
-          onClose={() => setCommandOpen(false)}
-          onOpenResume={() => setResumeOpen(true)}
-        />
+      <CommandMenu 
+        isOpen={commandOpen}
+        onClose={() => setCommandOpen(false)}
+        onOpenResume={() => setResumeOpen(true)}
+      />
 
-        <ResumeModal
-          isOpen={resumeOpen}
-          onClose={() => setResumeOpen(false)}
-        />
+      <ResumeModal
+        isOpen={resumeOpen}
+        onClose={() => setResumeOpen(false)}
+      />
 
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+    </div>
+  );
+}
 
-      </div>
-    </ThemeProvider>
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ThemeProvider>
+        <AuthProvider>
+          <DataProvider>
+            <Routes>
+              {/* Public Portfolio Route */}
+              <Route path="/" element={<MainPublicPortfolio />} />
+
+              {/* Admin Routes */}
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route 
+                path="/admin/dashboard/*" 
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboardPlaceholder />
+                  </ProtectedRoute>
+                } 
+              />
+
+              {/* Catch-all Redirect */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </DataProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
