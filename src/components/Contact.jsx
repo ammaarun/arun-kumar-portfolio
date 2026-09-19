@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
-import { portfolioData } from '../data/portfolioData';
+import { useData } from '../context/DataContext';
+import { api } from '../services/api';
 
 export const Contact = () => {
-  const { personalInfo } = portfolioData;
+  const { data } = useData();
+  const personalInfo = data?.personalInfo || {};
 
   const [formData, setFormData] = useState({
     name: '',
@@ -16,17 +18,19 @@ export const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    // Simulate async submission
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      await api.sendContactMessage(formData);
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSubmitted(false), 5000);
-    }, 1000);
+    } catch (err) {
+      console.error('Failed to send contact message:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

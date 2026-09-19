@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Search, FileText, Code, User, Briefcase, Mail, Moon, Sun, X, Terminal, ExternalLink } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import { portfolioData } from '../data/portfolioData';
+import { useData } from '../context/DataContext';
 
 export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
   const { theme, toggleTheme } = useTheme();
+  const { data } = useData();
+  const personalInfo = data?.personalInfo || {};
   const [search, setSearch] = useState('');
 
   useEffect(() => {
@@ -98,7 +100,7 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
       category: 'External Links',
       icon: ExternalLink,
       action: () => {
-        window.open(portfolioData.personalInfo.github, '_blank');
+        window.open(personalInfo.github, '_blank');
         onClose();
       }
     },
@@ -108,7 +110,7 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
       category: 'External Links',
       icon: ExternalLink,
       action: () => {
-        window.open(portfolioData.personalInfo.linkedin, '_blank');
+        window.open(personalInfo.linkedin, '_blank');
         onClose();
       }
     }

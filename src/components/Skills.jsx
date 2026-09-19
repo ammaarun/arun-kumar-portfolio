@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Server, Layout, Database, Cloud, Star, CheckCircle, Code2 } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useData } from '../context/DataContext';
 
 export const Skills = () => {
-  const { skills } = portfolioData;
+  const { data } = useData();
+  const skills = data?.skills || [];
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', ...skills.map(s => s.category)];

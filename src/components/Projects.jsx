@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Terminal, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
-import { portfolioData } from '../data/portfolioData';
+import { useData } from '../context/DataContext';
 
 export const Projects = ({ onSelectProject }) => {
-  const { projects } = portfolioData;
+  const { data } = useData();
+  const projects = data?.projects || [];
   const [filter, setFilter] = useState('All');
 
   const categories = ['All', 'Backend & Microservices', 'Full Stack'];

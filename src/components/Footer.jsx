@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowUp, Heart, Code2 } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useData } from '../context/DataContext';
 
 export const Footer = () => {
+  const { data } = useData();
+  const personalInfo = data?.personalInfo || {};
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -18,10 +21,10 @@ export const Footer = () => {
           </div>
           <div>
             <span className="font-bold text-slate-800 dark:text-slate-200">
-              © {new Date().getFullYear()} {portfolioData.personalInfo.name}
+              © {new Date().getFullYear()} {personalInfo.name || 'Arun Kumar'}
             </span>
             <span className="mx-2 text-slate-300 dark:text-slate-700">•</span>
-            <span className="text-xs">Based in Telangana, India</span>
+            <span className="text-xs">Based in {personalInfo.location || 'Telangana, India'}</span>
           </div>
         </div>
 

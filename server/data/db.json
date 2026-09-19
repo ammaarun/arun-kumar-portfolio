@@ -1,17 +1,17 @@
 {
   "personalInfo": {
-    "name": "Arun Kumar",
-    "role": "Java Developer | Full Stack Developer",
+    "name": "Arun Kumar Amma",
+    "role": "Lead Java & Full Stack Developer",
     "tagline": "Building scalable enterprise backends & high-performance modern web applications.",
-    "location": "Telangana, India",
+    "location": "Hyderabad, Telangana, India",
     "availability": "Available for Full-time Roles & High-Impact Freelance",
-    "email": "arunkumar.dev@example.com",
+    "email": "arunkumar.dev@gmail.com",
     "github": "https://github.com",
     "linkedin": "https://linkedin.com",
     "twitter": "https://twitter.com",
-    "phone": "+91 98765 43210",
+    "phone": "+91 98765 43222",
     "bio": "Passionate Full Stack Developer with deep expertise in Java, Spring Boot microservices, and modern React frontends. Specializing in architecting high-throughput REST APIs, optimizing relational databases, and delivering clean, responsive user interfaces that drive real business value.",
-    "shortBio": "Java & Full Stack Engineer with 4+ years of experience crafting robust enterprise backends with Spring Boot and reactive, polished frontends with React.",
+    "shortBio": "Java & Full Stack Engineer with 2+ years of experience crafting robust enterprise backends with Spring Boot and reactive, polished frontends with React.",
     "resumeUrl": "#"
   },
   "stats": [
@@ -178,12 +178,13 @@
           "level": 90
         },
         {
-          "name": "Apache Kafka / RabbitMQ",
-          "level": 82
-        },
-        {
           "name": "Maven & Gradle",
           "level": 85
+        },
+        {
+          "name": "python",
+          "level": 80,
+          "popular": false
         }
       ]
     },
@@ -283,6 +284,97 @@
     }
   ],
   "projects": [
+    {
+      "id": "proj-1789760678790",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789760655277",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789757704175",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789757672505",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789757632139",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789757599668",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789757559050",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
     {
       "id": "fintech-microservices",
       "title": "FinTech Enterprise Payment Gateway",
@@ -508,6 +600,78 @@
     "password": "admin123"
   },
   "messages": [
+    {
+      "id": "msg-1789761557052",
+      "name": "fghfgh",
+      "email": "bnbmbnm@bjhj.com",
+      "subject": "nghfhf",
+      "message": "hfhfhg",
+      "createdAt": "2026-09-18T19:59:17.052Z",
+      "read": true
+    },
+    {
+      "id": "msg-1789760678916",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-18T19:44:38.916Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789760655322",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-18T19:44:15.322Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789757704192",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-18T18:55:04.192Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789757672492",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-18T18:54:32.492Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789757632124",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-18T18:53:52.124Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789757599734",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-18T18:53:19.734Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789757559024",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-18T18:52:39.024Z",
+      "read": false
+    },
     {
       "id": "msg-1789756293719",
       "name": "Test Client",

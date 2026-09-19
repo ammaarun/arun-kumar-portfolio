@@ -1,11 +1,16 @@
 import React from 'react';
 import { X, Download, Mail, Phone, MapPin, ExternalLink, Briefcase, GraduationCap, Code2, CheckCircle2 } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useData } from '../context/DataContext';
 
 export const ResumeModal = ({ isOpen, onClose }) => {
+  const { data } = useData();
+
   if (!isOpen) return null;
 
-  const { personalInfo, skills, experience, projects } = portfolioData;
+  const personalInfo = data?.personalInfo || {};
+  const skills = data?.skills || [];
+  const experience = data?.experience || [];
+  const projects = data?.projects || [];
 
   const handlePrint = () => {
     window.print();

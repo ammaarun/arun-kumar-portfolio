@@ -1,9 +1,11 @@
 import React from 'react';
 import { Server, Layout, Database, ShieldCheck, Cpu, Award } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import { useData } from '../context/DataContext';
 
 export const About = () => {
-  const { personalInfo, stats } = portfolioData;
+  const { data } = useData();
+  const personalInfo = data.personalInfo || {};
+  const stats = data.stats || [];
 
   const pillars = [
     {
@@ -57,7 +59,7 @@ export const About = () => {
               {personalInfo.bio}
             </p>
             <p className="leading-relaxed">
-              Based in Telangana, India, I take pride in building enterprise-grade applications that balance bulletproof security, low-latency API execution, and clean user interfaces. Whether configuring Kafka event streams or optimizing a complex SQL query, my goal is always to deliver software that scales effortlessly.
+              Based in {personalInfo.location || 'Telangana, India'}, I take pride in building enterprise-grade applications that balance bulletproof security, low-latency API execution, and clean user interfaces. Whether configuring Kafka event streams or optimizing a complex SQL query, my goal is always to deliver software that scales effortlessly.
             </p>
             <div className="pt-2 flex items-center space-x-3 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">
               <Award className="w-4 h-4" />
