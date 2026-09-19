@@ -285,6 +285,19 @@
   ],
   "projects": [
     {
+      "id": "proj-1789835345098",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
       "id": "proj-1789831580793",
       "title": "Automated Test Project",
       "subtitle": "Vitest Microservice",
@@ -652,6 +665,15 @@
     "password": "admin123"
   },
   "messages": [
+    {
+      "id": "msg-1789835345055",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-19T16:29:05.055Z",
+      "read": false
+    },
     {
       "id": "msg-1789831580784",
       "name": "Test Client",
