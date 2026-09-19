@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BookOpen, Calendar, Tag, ArrowRight, X, Clock } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
@@ -86,13 +87,13 @@ export const Blog = () => {
                   </div>
 
                   <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80">
-                    <button
-                      onClick={() => setSelectedPost(post)}
+                    <Link
+                      to={`/blog/${post.slug || post.id}`}
                       className="inline-flex items-center space-x-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
                     >
                       <span>Read Full Article</span>
                       <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
 

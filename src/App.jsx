@@ -19,6 +19,7 @@ import { CommandMenu } from './components/CommandMenu';
 import { ResumeModal } from './components/ResumeModal';
 import { ProjectModal } from './components/ProjectModal';
 
+import { BlogPostView } from './components/BlogPostView';
 import { AdminLogin } from './admin/AdminLogin';
 import { ProtectedRoute } from './admin/ProtectedRoute';
 import { AdminDashboardPlaceholder } from './admin/AdminDashboard';
@@ -88,6 +89,7 @@ export default function App() {
             <Routes>
               {/* Public Portfolio Route */}
               <Route path="/" element={<MainPublicPortfolio />} />
+              <Route path="/blog/:slug" element={<BlogPostView />} />
 
               {/* Admin Routes */}
               <Route path="/admin/login" element={<AdminLogin />} />

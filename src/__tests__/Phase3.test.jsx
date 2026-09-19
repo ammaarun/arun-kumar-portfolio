@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { DataProvider } from '../context/DataContext';
 import { Services } from '../components/Services';
@@ -84,9 +85,11 @@ describe('Phase 3: Public Portfolio New Sections Component Tests', () => {
 
   it('2. Blog Component — should render article cards and open article reader modal', async () => {
     render(
-      <DataProvider>
-        <Blog />
-      </DataProvider>
+      <MemoryRouter>
+        <DataProvider>
+          <Blog />
+        </DataProvider>
+      </MemoryRouter>
     );
 
     await waitFor(() => {
@@ -95,11 +98,7 @@ describe('Phase 3: Public Portfolio New Sections Component Tests', () => {
     });
 
     const readButtons = screen.getAllByText('Read Full Article');
-    fireEvent.click(readButtons[0]);
-
-    await waitFor(() => {
-      expect(screen.getByText('Article Reader')).toBeInTheDocument();
-    });
+    expect(readButtons[0].closest('a')).toHaveAttribute('href', '/blog/post-1');
   });
 
   it('3. Testimonials Component — should render client and lead recommendations', async () => {
