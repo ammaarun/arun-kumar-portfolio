@@ -23,10 +23,11 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=10000
 
-# Copy package files, node_modules, server code, and built dist folder from builder stage
+# Copy package files, node_modules, server code, src directory, and built dist folder from builder stage
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/server ./server
+COPY --from=builder /app/src ./src
 COPY --from=builder /app/dist ./dist
 
 # Expose server port
