@@ -285,6 +285,45 @@
   ],
   "projects": [
     {
+      "id": "proj-1789880748546",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789879418697",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1789878887397",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
       "id": "proj-1789835345098",
       "title": "Automated Test Project",
       "subtitle": "Vitest Microservice",
@@ -665,6 +704,33 @@
     "password": "admin123"
   },
   "messages": [
+    {
+      "id": "msg-1789880748439",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-20T05:05:48.439Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789879418659",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-20T04:43:38.659Z",
+      "read": false
+    },
+    {
+      "id": "msg-1789878887357",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-20T04:34:47.357Z",
+      "read": false
+    },
     {
       "id": "msg-1789835345055",
       "name": "Test Client",
