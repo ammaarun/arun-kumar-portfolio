@@ -21,6 +21,7 @@
     "@vitejs/plugin-react": "^5.0.0",
     "autoprefixer": "^10.6.1",
     "jsdom": "^26.1.0",
+    "lightningcss": "^1.29.0",
     "postcss": "^8.5.28",
     "supertest": "^7.1.1",
     "tailwindcss": "^3.4.17",
@@ -39,8 +40,12 @@
     "react-router-dom": "^7.18.4"
   },
   "optionalDependencies": {
+    "@lightningcss/cli-linux-x64-gnu": "*",
+    "@lightningcss/cli-linux-x64-musl": "*",
     "@rolldown/binding-linux-x64-gnu": "*",
     "@rolldown/binding-linux-x64-musl": "*",
-    "@rolldown/binding-win32-x64-msvc": "*"
+    "@rolldown/binding-win32-x64-msvc": "*",
+    "lightningcss-linux-x64-gnu": "*",
+    "lightningcss-linux-x64-musl": "*"
   }
 }
