@@ -26,7 +26,7 @@ ENV PORT=5000
 
 # Copy package files and install production-only node_modules
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # Copy server code, database data, and built dist folder from builder stage
 COPY --from=builder /app/server ./server
