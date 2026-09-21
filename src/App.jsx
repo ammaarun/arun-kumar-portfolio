@@ -18,6 +18,7 @@ import { Footer } from './components/Footer';
 import { CommandMenu } from './components/CommandMenu';
 import { ResumeModal } from './components/ResumeModal';
 import { ProjectModal } from './components/ProjectModal';
+import { ClientInquiryModal } from './components/ClientInquiryModal';
 
 import { BlogPostView } from './components/BlogPostView';
 import { AdminLogin } from './admin/AdminLogin';
@@ -28,6 +29,13 @@ function MainPublicPortfolio() {
   const [commandOpen, setCommandOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [inquiryOpen, setInquiryOpen] = useState(false);
+  const [inquiryPkgId, setInquiryPkgId] = useState('cms');
+
+  const handleOpenInquiry = (packageId = 'cms') => {
+    setInquiryPkgId(packageId);
+    setInquiryOpen(true);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -45,14 +53,18 @@ function MainPublicPortfolio() {
       <Navbar 
         onOpenCommand={() => setCommandOpen(true)}
         onOpenResume={() => setResumeOpen(true)}
+        onOpenInquiry={() => handleOpenInquiry('cms')}
       />
 
       <main>
-        <Hero onOpenResume={() => setResumeOpen(true)} />
+        <Hero 
+          onOpenResume={() => setResumeOpen(true)}
+          onOpenInquiry={() => handleOpenInquiry('cms')}
+        />
         <About />
         <Skills />
         <Projects onSelectProject={(project) => setSelectedProject(project)} />
-        <Services />
+        <Services onOpenInquiry={handleOpenInquiry} />
         <Experience />
         <Blog />
         <Testimonials />
@@ -75,6 +87,12 @@ function MainPublicPortfolio() {
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
+      />
+
+      <ClientInquiryModal
+        isOpen={inquiryOpen}
+        onClose={() => setInquiryOpen(false)}
+        defaultPackageId={inquiryPkgId}
       />
     </div>
   );

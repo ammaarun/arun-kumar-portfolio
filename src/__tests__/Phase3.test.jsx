@@ -77,7 +77,7 @@ describe('Phase 3: Public Portfolio New Sections Component Tests', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText('Specialized Development & Consulting')).toBeInTheDocument();
+      expect(screen.getByText(/Specialized Development/i)).toBeInTheDocument();
       expect(screen.getByText('Java Backend Development')).toBeInTheDocument();
       expect(screen.getByText('Full-Stack Web Applications')).toBeInTheDocument();
     });

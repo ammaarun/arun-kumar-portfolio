@@ -3,7 +3,7 @@ import { ArrowRight, MapPin, Download, Mail, Check, Copy, Code2, Terminal, Spark
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
 import { useData } from '../context/DataContext';
 
-export const Hero = ({ onOpenResume }) => {
+export const Hero = ({ onOpenResume, onOpenInquiry }) => {
   const { data } = useData();
   const personalInfo = data.personalInfo || {};
   const codeSnippets = data.codeSnippets || {};
@@ -68,12 +68,20 @@ export const Hero = ({ onOpenResume }) => {
 
             {/* Call to Actions */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                onClick={onOpenInquiry}
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-semibold text-sm shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/35 transition-all hover:scale-[1.02]"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Request Custom Portfolio</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
               <a
                 href="#projects"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-emerald-500 dark:hover:bg-emerald-600 font-semibold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all hover:scale-[1.02]"
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-slate-800 dark:hover:bg-slate-700 font-semibold text-sm transition-all"
               >
                 <span>View Featured Work</span>
-                <ArrowRight className="w-4 h-4" />
               </a>
 
               <button

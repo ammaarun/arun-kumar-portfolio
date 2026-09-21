@@ -3,7 +3,7 @@ import { Sun, Moon, Menu, X, Command, FileText, Code2, Terminal, User, Briefcase
 import { useTheme } from '../context/ThemeContext';
 import { useData } from '../context/DataContext';
 
-export const Navbar = ({ onOpenCommand, onOpenResume }) => {
+export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry }) => {
   const { theme, toggleTheme } = useTheme();
   const { data } = useData();
   const personalInfo = data?.personalInfo || {};
@@ -69,6 +69,15 @@ export const Navbar = ({ onOpenCommand, onOpenResume }) => {
 
         {/* Action Controls */}
         <div className="flex items-center space-x-2 sm:space-x-3">
+          <button
+            onClick={onOpenInquiry}
+            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl transition-all hover:scale-[1.02]"
+            title="Request a Custom Developer Portfolio"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+            <span>Get Portfolio</span>
+          </button>
+
           <button
             onClick={onOpenCommand}
             className="hidden sm:flex items-center space-x-2 px-3 py-1.5 text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900/80 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-xl transition-all"
