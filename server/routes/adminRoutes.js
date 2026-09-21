@@ -1,11 +1,99 @@
 import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { dbEngine } from '../data/dbEngine.js';
 import { verifyToken } from '../middleware/authMiddleware.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const PRESETS_DIR = path.join(__dirname, '../presets');
 
 const router = express.Router();
 
 // Apply JWT verification to all admin routes
 router.use(verifyToken);
+
+// --- Portfolio Presets Endpoints ---
+router.get('/presets', (req, res) => {
+  try {
+    if (!fs.existsSync(PRESETS_DIR)) {
+      return res.json({ success: true, data: [] });
+    }
+    const files = fs.readdirSync(PRESETS_DIR).filter(f => f.endsWith('.json'));
+    const presetsList = files.map(file => {
+      const content = JSON.parse(fs.readFileSync(path.join(PRESETS_DIR, file), 'utf-8'));
+      return {
+        id: content.id,
+        name: content.name,
+        description: content.description,
+        targetAudience: content.targetAudience,
+        badge: content.badge,
+        accentColor: content.accentColor,
+        projectsCount: content.projects?.length || 0,
+        skillsCount: content.skills?.reduce((acc, cat) => acc + (cat.items?.length || 0), 0) || 0
+      };
+    });
+    res.json({ success: true, data: presetsList });
+  } catch (err) {
+    console.error('Error listing presets:', err);
+    res.status(500).json({ success: false, message: 'Failed to load presets.' });
+  }
+});
+
+router.get('/presets/:id', (req, res) => {
+  const { id } = req.params;
+  const filePath = path.join(PRESETS_DIR, `${id}Preset.json`);
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ success: false, message: 'Preset not found.' });
+  }
+  try {
+    const presetData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    res.json({ success: true, data: presetData });
+  } catch (err) {
+    console.error('Error reading preset preview:', err);
+    res.status(500).json({ success: false, message: 'Failed to read preset preview.' });
+  }
+});
+
+router.post('/presets/:id/apply', (req, res) => {
+  const { id } = req.params;
+  const filePath = path.join(PRESETS_DIR, `${id}Preset.json`);
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ success: false, message: 'Preset not found.' });
+  }
+  try {
+    const presetData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    const db = dbEngine.get();
+
+    // Preserve existing admin user credentials & contact messages
+    const adminUser = db.adminUser || { username: 'admin', password: 'admin123' };
+    const existingMessages = db.messages || [];
+
+    const updatedDb = {
+      ...presetData,
+      adminUser,
+      messages: existingMessages,
+      settings: {
+        ...db.settings,
+        ...presetData.settings,
+        activePreset: presetData.id,
+        profileType: presetData.name
+      }
+    };
+
+    dbEngine.save(updatedDb);
+
+    res.json({
+      success: true,
+      message: `${presetData.name} preset created successfully. You can now customize your portfolio.`,
+      data: updatedDb
+    });
+  } catch (err) {
+    console.error('Error applying preset:', err);
+    res.status(500).json({ success: false, message: 'Failed to apply preset.' });
+  }
+});
 
 // --- Profile & About ---
 router.put('/profile', (req, res) => {

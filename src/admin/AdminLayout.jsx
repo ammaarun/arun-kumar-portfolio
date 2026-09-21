@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   LayoutDashboard, User, Code2, Terminal, Briefcase, Sparkles, 
   BookOpen, MessageSquare, Mail, Settings, ExternalLink, LogOut, 
-  Sun, Moon, Menu, X, ShieldCheck 
+  Sun, Moon, Menu, X, ShieldCheck, Layers
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -14,6 +14,7 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
 
   const menuItems = [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
+    { id: 'presets', label: 'Portfolio Presets', icon: Layers },
     { id: 'profile', label: 'Profile & About', icon: User },
     { id: 'skills', label: 'Skills', icon: Code2 },
     { id: 'projects', label: 'Projects', icon: Terminal },
