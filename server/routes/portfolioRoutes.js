@@ -1,5 +1,6 @@
 import express from 'express';
 import { dbEngine } from '../data/dbEngine.js';
+import { sendInquiryNotification } from '../utils/emailService.js';
 
 const router = express.Router();
 
@@ -11,8 +12,8 @@ router.get('/', (req, res) => {
   res.json({ success: true, data: publicData });
 });
 
-// Submit contact message from public form
-router.post('/contact', (req, res) => {
+// Submit contact message / client inquiry
+router.post('/contact', async (req, res) => {
   const { name, email, subject, message } = req.body;
   if (!name || !email || !message) {
     return res.status(400).json({ success: false, message: 'Name, email, and message are required.' });
@@ -32,6 +33,11 @@ router.post('/contact', (req, res) => {
   db.messages = db.messages || [];
   db.messages.unshift(newMessage);
   dbEngine.save(db);
+
+  // Asynchronously trigger email notification alert
+  sendInquiryNotification(newMessage).catch(err => {
+    console.error('Error dispatching inquiry notification email:', err);
+  });
 
   res.json({ success: true, message: 'Message sent successfully!', data: newMessage });
 });
