@@ -1,0 +1,191 @@
+{
+  "id": "freelancer",
+  "name": "Freelancer",
+  "description": "Optimized for freelance developers and consultants offering custom client solutions, fixed-price packages, testimonials, and clear hire CTAs.",
+  "targetAudience": "Freelancers, Independent Developers & Agency Owners",
+  "badge": "Freelance Pro",
+  "accentColor": "amber",
+  "personalInfo": {
+    "name": "Taylor Swiftly",
+    "role": "Freelance Web Developer & Software Consultant",
+    "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+    "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+    "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+    "location": "Telangana, India",
+    "availability": "Available for New Freelance Projects & Monthly Retainers",
+    "email": "taylor.consulting@example.com",
+    "phone": "+91 98765 00004",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Client Projects", "value": "25+", "description": "Delivered On-Time" },
+    { "label": "Client Rating", "value": "5.0 ★", "description": "100% Satisfaction" },
+    { "label": "Avg Turnaround", "value": "48 Hours", "description": "Fast Delivery Option" },
+    { "label": "Repeat Clients", "value": "80%", "description": "Long-Term Partnerships" }
+  ],
+  "skills": [
+    {
+      "category": "Freelance Development Services",
+      "icon": "Sparkles",
+      "items": [
+        { "name": "Custom Web Applications", "level": 95, "popular": true },
+        { "name": "Dynamic Portfolio & CMS Development", "level": 98, "popular": true },
+        { "name": "React & Tailwind Frontend Engineering", "level": 94, "popular": true },
+        { "name": "API & Payment Integration", "level": 90 }
+      ]
+    },
+    {
+      "category": "Core Technologies",
+      "icon": "Code2",
+      "items": [
+        { "name": "JavaScript (ES6+) & TypeScript", "level": 92, "popular": true },
+        { "name": "React.js / Next.js", "level": 90, "popular": true },
+        { "name": "Node.js & Express APIs", "level": 88 },
+        { "name": "PostgreSQL & MongoDB Database Setup", "level": 86 }
+      ]
+    },
+    {
+      "category": "Deployment & Maintenance",
+      "icon": "Cloud",
+      "items": [
+        { "name": "Cloud Deployment (Render / Vercel)", "level": 95, "popular": true },
+        { "name": "Custom Domain & SSL Setup", "level": 92 },
+        { "name": "SEO & OpenGraph Metadata Optimization", "level": 90, "popular": true },
+        { "name": "Ongoing Maintenance & Bug Fixes", "level": 88 }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-free-1",
+      "title": "Client Portal & Asset Dashboard",
+      "subtitle": "Custom Client Web Platform",
+      "category": "Freelance Client Work",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+      "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+      "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
+      "tech": ["React", "Tailwind CSS", "Node.js", "PostgreSQL"],
+      "metrics": [
+        { "label": "Delivery", "value": "14 Days" },
+        { "label": "Rating", "value": "5.0 ★" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+        "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+      ]
+    },
+    {
+      "id": "proj-free-2",
+      "title": "SaaS Product Landing & Billing System",
+      "subtitle": "High-Converting Sales Web App",
+      "category": "Freelance Client Work",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+      "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+      "tech": ["React", "Stripe API", "Tailwind CSS", "Render"],
+      "metrics": [
+        { "label": "Conversion", "value": "12% Rate" },
+        { "label": "Performance", "value": "99/100" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Integrated Stripe Checkout API with automated webhook confirmation.",
+        "Configured social share previews increasing referral traffic."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-free-1",
+      "company": "Independent Consultant",
+      "role": "Lead Freelance Web Developer",
+      "period": "2022 - Present",
+      "location": "Remote",
+      "type": "Freelance",
+      "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
+      "achievements": [
+        "Maintained a 100% 5-star rating across 25+ client contracts.",
+        "Built and deployed custom portfolio web applications with live admin CMS panels.",
+        "Helped clients scale web apps to handle high peak user traffic."
+      ],
+      "skills": ["React", "Node.js", "PostgreSQL", "Tailwind CSS", "Client Management"]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-free-1",
+      "degree": "Bachelor of Science (B.Sc) in Computer Science",
+      "institution": "University of Technology",
+      "period": "2018 - 2022",
+      "description": "Graduated with top honors in Web Computing and User Interface Design."
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-free-1",
+      "title": "Basic Developer Portfolio",
+      "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+      "icon": "Layout",
+      "pricing": "$99 / ₹8,000",
+      "featured": true
+    },
+    {
+      "id": "srv-free-2",
+      "title": "Full Dynamic Portfolio CMS",
+      "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
+      "icon": "Server",
+      "pricing": "$249 / ₹20,000",
+      "featured": true
+    },
+    {
+      "id": "srv-free-3",
+      "title": "VIP Personal Brand Package",
+      "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
+      "icon": "Sparkles",
+      "pricing": "$499 / ₹40,000",
+      "featured": true
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-free-1",
+      "name": "Emily Watson",
+      "role": "Agency Founder",
+      "company": "Apex Digital",
+      "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    },
+    {
+      "id": "test-free-2",
+      "name": "Robert Vance",
+      "role": "Startup Founder",
+      "company": "Vance Media",
+      "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    }
+  ],
+  "blogs": [],
+  "messages": [],
+  "settings": {
+    "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
+    "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
+    "accentColor": "amber",
+    "themePreference": "dark",
+    "resumeUrl": "#",
+    "showHero": true,
+    "showServices": true,
+    "showBlog": false,
+    "showTestimonials": true,
+    "footerText": "Designed & Built by Taylor Swiftly"
+  }
+}

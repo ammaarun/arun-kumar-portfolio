@@ -1,0 +1,174 @@
+{
+  "id": "fresher",
+  "name": "Fresher / Entry-Level Developer",
+  "description": "Ideal for recent graduates and entry-level developers highlighting academic foundation, personal projects, and core CS skills.",
+  "targetAudience": "Fresh Graduates & Entry-Level Job Seekers",
+  "badge": "Entry Level",
+  "accentColor": "emerald",
+  "personalInfo": {
+    "name": "Alex Morgan",
+    "role": "Software Engineering Graduate | Junior Developer",
+    "tagline": "Passionate Computer Science graduate with strong foundations in algorithms, web development, and object-oriented programming.",
+    "shortBio": "Eager junior developer seeking an entry-level software engineering role to contribute clean code, problem-solving skills, and rapid learning.",
+    "bio": "Graduated with honors in Computer Science. Dedicated to building responsive web applications, learning modern frameworks, and writing clean, maintainable code. Experienced with Git version control, REST APIs, and relational databases through academic coursework and hands-on personal projects.",
+    "location": "Telangana, India",
+    "availability": "Available for Immediate Full-Time Junior / Trainee Roles",
+    "email": "alex.morgan.dev@example.com",
+    "phone": "+91 98765 00001",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Academic GPA", "value": "8.8 / 10", "description": "CS & Engineering Honors" },
+    { "label": "Projects Built", "value": "6+", "description": "Web & Mobile Repositories" },
+    { "label": "Coding Practice", "value": "400+", "description": "DSA Problems Solved" },
+    { "label": "Certifications", "value": "3", "description": "Verified Skill Badges" }
+  ],
+  "skills": [
+    {
+      "category": "Core Programming & CS Fundamentals",
+      "icon": "Code2",
+      "items": [
+        { "name": "Java / C++", "level": 85, "popular": true },
+        { "name": "Data Structures & Algorithms", "level": 82, "popular": true },
+        { "name": "Object-Oriented Programming (OOP)", "level": 88 },
+        { "name": "Database Management (SQL)", "level": 80 }
+      ]
+    },
+    {
+      "category": "Web Development",
+      "icon": "Layout",
+      "items": [
+        { "name": "HTML5 & CSS3", "level": 90, "popular": true },
+        { "name": "JavaScript (ES6+)", "level": 85, "popular": true },
+        { "name": "React Fundamentals", "level": 78, "popular": true },
+        { "name": "Tailwind CSS", "level": 82 }
+      ]
+    },
+    {
+      "category": "Developer Tools & Version Control",
+      "icon": "Terminal",
+      "items": [
+        { "name": "Git & GitHub", "level": 85, "popular": true },
+        { "name": "VS Code & Eclipse", "level": 90 },
+        { "name": "Postman API Testing", "level": 80 },
+        { "name": "Linux Command Line", "level": 75 }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-fresher-1",
+      "title": "Smart Campus Student Portal",
+      "subtitle": "Web-Based Academic Management System",
+      "category": "Web Development",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      "description": "Full-featured web app allowing students to view attendance, submit assignments, and check exam schedules.",
+      "longDescription": "Developed as a final-year capstone project. Implemented user authentication, role-based access for students and faculty, and automated grade calculations.",
+      "tech": ["JavaScript", "React", "HTML/CSS", "SQLite"],
+      "metrics": [
+        { "label": "User Roles", "value": "Student & Admin" },
+        { "label": "Response", "value": "< 150ms" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Built responsive frontend interfaces with clean component hierarchy.",
+        "Created relational database schema with indexed queries."
+      ]
+    },
+    {
+      "id": "proj-fresher-2",
+      "title": "Task Flow Productivity App",
+      "subtitle": "Interactive Kanban Task Manager",
+      "category": "Frontend",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "description": "Interactive drag-and-drop task board for organizing daily study schedules and project milestones.",
+      "longDescription": "Built using modern React hooks and local storage persistence. Features task tagging, priority filters, and dark mode.",
+      "tech": ["React", "JavaScript", "Tailwind CSS"],
+      "metrics": [
+        { "label": "Features", "value": "Drag & Drop" },
+        { "label": "Storage", "value": "Local State" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Implemented custom React hooks for persistent state storage.",
+        "Optimized mobile touch interaction for drag-and-drop actions."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-fresher-1",
+      "company": "TechInnovate Solutions",
+      "role": "Software Developer Intern",
+      "period": "Summer 2025 (3 Months)",
+      "location": "Hyderabad, India",
+      "type": "Internship",
+      "description": "Assisted senior engineers in developing and testing internal web tools and REST endpoint integrations.",
+      "achievements": [
+        "Wrote unit tests achieving 85% code coverage for core utility modules.",
+        "Participated in daily agile standups and peer code reviews.",
+        "Fixed 15+ frontend UI responsiveness bugs across desktop and mobile screens."
+      ],
+      "skills": ["JavaScript", "HTML/CSS", "Git", "REST APIs"]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-fresher-1",
+      "degree": "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
+      "institution": "State Technological University",
+      "period": "2022 - 2026",
+      "description": "Relevant Coursework: Data Structures, Analysis of Algorithms, Object-Oriented Programming, Database Systems, Web Technologies, Operating Systems."
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-fresher-1",
+      "title": "Junior Web Development",
+      "description": "Building clean, responsive landing pages, personal websites, and HTML/CSS/JavaScript components.",
+      "icon": "Layout",
+      "pricing": "Entry-Level Rate",
+      "featured": true
+    },
+    {
+      "id": "srv-fresher-2",
+      "title": "Bug Fixing & UI Tweaks",
+      "description": "Diagnosing layout issues, fixing JavaScript bugs, and upgrading frontend responsiveness.",
+      "icon": "Code2",
+      "pricing": "Flexible",
+      "featured": true
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-fresher-1",
+      "name": "Dr. R. K. Sharma",
+      "role": "Head of Computer Science Department",
+      "company": "State Technological University",
+      "content": "Alex showed exceptional dedication during the final-year capstone project. A quick learner with strong problem-solving skills and a great team attitude.",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    }
+  ],
+  "blogs": [],
+  "messages": [],
+  "settings": {
+    "siteTitle": "Alex Morgan — Junior Software Developer Portfolio",
+    "metaDescription": "Entry-level software engineer portfolio showcasing web development projects, CS fundamentals, and technical skills.",
+    "accentColor": "emerald",
+    "themePreference": "dark",
+    "resumeUrl": "#",
+    "showHero": true,
+    "showServices": true,
+    "showBlog": false,
+    "showTestimonials": true,
+    "footerText": "Designed & Built by Alex Morgan"
+  }
+}

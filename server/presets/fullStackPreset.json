@@ -1,0 +1,173 @@
+{
+  "id": "fullstack",
+  "name": "Full-Stack Developer",
+  "description": "Tailored for full-stack engineers showcasing end-to-end capabilities across modern frontend frameworks, backend APIs, and cloud databases.",
+  "targetAudience": "Full-Stack Engineers (Frontend + Backend + DB)",
+  "badge": "Full Stack",
+  "accentColor": "teal",
+  "personalInfo": {
+    "name": "Jordan Lee",
+    "role": "Full-Stack Engineer | React & Node / Spring Specialist",
+    "tagline": "Building complete digital web products — from pixel-perfect responsive UIs to robust server-side APIs.",
+    "shortBio": "Versatile Full-Stack Developer with 3+ years of experience bridging the gap between frontend user experience and backend cloud infrastructure.",
+    "bio": "Full-Stack Engineer adept at designing intuitive React user interfaces and connecting them with resilient REST/GraphQL backend microservices. Obsessed with clean code architecture, page load performance, state management, and seamless database migrations.",
+    "location": "Telangana, India",
+    "availability": "Available for Full-Stack Roles & End-to-End Product Contracts",
+    "email": "jordan.lee.dev@example.com",
+    "phone": "+91 98765 00003",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Full-Stack Apps", "value": "12+", "description": "End-to-End Web Products" },
+    { "label": "Frontend Speed", "value": "98/100", "description": "Lighthouse Performance" },
+    { "label": "API SLA", "value": "99.9%", "description": "Reliable Server Endpoints" },
+    { "label": "Tech Stack", "value": "React + Backend", "description": "Seamless Integration" }
+  ],
+  "skills": [
+    {
+      "category": "Frontend Architecture",
+      "icon": "Layout",
+      "items": [
+        { "name": "React.js / Next.js", "level": 92, "popular": true },
+        { "name": "JavaScript (ES6+) & TypeScript", "level": 90, "popular": true },
+        { "name": "Tailwind CSS & Component Libraries", "level": 94, "popular": true },
+        { "name": "Redux Toolkit & Context API", "level": 88 }
+      ]
+    },
+    {
+      "category": "Backend Development",
+      "icon": "Server",
+      "items": [
+        { "name": "Node.js / Express / Spring Boot", "level": 88, "popular": true },
+        { "name": "RESTful & GraphQL API Design", "level": 92, "popular": true },
+        { "name": "Authentication (JWT / OAuth2)", "level": 90 },
+        { "name": "WebSockets Real-Time Sync", "level": 84 }
+      ]
+    },
+    {
+      "category": "Databases & Cloud Hosting",
+      "icon": "Database",
+      "items": [
+        { "name": "PostgreSQL & MongoDB", "level": 88, "popular": true },
+        { "name": "Redis Caching", "level": 82 },
+        { "name": "Docker Containerization", "level": 85, "popular": true },
+        { "name": "AWS / Render Deployment", "level": 86 }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-fs-1",
+      "title": "Cloud SaaS Work Management Suite",
+      "subtitle": "All-in-One Project & Team Collaboration Hub",
+      "category": "Full Stack",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "description": "Comprehensive SaaS application providing real-time project boards, task comments, file attachments, and analytics.",
+      "longDescription": "Built full-stack application connecting a responsive React frontend with a secure backend API. Integrated WebSockets for instant multi-user board updates.",
+      "tech": ["React", "Node.js", "PostgreSQL", "Tailwind CSS", "Docker"],
+      "metrics": [
+        { "label": "Sync Speed", "value": "Real-time" },
+        { "label": "Lighthouse", "value": "98/100" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Constructed custom drag-and-drop Kanban workflow with optimistic UI updates.",
+        "Engineered RESTful API with automated database migrations."
+      ]
+    },
+    {
+      "id": "proj-fs-2",
+      "title": "E-Commerce Digital Marketplace",
+      "subtitle": "High-Performance Shopping & Inventory App",
+      "category": "Full Stack",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1556742049-0a67daf40955?auto=format&fit=crop&w=1200&q=80",
+      "description": "Full e-commerce platform with product catalogs, shopping cart, Stripe payment gateway, and admin dashboard.",
+      "longDescription": "Delivered end-to-end shopping platform. Features responsive product filters, inventory management, and invoice PDF generation.",
+      "tech": ["React", "Express", "MongoDB", "Stripe API", "Tailwind CSS"],
+      "metrics": [
+        { "label": "Page Load", "value": "< 1s" },
+        { "label": "Payments", "value": "Stripe Verified" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Integrated secure checkout workflow with webhook payment verification.",
+        "Built responsive admin inventory management table with CSV export."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-fs-1",
+      "company": "Horizon Web Labs",
+      "role": "Full-Stack Engineer",
+      "period": "2023 - Present",
+      "location": "Telangana, India",
+      "type": "Full-time",
+      "description": "Developing modern web applications across the full stack from Figma designs to production servers.",
+      "achievements": [
+        "Shipped 4 production web products serving 100k+ active monthly visitors.",
+        "Improved frontend initial bundle load speed by 45% using code splitting and lazy loading."
+      ],
+      "skills": ["React", "Node.js", "TypeScript", "PostgreSQL", "Tailwind CSS"]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-fs-1",
+      "degree": "Bachelor of Technology (B.Tech) in Information Technology",
+      "institution": "Institute of Engineering & Technology",
+      "period": "2019 - 2023",
+      "description": "Focused on Software Engineering, Full-Stack Development, and Database Systems."
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-fs-1",
+      "title": "Full-Stack Product Development",
+      "description": "End-to-end web application development connecting React frontends with robust backend APIs.",
+      "icon": "Layout",
+      "pricing": "Project / Contract",
+      "featured": true
+    },
+    {
+      "id": "srv-fs-2",
+      "title": "API & Database Integration",
+      "description": "Designing REST/GraphQL APIs, database models, and integrating third-party services.",
+      "icon": "Server",
+      "pricing": "Hourly",
+      "featured": true
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-fs-1",
+      "name": "Marcus Vance",
+      "role": "Product Director",
+      "company": "Horizon Web Labs",
+      "content": "Jordan is a complete full-stack powerhouse. Handles both polished frontend UIs and backend databases with equal precision.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    }
+  ],
+  "blogs": [],
+  "messages": [],
+  "settings": {
+    "siteTitle": "Jordan Lee — Full-Stack Engineer Portfolio",
+    "metaDescription": "Full-stack developer portfolio showcasing end-to-end web applications, React frontends, and REST APIs.",
+    "accentColor": "teal",
+    "themePreference": "dark",
+    "resumeUrl": "#",
+    "showHero": true,
+    "showServices": true,
+    "showBlog": false,
+    "showTestimonials": true,
+    "footerText": "Built by Jordan Lee"
+  }
+}

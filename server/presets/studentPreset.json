@@ -1,0 +1,165 @@
+{
+  "id": "student",
+  "name": "Student",
+  "description": "Tailored for computer science students highlighting academic projects, hackathons, coursework, campus leadership, and extracurriculars.",
+  "targetAudience": "University & College Computer Science Students",
+  "badge": "Student Profile",
+  "accentColor": "rose",
+  "personalInfo": {
+    "name": "Sam Rivera",
+    "role": "Computer Science Student | Aspiring Developer",
+    "tagline": "Pre-final year CS student passionate about web development, competitive programming, and open-source software.",
+    "shortBio": "Computer Science undergrad actively seeking software engineering summer internships and open-source collaborations.",
+    "bio": "Third-year Computer Science undergraduate with strong problem-solving skills and hands-on project experience in web technologies. Active member of the University Coding Club and participant in national hackathons.",
+    "location": "Telangana, India",
+    "availability": "Available for Summer 2026 Software Internships",
+    "email": "sam.rivera.student@example.com",
+    "phone": "+91 98765 00005",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Current Semester", "value": "6th Sem", "description": "B.Tech Computer Science" },
+    { "label": "Academic GPA", "value": "9.1 / 10", "description": "Top 5% of Batch" },
+    { "label": "Hackathons", "value": "4 Entered", "description": "2x First Place Winner" },
+    { "label": "Coding Problems", "value": "350+", "description": "LeetCode & CodeChef" }
+  ],
+  "skills": [
+    {
+      "category": "Academic & Programming Fundamentals",
+      "icon": "Code2",
+      "items": [
+        { "name": "C++ / Java", "level": 88, "popular": true },
+        { "name": "Data Structures & Algorithms", "level": 85, "popular": true },
+        { "name": "Object-Oriented Programming (OOP)", "level": 86 },
+        { "name": "Relational Databases (SQL)", "level": 82, "popular": true }
+      ]
+    },
+    {
+      "category": "Web Technologies",
+      "icon": "Layout",
+      "items": [
+        { "name": "HTML5, CSS3, JavaScript", "level": 88, "popular": true },
+        { "name": "React.js Basics", "level": 78, "popular": true },
+        { "name": "Tailwind CSS", "level": 80 },
+        { "name": "Node.js Basics", "level": 72 }
+      ]
+    },
+    {
+      "category": "Tools & Extracurriculars",
+      "icon": "Terminal",
+      "items": [
+        { "name": "Git & GitHub Workflow", "level": 85, "popular": true },
+        { "name": "Linux Shell Commands", "level": 78 },
+        { "name": "Technical Blogging", "level": 80 },
+        { "name": "Campus Event Organizer", "level": 90, "popular": true }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-stud-1",
+      "title": "Campus Event & Workshop Finder",
+      "subtitle": "Hackathon 1st Place Winning Project",
+      "category": "Academic Project",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+      "description": "Web app for university students to discover, RSVP, and receive notifications for campus technical workshops and hackathons.",
+      "longDescription": "Built during 24-hour campus hackathon and won 1st place. Implemented interactive map view, registration forms, and calendar syncing.",
+      "tech": ["JavaScript", "React", "HTML/CSS", "Firebase"],
+      "metrics": [
+        { "label": "Award", "value": "1st Place Winner" },
+        { "label": "Registrations", "value": "500+ Students" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Awarded 1st Place among 40 participating university teams.",
+        "Built responsive frontend UI in under 24 hours with live Firebase real-time database."
+      ]
+    },
+    {
+      "id": "proj-stud-2",
+      "title": "Algorithm Visualizer & Comparator",
+      "subtitle": "Interactive Computer Science Learning Tool",
+      "category": "Academic Project",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+      "description": "Interactive web tool visually animating sorting and searching algorithms to help fellow students learn DSA concepts.",
+      "longDescription": "Created to demonstrate sorting algorithms (Bubble, Merge, Quick Sort) with step-by-step speed controls and execution time comparisons.",
+      "tech": ["JavaScript", "HTML5 Canvas", "CSS3"],
+      "metrics": [
+        { "label": "Algorithms", "value": "8 Visualized" },
+        { "label": "Speed Control", "value": "Interactive" }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Used by 200+ class students during DSA course revision.",
+        "Implemented smooth canvas animations without external graphical dependencies."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-stud-1",
+      "company": "University Coding Club",
+      "role": "Technical Lead & Event Coordinator",
+      "period": "2024 - Present",
+      "location": "Campus",
+      "type": "Extracurricular",
+      "description": "Organizing weekly DSA problem-solving sessions, workshops on Git/GitHub, and annual campus coding competitions.",
+      "achievements": [
+        "Mentored 60+ junior students in basic programming and Git version control.",
+        "Co-organized Annual Hackathon with over 200 registered participants."
+      ],
+      "skills": ["Event Management", "Peer Mentorship", "Git", "Public Speaking"]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-stud-1",
+      "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+      "institution": "University College of Engineering",
+      "period": "2023 - 2027 (Expected)",
+      "description": "Current CGPA: 9.1 / 10. Core Subjects: Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks."
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-stud-1",
+      "title": "Peer Tutoring & DSA Help",
+      "description": "One-on-one tutoring for junior CS students in Data Structures, Java, and C++ fundamentals.",
+      "icon": "Code2",
+      "pricing": "Peer Rate",
+      "featured": true
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-stud-1",
+      "name": "Prof. A. K. Varma",
+      "role": "Faculty Advisor",
+      "company": "University Coding Club",
+      "content": "Sam is an energetic, highly disciplined student leader. Consistently achieves top grades while helping peers learn software engineering fundamentals.",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    }
+  ],
+  "blogs": [],
+  "messages": [],
+  "settings": {
+    "siteTitle": "Sam Rivera — Computer Science Student Portfolio",
+    "metaDescription": "CS student portfolio showcasing academic projects, hackathon achievements, DSA fundamentals, and extracurricular leadership.",
+    "accentColor": "rose",
+    "themePreference": "dark",
+    "resumeUrl": "#",
+    "showHero": true,
+    "showServices": true,
+    "showBlog": false,
+    "showTestimonials": true,
+    "footerText": "Created by Sam Rivera"
+  }
+}
