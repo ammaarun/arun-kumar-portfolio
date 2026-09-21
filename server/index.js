@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -6,6 +7,7 @@ import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js';
 import portfolioRoutes from './routes/portfolioRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import { dbEngine } from './data/dbEngine.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,6 +40,11 @@ app.get('{*path}', (req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Portfolio CMS Server running at http://localhost:${PORT}`);
-});
+async function startServer() {
+  await dbEngine.init();
+  app.listen(PORT, () => {
+    console.log(`🚀 Portfolio CMS Server running at http://localhost:${PORT}`);
+  });
+}
+
+startServer();

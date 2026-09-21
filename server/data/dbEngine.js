@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import pg from 'pg';
 import { portfolioData } from '../../src/data/portfolioData.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -12,7 +13,7 @@ const initialDb = {
   ...portfolioData,
   adminUser: {
     username: 'admin',
-    // Hash or plain string for simplicity; default admin credentials: admin / admin123
+    // Default admin credentials: admin / admin123
     password: 'admin123'
   },
   services: [
@@ -117,11 +118,62 @@ const initialDb = {
   }
 };
 
+const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+let pool = null;
+let memoryCache = null;
+
+if (connectionString) {
+  const sslOptions = connectionString.includes('localhost') || connectionString.includes('127.0.0.1')
+    ? false
+    : { rejectUnauthorized: false };
+
+  pool = new pg.Pool({
+    connectionString,
+    ssl: sslOptions
+  });
+}
+
 export const dbEngine = {
-  get() {
+  async init() {
+    if (!pool) {
+      memoryCache = this.getFromFile();
+      return memoryCache;
+    }
+
+    try {
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS portfolio_cms (
+          id INT PRIMARY KEY,
+          data JSONB NOT NULL,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+
+      const res = await pool.query('SELECT data FROM portfolio_cms WHERE id = 1');
+      if (res.rows.length === 0) {
+        console.log('🌱 Seeding initial portfolio dataset into PostgreSQL...');
+        await pool.query(
+          'INSERT INTO portfolio_cms (id, data) VALUES (1, $1)',
+          [JSON.stringify(initialDb)]
+        );
+        memoryCache = initialDb;
+      } else {
+        memoryCache = res.rows[0].data;
+        console.log('✅ Loaded portfolio dataset from PostgreSQL cloud database.');
+      }
+    } catch (err) {
+      console.error('❌ Error initializing PostgreSQL connection:', err.message);
+      console.log('⚠️ Falling back to local db.json file mode.');
+      pool = null;
+      memoryCache = this.getFromFile();
+    }
+    return memoryCache;
+  },
+
+  getFromFile() {
     try {
       if (!fs.existsSync(DB_FILE)) {
-        this.save(initialDb);
+        this.saveToFile(initialDb);
         return initialDb;
       }
       const raw = fs.readFileSync(DB_FILE, 'utf-8');
@@ -132,7 +184,7 @@ export const dbEngine = {
     }
   },
 
-  save(data) {
+  saveToFile(data) {
     try {
       const dir = path.dirname(DB_FILE);
       if (!fs.existsSync(dir)) {
@@ -141,6 +193,28 @@ export const dbEngine = {
       fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
     } catch (err) {
       console.error('Error writing to database file:', err);
+    }
+  },
+
+  get() {
+    if (memoryCache) {
+      return memoryCache;
+    }
+    memoryCache = this.getFromFile();
+    return memoryCache;
+  },
+
+  save(data) {
+    memoryCache = data;
+    this.saveToFile(data);
+
+    if (pool) {
+      pool.query(
+        'INSERT INTO portfolio_cms (id, data, updated_at) VALUES (1, $1, NOW()) ON CONFLICT (id) DO UPDATE SET data = $1, updated_at = NOW()',
+        [JSON.stringify(data)]
+      ).catch(err => {
+        console.error('❌ Error persisting update to PostgreSQL:', err.message);
+      });
     }
   }
 };
