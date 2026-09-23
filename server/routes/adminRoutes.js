@@ -213,14 +213,10 @@ router.put('/clients/:id/status', (req, res) => {
 
 router.post('/clients/:id/select', (req, res) => {
   const { id } = req.params;
-  const db = dbEngine.get();
-  const client = (db.clients || []).find(c => c.id === id);
+  const client = dbEngine.switchActiveClient(id);
   if (!client) {
     return res.status(404).json({ success: false, message: 'Client not found.' });
   }
-
-  db.activeClientId = id;
-  dbEngine.save(db);
 
   res.json({
     success: true,
@@ -248,14 +244,15 @@ router.delete('/clients/:id', (req, res) => {
 
   // If deleted client was active, switch activeClientId to remaining client
   if (db.activeClientId === id) {
-    db.activeClientId = db.clients[0].id;
+    dbEngine.switchActiveClient(db.clients[0].id);
+  } else {
+    dbEngine.save(db);
   }
 
-  dbEngine.save(db);
   res.json({
     success: true,
     message: `Client ${deletedClient.name} deleted successfully.`,
-    activeClientId: db.activeClientId
+    activeClientId: dbEngine.get().activeClientId
   });
 });
 
@@ -311,14 +308,18 @@ router.post('/presets/:id/apply', (req, res) => {
     const presetData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     const db = dbEngine.get();
 
-    // Preserve existing admin user credentials & contact messages
+    // Preserve existing admin user credentials, contact messages, clients array, & activeClientId
     const adminUser = db.adminUser || { username: 'admin', password: 'admin123' };
     const existingMessages = db.messages || [];
+    const existingClients = db.clients || [];
+    const activeClientId = db.activeClientId || (existingClients[0]?.id || 'client-1');
 
     const updatedDb = {
       ...presetData,
       adminUser,
       messages: existingMessages,
+      clients: existingClients,
+      activeClientId,
       settings: {
         ...db.settings,
         ...presetData.settings,
@@ -326,6 +327,13 @@ router.post('/presets/:id/apply', (req, res) => {
         profileType: presetData.name
       }
     };
+
+    // Update active client metadata
+    const activeClient = (updatedDb.clients || []).find(c => c.id === activeClientId);
+    if (activeClient && presetData.personalInfo) {
+      if (presetData.personalInfo.name) activeClient.name = presetData.personalInfo.name;
+      if (presetData.personalInfo.role) activeClient.role = presetData.personalInfo.role;
+    }
 
     dbEngine.save(updatedDb);
 

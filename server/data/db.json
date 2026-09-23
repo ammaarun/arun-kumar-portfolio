@@ -119,33 +119,7 @@
   ],
   "projects": [
     {
-      "id": "proj-1790189226809",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1790189185167",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1790189153565",
+      "id": "proj-1790192070098",
       "title": "Automated Test Project",
       "subtitle": "Vitest Microservice",
       "category": "Backend & Microservices",
@@ -302,6 +276,15 @@
   ],
   "blogs": [],
   "messages": [
+    {
+      "id": "msg-1790192093086",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-23T19:34:53.086Z",
+      "read": false
+    },
     {
       "id": "msg-1790189230946",
       "name": "Test Client",
@@ -520,7 +503,7 @@
       "slug": "arun-kumar",
       "status": "PUBLISHED",
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-09-23T18:47:10.946Z",
+      "lastUpdated": "2026-09-23T19:34:53.086Z",
       "lastPublishedAt": "2026-09-23T18:45:53.211Z",
       "isDefault": true,
       "portfolioData": {
@@ -561,18 +544,6 @@
             "description": "Long-Term Partnerships"
           }
         ],
-        "codeSnippets": {
-          "java": {
-            "filename": "PaymentController.java",
-            "language": "java",
-            "code": "@RestController\n@RequestMapping(\"/api/v1/payments\")\n@RequiredArgsConstructor\npublic class PaymentController {\n\n    private final PaymentService paymentService;\n\n    @PostMapping(\"/process\")\n    @PreAuthorize(\"hasRole('USER')\")\n    public ResponseEntity<PaymentResponse> processPayment(\n            @Valid @RequestBody PaymentRequest request) {\n        \n        log.info(\"Processing transaction for order: {}\", request.getOrderId());\n        PaymentResponse response = paymentService.executePayment(request);\n        return ResponseEntity.ok(response);\n    }\n}"
-          },
-          "react": {
-            "filename": "usePaymentStream.js",
-            "language": "javascript",
-            "code": "import { useState, useEffect } from 'react';\n\nexport const usePaymentStream = (transactionId) => {\n  const [status, setStatus] = useState('PENDING');\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const ws = new WebSocket(`wss://api.arunkumar.dev/stream/${transactionId}`);\n    ws.onmessage = (event) => {\n      const data = JSON.parse(event.data);\n      setStatus(data.status);\n      setLoading(false);\n    };\n    return () => ws.close();\n  }, [transactionId]);\n\n  return { status, loading };\n};"
-          }
-        },
         "skills": [
           {
             "category": "Freelance Development Services",
@@ -650,33 +621,7 @@
         ],
         "projects": [
           {
-            "id": "proj-1790189226809",
-            "title": "Automated Test Project",
-            "subtitle": "Vitest Microservice",
-            "category": "Backend & Microservices",
-            "description": "Project created during automated suite execution",
-            "tech": [
-              "Java",
-              "Spring Boot",
-              "JUnit"
-            ],
-            "featured": true
-          },
-          {
-            "id": "proj-1790189185167",
-            "title": "Automated Test Project",
-            "subtitle": "Vitest Microservice",
-            "category": "Backend & Microservices",
-            "description": "Project created during automated suite execution",
-            "tech": [
-              "Java",
-              "Spring Boot",
-              "JUnit"
-            ],
-            "featured": true
-          },
-          {
-            "id": "proj-1790189153565",
+            "id": "proj-1790192070098",
             "title": "Automated Test Project",
             "subtitle": "Vitest Microservice",
             "category": "Backend & Microservices",
@@ -1147,17 +1092,5 @@
       }
     }
   ],
-  "activeClientId": "client-1",
-  "codeSnippets": {
-    "java": {
-      "filename": "PaymentController.java",
-      "language": "java",
-      "code": "@RestController\n@RequestMapping(\"/api/v1/payments\")\n@RequiredArgsConstructor\npublic class PaymentController {\n\n    private final PaymentService paymentService;\n\n    @PostMapping(\"/process\")\n    @PreAuthorize(\"hasRole('USER')\")\n    public ResponseEntity<PaymentResponse> processPayment(\n            @Valid @RequestBody PaymentRequest request) {\n        \n        log.info(\"Processing transaction for order: {}\", request.getOrderId());\n        PaymentResponse response = paymentService.executePayment(request);\n        return ResponseEntity.ok(response);\n    }\n}"
-    },
-    "react": {
-      "filename": "usePaymentStream.js",
-      "language": "javascript",
-      "code": "import { useState, useEffect } from 'react';\n\nexport const usePaymentStream = (transactionId) => {\n  const [status, setStatus] = useState('PENDING');\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const ws = new WebSocket(`wss://api.arunkumar.dev/stream/${transactionId}`);\n    ws.onmessage = (event) => {\n      const data = JSON.parse(event.data);\n      setStatus(data.status);\n      setLoading(false);\n    };\n    return () => ws.close();\n  }, [transactionId]);\n\n  return { status, loading };\n};"
-    }
-  }
+  "activeClientId": "client-1"
 }

@@ -85,7 +85,7 @@ describe('Multi-Client Platform REST API Integration Tests', () => {
     expect(res.body.data.lastPublishedAt).toBeDefined();
   });
 
-  it('6. POST /api/admin/clients/:id/select — should switch active client context', async () => {
+  it('6. POST /api/admin/clients/:id/select — should switch active client context and root personalInfo data', async () => {
     const res = await request(app)
       .post(`/api/admin/clients/${createdClientId}/select`)
       .set('Authorization', `Bearer ${adminToken}`);
@@ -93,6 +93,11 @@ describe('Multi-Client Platform REST API Integration Tests', () => {
     expect(res.status).toBe(200);
     expect(res.body.success).toBe(true);
     expect(res.body.activeClientId).toBe(createdClientId);
+
+    const { dbEngine } = await import('../data/dbEngine.js');
+    const db = dbEngine.get();
+    expect(db.activeClientId).toBe(createdClientId);
+    expect(db.personalInfo.name).toBe('Jane Doe Smith');
   });
 
   it('7. DELETE /api/admin/clients/:id — should delete client when multiple exist', async () => {

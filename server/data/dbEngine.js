@@ -268,6 +268,32 @@ export const dbEngine = {
     return memoryCache;
   },
 
+  switchActiveClient(clientId) {
+    const db = this.get();
+    const targetClient = (db.clients || []).find(c => c.id === clientId);
+    if (!targetClient) return null;
+
+    db.activeClientId = clientId;
+
+    if (targetClient.portfolioData) {
+      const p = targetClient.portfolioData;
+      db.personalInfo = p.personalInfo || db.personalInfo;
+      db.stats = p.stats || db.stats;
+      db.codeSnippets = p.codeSnippets || db.codeSnippets;
+      db.skills = p.skills || db.skills;
+      db.projects = p.projects || db.projects;
+      db.experience = p.experience || db.experience;
+      db.education = p.education || db.education;
+      db.services = p.services || db.services;
+      db.blogs = p.blogs || db.blogs;
+      db.testimonials = p.testimonials || db.testimonials;
+      db.settings = p.settings || db.settings;
+    }
+
+    this.save(db);
+    return targetClient;
+  },
+
   save(data) {
     // Before saving, ensure the active client's portfolioData is synchronized with root fields
     if (data.clients && data.activeClientId) {
