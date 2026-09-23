@@ -9,6 +9,22 @@ describe('Phase 7: Admin Presets Selector & Preview Component Tests', () => {
 
   it('1. PresetsView — should fetch and render 5 preset cards with Preview and Use buttons', async () => {
     global.fetch = vi.fn().mockImplementation((url) => {
+      if (url === '/api/admin/templates') {
+        return Promise.resolve({
+          json: async () => ({
+            success: true,
+            activeTemplateId: 'modern-dark',
+            data: [
+              { id: 'modern-dark', name: 'Modern Dark', description: 'Emerald dark theme', badge: 'Popular', tags: ['Dark'] },
+              { id: 'minimal-light', name: 'Minimal Light', description: 'Clean blue theme', badge: 'Light Theme', tags: ['Light'] },
+              { id: 'professional', name: 'Professional', description: 'Corporate cyan theme', badge: 'Corporate', tags: ['Slate'] },
+              { id: 'creative', name: 'Creative', description: 'Fuchsia gradient theme', badge: 'Vibrant', tags: ['Gradient'] },
+              { id: 'developer', name: 'Developer', description: 'Terminal green theme', badge: 'Terminal', tags: ['Terminal'] },
+              { id: 'designer', name: 'Designer', description: 'Amber gold theme', badge: 'Warm Amber', tags: ['Amber'] }
+            ]
+          })
+        });
+      }
       if (url === '/api/admin/presets') {
         return Promise.resolve({
           json: async () => ({
@@ -33,6 +49,13 @@ describe('Phase 7: Admin Presets Selector & Preview Component Tests', () => {
         </DataProvider>
       </AuthProvider>
     );
+
+    await waitFor(() => {
+      expect(screen.getByText('Modern Dark')).toBeDefined();
+    });
+
+    const startersTab = screen.getByRole('button', { name: /Profile Starters/i });
+    fireEvent.click(startersTab);
 
     await waitFor(() => {
       expect(screen.getByText('Fresher / Entry-Level Developer')).toBeDefined();

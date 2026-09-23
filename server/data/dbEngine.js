@@ -8,12 +8,51 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DB_FILE = path.join(__dirname, 'db.json');
 
+export const defaultDesignConfig = {
+  template: 'modern-dark',
+  themeMode: 'dark',
+  colors: {
+    primary: '#10b981',
+    secondary: '#14b8a6',
+    accent: '#059669',
+    background: '#0a0d14',
+    surface: '#121723',
+    text: '#f1f5f9'
+  },
+  fonts: {
+    heading: 'Inter',
+    body: 'Inter'
+  },
+  layout: {
+    hero: 'centered',
+    projects: 'grid',
+    navigation: 'top',
+    contact: 'form'
+  },
+  buttons: {
+    style: 'rounded',
+    size: 'medium'
+  },
+  animations: 'standard',
+  sections: [
+    { id: 'hero', name: 'Hero', visible: true, order: 1 },
+    { id: 'about', name: 'About', visible: true, order: 2 },
+    { id: 'skills', name: 'Skills', visible: true, order: 3 },
+    { id: 'projects', name: 'Projects Showcase', visible: true, order: 4 },
+    { id: 'services', name: 'Services', visible: true, order: 5 },
+    { id: 'experience', name: 'Work Experience', visible: true, order: 6 },
+    { id: 'blog', name: 'Blog / Articles', visible: true, order: 7 },
+    { id: 'testimonials', name: 'Testimonials', visible: true, order: 8 },
+    { id: 'contact', name: 'Contact', visible: true, order: 9 }
+  ]
+};
+
 // Extended initial database schema combining existing portfolioData + new CMS sections
 const initialDb = {
   ...portfolioData,
+  designConfig: { ...defaultDesignConfig },
   adminUser: {
     username: 'admin',
-    // Default admin credentials: admin / admin123
     password: 'admin123'
   },
   services: [
@@ -63,7 +102,7 @@ const initialDb = {
       status: "Published"
     },
     {
-      "id": "post-2",
+      id: "post-2",
       title: "Optimizing React Performance with Tailwind & Custom Hooks",
       slug: "optimizing-react-performance-tailwind-custom-hooks",
       excerpt: "Key strategies for reducing render cycles, leveraging WebSockets in React custom hooks, and maintaining smooth 60fps animations.",
@@ -133,7 +172,7 @@ if (connectionString) {
   });
 }
 
-// Helper to ensure database structure includes multi-client schema
+// Helper to ensure database structure includes multi-client schema & designConfig
 const ensureMultiClientStructure = (db) => {
   if (!db.clients || !Array.isArray(db.clients) || db.clients.length === 0) {
     const defaultClient = {
@@ -159,7 +198,8 @@ const ensureMultiClientStructure = (db) => {
         services: db.services || [ ...initialDb.services ],
         blogs: db.blogs || [ ...initialDb.blogs ],
         testimonials: db.testimonials || [ ...initialDb.testimonials ],
-        settings: db.settings || { ...initialDb.settings }
+        settings: db.settings || { ...initialDb.settings },
+        designConfig: db.designConfig || { ...defaultDesignConfig }
       }
     };
 
@@ -170,6 +210,13 @@ const ensureMultiClientStructure = (db) => {
   if (!db.activeClientId) {
     db.activeClientId = db.clients[0].id;
   }
+
+  // Ensure every client has a designConfig
+  db.clients.forEach(c => {
+    if (c.portfolioData && !c.portfolioData.designConfig) {
+      c.portfolioData.designConfig = { ...defaultDesignConfig };
+    }
+  });
 
   // Sync current root fields with the active client's portfolioData for backward compatibility
   const activeClient = db.clients.find(c => c.id === db.activeClientId) || db.clients[0];
@@ -186,6 +233,7 @@ const ensureMultiClientStructure = (db) => {
     db.blogs = p.blogs;
     db.testimonials = p.testimonials;
     db.settings = p.settings;
+    db.designConfig = p.designConfig || { ...defaultDesignConfig };
   }
 
   return db;
@@ -288,6 +336,7 @@ export const dbEngine = {
       db.blogs = p.blogs || db.blogs;
       db.testimonials = p.testimonials || db.testimonials;
       db.settings = p.settings || db.settings;
+      db.designConfig = p.designConfig || { ...defaultDesignConfig };
     }
 
     this.save(db);
@@ -311,7 +360,8 @@ export const dbEngine = {
           services: data.services,
           blogs: data.blogs,
           testimonials: data.testimonials,
-          settings: data.settings
+          settings: data.settings,
+          designConfig: data.designConfig || { ...defaultDesignConfig }
         };
       }
     }

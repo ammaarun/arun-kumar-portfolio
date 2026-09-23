@@ -119,7 +119,20 @@
   ],
   "projects": [
     {
-      "id": "proj-1790192070098",
+      "id": "proj-1790194598308",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
+    {
+      "id": "proj-1790194508746",
       "title": "Automated Test Project",
       "subtitle": "Vitest Microservice",
       "category": "Backend & Microservices",
@@ -276,6 +289,24 @@
   ],
   "blogs": [],
   "messages": [
+    {
+      "id": "msg-1790194598637",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-23T20:16:38.637Z",
+      "read": false
+    },
+    {
+      "id": "msg-1790194441764",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-23T20:14:01.764Z",
+      "read": false
+    },
     {
       "id": "msg-1790192093086",
       "name": "Test Client",
@@ -503,7 +534,7 @@
       "slug": "arun-kumar",
       "status": "PUBLISHED",
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-09-23T19:34:53.086Z",
+      "lastUpdated": "2026-09-23T20:16:38.637Z",
       "lastPublishedAt": "2026-09-23T18:45:53.211Z",
       "isDefault": true,
       "portfolioData": {
@@ -621,7 +652,20 @@
         ],
         "projects": [
           {
-            "id": "proj-1790192070098",
+            "id": "proj-1790194598308",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
+          {
+            "id": "proj-1790194508746",
             "title": "Automated Test Project",
             "subtitle": "Vitest Microservice",
             "category": "Backend & Microservices",
@@ -790,6 +834,89 @@
           "footerText": "Designed & Built by Taylor Swiftly",
           "activePreset": "freelancer",
           "profileType": "Freelancer"
+        },
+        "designConfig": {
+          "template": "minimal-light",
+          "themeMode": "light",
+          "colors": {
+            "primary": "#2563eb",
+            "secondary": "#3b82f6",
+            "accent": "#1d4ed8",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "text": "#0f172a"
+          },
+          "fonts": {
+            "heading": "Space Grotesk",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "left",
+            "projects": "cards",
+            "navigation": "top",
+            "contact": "cards"
+          },
+          "buttons": {
+            "style": "square",
+            "size": "medium"
+          },
+          "animations": "subtle",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
         }
       }
     },
@@ -1088,9 +1215,556 @@
           "showBlog": false,
           "showTestimonials": true,
           "footerText": "Engineered by David Miller"
+        },
+        "designConfig": {
+          "template": "modern-dark",
+          "themeMode": "dark",
+          "colors": {
+            "primary": "#10b981",
+            "secondary": "#14b8a6",
+            "accent": "#059669",
+            "background": "#0a0d14",
+            "surface": "#121723",
+            "text": "#f1f5f9"
+          },
+          "fonts": {
+            "heading": "Inter",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "centered",
+            "projects": "grid",
+            "navigation": "top",
+            "contact": "form"
+          },
+          "buttons": {
+            "style": "rounded",
+            "size": "medium"
+          },
+          "animations": "standard",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "client-1790194598454",
+      "name": "Jane Doe Smith",
+      "email": "jane@example.com",
+      "role": "Staff Frontend Engineer",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "jane-doe",
+      "status": "PUBLISHED",
+      "createdDate": "2026-09-23T20:16:38.455Z",
+      "lastUpdated": "2026-09-23T20:16:38.512Z",
+      "lastPublishedAt": "2026-09-23T20:16:38.512Z",
+      "isDefault": false,
+      "portfolioData": {
+        "id": "experienced",
+        "name": "Experienced Developer",
+        "description": "Designed for mid-to-senior software engineers emphasizing professional work history, enterprise metrics, system architecture, and leadership.",
+        "targetAudience": "Mid & Senior Software Engineers (3+ Years Experience)",
+        "badge": "Experienced Pro",
+        "accentColor": "indigo",
+        "personalInfo": {
+          "name": "Jane Doe Smith",
+          "role": "Staff Frontend Engineer",
+          "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
+          "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
+          "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",
+          "location": "Telangana, India",
+          "availability": "Available for Senior Engineering Roles & Architecture Consulting",
+          "email": "jane@example.com",
+          "phone": "+91 98765 00002",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#"
+        },
+        "stats": [
+          {
+            "label": "Years Experience",
+            "value": "5+",
+            "description": "Enterprise Software Engineering"
+          },
+          {
+            "label": "API Throughput",
+            "value": "10k+ TPS",
+            "description": "High Concurrency Microservices"
+          },
+          {
+            "label": "Uptime SLA",
+            "value": "99.99%",
+            "description": "Production Cloud Deployments"
+          },
+          {
+            "label": "Team Lead",
+            "value": "6 Engineers",
+            "description": "Mentorship & Code Reviews"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Enterprise Backend Architecture",
+            "icon": "Server",
+            "items": [
+              {
+                "name": "Distributed Microservices",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "Spring Boot / Node.js",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "REST & GraphQL APIs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Event-Driven Messaging (Kafka/RabbitMQ)",
+                "level": 88
+              }
+            ]
+          },
+          {
+            "category": "Databases & High-Performance Caching",
+            "icon": "Database",
+            "items": [
+              {
+                "name": "PostgreSQL / MySQL Tuning",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Redis Distributed Cache",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Database Schema Normalization",
+                "level": 92
+              },
+              {
+                "name": "NoSQL (MongoDB / DynamoDB)",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "DevOps & Cloud Infrastructure",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Docker & Kubernetes",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "AWS (EC2, S3, RDS, ECS)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "CI/CD (GitHub Actions / Jenkins)",
+                "level": 90
+              },
+              {
+                "name": "System Monitoring (Prometheus/Grafana)",
+                "level": 82
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-exp-1",
+            "title": "Enterprise Cloud Payment Engine",
+            "subtitle": "High-Throughput Distributed Payment Gateway",
+            "category": "Backend & Microservices",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+            "description": "Distributed payment processing engine handling high-volume transaction workloads with multi-region failover.",
+            "longDescription": "Engineered event-driven microservices processing over $10M in transactions monthly. Implemented circuit breakers, distributed locking with Redis, and Kafka audit streams.",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "Kafka",
+              "PostgreSQL",
+              "Redis",
+              "Docker",
+              "AWS"
+            ],
+            "metrics": [
+              {
+                "label": "Transactions",
+                "value": "10k+ TPS"
+              },
+              {
+                "label": "Latency",
+                "value": "< 30ms"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Reduced database read load by 65% by implementing multi-level Redis caching.",
+              "Zero-downtime deployment pipelines using Kubernetes rolling updates."
+            ]
+          },
+          {
+            "id": "proj-exp-2",
+            "title": "Real-Time Telemetry Analytics Platform",
+            "subtitle": "Stream Processing & Monitoring System",
+            "category": "Cloud Architecture",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+            "description": "Real-time analytics dashboard monitoring server cluster metrics, request rates, and error traces.",
+            "longDescription": "Architected stream processing pipeline capturing logs across 50+ nodes and visualizing real-time metrics on Grafana dashboards.",
+            "tech": [
+              "Node.js",
+              "Kafka",
+              "Prometheus",
+              "Grafana",
+              "Docker"
+            ],
+            "metrics": [
+              {
+                "label": "Log Ingestion",
+                "value": "1M events/min"
+              },
+              {
+                "label": "Uptime",
+                "value": "99.99%"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Built custom alert triggers dispatching PagerDuty incidents automatically.",
+              "Decreased memory footprint per worker node by 40% through garbage collection tuning."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-exp-1",
+            "company": "Global Cloud Tech Inc.",
+            "role": "Senior Software Engineer / Tech Lead",
+            "period": "2023 - Present",
+            "location": "Hyderabad, India",
+            "type": "Full-time",
+            "description": "Leading the core backend platform squad responsible for cloud microservices and database infrastructure.",
+            "achievements": [
+              "Architected core API platform supporting 2M+ daily active users.",
+              "Mentored team of 6 software engineers and conducted quarterly technical design reviews.",
+              "Led migration from monolithic application to Docker containerized microservices."
+            ],
+            "skills": [
+              "Microservices",
+              "Spring Boot",
+              "PostgreSQL",
+              "Kafka",
+              "AWS"
+            ]
+          },
+          {
+            "id": "exp-exp-2",
+            "company": "Nexus Systems Solutions",
+            "role": "Software Engineer",
+            "period": "2021 - 2023",
+            "location": "Telangana, India",
+            "type": "Full-time",
+            "description": "Developed RESTful APIs, optimized SQL queries, and integrated third-party payment integrations.",
+            "achievements": [
+              "Optimized slow relational queries resulting in 50% faster API response times.",
+              "Implemented JWT authentication and RBAC authorization middleware."
+            ],
+            "skills": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "REST APIs"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-exp-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "institution": "National Institute of Technology",
+            "period": "2017 - 2021",
+            "description": "Specialized in Software Architecture, Distributed Computing, and Database Security."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-exp-1",
+            "title": "Backend Architecture & Microservices",
+            "description": "Designing scalable, high-throughput microservice architectures with fault tolerance.",
+            "icon": "Server",
+            "pricing": "Consulting / Contract",
+            "featured": true
+          },
+          {
+            "id": "srv-exp-2",
+            "title": "Database Performance Tuning",
+            "description": "Optimizing PostgreSQL/MySQL query execution plans, indexing strategies, and Redis caching.",
+            "icon": "Database",
+            "pricing": "Hourly / Project",
+            "featured": true
+          }
+        ],
+        "testimonials": [
+          {
+            "id": "test-exp-1",
+            "name": "Sarah Jenkins",
+            "role": "VP of Engineering",
+            "company": "Global Cloud Tech",
+            "content": "David is a stellar senior engineer. His architectural decisions and database optimizations saved our platform during peak traffic events.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "blogs": [],
+        "messages": [],
+        "settings": {
+          "siteTitle": "Jane Doe — Senior React Developer",
+          "metaDescription": "Senior software engineer portfolio highlighting enterprise microservices, cloud backend architecture, and technical leadership.",
+          "accentColor": "indigo",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Engineered by David Miller"
+        },
+        "designConfig": {
+          "template": "modern-dark",
+          "themeMode": "dark",
+          "colors": {
+            "primary": "#10b981",
+            "secondary": "#14b8a6",
+            "accent": "#059669",
+            "background": "#0a0d14",
+            "surface": "#121723",
+            "text": "#f1f5f9"
+          },
+          "fonts": {
+            "heading": "Inter",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "centered",
+            "projects": "grid",
+            "navigation": "top",
+            "contact": "form"
+          },
+          "buttons": {
+            "style": "rounded",
+            "size": "medium"
+          },
+          "animations": "standard",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
         }
       }
     }
   ],
-  "activeClientId": "client-1"
+  "activeClientId": "client-1",
+  "designConfig": {
+    "template": "minimal-light",
+    "themeMode": "light",
+    "colors": {
+      "primary": "#2563eb",
+      "secondary": "#3b82f6",
+      "accent": "#1d4ed8",
+      "background": "#f8fafc",
+      "surface": "#ffffff",
+      "text": "#0f172a"
+    },
+    "fonts": {
+      "heading": "Space Grotesk",
+      "body": "Inter"
+    },
+    "layout": {
+      "hero": "left",
+      "projects": "cards",
+      "navigation": "top",
+      "contact": "cards"
+    },
+    "buttons": {
+      "style": "square",
+      "size": "medium"
+    },
+    "animations": "subtle",
+    "sections": [
+      {
+        "id": "hero",
+        "name": "Hero",
+        "visible": true,
+        "order": 1
+      },
+      {
+        "id": "about",
+        "name": "About",
+        "visible": true,
+        "order": 2
+      },
+      {
+        "id": "projects",
+        "name": "Projects Showcase",
+        "visible": true,
+        "order": 3
+      },
+      {
+        "id": "skills",
+        "name": "Skills",
+        "visible": true,
+        "order": 4
+      },
+      {
+        "id": "experience",
+        "name": "Work Experience",
+        "visible": true,
+        "order": 5
+      },
+      {
+        "id": "services",
+        "name": "Services",
+        "visible": true,
+        "order": 6
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "visible": true,
+        "order": 7
+      },
+      {
+        "id": "blog",
+        "name": "Blog / Articles",
+        "visible": true,
+        "order": 8
+      },
+      {
+        "id": "contact",
+        "name": "Contact",
+        "visible": true,
+        "order": 9
+      }
+    ]
+  }
 }

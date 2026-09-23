@@ -2,8 +2,9 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { dbEngine } from '../data/dbEngine.js';
+import { dbEngine, defaultDesignConfig } from '../data/dbEngine.js';
 import { verifyToken } from '../middleware/authMiddleware.js';
+import { visualTemplates } from '../templates/visualTemplates.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -256,7 +257,78 @@ router.delete('/clients/:id', (req, res) => {
   });
 });
 
-// --- Portfolio Presets Endpoints ---
+// --- Design Configuration & Visual Templates Endpoints ---
+router.get('/design', (req, res) => {
+  const db = dbEngine.get();
+  res.json({
+    success: true,
+    data: db.designConfig || defaultDesignConfig
+  });
+});
+
+router.put('/design', (req, res) => {
+  const db = dbEngine.get();
+  db.designConfig = {
+    ...db.designConfig,
+    ...req.body
+  };
+  dbEngine.save(db);
+  res.json({
+    success: true,
+    message: 'Design configuration updated successfully.',
+    data: db.designConfig
+  });
+});
+
+router.get('/templates', (req, res) => {
+  const db = dbEngine.get();
+  const activeTemplateId = db.designConfig?.template || 'modern-dark';
+  
+  const templatesList = visualTemplates.map(t => ({
+    ...t,
+    isActive: t.id === activeTemplateId
+  }));
+
+  res.json({
+    success: true,
+    data: templatesList,
+    activeTemplateId
+  });
+});
+
+router.get('/templates/:id', (req, res) => {
+  const { id } = req.params;
+  const template = visualTemplates.find(t => t.id === id);
+  if (!template) {
+    return res.status(404).json({ success: false, message: 'Visual template not found.' });
+  }
+  res.json({ success: true, data: template });
+});
+
+router.post('/templates/:id/apply', (req, res) => {
+  const { id } = req.params;
+  const template = visualTemplates.find(t => t.id === id);
+  if (!template) {
+    return res.status(404).json({ success: false, message: 'Visual template not found.' });
+  }
+
+  const db = dbEngine.get();
+  // Apply ONLY visual designConfig — keep all personalInfo, projects, skills, etc. intact!
+  db.designConfig = {
+    ...db.designConfig,
+    ...template.designConfig
+  };
+
+  dbEngine.save(db);
+
+  res.json({
+    success: true,
+    message: `Visual template ${template.name} applied successfully. Content remains unchanged.`,
+    data: db.designConfig
+  });
+});
+
+// --- Profile Starters / Portfolio Content Presets Endpoints ---
 router.get('/presets', (req, res) => {
   try {
     if (!fs.existsSync(PRESETS_DIR)) {
