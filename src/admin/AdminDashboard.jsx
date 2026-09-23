@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AdminLayout } from './AdminLayout';
 import { OverviewView } from './views/OverviewView';
+import { ClientsView } from './views/ClientsView';
 import { PresetsView } from './views/PresetsView';
 import { ProfileView } from './views/ProfileView';
 import { SkillsView } from './views/SkillsView';
@@ -19,6 +20,8 @@ export const AdminDashboardPlaceholder = () => {
     switch (activeTab) {
       case 'overview':
         return <OverviewView setActiveTab={setActiveTab} />;
+      case 'clients':
+        return <ClientsView setActiveTab={setActiveTab} />;
       case 'presets':
         return <PresetsView setActiveTab={setActiveTab} />;
       case 'profile':

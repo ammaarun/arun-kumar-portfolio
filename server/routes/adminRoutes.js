@@ -14,6 +14,251 @@ const router = express.Router();
 // Apply JWT verification to all admin routes
 router.use(verifyToken);
 
+// --- Multi-Client Management Endpoints ---
+router.get('/clients', (req, res) => {
+  const db = dbEngine.get();
+  const search = (req.query.search || '').toLowerCase();
+  
+  let clients = (db.clients || []).map(client => {
+    const p = client.portfolioData || {};
+    const projectsCount = p.projects?.length || 0;
+    const skillsCount = (p.skills || []).reduce((acc, cat) => acc + (cat.items?.length || 0), 0);
+    return {
+      id: client.id,
+      name: client.name,
+      email: client.email,
+      role: client.role,
+      profileImage: client.profileImage,
+      slug: client.slug,
+      status: client.status || 'DRAFT',
+      createdDate: client.createdDate,
+      lastUpdated: client.lastUpdated,
+      lastPublishedAt: client.lastPublishedAt || null,
+      isDefault: !!client.isDefault,
+      isActive: client.id === db.activeClientId,
+      projectsCount,
+      skillsCount
+    };
+  });
+
+  if (search) {
+    clients = clients.filter(c => 
+      c.name.toLowerCase().includes(search) || 
+      c.email.toLowerCase().includes(search) ||
+      c.role.toLowerCase().includes(search)
+    );
+  }
+
+  res.json({
+    success: true,
+    activeClientId: db.activeClientId,
+    data: clients
+  });
+});
+
+router.get('/clients/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  const client = (db.clients || []).find(c => c.id === id);
+  if (!client) {
+    return res.status(404).json({ success: false, message: 'Client not found.' });
+  }
+  res.json({ success: true, data: client });
+});
+
+router.post('/clients', (req, res) => {
+  const { name, email, role, profileImage, slug, presetId } = req.body;
+  if (!name || !email) {
+    return res.status(400).json({ success: false, message: 'Client name and email are required.' });
+  }
+
+  const db = dbEngine.get();
+  const newClientId = `client-${Date.now()}`;
+  const clientSlug = (slug || name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '');
+
+  let starterPortfolio = {
+    personalInfo: {
+      name,
+      email,
+      role: role || 'Software Developer',
+      tagline: `Professional Developer Portfolio of ${name}`,
+      shortBio: `${role || 'Software Developer'} passionate about building web products.`,
+      bio: `${name} is a dedicated ${role || 'Software Developer'}.`,
+      location: 'Telangana, India',
+      availability: 'Available for New Projects',
+      github: 'https://github.com',
+      linkedin: 'https://linkedin.com',
+      resumeUrl: '#'
+    },
+    skills: [],
+    projects: [],
+    experience: [],
+    education: [],
+    services: [],
+    blogs: [],
+    testimonials: [],
+    settings: {
+      siteTitle: `${name} — ${role || 'Developer Portfolio'}`,
+      metaDescription: `Portfolio website of ${name}`,
+      accentColor: 'emerald',
+      themePreference: 'dark'
+    }
+  };
+
+  // If a preset is chosen, seed portfolioData from preset file
+  if (presetId) {
+    const presetPath = path.join(PRESETS_DIR, `${presetId}Preset.json`);
+    if (fs.existsSync(presetPath)) {
+      try {
+        const presetObj = JSON.parse(fs.readFileSync(presetPath, 'utf-8'));
+        starterPortfolio = {
+          ...presetObj,
+          personalInfo: {
+            ...presetObj.personalInfo,
+            name,
+            email,
+            role: role || presetObj.personalInfo.role
+          },
+          settings: {
+            ...presetObj.settings,
+            siteTitle: `${name} — ${role || presetObj.personalInfo.role}`
+          }
+        };
+      } catch (err) {
+        console.error('Error seeding client from preset:', err);
+      }
+    }
+  }
+
+  const newClient = {
+    id: newClientId,
+    name,
+    email,
+    role: role || 'Software Developer',
+    profileImage: profileImage || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    slug: clientSlug,
+    status: 'DRAFT',
+    createdDate: new Date().toISOString(),
+    lastUpdated: new Date().toISOString(),
+    lastPublishedAt: null,
+    isDefault: false,
+    portfolioData: starterPortfolio
+  };
+
+  db.clients = db.clients || [];
+  db.clients.push(newClient);
+  dbEngine.save(db);
+
+  res.json({
+    success: true,
+    message: `Client ${name} created successfully.`,
+    data: newClient
+  });
+});
+
+router.put('/clients/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  const client = (db.clients || []).find(c => c.id === id);
+  if (!client) {
+    return res.status(404).json({ success: false, message: 'Client not found.' });
+  }
+
+  const { name, email, role, profileImage, slug } = req.body;
+  if (name) client.name = name;
+  if (email) client.email = email;
+  if (role) client.role = role;
+  if (profileImage) client.profileImage = profileImage;
+  if (slug) client.slug = slug;
+  client.lastUpdated = new Date().toISOString();
+
+  // Also update portfolioData personalInfo if present
+  if (client.portfolioData && client.portfolioData.personalInfo) {
+    if (name) client.portfolioData.personalInfo.name = name;
+    if (email) client.portfolioData.personalInfo.email = email;
+    if (role) client.portfolioData.personalInfo.role = role;
+  }
+
+  dbEngine.save(db);
+  res.json({ success: true, message: 'Client updated successfully', data: client });
+});
+
+router.put('/clients/:id/status', (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+  const validStatuses = ['DRAFT', 'PUBLISHED', 'UNPUBLISHED'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ success: false, message: 'Invalid status. Must be DRAFT, PUBLISHED, or UNPUBLISHED.' });
+  }
+
+  const db = dbEngine.get();
+  const client = (db.clients || []).find(c => c.id === id);
+  if (!client) {
+    return res.status(404).json({ success: false, message: 'Client not found.' });
+  }
+
+  client.status = status;
+  client.lastUpdated = new Date().toISOString();
+  if (status === 'PUBLISHED') {
+    client.lastPublishedAt = new Date().toISOString();
+  }
+
+  dbEngine.save(db);
+  res.json({
+    success: true,
+    message: `Portfolio status set to ${status}.`,
+    data: { status: client.status, lastPublishedAt: client.lastPublishedAt }
+  });
+});
+
+router.post('/clients/:id/select', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  const client = (db.clients || []).find(c => c.id === id);
+  if (!client) {
+    return res.status(404).json({ success: false, message: 'Client not found.' });
+  }
+
+  db.activeClientId = id;
+  dbEngine.save(db);
+
+  res.json({
+    success: true,
+    message: `Active portfolio context switched to ${client.name}.`,
+    activeClientId: id,
+    client
+  });
+});
+
+router.delete('/clients/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+
+  if (db.clients.length <= 1) {
+    return res.status(400).json({ success: false, message: 'Cannot delete the only remaining portfolio client.' });
+  }
+
+  const idx = db.clients.findIndex(c => c.id === id);
+  if (idx === -1) {
+    return res.status(404).json({ success: false, message: 'Client not found.' });
+  }
+
+  const deletedClient = db.clients[idx];
+  db.clients.splice(idx, 1);
+
+  // If deleted client was active, switch activeClientId to remaining client
+  if (db.activeClientId === id) {
+    db.activeClientId = db.clients[0].id;
+  }
+
+  dbEngine.save(db);
+  res.json({
+    success: true,
+    message: `Client ${deletedClient.name} deleted successfully.`,
+    activeClientId: db.activeClientId
+  });
+});
+
 // --- Portfolio Presets Endpoints ---
 router.get('/presets', (req, res) => {
   try {

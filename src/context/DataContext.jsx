@@ -30,7 +30,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, loading, error, refreshData: fetchPortfolioData, setData }}>
+    <DataContext.Provider value={{ data, loading, error, refreshData: fetchPortfolioData, refetchData: fetchPortfolioData, setData }}>
       {children}
     </DataContext.Provider>
   );

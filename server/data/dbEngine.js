@@ -63,7 +63,7 @@ const initialDb = {
       status: "Published"
     },
     {
-      id: "post-2",
+      "id": "post-2",
       title: "Optimizing React Performance with Tailwind & Custom Hooks",
       slug: "optimizing-react-performance-tailwind-custom-hooks",
       excerpt: "Key strategies for reducing render cycles, leveraging WebSockets in React custom hooks, and maintaining smooth 60fps animations.",
@@ -133,10 +133,69 @@ if (connectionString) {
   });
 }
 
+// Helper to ensure database structure includes multi-client schema
+const ensureMultiClientStructure = (db) => {
+  if (!db.clients || !Array.isArray(db.clients) || db.clients.length === 0) {
+    const defaultClient = {
+      id: 'client-1',
+      name: db.personalInfo?.name || 'Arun Kumar',
+      email: db.personalInfo?.email || 'arunkumar.dev@example.com',
+      role: db.personalInfo?.role || 'Java Developer | Full Stack Developer',
+      profileImage: db.personalInfo?.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+      slug: 'arun-kumar',
+      status: 'PUBLISHED',
+      createdDate: new Date('2026-09-01').toISOString(),
+      lastUpdated: new Date().toISOString(),
+      lastPublishedAt: new Date().toISOString(),
+      isDefault: true,
+      portfolioData: {
+        personalInfo: db.personalInfo || { ...initialDb.personalInfo },
+        stats: db.stats || [ ...initialDb.stats ],
+        codeSnippets: db.codeSnippets || { ...initialDb.codeSnippets },
+        skills: db.skills || [ ...initialDb.skills ],
+        projects: db.projects || [ ...initialDb.projects ],
+        experience: db.experience || [ ...initialDb.experience ],
+        education: db.education || [ ...initialDb.education ],
+        services: db.services || [ ...initialDb.services ],
+        blogs: db.blogs || [ ...initialDb.blogs ],
+        testimonials: db.testimonials || [ ...initialDb.testimonials ],
+        settings: db.settings || { ...initialDb.settings }
+      }
+    };
+
+    db.clients = [defaultClient];
+    db.activeClientId = 'client-1';
+  }
+
+  if (!db.activeClientId) {
+    db.activeClientId = db.clients[0].id;
+  }
+
+  // Sync current root fields with the active client's portfolioData for backward compatibility
+  const activeClient = db.clients.find(c => c.id === db.activeClientId) || db.clients[0];
+  if (activeClient && activeClient.portfolioData) {
+    const p = activeClient.portfolioData;
+    db.personalInfo = p.personalInfo;
+    db.stats = p.stats;
+    db.codeSnippets = p.codeSnippets;
+    db.skills = p.skills;
+    db.projects = p.projects;
+    db.experience = p.experience;
+    db.education = p.education;
+    db.services = p.services;
+    db.blogs = p.blogs;
+    db.testimonials = p.testimonials;
+    db.settings = p.settings;
+  }
+
+  return db;
+};
+
 export const dbEngine = {
   async init() {
     if (!pool) {
       memoryCache = this.getFromFile();
+      memoryCache = ensureMultiClientStructure(memoryCache);
       return memoryCache;
     }
 
@@ -152,13 +211,14 @@ export const dbEngine = {
       const res = await pool.query('SELECT data FROM portfolio_cms WHERE id = 1');
       if (res.rows.length === 0) {
         console.log('🌱 Seeding initial portfolio dataset into PostgreSQL...');
+        const seeded = ensureMultiClientStructure({ ...initialDb });
         await pool.query(
           'INSERT INTO portfolio_cms (id, data) VALUES (1, $1)',
-          [JSON.stringify(initialDb)]
+          [JSON.stringify(seeded)]
         );
-        memoryCache = initialDb;
+        memoryCache = seeded;
       } else {
-        memoryCache = res.rows[0].data;
+        memoryCache = ensureMultiClientStructure(res.rows[0].data);
         console.log('✅ Loaded portfolio dataset from PostgreSQL cloud database.');
       }
     } catch (err) {
@@ -166,6 +226,7 @@ export const dbEngine = {
       console.log('⚠️ Falling back to local db.json file mode.');
       pool = null;
       memoryCache = this.getFromFile();
+      memoryCache = ensureMultiClientStructure(memoryCache);
     }
     return memoryCache;
   },
@@ -173,14 +234,17 @@ export const dbEngine = {
   getFromFile() {
     try {
       if (!fs.existsSync(DB_FILE)) {
-        this.saveToFile(initialDb);
-        return initialDb;
+        const seeded = ensureMultiClientStructure({ ...initialDb });
+        this.saveToFile(seeded);
+        return seeded;
       }
       const raw = fs.readFileSync(DB_FILE, 'utf-8');
-      return JSON.parse(raw);
+      const data = JSON.parse(raw);
+      return ensureMultiClientStructure(data);
     } catch (err) {
       console.error('Error reading database file:', err);
-      return initialDb;
+      const seeded = ensureMultiClientStructure({ ...initialDb });
+      return seeded;
     }
   },
 
@@ -197,21 +261,42 @@ export const dbEngine = {
   },
 
   get() {
-    if (memoryCache) {
-      return memoryCache;
+    if (!memoryCache) {
+      memoryCache = this.getFromFile();
     }
-    memoryCache = this.getFromFile();
+    memoryCache = ensureMultiClientStructure(memoryCache);
     return memoryCache;
   },
 
   save(data) {
-    memoryCache = data;
-    this.saveToFile(data);
+    // Before saving, ensure the active client's portfolioData is synchronized with root fields
+    if (data.clients && data.activeClientId) {
+      const activeClient = data.clients.find(c => c.id === data.activeClientId);
+      if (activeClient) {
+        activeClient.lastUpdated = new Date().toISOString();
+        activeClient.portfolioData = {
+          personalInfo: data.personalInfo,
+          stats: data.stats,
+          codeSnippets: data.codeSnippets,
+          skills: data.skills,
+          projects: data.projects,
+          experience: data.experience,
+          education: data.education,
+          services: data.services,
+          blogs: data.blogs,
+          testimonials: data.testimonials,
+          settings: data.settings
+        };
+      }
+    }
+
+    memoryCache = ensureMultiClientStructure(data);
+    this.saveToFile(memoryCache);
 
     if (pool) {
       pool.query(
         'INSERT INTO portfolio_cms (id, data, updated_at) VALUES (1, $1, NOW()) ON CONFLICT (id) DO UPDATE SET data = $1, updated_at = NOW()',
-        [JSON.stringify(data)]
+        [JSON.stringify(memoryCache)]
       ).catch(err => {
         console.error('❌ Error persisting update to PostgreSQL:', err.message);
       });

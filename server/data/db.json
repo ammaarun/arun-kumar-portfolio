@@ -1,291 +1,125 @@
 {
+  "id": "freelancer",
+  "name": "Freelancer",
+  "description": "Optimized for freelance developers and consultants offering custom client solutions, fixed-price packages, testimonials, and clear hire CTAs.",
+  "targetAudience": "Freelancers, Independent Developers & Agency Owners",
+  "badge": "Freelance Pro",
+  "accentColor": "amber",
   "personalInfo": {
-    "name": "Arun Kumar Amma",
+    "name": "Taylor Swiftly",
     "role": "Lead Java & Full Stack Developer",
-    "tagline": "Building scalable enterprise backends & high-performance modern web applications.",
-    "location": "Hyderabad, Telangana, India",
-    "availability": "Available for Full-time Roles & High-Impact Freelance",
-    "email": "arunkumar.dev@gmail.com",
+    "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+    "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+    "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+    "location": "Telangana, India",
+    "availability": "Available for New Freelance Projects & Monthly Retainers",
+    "email": "taylor.consulting@example.com",
+    "phone": "+91 98765 00004",
     "github": "https://github.com",
     "linkedin": "https://linkedin.com",
     "twitter": "https://twitter.com",
-    "phone": "+91 98765 43222",
-    "bio": "Passionate Full Stack Developer with deep expertise in Java, Spring Boot microservices, and modern React frontends. Specializing in architecting high-throughput REST APIs, optimizing relational databases, and delivering clean, responsive user interfaces that drive real business value.",
-    "shortBio": "Java & Full Stack Engineer with 2+ years of experience crafting robust enterprise backends with Spring Boot and reactive, polished frontends with React.",
     "resumeUrl": "#"
   },
   "stats": [
     {
-      "label": "Years of Experience",
-      "value": "4+",
-      "description": "In Enterprise & Web Development"
+      "label": "Client Projects",
+      "value": "25+",
+      "description": "Delivered On-Time"
     },
     {
-      "label": "Projects Delivered",
-      "value": "15+",
-      "description": "Full-Stack & Microservices"
+      "label": "Client Rating",
+      "value": "5.0 ★",
+      "description": "100% Satisfaction"
     },
     {
-      "label": "API SLA / Uptime",
-      "value": "99.9%",
-      "description": "Production Ready Systems"
+      "label": "Avg Turnaround",
+      "value": "48 Hours",
+      "description": "Fast Delivery Option"
     },
     {
-      "label": "Clean Code Written",
-      "value": "100K+",
-      "description": "Lines of Scalable Code"
-    }
-  ],
-  "codeSnippets": {
-    "java": {
-      "filename": "PaymentController.java",
-      "language": "java",
-      "code": "@RestController\n@RequestMapping(\"/api/v1/payments\")\n@RequiredArgsConstructor\npublic class PaymentController {\n\n    private final PaymentService paymentService;\n\n    @PostMapping(\"/process\")\n    @PreAuthorize(\"hasRole('USER')\")\n    public ResponseEntity<PaymentResponse> processPayment(\n            @Valid @RequestBody PaymentRequest request) {\n        \n        log.info(\"Processing transaction for order: {}\", request.getOrderId());\n        PaymentResponse response = paymentService.executePayment(request);\n        return ResponseEntity.ok(response);\n    }\n}"
-    },
-    "react": {
-      "filename": "usePaymentStream.js",
-      "language": "javascript",
-      "code": "import { useState, useEffect } from 'react';\n\nexport const usePaymentStream = (transactionId) => {\n  const [status, setStatus] = useState('PENDING');\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const ws = new WebSocket(`wss://api.arunkumar.dev/stream/${transactionId}`);\n    ws.onmessage = (event) => {\n      const data = JSON.parse(event.data);\n      setStatus(data.status);\n      setLoading(false);\n    };\n    return () => ws.close();\n  }, [transactionId]);\n\n  return { status, loading };\n};"
-    }
-  },
-  "services": [
-    {
-      "id": "srv-1",
-      "title": "Java Backend Development",
-      "description": "Architecting high-throughput REST APIs, microservices, and secure server-side applications using Java 17/21 and Spring Boot.",
-      "icon": "Server",
-      "pricing": "Custom / Project",
-      "featured": true
-    },
-    {
-      "id": "srv-2",
-      "title": "Full-Stack Web Applications",
-      "description": "End-to-end web product development connecting Spring Boot backends with modern, responsive React and Tailwind CSS frontends.",
-      "icon": "Layout",
-      "pricing": "Hourly / Contract",
-      "featured": true
-    },
-    {
-      "id": "srv-3",
-      "title": "Database Design & Query Optimization",
-      "description": "Relational database modeling with PostgreSQL & MySQL, query indexing, Redis caching integration, and JPA performance tuning.",
-      "icon": "Database",
-      "pricing": "Consulting",
-      "featured": true
-    },
-    {
-      "id": "srv-4",
-      "title": "API Integration & Bug Fixing",
-      "description": "Diagnosing complex backend bottlenecks, fixing memory leaks, writing unit tests with JUnit/Mockito, and integrating 3rd party APIs.",
-      "icon": "Code2",
-      "pricing": "Flexible",
-      "featured": false
-    }
-  ],
-  "blogs": [
-    {
-      "id": "post-1",
-      "title": "Building Resilient Java Microservices with Spring Boot & Kafka",
-      "slug": "building-resilient-java-microservices-spring-boot-kafka",
-      "excerpt": "A deep dive into distributed transaction management, event sourcing, and Kafka topic partitioning in enterprise Java applications.",
-      "content": "Distributed microservice architectures require careful handling of transactions and event communication. In this article, we explore how Java 17, Spring Cloud, and Apache Kafka work together to maintain ACID consistency across multi-region cloud deployments...",
-      "coverImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-      "tags": [
-        "Java",
-        "Spring Boot",
-        "Kafka",
-        "Microservices"
-      ],
-      "publishedDate": "2026-08-15",
-      "status": "Published"
-    },
-    {
-      "id": "post-2",
-      "title": "Optimizing React Performance with Tailwind & Custom Hooks",
-      "slug": "optimizing-react-performance-tailwind-custom-hooks",
-      "excerpt": "Key strategies for reducing render cycles, leveraging WebSockets in React custom hooks, and maintaining smooth 60fps animations.",
-      "content": "Modern full-stack developers need frontend interfaces that respond instantaneously. Here is how we structure custom React hooks for real-time data streaming without causing unnecessary component re-renders...",
-      "coverImage": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-      "tags": [
-        "React",
-        "JavaScript",
-        "Frontend",
-        "Tailwind CSS"
-      ],
-      "publishedDate": "2026-09-02",
-      "status": "Published"
-    }
-  ],
-  "testimonials": [
-    {
-      "id": "test-1",
-      "name": "Suresh Reddy",
-      "role": "Engineering Director",
-      "company": "Enterprise Tech Solutions",
-      "content": "Arun is an exceptional Java developer. His expertise in Spring Boot microservices and query optimization reduced our backend response times by over 40%. Highly recommended!",
-      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-      "visible": true
-    },
-    {
-      "id": "test-2",
-      "name": "Priya Sharma",
-      "role": "Lead Product Manager",
-      "company": "Innovate Software",
-      "content": "Arun delivered our full-stack client portal on time with flawless code quality and a polished React UI. A true professional who understands both business and tech.",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-      "visible": true
-    }
-  ],
-  "education": [
-    {
-      "id": "edu-1",
-      "degree": "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
-      "institution": "JNTU Hyderabad / Telangana University",
-      "period": "2016 - 2020",
-      "description": "Focused on Software Engineering, Data Structures & Algorithms, Operating Systems, Database Management Systems, and Object-Oriented Programming."
+      "label": "Repeat Clients",
+      "value": "80%",
+      "description": "Long-Term Partnerships"
     }
   ],
   "skills": [
     {
-      "category": "Backend Engineering",
-      "icon": "Server",
+      "category": "Freelance Development Services",
+      "icon": "Sparkles",
       "items": [
         {
-          "name": "Java (Core & Advanced 17/21)",
+          "name": "Custom Web Applications",
           "level": 95,
           "popular": true
         },
         {
-          "name": "Spring Boot",
-          "level": 92,
+          "name": "Dynamic Portfolio & CMS Development",
+          "level": 98,
           "popular": true
         },
         {
-          "name": "Spring Microservices & Cloud",
-          "level": 88,
-          "popular": true
-        },
-        {
-          "name": "Spring Security & JWT",
-          "level": 90
-        },
-        {
-          "name": "RESTful APIs & GraphQL",
-          "level": 92
-        },
-        {
-          "name": "Hibernate / Spring Data JPA",
-          "level": 90
-        },
-        {
-          "name": "Maven & Gradle",
-          "level": 85
-        },
-        {
-          "name": "python",
-          "level": 80,
-          "popular": false
-        }
-      ]
-    },
-    {
-      "category": "Frontend Development",
-      "icon": "Layout",
-      "items": [
-        {
-          "name": "React.js",
-          "level": 90,
-          "popular": true
-        },
-        {
-          "name": "JavaScript (ES6+)",
-          "level": 92,
-          "popular": true
-        },
-        {
-          "name": "TypeScript",
-          "level": 85,
-          "popular": true
-        },
-        {
-          "name": "Tailwind CSS",
+          "name": "React & Tailwind Frontend Engineering",
           "level": 94,
           "popular": true
         },
         {
-          "name": "HTML5 & CSS3",
-          "level": 95
-        },
-        {
-          "name": "Redux Toolkit & Context API",
-          "level": 88
-        },
-        {
-          "name": "Next.js",
-          "level": 80
+          "name": "API & Payment Integration",
+          "level": 90
         }
       ]
     },
     {
-      "category": "Databases & Caching",
-      "icon": "Database",
+      "category": "Core Technologies",
+      "icon": "Code2",
       "items": [
         {
-          "name": "PostgreSQL",
+          "name": "JavaScript (ES6+) & TypeScript",
+          "level": 92,
+          "popular": true
+        },
+        {
+          "name": "React.js / Next.js",
           "level": 90,
           "popular": true
         },
         {
-          "name": "MySQL",
+          "name": "Node.js & Express APIs",
           "level": 88
         },
         {
-          "name": "Redis Caching",
-          "level": 85,
-          "popular": true
-        },
-        {
-          "name": "MongoDB",
-          "level": 80
+          "name": "PostgreSQL & MongoDB Database Setup",
+          "level": 86
         }
       ]
     },
     {
-      "category": "DevOps, Cloud & Tools",
+      "category": "Deployment & Maintenance",
       "icon": "Cloud",
       "items": [
         {
-          "name": "Docker & Containerization",
-          "level": 88,
+          "name": "Cloud Deployment (Render / Vercel)",
+          "level": 95,
           "popular": true
         },
         {
-          "name": "AWS (EC2, S3, RDS)",
-          "level": 82,
-          "popular": true
-        },
-        {
-          "name": "Git & GitHub Actions CI/CD",
-          "level": 90
-        },
-        {
-          "name": "JUnit 5 & Mockito",
-          "level": 88
-        },
-        {
-          "name": "Postman & Swagger/OpenAPI",
+          "name": "Custom Domain & SSL Setup",
           "level": 92
         },
         {
-          "name": "Linux / Shell Scripting",
-          "level": 85
+          "name": "SEO & OpenGraph Metadata Optimization",
+          "level": 90,
+          "popular": true
+        },
+        {
+          "name": "Ongoing Maintenance & Bug Fixes",
+          "level": 88
         }
       ]
     }
   ],
   "projects": [
     {
-      "id": "proj-1789920668888",
+      "id": "proj-1790189226809",
       "title": "Automated Test Project",
       "subtitle": "Vitest Microservice",
       "category": "Backend & Microservices",
@@ -298,7 +132,7 @@
       "featured": true
     },
     {
-      "id": "proj-1789917531610",
+      "id": "proj-1790189185167",
       "title": "Automated Test Project",
       "subtitle": "Vitest Microservice",
       "category": "Backend & Microservices",
@@ -311,7 +145,7 @@
       "featured": true
     },
     {
-      "id": "proj-1789880748546",
+      "id": "proj-1790189153565",
       "title": "Automated Test Project",
       "subtitle": "Vitest Microservice",
       "category": "Backend & Microservices",
@@ -324,412 +158,168 @@
       "featured": true
     },
     {
-      "id": "proj-1789879418697",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789878887397",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789835345098",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789831580793",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789825009202",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789824923812",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789824647778",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789760678790",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789760655277",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789757704175",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789757672505",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789757632139",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789757599668",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-1789757559050",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "fintech-microservices",
-      "title": "FinTech Enterprise Payment Gateway",
-      "subtitle": "High-Throughput Distributed Microservice Architecture",
-      "category": "Backend & Microservices",
+      "id": "proj-free-1",
+      "title": "Client Portal & Asset Dashboard",
+      "subtitle": "Custom Client Web Platform",
+      "category": "Freelance Client Work",
       "featured": true,
-      "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
-      "description": "A resilient distributed payment processing system designed with Java Spring Boot, Apache Kafka event streaming, Redis caching, and PostgreSQL. Handles concurrent transaction processing with ACID compliance and JWT Spring Security authentication.",
-      "longDescription": "Engineered a fault-tolerant payment orchestration engine built to scale across multi-region cloud deployments. Implemented the Saga pattern for distributed transaction management, rate limiting with Redis, and Kafka topic partitioning for real-time audit event logging.",
+      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+      "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+      "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
       "tech": [
-        "Java 17",
-        "Spring Boot",
-        "Kafka",
-        "PostgreSQL",
-        "Redis",
-        "React",
-        "Docker",
-        "AWS"
-      ],
-      "metrics": [
-        {
-          "label": "Throughput",
-          "value": "5,000+ TPS"
-        },
-        {
-          "label": "Latency",
-          "value": "< 45ms avg"
-        },
-        {
-          "label": "Security",
-          "value": "OAuth2 & JWT"
-        }
-      ],
-      "github": "https://github.com",
-      "live": "https://example.com",
-      "highlights": [
-        "Implemented Distributed Locking using Redis Redlock algorithm to prevent race conditions during payout execution.",
-        "Built dynamic React management dashboard with real-time transaction telemetry via WebSockets.",
-        "Integrated resilience patterns using Resilience4j (Circuit Breaker, Retry, RateLimiter)."
-      ]
-    },
-    {
-      "id": "cloud-erp-suite",
-      "title": "Cloud ERP & Inventory Management System",
-      "subtitle": "Full-Stack Enterprise Resource Planning Platform",
-      "category": "Full Stack",
-      "featured": true,
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      "description": "Comprehensive multi-tenant warehouse & inventory tracking solution. Built with Java Spring Data JPA, React 18, Tailwind CSS, and automated PDF report generation.",
-      "longDescription": "An all-in-one inventory, order processing, and supplier workflow application. Offers real-time stock notifications, role-based access control (RBAC), and automated invoice PDF compilation.",
-      "tech": [
-        "Java",
-        "Spring Boot",
         "React",
         "Tailwind CSS",
-        "MySQL",
-        "Docker"
+        "Node.js",
+        "PostgreSQL"
       ],
       "metrics": [
         {
-          "label": "Warehouses",
-          "value": "10+ Supported"
+          "label": "Delivery",
+          "value": "14 Days"
         },
         {
-          "label": "Sync Speed",
-          "value": "Real-time"
-        },
-        {
-          "label": "PDF Export",
-          "value": "Instant"
+          "label": "Rating",
+          "value": "5.0 ★"
         }
       ],
       "github": "https://github.com",
       "live": "https://example.com",
       "highlights": [
-        "Designed normalized MySQL schema with optimized indexed queries reducing fetch times by 60%.",
-        "Crafted responsive UI using React and Tailwind CSS with custom data tables and CSV export.",
-        "Configured Docker Compose multi-container setup for seamless local & cloud deployment."
+        "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+        "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
       ]
     },
     {
-      "id": "devconnect-hub",
-      "title": "DevConnect - Developer Community & Code Hub",
-      "subtitle": "Real-Time Collaboration Platform for Developers",
-      "category": "Full Stack",
+      "id": "proj-free-2",
+      "title": "SaaS Product Landing & Billing System",
+      "subtitle": "High-Converting Sales Web App",
+      "category": "Freelance Client Work",
       "featured": true,
-      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-      "description": "Interactive platform where developers can share code snippets, ask technical questions, follow tech tags, and collaborate in real-time chat rooms.",
-      "longDescription": "Built with React, Spring Boot REST API, WebSockets, and MongoDB. Includes markdown syntax highlighting, code snippet bookmarking, and developer portfolio pages.",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+      "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
       "tech": [
         "React",
-        "Spring Boot",
-        "WebSocket",
-        "MongoDB",
-        "Tailwind CSS"
+        "Stripe API",
+        "Tailwind CSS",
+        "Render"
       ],
       "metrics": [
         {
-          "label": "Users",
-          "value": "2,000+ Active"
+          "label": "Conversion",
+          "value": "12% Rate"
         },
         {
-          "label": "Response",
-          "value": "< 100ms"
-        },
-        {
-          "label": "Realtime",
-          "value": "WebSocket"
+          "label": "Performance",
+          "value": "99/100"
         }
       ],
       "github": "https://github.com",
       "live": "https://example.com",
       "highlights": [
-        "Implemented real-time bi-directional messaging with WebSockets and Spring Messaging.",
-        "Built rich Markdown code editor with syntax highlighting using PrismJS.",
-        "Designed JWT authentication flow with refresh token rotation."
-      ]
-    },
-    {
-      "id": "ai-resume-analyzer",
-      "title": "AI Resume & Skill Matcher Microservice",
-      "subtitle": "Intelligent Candidate Screening & Recommendation",
-      "category": "Backend & Microservices",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-      "description": "An automated resume parsing microservice built with Spring Boot, Python text parsing engine, and React frontend interface.",
-      "longDescription": "Parses PDF/DOCX resumes, extracts key skills, computes match scores against job descriptions using vector embeddings and keyword density algorithms.",
-      "tech": [
-        "Spring Boot",
-        "Python",
-        "React",
-        "PostgreSQL",
-        "OpenAI API"
-      ],
-      "metrics": [
-        {
-          "label": "Accuracy",
-          "value": "94%"
-        },
-        {
-          "label": "Parse Time",
-          "value": "< 2s per PDF"
-        }
-      ],
-      "github": "https://github.com",
-      "live": "https://example.com",
-      "highlights": [
-        "Constructed asynchronous processing pipeline using Spring @Async and TaskExecutors.",
-        "Created drag-and-drop React interface with live upload progress and score visualization breakdown."
+        "Integrated Stripe Checkout API with automated webhook confirmation.",
+        "Configured social share previews increasing referral traffic."
       ]
     }
   ],
   "experience": [
     {
-      "company": "Enterprise Tech Solutions",
-      "role": "Senior Full Stack Engineer / Java Developer",
-      "period": "2023 - Present",
-      "location": "Hyderabad / Telangana, India",
-      "type": "Full-time",
-      "description": "Leading the core backend API development and frontend web UI for cloud-native enterprise products.",
+      "id": "exp-free-1",
+      "company": "Independent Consultant",
+      "role": "Lead Freelance Web Developer",
+      "period": "2022 - Present",
+      "location": "Remote",
+      "type": "Freelance",
+      "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
       "achievements": [
-        "Architected and deployed 8+ Spring Boot microservices handling over 2M daily API requests with 99.9% availability.",
-        "Refactored legacy monolith SQL queries, achieving a 45% reduction in database execution times.",
-        "Built responsive client portals in React and Tailwind CSS, increasing user engagement by 35%.",
-        "Mentored junior developers, introduced JUnit/Mockito TDD practices, boosting code coverage to 88%."
+        "Maintained a 100% 5-star rating across 25+ client contracts.",
+        "Built and deployed custom portfolio web applications with live admin CMS panels.",
+        "Helped clients scale web apps to handle high peak user traffic."
       ],
       "skills": [
-        "Java 17",
-        "Spring Boot",
-        "Microservices",
         "React",
+        "Node.js",
         "PostgreSQL",
-        "Docker",
-        "AWS"
-      ]
-    },
-    {
-      "company": "Innovate Software Systems",
-      "role": "Java Backend Developer",
-      "period": "2021 - 2023",
-      "location": "Telangana, India",
-      "type": "Full-time",
-      "description": "Designed RESTful web services, database schemas, and external third-party API integrations.",
-      "achievements": [
-        "Developed REST APIs using Spring Boot and Hibernate for core business modules.",
-        "Implemented Spring Security with JWT tokens for multi-role user access.",
-        "Configured Redis cache layers that reduced repetitive database load by 50%.",
-        "Integrated Jenkins CI/CD pipelines to automate automated testing and artifact deployment."
-      ],
-      "skills": [
-        "Java",
-        "Spring Boot",
-        "Hibernate",
-        "MySQL",
-        "Redis",
-        "REST APIs",
-        "Git"
-      ]
-    },
-    {
-      "company": "WebTech Digital",
-      "role": "Junior Full Stack Developer",
-      "period": "2020 - 2021",
-      "location": "Telangana, India",
-      "type": "Full-time",
-      "description": "Built responsive frontend user interfaces and supported Java web applications.",
-      "achievements": [
-        "Developed interactive UI components in React and HTML5/CSS3.",
-        "Connected React frontend views to Spring Boot REST endpoints.",
-        "Participated in Agile sprint planning, daily standups, and code reviews."
-      ],
-      "skills": [
-        "JavaScript",
-        "React",
-        "Java",
-        "HTML/CSS",
-        "Bootstrap"
+        "Tailwind CSS",
+        "Client Management"
       ]
     }
   ],
-  "adminUser": {
-    "username": "admin",
-    "password": "admin123"
-  },
+  "education": [
+    {
+      "id": "edu-free-1",
+      "degree": "Bachelor of Science (B.Sc) in Computer Science",
+      "institution": "University of Technology",
+      "period": "2018 - 2022",
+      "description": "Graduated with top honors in Web Computing and User Interface Design."
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-free-1",
+      "title": "Basic Developer Portfolio",
+      "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+      "icon": "Layout",
+      "pricing": "$99 / ₹8,000",
+      "featured": true
+    },
+    {
+      "id": "srv-free-2",
+      "title": "Full Dynamic Portfolio CMS",
+      "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
+      "icon": "Server",
+      "pricing": "$249 / ₹20,000",
+      "featured": true
+    },
+    {
+      "id": "srv-free-3",
+      "title": "VIP Personal Brand Package",
+      "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
+      "icon": "Sparkles",
+      "pricing": "$499 / ₹40,000",
+      "featured": true
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-free-1",
+      "name": "Emily Watson",
+      "role": "Agency Founder",
+      "company": "Apex Digital",
+      "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    },
+    {
+      "id": "test-free-2",
+      "name": "Robert Vance",
+      "role": "Startup Founder",
+      "company": "Vance Media",
+      "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    }
+  ],
+  "blogs": [],
   "messages": [
+    {
+      "id": "msg-1790189230946",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-23T18:47:10.946Z",
+      "read": false
+    },
+    {
+      "id": "msg-1790189189208",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-23T18:46:29.208Z",
+      "read": false
+    },
     {
       "id": "msg-1789920668907",
       "name": "Test Client",
@@ -903,15 +493,671 @@
     }
   ],
   "settings": {
-    "siteTitle": "Arun Kumar — Java Developer & Full Stack Developer",
-    "metaDescription": "Personal Developer Portfolio & CMS of Arun Kumar based in Telangana, India.",
-    "accentColor": "emerald",
+    "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
+    "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
+    "accentColor": "amber",
     "themePreference": "dark",
     "resumeUrl": "#",
     "showHero": true,
     "showServices": true,
-    "showBlog": true,
+    "showBlog": false,
     "showTestimonials": true,
-    "footerText": "Designed & Engineered by Arun Kumar"
+    "footerText": "Designed & Built by Taylor Swiftly",
+    "activePreset": "freelancer",
+    "profileType": "Freelancer"
+  },
+  "adminUser": {
+    "username": "admin",
+    "password": "admin123"
+  },
+  "clients": [
+    {
+      "id": "client-1",
+      "name": "Taylor Swiftly",
+      "email": "taylor.consulting@example.com",
+      "role": "Freelance Web Developer & Software Consultant",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "arun-kumar",
+      "status": "PUBLISHED",
+      "createdDate": "2026-09-01T00:00:00.000Z",
+      "lastUpdated": "2026-09-23T18:47:10.946Z",
+      "lastPublishedAt": "2026-09-23T18:45:53.211Z",
+      "isDefault": true,
+      "portfolioData": {
+        "personalInfo": {
+          "name": "Taylor Swiftly",
+          "role": "Lead Java & Full Stack Developer",
+          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+          "location": "Telangana, India",
+          "availability": "Available for New Freelance Projects & Monthly Retainers",
+          "email": "taylor.consulting@example.com",
+          "phone": "+91 98765 00004",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#"
+        },
+        "stats": [
+          {
+            "label": "Client Projects",
+            "value": "25+",
+            "description": "Delivered On-Time"
+          },
+          {
+            "label": "Client Rating",
+            "value": "5.0 ★",
+            "description": "100% Satisfaction"
+          },
+          {
+            "label": "Avg Turnaround",
+            "value": "48 Hours",
+            "description": "Fast Delivery Option"
+          },
+          {
+            "label": "Repeat Clients",
+            "value": "80%",
+            "description": "Long-Term Partnerships"
+          }
+        ],
+        "codeSnippets": {
+          "java": {
+            "filename": "PaymentController.java",
+            "language": "java",
+            "code": "@RestController\n@RequestMapping(\"/api/v1/payments\")\n@RequiredArgsConstructor\npublic class PaymentController {\n\n    private final PaymentService paymentService;\n\n    @PostMapping(\"/process\")\n    @PreAuthorize(\"hasRole('USER')\")\n    public ResponseEntity<PaymentResponse> processPayment(\n            @Valid @RequestBody PaymentRequest request) {\n        \n        log.info(\"Processing transaction for order: {}\", request.getOrderId());\n        PaymentResponse response = paymentService.executePayment(request);\n        return ResponseEntity.ok(response);\n    }\n}"
+          },
+          "react": {
+            "filename": "usePaymentStream.js",
+            "language": "javascript",
+            "code": "import { useState, useEffect } from 'react';\n\nexport const usePaymentStream = (transactionId) => {\n  const [status, setStatus] = useState('PENDING');\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const ws = new WebSocket(`wss://api.arunkumar.dev/stream/${transactionId}`);\n    ws.onmessage = (event) => {\n      const data = JSON.parse(event.data);\n      setStatus(data.status);\n      setLoading(false);\n    };\n    return () => ws.close();\n  }, [transactionId]);\n\n  return { status, loading };\n};"
+          }
+        },
+        "skills": [
+          {
+            "category": "Freelance Development Services",
+            "icon": "Sparkles",
+            "items": [
+              {
+                "name": "Custom Web Applications",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Dynamic Portfolio & CMS Development",
+                "level": 98,
+                "popular": true
+              },
+              {
+                "name": "React & Tailwind Frontend Engineering",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "API & Payment Integration",
+                "level": 90
+              }
+            ]
+          },
+          {
+            "category": "Core Technologies",
+            "icon": "Code2",
+            "items": [
+              {
+                "name": "JavaScript (ES6+) & TypeScript",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "React.js / Next.js",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Node.js & Express APIs",
+                "level": 88
+              },
+              {
+                "name": "PostgreSQL & MongoDB Database Setup",
+                "level": 86
+              }
+            ]
+          },
+          {
+            "category": "Deployment & Maintenance",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Cloud Deployment (Render / Vercel)",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Custom Domain & SSL Setup",
+                "level": 92
+              },
+              {
+                "name": "SEO & OpenGraph Metadata Optimization",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Ongoing Maintenance & Bug Fixes",
+                "level": 88
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-1790189226809",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
+          {
+            "id": "proj-1790189185167",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
+          {
+            "id": "proj-1790189153565",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
+          {
+            "id": "proj-free-1",
+            "title": "Client Portal & Asset Dashboard",
+            "subtitle": "Custom Client Web Platform",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
+            "tech": [
+              "React",
+              "Tailwind CSS",
+              "Node.js",
+              "PostgreSQL"
+            ],
+            "metrics": [
+              {
+                "label": "Delivery",
+                "value": "14 Days"
+              },
+              {
+                "label": "Rating",
+                "value": "5.0 ★"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+            ]
+          },
+          {
+            "id": "proj-free-2",
+            "title": "SaaS Product Landing & Billing System",
+            "subtitle": "High-Converting Sales Web App",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+            "tech": [
+              "React",
+              "Stripe API",
+              "Tailwind CSS",
+              "Render"
+            ],
+            "metrics": [
+              {
+                "label": "Conversion",
+                "value": "12% Rate"
+              },
+              {
+                "label": "Performance",
+                "value": "99/100"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Integrated Stripe Checkout API with automated webhook confirmation.",
+              "Configured social share previews increasing referral traffic."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-free-1",
+            "company": "Independent Consultant",
+            "role": "Lead Freelance Web Developer",
+            "period": "2022 - Present",
+            "location": "Remote",
+            "type": "Freelance",
+            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
+            "achievements": [
+              "Maintained a 100% 5-star rating across 25+ client contracts.",
+              "Built and deployed custom portfolio web applications with live admin CMS panels.",
+              "Helped clients scale web apps to handle high peak user traffic."
+            ],
+            "skills": [
+              "React",
+              "Node.js",
+              "PostgreSQL",
+              "Tailwind CSS",
+              "Client Management"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-free-1",
+            "degree": "Bachelor of Science (B.Sc) in Computer Science",
+            "institution": "University of Technology",
+            "period": "2018 - 2022",
+            "description": "Graduated with top honors in Web Computing and User Interface Design."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-free-1",
+            "title": "Basic Developer Portfolio",
+            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+            "icon": "Layout",
+            "pricing": "$99 / ₹8,000",
+            "featured": true
+          },
+          {
+            "id": "srv-free-2",
+            "title": "Full Dynamic Portfolio CMS",
+            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
+            "icon": "Server",
+            "pricing": "$249 / ₹20,000",
+            "featured": true
+          },
+          {
+            "id": "srv-free-3",
+            "title": "VIP Personal Brand Package",
+            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
+            "icon": "Sparkles",
+            "pricing": "$499 / ₹40,000",
+            "featured": true
+          }
+        ],
+        "blogs": [],
+        "testimonials": [
+          {
+            "id": "test-free-1",
+            "name": "Emily Watson",
+            "role": "Agency Founder",
+            "company": "Apex Digital",
+            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          },
+          {
+            "id": "test-free-2",
+            "name": "Robert Vance",
+            "role": "Startup Founder",
+            "company": "Vance Media",
+            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "settings": {
+          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
+          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
+          "accentColor": "amber",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Designed & Built by Taylor Swiftly",
+          "activePreset": "freelancer",
+          "profileType": "Freelancer"
+        }
+      }
+    },
+    {
+      "id": "client-1790189189046",
+      "name": "Jane Doe Smith",
+      "email": "jane@example.com",
+      "role": "Staff Frontend Engineer",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "jane-doe",
+      "status": "PUBLISHED",
+      "createdDate": "2026-09-23T18:46:29.053Z",
+      "lastUpdated": "2026-09-23T18:46:29.115Z",
+      "lastPublishedAt": "2026-09-23T18:46:29.115Z",
+      "isDefault": false,
+      "portfolioData": {
+        "id": "experienced",
+        "name": "Experienced Developer",
+        "description": "Designed for mid-to-senior software engineers emphasizing professional work history, enterprise metrics, system architecture, and leadership.",
+        "targetAudience": "Mid & Senior Software Engineers (3+ Years Experience)",
+        "badge": "Experienced Pro",
+        "accentColor": "indigo",
+        "personalInfo": {
+          "name": "Jane Doe Smith",
+          "role": "Staff Frontend Engineer",
+          "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
+          "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
+          "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",
+          "location": "Telangana, India",
+          "availability": "Available for Senior Engineering Roles & Architecture Consulting",
+          "email": "jane@example.com",
+          "phone": "+91 98765 00002",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#"
+        },
+        "stats": [
+          {
+            "label": "Years Experience",
+            "value": "5+",
+            "description": "Enterprise Software Engineering"
+          },
+          {
+            "label": "API Throughput",
+            "value": "10k+ TPS",
+            "description": "High Concurrency Microservices"
+          },
+          {
+            "label": "Uptime SLA",
+            "value": "99.99%",
+            "description": "Production Cloud Deployments"
+          },
+          {
+            "label": "Team Lead",
+            "value": "6 Engineers",
+            "description": "Mentorship & Code Reviews"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Enterprise Backend Architecture",
+            "icon": "Server",
+            "items": [
+              {
+                "name": "Distributed Microservices",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "Spring Boot / Node.js",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "REST & GraphQL APIs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Event-Driven Messaging (Kafka/RabbitMQ)",
+                "level": 88
+              }
+            ]
+          },
+          {
+            "category": "Databases & High-Performance Caching",
+            "icon": "Database",
+            "items": [
+              {
+                "name": "PostgreSQL / MySQL Tuning",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Redis Distributed Cache",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Database Schema Normalization",
+                "level": 92
+              },
+              {
+                "name": "NoSQL (MongoDB / DynamoDB)",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "DevOps & Cloud Infrastructure",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Docker & Kubernetes",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "AWS (EC2, S3, RDS, ECS)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "CI/CD (GitHub Actions / Jenkins)",
+                "level": 90
+              },
+              {
+                "name": "System Monitoring (Prometheus/Grafana)",
+                "level": 82
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-exp-1",
+            "title": "Enterprise Cloud Payment Engine",
+            "subtitle": "High-Throughput Distributed Payment Gateway",
+            "category": "Backend & Microservices",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+            "description": "Distributed payment processing engine handling high-volume transaction workloads with multi-region failover.",
+            "longDescription": "Engineered event-driven microservices processing over $10M in transactions monthly. Implemented circuit breakers, distributed locking with Redis, and Kafka audit streams.",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "Kafka",
+              "PostgreSQL",
+              "Redis",
+              "Docker",
+              "AWS"
+            ],
+            "metrics": [
+              {
+                "label": "Transactions",
+                "value": "10k+ TPS"
+              },
+              {
+                "label": "Latency",
+                "value": "< 30ms"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Reduced database read load by 65% by implementing multi-level Redis caching.",
+              "Zero-downtime deployment pipelines using Kubernetes rolling updates."
+            ]
+          },
+          {
+            "id": "proj-exp-2",
+            "title": "Real-Time Telemetry Analytics Platform",
+            "subtitle": "Stream Processing & Monitoring System",
+            "category": "Cloud Architecture",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+            "description": "Real-time analytics dashboard monitoring server cluster metrics, request rates, and error traces.",
+            "longDescription": "Architected stream processing pipeline capturing logs across 50+ nodes and visualizing real-time metrics on Grafana dashboards.",
+            "tech": [
+              "Node.js",
+              "Kafka",
+              "Prometheus",
+              "Grafana",
+              "Docker"
+            ],
+            "metrics": [
+              {
+                "label": "Log Ingestion",
+                "value": "1M events/min"
+              },
+              {
+                "label": "Uptime",
+                "value": "99.99%"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Built custom alert triggers dispatching PagerDuty incidents automatically.",
+              "Decreased memory footprint per worker node by 40% through garbage collection tuning."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-exp-1",
+            "company": "Global Cloud Tech Inc.",
+            "role": "Senior Software Engineer / Tech Lead",
+            "period": "2023 - Present",
+            "location": "Hyderabad, India",
+            "type": "Full-time",
+            "description": "Leading the core backend platform squad responsible for cloud microservices and database infrastructure.",
+            "achievements": [
+              "Architected core API platform supporting 2M+ daily active users.",
+              "Mentored team of 6 software engineers and conducted quarterly technical design reviews.",
+              "Led migration from monolithic application to Docker containerized microservices."
+            ],
+            "skills": [
+              "Microservices",
+              "Spring Boot",
+              "PostgreSQL",
+              "Kafka",
+              "AWS"
+            ]
+          },
+          {
+            "id": "exp-exp-2",
+            "company": "Nexus Systems Solutions",
+            "role": "Software Engineer",
+            "period": "2021 - 2023",
+            "location": "Telangana, India",
+            "type": "Full-time",
+            "description": "Developed RESTful APIs, optimized SQL queries, and integrated third-party payment integrations.",
+            "achievements": [
+              "Optimized slow relational queries resulting in 50% faster API response times.",
+              "Implemented JWT authentication and RBAC authorization middleware."
+            ],
+            "skills": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "REST APIs"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-exp-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "institution": "National Institute of Technology",
+            "period": "2017 - 2021",
+            "description": "Specialized in Software Architecture, Distributed Computing, and Database Security."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-exp-1",
+            "title": "Backend Architecture & Microservices",
+            "description": "Designing scalable, high-throughput microservice architectures with fault tolerance.",
+            "icon": "Server",
+            "pricing": "Consulting / Contract",
+            "featured": true
+          },
+          {
+            "id": "srv-exp-2",
+            "title": "Database Performance Tuning",
+            "description": "Optimizing PostgreSQL/MySQL query execution plans, indexing strategies, and Redis caching.",
+            "icon": "Database",
+            "pricing": "Hourly / Project",
+            "featured": true
+          }
+        ],
+        "testimonials": [
+          {
+            "id": "test-exp-1",
+            "name": "Sarah Jenkins",
+            "role": "VP of Engineering",
+            "company": "Global Cloud Tech",
+            "content": "David is a stellar senior engineer. His architectural decisions and database optimizations saved our platform during peak traffic events.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "blogs": [],
+        "messages": [],
+        "settings": {
+          "siteTitle": "Jane Doe — Senior React Developer",
+          "metaDescription": "Senior software engineer portfolio highlighting enterprise microservices, cloud backend architecture, and technical leadership.",
+          "accentColor": "indigo",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Engineered by David Miller"
+        }
+      }
+    }
+  ],
+  "activeClientId": "client-1",
+  "codeSnippets": {
+    "java": {
+      "filename": "PaymentController.java",
+      "language": "java",
+      "code": "@RestController\n@RequestMapping(\"/api/v1/payments\")\n@RequiredArgsConstructor\npublic class PaymentController {\n\n    private final PaymentService paymentService;\n\n    @PostMapping(\"/process\")\n    @PreAuthorize(\"hasRole('USER')\")\n    public ResponseEntity<PaymentResponse> processPayment(\n            @Valid @RequestBody PaymentRequest request) {\n        \n        log.info(\"Processing transaction for order: {}\", request.getOrderId());\n        PaymentResponse response = paymentService.executePayment(request);\n        return ResponseEntity.ok(response);\n    }\n}"
+    },
+    "react": {
+      "filename": "usePaymentStream.js",
+      "language": "javascript",
+      "code": "import { useState, useEffect } from 'react';\n\nexport const usePaymentStream = (transactionId) => {\n  const [status, setStatus] = useState('PENDING');\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const ws = new WebSocket(`wss://api.arunkumar.dev/stream/${transactionId}`);\n    ws.onmessage = (event) => {\n      const data = JSON.parse(event.data);\n      setStatus(data.status);\n      setLoading(false);\n    };\n    return () => ws.close();\n  }, [transactionId]);\n\n  return { status, loading };\n};"
+    }
   }
 }
