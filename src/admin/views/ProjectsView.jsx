@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Plus, Trash2, Edit3, ExternalLink, Terminal, CheckCircle2, X } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { api } from '../../services/api';
+import { MediaPickerModal } from '../components/MediaPickerModal';
 
 export const ProjectsView = () => {
   const { data, refreshData } = useData();
@@ -9,6 +10,7 @@ export const ProjectsView = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
+  const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -204,6 +206,25 @@ export const ProjectsView = () => {
                 />
               </div>
 
+              <div className="space-y-1">
+                <label className="text-xs text-slate-300">Project Image Cover</label>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="text"
+                    value={formData.image}
+                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setMediaPickerOpen(true)}
+                    className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white shrink-0"
+                  >
+                    Choose Image
+                  </button>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs text-slate-300">GitHub URL</label>
@@ -238,6 +259,13 @@ export const ProjectsView = () => {
           </div>
         </div>
       )}
+      {/* Media Picker Modal */}
+      <MediaPickerModal
+        isOpen={mediaPickerOpen}
+        onClose={() => setMediaPickerOpen(false)}
+        onSelectMedia={(selectedUrl) => setFormData({ ...formData, image: selectedUrl })}
+        currentUrl={formData.image}
+      />
     </div>
   );
 };

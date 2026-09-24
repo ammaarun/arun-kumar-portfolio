@@ -47,6 +47,110 @@ export const defaultDesignConfig = {
   ]
 };
 
+export const defaultSeo = {
+  pageTitle: "Arun Kumar | Java Developer & Full-Stack Developer",
+  metaDescription: "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+  keywords: "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+  canonicalUrl: "https://portfolio.example.com/arun-kumar",
+  author: "Arun Kumar",
+  robots: "index, follow",
+  socialShareTitle: "Arun Kumar — Java Developer & Full-Stack Engineer",
+  socialShareDescription: "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+  socialShareImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+};
+
+export const defaultBranding = {
+  faviconUrl: "/favicon.svg",
+  logoUrl: "/icons.svg",
+  browserTitle: "Arun Kumar | Developer Portfolio & CMS"
+};
+
+export const defaultMediaLibrary = [
+  {
+    id: "media-1",
+    name: "Profile Avatar Photo",
+    url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    type: "image",
+    category: "profile",
+    sizeKb: 245,
+    dimensions: "600 x 600",
+    uploadDate: "2026-09-01"
+  },
+  {
+    id: "media-2",
+    name: "Enterprise Microservices System",
+    url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+    type: "image",
+    category: "projects",
+    sizeKb: 820,
+    dimensions: "1200 x 800",
+    uploadDate: "2026-09-05"
+  },
+  {
+    id: "media-3",
+    name: "React & Tailwind Dashboard",
+    url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+    type: "image",
+    category: "projects",
+    sizeKb: 650,
+    dimensions: "1200 x 800",
+    uploadDate: "2026-09-10"
+  },
+  {
+    id: "media-4",
+    name: "Official Resume 2026",
+    url: "#",
+    type: "document",
+    category: "resume",
+    sizeKb: 340,
+    dimensions: "PDF Document",
+    uploadDate: "2026-09-12"
+  }
+];
+
+export const defaultResumes = [
+  {
+    id: "res-1",
+    name: "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+    url: "#",
+    uploadDate: "2026-09-15",
+    sizeKb: 340,
+    isActive: true
+  },
+  {
+    id: "res-2",
+    name: "Arun-Kumar-FullStack-Resume-2025.pdf",
+    url: "#",
+    uploadDate: "2025-10-20",
+    sizeKb: 310,
+    isActive: false
+  }
+];
+
+export const defaultActivities = [
+  {
+    id: "act-1",
+    type: "publish",
+    description: "Portfolio published to live domain",
+    timestamp: "2026-09-24T10:00:00Z",
+    clientName: "Arun Kumar"
+  },
+  {
+    id: "act-2",
+    type: "project",
+    description: "Added project: Enterprise Java Microservice",
+    timestamp: "2026-09-23T15:30:00Z",
+    clientName: "Arun Kumar"
+  },
+  {
+    id: "act-3",
+    type: "design",
+    description: "Applied Visual Template: Modern Dark",
+    timestamp: "2026-09-22T18:45:00Z",
+    clientName: "Arun Kumar"
+  }
+];
+
 // Extended initial database schema combining existing portfolioData + new CMS sections
 const initialDb = {
   ...portfolioData,
@@ -199,7 +303,11 @@ const ensureMultiClientStructure = (db) => {
         blogs: db.blogs || [ ...initialDb.blogs ],
         testimonials: db.testimonials || [ ...initialDb.testimonials ],
         settings: db.settings || { ...initialDb.settings },
-        designConfig: db.designConfig || { ...defaultDesignConfig }
+        designConfig: db.designConfig || { ...defaultDesignConfig },
+        mediaLibrary: db.mediaLibrary || [ ...defaultMediaLibrary ],
+        resumes: db.resumes || [ ...defaultResumes ],
+        seo: db.seo || { ...defaultSeo },
+        branding: db.branding || { ...defaultBranding }
       }
     };
 
@@ -211,10 +319,24 @@ const ensureMultiClientStructure = (db) => {
     db.activeClientId = db.clients[0].id;
   }
 
-  // Ensure every client has a designConfig
+  if (!db.activities || !Array.isArray(db.activities)) {
+    db.activities = [ ...defaultActivities ];
+  }
+
+  // Ensure every client has a designConfig, mediaLibrary, resumes, seo, and branding
   db.clients.forEach(c => {
-    if (c.portfolioData && !c.portfolioData.designConfig) {
-      c.portfolioData.designConfig = { ...defaultDesignConfig };
+    if (!c.slug) {
+      c.slug = (c.name || 'client').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    if (!c.status) {
+      c.status = 'PUBLISHED';
+    }
+    if (c.portfolioData) {
+      if (!c.portfolioData.designConfig) c.portfolioData.designConfig = { ...defaultDesignConfig };
+      if (!c.portfolioData.mediaLibrary) c.portfolioData.mediaLibrary = [ ...defaultMediaLibrary ];
+      if (!c.portfolioData.resumes) c.portfolioData.resumes = [ ...defaultResumes ];
+      if (!c.portfolioData.seo) c.portfolioData.seo = { ...defaultSeo };
+      if (!c.portfolioData.branding) c.portfolioData.branding = { ...defaultBranding };
     }
   });
 
@@ -234,6 +356,10 @@ const ensureMultiClientStructure = (db) => {
     db.testimonials = p.testimonials;
     db.settings = p.settings;
     db.designConfig = p.designConfig || { ...defaultDesignConfig };
+    db.mediaLibrary = p.mediaLibrary || [ ...defaultMediaLibrary ];
+    db.resumes = p.resumes || [ ...defaultResumes ];
+    db.seo = p.seo || { ...defaultSeo };
+    db.branding = p.branding || { ...defaultBranding };
   }
 
   return db;
@@ -337,10 +463,32 @@ export const dbEngine = {
       db.testimonials = p.testimonials || db.testimonials;
       db.settings = p.settings || db.settings;
       db.designConfig = p.designConfig || { ...defaultDesignConfig };
+      db.mediaLibrary = p.mediaLibrary || [ ...defaultMediaLibrary ];
+      db.resumes = p.resumes || [ ...defaultResumes ];
+      db.seo = p.seo || { ...defaultSeo };
+      db.branding = p.branding || { ...defaultBranding };
     }
 
     this.save(db);
     return targetClient;
+  },
+
+  logActivity(type, description, clientName) {
+    const db = this.get();
+    db.activities = db.activities || [];
+    const newActivity = {
+      id: `act-${Date.now()}`,
+      type,
+      description,
+      timestamp: new Date().toISOString(),
+      clientName: clientName || db.personalInfo?.name || 'System'
+    };
+    db.activities.unshift(newActivity);
+    if (db.activities.length > 50) {
+      db.activities = db.activities.slice(0, 50);
+    }
+    this.save(db);
+    return newActivity;
   },
 
   save(data) {
@@ -361,7 +509,11 @@ export const dbEngine = {
           blogs: data.blogs,
           testimonials: data.testimonials,
           settings: data.settings,
-          designConfig: data.designConfig || { ...defaultDesignConfig }
+          designConfig: data.designConfig || { ...defaultDesignConfig },
+          mediaLibrary: data.mediaLibrary || [ ...defaultMediaLibrary ],
+          resumes: data.resumes || [ ...defaultResumes ],
+          seo: data.seo || { ...defaultSeo },
+          branding: data.branding || { ...defaultBranding }
         };
       }
     }

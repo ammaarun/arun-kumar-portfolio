@@ -2,7 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { dbEngine, defaultDesignConfig } from '../data/dbEngine.js';
+import { dbEngine, defaultDesignConfig, defaultMediaLibrary, defaultResumes, defaultSeo, defaultBranding } from '../data/dbEngine.js';
 import { verifyToken } from '../middleware/authMiddleware.js';
 import { visualTemplates } from '../templates/visualTemplates.js';
 
@@ -599,6 +599,224 @@ router.put('/settings', (req, res) => {
   db.settings = { ...db.settings, ...req.body };
   dbEngine.save(db);
   res.json({ success: true, message: 'Settings saved', data: db.settings });
+});
+
+// --- Media Library Endpoints ---
+router.get('/media', (req, res) => {
+  const db = dbEngine.get();
+  let media = db.mediaLibrary || defaultMediaLibrary;
+  const { category, search } = req.query;
+
+  if (category && category !== 'all') {
+    media = media.filter(m => (m.category || 'other').toLowerCase() === category.toLowerCase());
+  }
+
+  if (search) {
+    const q = search.toLowerCase();
+    media = media.filter(m => m.name.toLowerCase().includes(q) || (m.type && m.type.toLowerCase().includes(q)));
+  }
+
+  res.json({ success: true, data: media });
+});
+
+router.post('/media', (req, res) => {
+  const { name, url, type, category, sizeKb, dimensions } = req.body;
+  if (!name || !url) {
+    return res.status(400).json({ success: false, message: 'Media name and URL are required.' });
+  }
+
+  const db = dbEngine.get();
+  const newMedia = {
+    id: `media-${Date.now()}`,
+    name,
+    url,
+    type: type || 'image',
+    category: category || 'other',
+    sizeKb: sizeKb || Math.floor(Math.random() * 500 + 100),
+    dimensions: dimensions || (type === 'document' ? 'PDF Document' : '1200 x 800'),
+    uploadDate: new Date().toISOString().split('T')[0]
+  };
+
+  db.mediaLibrary = db.mediaLibrary || [ ...defaultMediaLibrary ];
+  db.mediaLibrary.unshift(newMedia);
+  dbEngine.logActivity('media', `Uploaded media asset: ${name}`);
+  dbEngine.save(db);
+
+  res.json({ success: true, message: 'Media asset uploaded successfully.', data: newMedia });
+});
+
+router.put('/media/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  const mediaIndex = (db.mediaLibrary || []).findIndex(m => m.id === id);
+  if (mediaIndex === -1) {
+    return res.status(404).json({ success: false, message: 'Media asset not found.' });
+  }
+
+  const updatedMedia = {
+    ...db.mediaLibrary[mediaIndex],
+    ...req.body,
+    uploadDate: new Date().toISOString().split('T')[0]
+  };
+  db.mediaLibrary[mediaIndex] = updatedMedia;
+  dbEngine.logActivity('media', `Replaced media asset: ${updatedMedia.name}`);
+  dbEngine.save(db);
+
+  res.json({ success: true, message: 'Media asset updated successfully.', data: updatedMedia });
+});
+
+router.delete('/media/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  db.mediaLibrary = (db.mediaLibrary || []).filter(m => m.id !== id);
+  dbEngine.save(db);
+  res.json({ success: true, message: 'Media asset deleted successfully.' });
+});
+
+// --- Resume Management & Versioning Endpoints ---
+router.get('/resumes', (req, res) => {
+  const db = dbEngine.get();
+  res.json({ success: true, data: db.resumes || defaultResumes });
+});
+
+router.post('/resumes', (req, res) => {
+  const { name, url, sizeKb } = req.body;
+  if (!name || !url) {
+    return res.status(400).json({ success: false, message: 'Resume file name and URL are required.' });
+  }
+
+  const db = dbEngine.get();
+  const newResume = {
+    id: `res-${Date.now()}`,
+    name,
+    url,
+    uploadDate: new Date().toISOString().split('T')[0],
+    sizeKb: sizeKb || 350,
+    isActive: true
+  };
+
+  // Set all existing resumes to inactive
+  db.resumes = (db.resumes || []).map(r => ({ ...r, isActive: false }));
+  db.resumes.unshift(newResume);
+
+  // Sync with personalInfo.resumeUrl
+  if (db.personalInfo) {
+    db.personalInfo.resumeUrl = url;
+  }
+
+  dbEngine.logActivity('resume', `Uploaded resume version: ${name}`);
+  dbEngine.save(db);
+
+  res.json({ success: true, message: 'Resume uploaded and set as active version.', data: newResume });
+});
+
+router.put('/resumes/:id/select', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  let selected = null;
+
+  db.resumes = (db.resumes || []).map(r => {
+    if (r.id === id) {
+      selected = r;
+      return { ...r, isActive: true };
+    }
+    return { ...r, isActive: false };
+  });
+
+  if (!selected) {
+    return res.status(404).json({ success: false, message: 'Resume version not found.' });
+  }
+
+  if (db.personalInfo) {
+    db.personalInfo.resumeUrl = selected.url;
+  }
+
+  dbEngine.logActivity('resume', `Set active resume version to: ${selected.name}`);
+  dbEngine.save(db);
+
+  res.json({ success: true, message: `Active resume version set to ${selected.name}`, data: selected });
+});
+
+router.delete('/resumes/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  db.resumes = (db.resumes || []).filter(r => r.id !== id);
+
+  // If deleted resume was active, set the first remaining as active
+  if (db.resumes.length > 0 && !db.resumes.some(r => r.isActive)) {
+    db.resumes[0].isActive = true;
+    if (db.personalInfo) {
+      db.personalInfo.resumeUrl = db.resumes[0].url;
+    }
+  }
+
+  dbEngine.save(db);
+  res.json({ success: true, message: 'Resume version deleted.' });
+});
+
+// --- SEO, Branding & Slug Endpoints ---
+router.get('/seo', (req, res) => {
+  const db = dbEngine.get();
+  res.json({ success: true, data: db.seo || defaultSeo });
+});
+
+router.put('/seo', (req, res) => {
+  const db = dbEngine.get();
+  db.seo = { ...db.seo, ...req.body };
+  dbEngine.logActivity('seo', 'Updated SEO & Social Sharing Settings');
+  dbEngine.save(db);
+  res.json({ success: true, message: 'SEO settings saved successfully.', data: db.seo });
+});
+
+router.get('/branding', (req, res) => {
+  const db = dbEngine.get();
+  res.json({ success: true, data: db.branding || defaultBranding });
+});
+
+router.put('/branding', (req, res) => {
+  const db = dbEngine.get();
+  db.branding = { ...db.branding, ...req.body };
+  dbEngine.logActivity('branding', 'Updated Website Branding & Favicon Settings');
+  dbEngine.save(db);
+  res.json({ success: true, message: 'Branding settings saved successfully.', data: db.branding });
+});
+
+router.put('/slug', (req, res) => {
+  const { slug } = req.body;
+  if (!slug) {
+    return res.status(400).json({ success: false, message: 'Slug is required.' });
+  }
+
+  const cleanSlug = slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const db = dbEngine.get();
+  const activeClientId = db.activeClientId;
+
+  // Validate duplicate slug among other clients
+  const duplicate = (db.clients || []).find(c => c.id !== activeClientId && c.slug === cleanSlug);
+  if (duplicate) {
+    return res.status(400).json({ success: false, message: `Slug '${cleanSlug}' is already in use by client ${duplicate.name}.` });
+  }
+
+  const activeClient = (db.clients || []).find(c => c.id === activeClientId);
+  if (activeClient) {
+    activeClient.slug = cleanSlug;
+  }
+
+  dbEngine.logActivity('slug', `Updated portfolio URL slug to: /portfolio/${cleanSlug}`);
+  dbEngine.save(db);
+
+  res.json({
+    success: true,
+    message: 'Portfolio slug updated successfully.',
+    slug: cleanSlug,
+    publicUrl: `/portfolio/${cleanSlug}`
+  });
+});
+
+// --- Publishing Center & Activities Endpoints ---
+router.get('/activities', (req, res) => {
+  const db = dbEngine.get();
+  res.json({ success: true, data: db.activities || [] });
 });
 
 export default router;

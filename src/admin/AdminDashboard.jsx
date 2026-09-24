@@ -5,6 +5,9 @@ import { ClientsView } from './views/ClientsView';
 import { CustomizeView } from './views/CustomizeView';
 import { PresetsView } from './views/PresetsView';
 import { ProfileView } from './views/ProfileView';
+import { MediaLibraryView } from './views/MediaLibraryView';
+import { ResumeView } from './views/ResumeView';
+import { PublishingView } from './views/PublishingView';
 import { SkillsView } from './views/SkillsView';
 import { ProjectsView } from './views/ProjectsView';
 import { ExperienceView } from './views/ExperienceView';
@@ -29,6 +32,12 @@ export const AdminDashboardPlaceholder = () => {
         return <PresetsView setActiveTab={setActiveTab} />;
       case 'profile':
         return <ProfileView />;
+      case 'media':
+        return <MediaLibraryView />;
+      case 'resume':
+        return <ResumeView />;
+      case 'publishing':
+        return <PublishingView setActiveTab={setActiveTab} />;
       case 'skills':
         return <SkillsView />;
       case 'projects':

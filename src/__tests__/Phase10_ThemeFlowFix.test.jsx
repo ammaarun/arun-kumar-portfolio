@@ -72,9 +72,10 @@ describe('Phase 10: Theme & Template Flow Fix Integration Tests', () => {
   test('3. Client Isolation — Modifying Client A design does NOT modify Client B design', () => {
     const db = dbEngine.get();
 
-    // Create Client B if not present
-    if (!db.clients.find(c => c.id === 'client-2')) {
-      db.clients.push({
+    // Create Client B if not present or explicitly set primary color
+    let c2 = db.clients.find(c => c.id === 'client-2');
+    if (!c2) {
+      c2 = {
         id: 'client-2',
         name: 'Jane Doe',
         email: 'jane@example.com',
@@ -85,9 +86,15 @@ describe('Phase 10: Theme & Template Flow Fix Integration Tests', () => {
           skills: [],
           designConfig: { ...defaultDesignConfig, template: 'creative', colors: { ...defaultDesignConfig.colors, primary: '#ec4899' } }
         }
-      });
-      dbEngine.save(db);
+      };
+      db.clients.push(c2);
+    } else {
+      if (!c2.portfolioData) c2.portfolioData = {};
+      if (!c2.portfolioData.designConfig) c2.portfolioData.designConfig = { ...defaultDesignConfig };
+      if (!c2.portfolioData.designConfig.colors) c2.portfolioData.designConfig.colors = { ...defaultDesignConfig.colors };
+      c2.portfolioData.designConfig.colors.primary = '#ec4899';
     }
+    dbEngine.save(db);
 
     // Switch to Client 1 and modify design to Ocean Blue
     dbEngine.switchActiveClient('client-1');

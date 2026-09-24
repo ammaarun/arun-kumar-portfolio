@@ -14,6 +14,7 @@ export const ClientsView = ({ setActiveTab }) => {
   const [clients, setClients] = useState([]);
   const [activeClientId, setActiveClientId] = useState('');
   const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState('ALL');
   const [loading, setLoading] = useState(true);
 
   // Modals
@@ -35,6 +36,13 @@ export const ClientsView = ({ setActiveTab }) => {
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+
+  const filteredClients = clients.filter(client => {
+    if (statusFilter !== 'ALL' && (client.status || 'DRAFT') !== statusFilter) {
+      return false;
+    }
+    return true;
+  });
 
   const fetchClients = async () => {
     try {
@@ -267,21 +275,44 @@ export const ClientsView = ({ setActiveTab }) => {
         </div>
       )}
 
-      {/* Search Filter Bar */}
-      <div className="flex items-center space-x-3 bg-[#121723] p-3 rounded-2xl border border-slate-800">
-        <Search className="w-4 h-4 text-slate-400 ml-2" />
-        <input
-          type="text"
-          placeholder="Search clients by name, role, or email..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none"
-        />
-        {search && (
-          <button onClick={() => setSearch('')} className="p-1 text-slate-400 hover:text-white">
-            <X className="w-4 h-4" />
-          </button>
-        )}
+      {/* Search & Status Filter Toolbar */}
+      <div className="p-4 rounded-2xl bg-[#121723] border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        {/* Status Filter Tabs */}
+        <div className="flex items-center space-x-1.5 overflow-x-auto scrollbar-none py-1">
+          {[
+            { id: 'ALL', label: 'All Portfolios' },
+            { id: 'PUBLISHED', label: 'Published' },
+            { id: 'DRAFT', label: 'Drafts' },
+            { id: 'UNPUBLISHED', label: 'Unpublished' },
+            { id: 'PRIVATE', label: 'Private' }
+          ].map((statusTab) => (
+            <button
+              key={statusTab.id}
+              onClick={() => setStatusFilter(statusTab.id)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                statusFilter === statusTab.id
+                  ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+              }`}
+            >
+              {statusTab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Search Input */}
+        <div className="relative w-full md:w-72 shrink-0">
+          <Search className="w-4 h-4 absolute left-3 top-3 text-slate-500" />
+          <input
+            type="text"
+            placeholder="Search name, email, or slug..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-9 pr-4 py-2 bg-[#0a0d14] border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+          />
+        </div>
+
       </div>
 
       {/* Clients Cards Grid */}
@@ -289,15 +320,15 @@ export const ClientsView = ({ setActiveTab }) => {
         <div className="py-16 text-center text-slate-400 font-mono text-xs">
           Loading client portfolios...
         </div>
-      ) : clients.length === 0 ? (
+      ) : filteredClients.length === 0 ? (
         <div className="p-12 text-center bg-[#121723] rounded-2xl border border-slate-800 space-y-3">
           <Users className="w-10 h-10 mx-auto text-slate-500" />
           <h3 className="text-base font-bold text-white">No Clients Found</h3>
-          <p className="text-xs text-slate-400">Click "Add New Client" to create your first client portfolio.</p>
+          <p className="text-xs text-slate-400">Try adjusting your status filter or search query.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {clients.map((client) => {
+          {filteredClients.map((client) => {
             const isActive = client.id === activeClientId;
             return (
               <div

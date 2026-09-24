@@ -177,5 +177,120 @@ export const api = {
       body: JSON.stringify(settingsData)
     });
     return res.json();
+  },
+
+  // --- Phase 3 Extensions ---
+  async getMedia(category = 'all', search = '') {
+    const query = new URLSearchParams({ category, search }).toString();
+    const res = await fetch(`${API_BASE}/admin/media?${query}`, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async uploadMedia(mediaData) {
+    const res = await fetch(`${API_BASE}/admin/media`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(mediaData)
+    });
+    return res.json();
+  },
+
+  async updateMedia(id, mediaData) {
+    const res = await fetch(`${API_BASE}/admin/media/${id}`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(mediaData)
+    });
+    return res.json();
+  },
+
+  async deleteMedia(id) {
+    const res = await fetch(`${API_BASE}/admin/media/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async getResumes() {
+    const res = await fetch(`${API_BASE}/admin/resumes`, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async uploadResume(resumeData) {
+    const res = await fetch(`${API_BASE}/admin/resumes`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(resumeData)
+    });
+    return res.json();
+  },
+
+  async selectResume(id) {
+    const res = await fetch(`${API_BASE}/admin/resumes/${id}/select`, {
+      method: 'PUT',
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async deleteResume(id) {
+    const res = await fetch(`${API_BASE}/admin/resumes/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async getSeo() {
+    const res = await fetch(`${API_BASE}/admin/seo`, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async updateSeo(seoData) {
+    const res = await fetch(`${API_BASE}/admin/seo`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(seoData)
+    });
+    return res.json();
+  },
+
+  async getBranding() {
+    const res = await fetch(`${API_BASE}/admin/branding`, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async updateBranding(brandingData) {
+    const res = await fetch(`${API_BASE}/admin/branding`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(brandingData)
+    });
+    return res.json();
+  },
+
+  async updateSlug(slug) {
+    const res = await fetch(`${API_BASE}/admin/slug`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify({ slug })
+    });
+    return res.json();
+  },
+
+  async getActivities() {
+    const res = await fetch(`${API_BASE}/admin/activities`, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
   }
 };

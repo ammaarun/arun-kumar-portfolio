@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, User, Code2, Terminal, Briefcase, Sparkles, 
   BookOpen, MessageSquare, Mail, Settings, ExternalLink, LogOut, 
-  Sun, Moon, Menu, X, ShieldCheck, Layers, Users, ChevronDown, Palette
+  Sun, Moon, Menu, X, ShieldCheck, Layers, Users, ChevronDown, Palette,
+  Image, FileText, Rocket
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -72,6 +73,8 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
       title: 'CONTENT',
       items: [
         { id: 'profile', label: 'Profile & About', icon: User },
+        { id: 'media', label: 'Media Library', icon: Image },
+        { id: 'resume', label: 'Resume & CV', icon: FileText },
         { id: 'skills', label: 'Skills', icon: Code2 },
         { id: 'projects', label: 'Projects', icon: Terminal },
         { id: 'experience', label: 'Experience & Edu', icon: Briefcase },
@@ -81,10 +84,11 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
       ]
     },
     {
-      title: 'DESIGN',
+      title: 'DESIGN & PUBLISHING',
       items: [
         { id: 'customize', label: 'Theme & Customizer', icon: Palette },
         { id: 'presets', label: 'Templates & Starters', icon: Layers },
+        { id: 'publishing', label: 'Publishing Center', icon: Rocket },
       ]
     },
     {

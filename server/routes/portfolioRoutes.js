@@ -12,6 +12,28 @@ router.get('/', (req, res) => {
   res.json({ success: true, data: publicData });
 });
 
+// Get public portfolio by slug
+router.get('/slug/:slug', (req, res) => {
+  const { slug } = req.params;
+  const db = dbEngine.get();
+  const client = (db.clients || []).find(c => c.slug === slug);
+  if (!client) {
+    return res.status(404).json({ success: false, message: `Portfolio with slug '${slug}' not found.` });
+  }
+
+  const pData = client.portfolioData || {};
+  res.json({
+    success: true,
+    data: {
+      ...pData,
+      status: client.status,
+      slug: client.slug,
+      clientName: client.name,
+      clientRole: client.role
+    }
+  });
+});
+
 // Submit contact message / client inquiry
 router.post('/contact', async (req, res) => {
   const { name, email, subject, message } = req.body;

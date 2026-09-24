@@ -18,6 +18,8 @@ export const OverviewView = ({ setActiveTab }) => {
   const [previewModalOpen, setPreviewModalOpen] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
 
+  const [activities, setActivities] = useState([]);
+
   const fetchClients = async () => {
     if (!token) return;
     try {
@@ -37,8 +39,24 @@ export const OverviewView = ({ setActiveTab }) => {
     }
   };
 
+  const fetchActivities = async () => {
+    if (!token) return;
+    try {
+      const res = await fetch('/api/admin/activities', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const resData = await res.json();
+      if (resData.success) {
+        setActivities(resData.data || []);
+      }
+    } catch (err) {
+      // Safe catch
+    }
+  };
+
   useEffect(() => {
     fetchClients();
+    fetchActivities();
   }, [token, data]);
 
   const handleStatusUpdate = async (status) => {
@@ -388,6 +406,38 @@ export const OverviewView = ({ setActiveTab }) => {
                 <a href={`mailto:${msg.email}`} className="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold text-white">
                   Reply
                 </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Recent Activity Log Feed */}
+      <div className="p-6 rounded-2xl bg-[#121723] border border-slate-800 space-y-4">
+        <div className="flex items-center justify-between">
+          <h3 className="text-base font-bold text-white flex items-center space-x-2">
+            <Clock className="w-4 h-4 text-emerald-400" />
+            <span>Recent System Activity Log</span>
+          </h3>
+          <span className="text-xs font-mono text-slate-500">Real-time Admin Audit Trail</span>
+        </div>
+
+        {activities.length === 0 ? (
+          <div className="p-6 text-center text-xs text-slate-500 font-mono">
+            No activity logged yet.
+          </div>
+        ) : (
+          <div className="space-y-2.5">
+            {activities.slice(0, 5).map((act) => (
+              <div key={act.id} className="p-3.5 rounded-xl bg-[#0a0d14] border border-slate-800 flex items-center justify-between text-xs">
+                <div className="flex items-center space-x-3">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+                  <span className="font-semibold text-white">{act.description}</span>
+                </div>
+                <div className="flex items-center space-x-2 text-[11px] font-mono text-slate-400 shrink-0">
+                  <span className="px-2 py-0.5 rounded bg-slate-800">{act.clientName || 'Arun Kumar'}</span>
+                  <span>{new Date(act.timestamp).toLocaleDateString()}</span>
+                </div>
               </div>
             ))}
           </div>
