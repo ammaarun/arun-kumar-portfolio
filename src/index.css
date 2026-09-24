@@ -2,15 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #10b981;
+  --secondary-color: #14b8a6;
+  --accent-color: #059669;
+  --bg-color: #0a0d14;
+  --surface-color: #121723;
+  --text-color: #f1f5f9;
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --btn-radius: 0.75rem;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body);
   }
   
   body {
-    @apply bg-slate-50 text-slate-900 dark:bg-[#0a0d14] dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-emerald-500 selection:text-white min-h-screen;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    @apply transition-colors duration-300 antialiased min-h-screen;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Dynamic Theme Utility Classes */
+.theme-heading {
+  font-family: var(--font-heading) !important;
+}
+
+.theme-body {
+  font-family: var(--font-body) !important;
+}
+
+.theme-bg {
+  background-color: var(--bg-color) !important;
+}
+
+.theme-surface {
+  background-color: var(--surface-color) !important;
+}
+
+.theme-primary-text {
+  color: var(--primary-color) !important;
+}
+
+.theme-primary-bg {
+  background-color: var(--primary-color) !important;
+}
+
+.theme-primary-border {
+  border-color: var(--primary-color) !important;
+}
+
+.theme-btn {
+  border-radius: var(--btn-radius) !important;
 }
 
 /* Custom Scrollbar */
@@ -26,16 +78,21 @@
 
 /* Glassmorphism utilities */
 .glass-panel {
-  @apply bg-white/80 dark:bg-[#121723]/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80;
+  background-color: var(--surface-color);
+  @apply backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80;
 }
 
 .glass-card {
-  @apply bg-white dark:bg-[#121723] border border-slate-200 dark:border-slate-800/80 hover:border-emerald-500/50 dark:hover:border-emerald-500/40 transition-all duration-300;
+  background-color: var(--surface-color);
+  @apply border border-slate-200 dark:border-slate-800/80 hover:border-emerald-500/50 dark:hover:border-emerald-500/40 transition-all duration-300;
 }
 
-/* Gradient text utility */
+/* Dynamic Gradient Text Utility */
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 via-teal-500 to-indigo-600 dark:from-emerald-400 dark:via-teal-300 dark:to-indigo-400;
+  background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .text-gradient-subtle {

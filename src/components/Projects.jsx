@@ -3,7 +3,7 @@ import { Terminal, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import { useData } from '../context/DataContext';
 
-export const Projects = ({ onSelectProject }) => {
+export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
   const { data } = useData();
   const projects = data?.projects || [];
   const [filter, setFilter] = useState('All');
@@ -13,6 +13,10 @@ export const Projects = ({ onSelectProject }) => {
   const filteredProjects = filter === 'All'
     ? projects
     : projects.filter(p => p.category === filter);
+
+  const gridColsClass = layoutVariant === 'stack'
+    ? 'grid-cols-1 max-w-4xl mx-auto'
+    : 'grid-cols-1 md:grid-cols-2';
 
   return (
     <section id="projects" className="py-20 relative bg-slate-100/50 dark:bg-[#0d1019] transition-colors">
@@ -50,7 +54,7 @@ export const Projects = ({ onSelectProject }) => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className={`grid ${gridColsClass} gap-8`}>
           {filteredProjects.map((project) => (
             <div
               key={project.id}

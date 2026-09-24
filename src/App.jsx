@@ -33,6 +33,7 @@ function MainPublicPortfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [inquiryPkgId, setInquiryPkgId] = useState('cms');
+  const [overrideDesignConfig, setOverrideDesignConfig] = useState(null);
 
   const handleOpenInquiry = (packageId = 'cms') => {
     setInquiryPkgId(packageId);
@@ -50,8 +51,28 @@ function MainPublicPortfolio() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const designConfig = data?.designConfig || {};
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (event.data && event.data.type === 'PREVIEW_DESIGN_CONFIG') {
+        setOverrideDesignConfig(event.data.config);
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
+  const designConfig = overrideDesignConfig || data?.designConfig || {};
   const themeStyles = generateThemeStyles(designConfig);
+  const isLightMode = designConfig.themeMode === 'light';
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isLightMode) {
+      root.classList.remove('dark');
+    } else {
+      root.classList.add('dark');
+    }
+  }, [isLightMode]);
 
   const sectionComponents = {
     hero: (
@@ -59,11 +80,18 @@ function MainPublicPortfolio() {
         key="hero"
         onOpenResume={() => setResumeOpen(true)}
         onOpenInquiry={() => handleOpenInquiry('cms')}
+        layoutVariant={designConfig.layout?.hero}
       />
     ),
     about: <About key="about" />,
     skills: <Skills key="skills" />,
-    projects: <Projects key="projects" onSelectProject={(project) => setSelectedProject(project)} />,
+    projects: (
+      <Projects 
+        key="projects" 
+        onSelectProject={(project) => setSelectedProject(project)} 
+        layoutVariant={designConfig.layout?.projects}
+      />
+    ),
     services: <Services key="services" onOpenInquiry={handleOpenInquiry} />,
     experience: <Experience key="experience" />,
     blog: <Blog key="blog" />,
@@ -94,7 +122,10 @@ function MainPublicPortfolio() {
   return (
     <div 
       style={themeStyles}
-      className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0a0d14] dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-emerald-500 selection:text-white"
+      data-template={designConfig.template || 'modern-dark'}
+      className={`min-h-screen transition-colors duration-300 ${
+        isLightMode ? 'bg-slate-50 text-slate-900' : 'bg-[#0a0d14] text-slate-100 dark'
+      }`}
     >
       <Navbar 
         onOpenCommand={() => setCommandOpen(true)}

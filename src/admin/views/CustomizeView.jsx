@@ -26,6 +26,21 @@ export const CustomizeView = () => {
   const [lastSavedTime, setLastSavedTime] = useState(null);
   const [lastPublishedTime, setLastPublishedTime] = useState(null);
 
+  const iframeRef = React.useRef(null);
+
+  const sendPreviewMessage = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow && localConfig) {
+      iframeRef.current.contentWindow.postMessage({
+        type: 'PREVIEW_DESIGN_CONFIG',
+        config: localConfig
+      }, '*');
+    }
+  };
+
+  useEffect(() => {
+    sendPreviewMessage();
+  }, [localConfig]);
+
   useEffect(() => {
     const cfg = JSON.parse(JSON.stringify(data?.designConfig || defaultDesignConfig));
     setLocalConfig(cfg);
@@ -776,6 +791,8 @@ export const CustomizeView = () => {
               className={`transition-all duration-300 bg-white dark:bg-[#0a0d14] overflow-hidden ${getViewportFrameStyle()}`}
             >
               <iframe
+                ref={iframeRef}
+                onLoad={sendPreviewMessage}
                 src="/"
                 title="Live Design Preview"
                 className="w-full h-full border-none"
