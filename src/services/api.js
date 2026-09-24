@@ -16,6 +16,15 @@ export const api = {
     return res.json();
   },
 
+  async getPortfolioBySlug(slug) {
+    const res = await fetch(`${API_BASE}/portfolio/slug/${encodeURIComponent(slug)}`);
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData.message || 'Portfolio not found');
+    }
+    return res.json();
+  },
+
   async sendContactMessage(payload) {
     const res = await fetch(`${API_BASE}/portfolio/contact`, {
       method: 'POST',

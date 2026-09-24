@@ -20,6 +20,7 @@ import { ResumeModal } from './components/ResumeModal';
 import { ProjectModal } from './components/ProjectModal';
 import { ClientInquiryModal } from './components/ClientInquiryModal';
 
+import { UserX, Lock, Loader2 } from 'lucide-react';
 import { BlogPostView } from './components/BlogPostView';
 import { AdminLogin } from './admin/AdminLogin';
 import { ProtectedRoute } from './admin/ProtectedRoute';
@@ -27,7 +28,7 @@ import { AdminDashboardPlaceholder } from './admin/AdminDashboard';
 import { generateThemeStyles } from './utils/themeUtils';
 
 function MainPublicPortfolio() {
-  const { data } = useData();
+  const { data, loading, error } = useData();
   const [commandOpen, setCommandOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -60,6 +61,55 @@ function MainPublicPortfolio() {
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
   }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-slate-400 font-mono text-sm space-y-3">
+        <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
+        <span>Loading Portfolio...</span>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-center">
+        <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-4">
+          <UserX className="w-8 h-8" />
+        </div>
+        <h1 className="text-2xl font-bold text-white mb-2">Portfolio Not Found</h1>
+        <p className="text-sm text-slate-400 max-w-md mb-6">
+          The requested client portfolio could not be found or has been removed.
+        </p>
+        <a 
+          href="/"
+          className="px-5 py-2.5 rounded-xl bg-emerald-500 text-white font-semibold text-xs hover:bg-emerald-600 transition-all"
+        >
+          View Default Portfolio
+        </a>
+      </div>
+    );
+  }
+
+  if (data.status === 'UNPUBLISHED' || data.status === 'PRIVATE') {
+    return (
+      <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-center">
+        <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4">
+          <Lock className="w-8 h-8" />
+        </div>
+        <h1 className="text-2xl font-bold text-white mb-2">Portfolio Unavailable</h1>
+        <p className="text-sm text-slate-400 max-w-md mb-6">
+          This portfolio is currently unpublished or set to private mode.
+        </p>
+        <a 
+          href="/"
+          className="px-5 py-2.5 rounded-xl bg-slate-800 text-slate-200 font-semibold text-xs hover:bg-slate-700 transition-all"
+        >
+          Return to Home
+        </a>
+      </div>
+    );
+  }
 
   const designConfig = overrideDesignConfig || data?.designConfig || {};
   const themeStyles = generateThemeStyles(designConfig);
@@ -171,8 +221,9 @@ export default function App() {
         <AuthProvider>
           <DataProvider>
             <Routes>
-              {/* Public Portfolio Route */}
+              {/* Public Portfolio Routes */}
               <Route path="/" element={<MainPublicPortfolio />} />
+              <Route path="/portfolio/:slug" element={<MainPublicPortfolio />} />
               <Route path="/blog/:slug" element={<BlogPostView />} />
 
               {/* Admin Routes */}

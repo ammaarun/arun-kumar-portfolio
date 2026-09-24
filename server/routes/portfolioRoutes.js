@@ -1,5 +1,5 @@
 import express from 'express';
-import { dbEngine } from '../data/dbEngine.js';
+import { dbEngine, defaultDesignConfig } from '../data/dbEngine.js';
 import { sendInquiryNotification } from '../utils/emailService.js';
 
 const router = express.Router();
@@ -26,7 +26,8 @@ router.get('/slug/:slug', (req, res) => {
     success: true,
     data: {
       ...pData,
-      status: client.status,
+      designConfig: pData.designConfig || defaultDesignConfig,
+      status: client.status || 'PUBLISHED',
       slug: client.slug,
       clientName: client.name,
       clientRole: client.role

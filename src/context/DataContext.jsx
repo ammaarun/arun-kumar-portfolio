@@ -9,17 +9,37 @@ export const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchPortfolioData = async () => {
+  const fetchPortfolioData = async (overrideSlug = null) => {
     try {
       setLoading(true);
-      const res = await api.getPortfolio();
+      setError(null);
+
+      const pathname = typeof window !== 'undefined' && window.location ? window.location.pathname : '';
+      const match = pathname.match(/^\/portfolio\/([^/]+)/);
+      const slug = overrideSlug || (match ? match[1] : null);
+
+      let res;
+      if (slug) {
+        res = await api.getPortfolioBySlug(slug);
+      } else {
+        res = await api.getPortfolio();
+      }
+
       if (res.success && res.data) {
         setData(res.data);
         setError(null);
+      } else {
+        setError(res.message || 'Portfolio not found');
+        setData(null);
       }
     } catch (err) {
-      console.warn('Backend server connection issue, using fallback data:', err);
-      setError('Using cached portfolio data');
+      console.warn('Backend server connection issue or portfolio not found:', err);
+      setError(err.message || 'Failed to fetch portfolio');
+      if (typeof window !== 'undefined' && window.location && !window.location.pathname.startsWith('/portfolio/')) {
+        setData(fallbackData);
+      } else {
+        setData(null);
+      }
     } finally {
       setLoading(false);
     }
@@ -27,6 +47,15 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     fetchPortfolioData();
+
+    const handleLocationChange = () => {
+      fetchPortfolioData();
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('popstate', handleLocationChange);
+      return () => window.removeEventListener('popstate', handleLocationChange);
+    }
   }, []);
 
   return (

@@ -6,10 +6,19 @@
   "badge": "Freelance Pro",
   "accentColor": "amber",
   "personalInfo": {
-    "name": "Jane Doe",
-    "email": "jane@example.com",
-    "resumeUrl": "https://example.com/principal-resume.pdf",
-    "role": "Lead Java & Full Stack Developer"
+    "name": "Taylor Swiftly",
+    "role": "Freelance Web Developer & Software Consultant",
+    "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+    "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+    "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+    "location": "Telangana, India",
+    "availability": "Available for New Freelance Projects & Monthly Retainers",
+    "email": "taylor.consulting@example.com",
+    "phone": "+91 98765 00004",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "https://example.com/principal-resume.pdf"
   },
   "stats": [
     {
@@ -33,33 +42,145 @@
       "description": "Long-Term Partnerships"
     }
   ],
-  "skills": [],
-  "projects": [
+  "skills": [
     {
-      "id": "proj-1790271508468",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
+      "category": "Freelance Development Services",
+      "icon": "Sparkles",
+      "items": [
+        {
+          "name": "Custom Web Applications",
+          "level": 95,
+          "popular": true
+        },
+        {
+          "name": "Dynamic Portfolio & CMS Development",
+          "level": 98,
+          "popular": true
+        },
+        {
+          "name": "React & Tailwind Frontend Engineering",
+          "level": 94,
+          "popular": true
+        },
+        {
+          "name": "API & Payment Integration",
+          "level": 90
+        }
+      ]
     },
     {
-      "id": "proj-1790271297166",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
+      "category": "Core Technologies",
+      "icon": "Code2",
+      "items": [
+        {
+          "name": "JavaScript (ES6+) & TypeScript",
+          "level": 92,
+          "popular": true
+        },
+        {
+          "name": "React.js / Next.js",
+          "level": 90,
+          "popular": true
+        },
+        {
+          "name": "Node.js & Express APIs",
+          "level": 88
+        },
+        {
+          "name": "PostgreSQL & MongoDB Database Setup",
+          "level": 86
+        }
+      ]
+    },
+    {
+      "category": "Deployment & Maintenance",
+      "icon": "Cloud",
+      "items": [
+        {
+          "name": "Cloud Deployment (Render / Vercel)",
+          "level": 95,
+          "popular": true
+        },
+        {
+          "name": "Custom Domain & SSL Setup",
+          "level": 92
+        },
+        {
+          "name": "SEO & OpenGraph Metadata Optimization",
+          "level": 90,
+          "popular": true
+        },
+        {
+          "name": "Ongoing Maintenance & Bug Fixes",
+          "level": 88
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-free-1",
+      "title": "Client Portal & Asset Dashboard",
+      "subtitle": "Custom Client Web Platform",
+      "category": "Freelance Client Work",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+      "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+      "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
       "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
+        "React",
+        "Tailwind CSS",
+        "Node.js",
+        "PostgreSQL"
       ],
-      "featured": true
+      "metrics": [
+        {
+          "label": "Delivery",
+          "value": "14 Days"
+        },
+        {
+          "label": "Rating",
+          "value": "5.0 ★"
+        }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+        "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+      ]
+    },
+    {
+      "id": "proj-free-2",
+      "title": "SaaS Product Landing & Billing System",
+      "subtitle": "High-Converting Sales Web App",
+      "category": "Freelance Client Work",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+      "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+      "tech": [
+        "React",
+        "Stripe API",
+        "Tailwind CSS",
+        "Render"
+      ],
+      "metrics": [
+        {
+          "label": "Conversion",
+          "value": "12% Rate"
+        },
+        {
+          "label": "Performance",
+          "value": "99/100"
+        }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Integrated Stripe Checkout API with automated webhook confirmation.",
+        "Configured social share previews increasing referral traffic."
+      ]
     }
   ],
   "experience": [
@@ -142,6 +263,24 @@
   ],
   "blogs": [],
   "messages": [
+    {
+      "id": "msg-1790277954274",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-24T19:25:54.274Z",
+      "read": false
+    },
+    {
+      "id": "msg-1790277162983",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-24T19:12:42.983Z",
+      "read": false
+    },
     {
       "id": "msg-1790271591324",
       "name": "Test Client",
@@ -414,7 +553,7 @@
       "slug": "arun-kumar-lead",
       "status": "PUBLISHED",
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-09-24T17:39:53.895Z",
+      "lastUpdated": "2026-09-24T19:25:56.271Z",
       "lastPublishedAt": "2026-09-23T18:45:53.211Z",
       "isDefault": true,
       "portfolioData": {
@@ -1768,13 +1907,22 @@
       "id": "client-2",
       "name": "David Miller",
       "email": "jane@example.com",
-      "role": "UX Designer",
+      "role": "Freelance Web Developer & Software Consultant",
       "portfolioData": {
         "personalInfo": {
-          "name": "Jane Doe",
-          "email": "jane@example.com",
-          "resumeUrl": "https://example.com/principal-resume.pdf",
-          "role": "Lead Java & Full Stack Developer"
+          "name": "Taylor Swiftly",
+          "role": "Freelance Web Developer & Software Consultant",
+          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+          "location": "Telangana, India",
+          "availability": "Available for New Freelance Projects & Monthly Retainers",
+          "email": "taylor.consulting@example.com",
+          "phone": "+91 98765 00004",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "https://example.com/principal-resume.pdf"
         },
         "stats": [
           {
@@ -1798,33 +1946,145 @@
             "description": "Long-Term Partnerships"
           }
         ],
-        "skills": [],
-        "projects": [
+        "skills": [
           {
-            "id": "proj-1790271508468",
-            "title": "Automated Test Project",
-            "subtitle": "Vitest Microservice",
-            "category": "Backend & Microservices",
-            "description": "Project created during automated suite execution",
-            "tech": [
-              "Java",
-              "Spring Boot",
-              "JUnit"
-            ],
-            "featured": true
+            "category": "Freelance Development Services",
+            "icon": "Sparkles",
+            "items": [
+              {
+                "name": "Custom Web Applications",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Dynamic Portfolio & CMS Development",
+                "level": 98,
+                "popular": true
+              },
+              {
+                "name": "React & Tailwind Frontend Engineering",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "API & Payment Integration",
+                "level": 90
+              }
+            ]
           },
           {
-            "id": "proj-1790271297166",
-            "title": "Automated Test Project",
-            "subtitle": "Vitest Microservice",
-            "category": "Backend & Microservices",
-            "description": "Project created during automated suite execution",
+            "category": "Core Technologies",
+            "icon": "Code2",
+            "items": [
+              {
+                "name": "JavaScript (ES6+) & TypeScript",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "React.js / Next.js",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Node.js & Express APIs",
+                "level": 88
+              },
+              {
+                "name": "PostgreSQL & MongoDB Database Setup",
+                "level": 86
+              }
+            ]
+          },
+          {
+            "category": "Deployment & Maintenance",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Cloud Deployment (Render / Vercel)",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Custom Domain & SSL Setup",
+                "level": 92
+              },
+              {
+                "name": "SEO & OpenGraph Metadata Optimization",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Ongoing Maintenance & Bug Fixes",
+                "level": 88
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-free-1",
+            "title": "Client Portal & Asset Dashboard",
+            "subtitle": "Custom Client Web Platform",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
             "tech": [
-              "Java",
-              "Spring Boot",
-              "JUnit"
+              "React",
+              "Tailwind CSS",
+              "Node.js",
+              "PostgreSQL"
             ],
-            "featured": true
+            "metrics": [
+              {
+                "label": "Delivery",
+                "value": "14 Days"
+              },
+              {
+                "label": "Rating",
+                "value": "5.0 ★"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+            ]
+          },
+          {
+            "id": "proj-free-2",
+            "title": "SaaS Product Landing & Billing System",
+            "subtitle": "High-Converting Sales Web App",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+            "tech": [
+              "React",
+              "Stripe API",
+              "Tailwind CSS",
+              "Render"
+            ],
+            "metrics": [
+              {
+                "label": "Conversion",
+                "value": "12% Rate"
+              },
+              {
+                "label": "Performance",
+                "value": "99/100"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Integrated Stripe Checkout API with automated webhook confirmation.",
+              "Configured social share previews increasing referral traffic."
+            ]
           }
         ],
         "experience": [
@@ -2047,7 +2307,7 @@
         ],
         "resumes": [
           {
-            "id": "res-test-1790271507630",
+            "id": "res-test-1790277948570",
             "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
             "url": "https://example.com/principal-resume.pdf",
             "uploadDate": "2026-09-24",
@@ -2055,23 +2315,7 @@
             "isActive": true
           },
           {
-            "id": "res-test-1790271319242",
-            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
-            "url": "https://example.com/principal-resume.pdf",
-            "uploadDate": "2026-09-24",
-            "sizeKb": 410,
-            "isActive": false
-          },
-          {
-            "id": "res-test-1790271279421",
-            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
-            "url": "https://example.com/principal-resume.pdf",
-            "uploadDate": "2026-09-24",
-            "sizeKb": 410,
-            "isActive": false
-          },
-          {
-            "id": "res-test-1790271272762",
+            "id": "res-test-1790277164629",
             "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
             "url": "https://example.com/principal-resume.pdf",
             "uploadDate": "2026-09-24",
@@ -2112,7 +2356,7 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       },
-      "lastUpdated": "2026-09-24T17:39:53.898Z",
+      "lastUpdated": "2026-09-24T19:25:56.272Z",
       "slug": "david-miller",
       "status": "PUBLISHED"
     },
@@ -2725,7 +2969,7 @@
   ],
   "resumes": [
     {
-      "id": "res-test-1790271507630",
+      "id": "res-test-1790277948570",
       "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
       "url": "https://example.com/principal-resume.pdf",
       "uploadDate": "2026-09-24",
@@ -2733,23 +2977,7 @@
       "isActive": true
     },
     {
-      "id": "res-test-1790271319242",
-      "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
-      "url": "https://example.com/principal-resume.pdf",
-      "uploadDate": "2026-09-24",
-      "sizeKb": 410,
-      "isActive": false
-    },
-    {
-      "id": "res-test-1790271279421",
-      "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
-      "url": "https://example.com/principal-resume.pdf",
-      "uploadDate": "2026-09-24",
-      "sizeKb": 410,
-      "isActive": false
-    },
-    {
-      "id": "res-test-1790271272762",
+      "id": "res-test-1790277164629",
       "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
       "url": "https://example.com/principal-resume.pdf",
       "uploadDate": "2026-09-24",
