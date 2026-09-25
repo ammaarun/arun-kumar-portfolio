@@ -6,15 +6,15 @@
   "badge": "Freelance Pro",
   "accentColor": "amber",
   "personalInfo": {
-    "name": "Taylor Swiftly",
-    "role": "Lead Java & Full Stack Developer",
-    "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-    "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-    "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+    "name": "Tanesh",
+    "role": "flutter",
+    "tagline": "Passionate Computer Science graduate with strong foundations in algorithms, web development, and object-oriented programming.",
+    "shortBio": "Eager junior developer seeking an entry-level software engineering role to contribute clean code, problem-solving skills, and rapid learning.",
+    "bio": "Graduated with honors in Computer Science. Dedicated to building responsive web applications, learning modern frameworks, and writing clean, maintainable code. Experienced with Git version control, REST APIs, and relational databases through academic coursework and hands-on personal projects.",
     "location": "Telangana, India",
-    "availability": "Available for New Freelance Projects & Monthly Retainers",
-    "email": "taylor.consulting@example.com",
-    "phone": "+91 98765 00004",
+    "availability": "Available for Immediate Full-Time Junior / Trainee Roles",
+    "email": "tanesh112@gmail.com",
+    "phone": "+91 98765 00001",
     "github": "https://github.com",
     "linkedin": "https://linkedin.com",
     "twitter": "https://twitter.com",
@@ -22,255 +22,222 @@
   },
   "stats": [
     {
-      "label": "Client Projects",
-      "value": "25+",
-      "description": "Delivered On-Time"
+      "label": "Academic GPA",
+      "value": "8.8 / 10",
+      "description": "CS & Engineering Honors"
     },
     {
-      "label": "Client Rating",
-      "value": "5.0 ★",
-      "description": "100% Satisfaction"
+      "label": "Projects Built",
+      "value": "6+",
+      "description": "Web & Mobile Repositories"
     },
     {
-      "label": "Avg Turnaround",
-      "value": "48 Hours",
-      "description": "Fast Delivery Option"
+      "label": "Coding Practice",
+      "value": "400+",
+      "description": "DSA Problems Solved"
     },
     {
-      "label": "Repeat Clients",
-      "value": "80%",
-      "description": "Long-Term Partnerships"
+      "label": "Certifications",
+      "value": "3",
+      "description": "Verified Skill Badges"
     }
   ],
   "skills": [
     {
-      "category": "Freelance Development Services",
-      "icon": "Sparkles",
-      "items": [
-        {
-          "name": "Custom Web Applications",
-          "level": 95,
-          "popular": true
-        },
-        {
-          "name": "Dynamic Portfolio & CMS Development",
-          "level": 98,
-          "popular": true
-        },
-        {
-          "name": "React & Tailwind Frontend Engineering",
-          "level": 94,
-          "popular": true
-        },
-        {
-          "name": "API & Payment Integration",
-          "level": 90
-        }
-      ]
-    },
-    {
-      "category": "Core Technologies",
+      "category": "Core Programming & CS Fundamentals",
       "icon": "Code2",
       "items": [
         {
-          "name": "JavaScript (ES6+) & TypeScript",
-          "level": 92,
+          "name": "Java / C++",
+          "level": 85,
           "popular": true
         },
         {
-          "name": "React.js / Next.js",
-          "level": 90,
+          "name": "Data Structures & Algorithms",
+          "level": 82,
           "popular": true
         },
         {
-          "name": "Node.js & Express APIs",
+          "name": "Object-Oriented Programming (OOP)",
           "level": 88
         },
         {
-          "name": "PostgreSQL & MongoDB Database Setup",
-          "level": 86
+          "name": "Database Management (SQL)",
+          "level": 80
         }
       ]
     },
     {
-      "category": "Deployment & Maintenance",
-      "icon": "Cloud",
+      "category": "Web Development",
+      "icon": "Layout",
       "items": [
         {
-          "name": "Cloud Deployment (Render / Vercel)",
-          "level": 95,
-          "popular": true
-        },
-        {
-          "name": "Custom Domain & SSL Setup",
-          "level": 92
-        },
-        {
-          "name": "SEO & OpenGraph Metadata Optimization",
+          "name": "HTML5 & CSS3",
           "level": 90,
           "popular": true
         },
         {
-          "name": "Ongoing Maintenance & Bug Fixes",
-          "level": 88
+          "name": "JavaScript (ES6+)",
+          "level": 85,
+          "popular": true
+        },
+        {
+          "name": "React Fundamentals",
+          "level": 78,
+          "popular": true
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": 82
+        }
+      ]
+    },
+    {
+      "category": "Developer Tools & Version Control",
+      "icon": "Terminal",
+      "items": [
+        {
+          "name": "Git & GitHub",
+          "level": 85,
+          "popular": true
+        },
+        {
+          "name": "VS Code & Eclipse",
+          "level": 90
+        },
+        {
+          "name": "Postman API Testing",
+          "level": 80
+        },
+        {
+          "name": "Linux Command Line",
+          "level": 75
         }
       ]
     }
   ],
   "projects": [
     {
-      "id": "proj-1790357715155",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
-    {
-      "id": "proj-free-1",
-      "title": "Client Portal & Asset Dashboard",
-      "subtitle": "Custom Client Web Platform",
-      "category": "Freelance Client Work",
+      "id": "proj-fresher-1",
+      "title": "Smart Campus Student Portal",
+      "subtitle": "Web-Based Academic Management System",
+      "category": "Web Development",
       "featured": true,
-      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-      "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
-      "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
+      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      "description": "Full-featured web app allowing students to view attendance, submit assignments, and check exam schedules.",
+      "longDescription": "Developed as a final-year capstone project. Implemented user authentication, role-based access for students and faculty, and automated grade calculations.",
       "tech": [
+        "JavaScript",
         "React",
-        "Tailwind CSS",
-        "Node.js",
-        "PostgreSQL"
+        "HTML/CSS",
+        "SQLite"
       ],
       "metrics": [
         {
-          "label": "Delivery",
-          "value": "14 Days"
+          "label": "User Roles",
+          "value": "Student & Admin"
         },
         {
-          "label": "Rating",
-          "value": "5.0 ★"
+          "label": "Response",
+          "value": "< 150ms"
         }
       ],
       "github": "https://github.com",
       "live": "https://example.com",
       "highlights": [
-        "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
-        "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+        "Built responsive frontend interfaces with clean component hierarchy.",
+        "Created relational database schema with indexed queries."
       ]
     },
     {
-      "id": "proj-free-2",
-      "title": "SaaS Product Landing & Billing System",
-      "subtitle": "High-Converting Sales Web App",
-      "category": "Freelance Client Work",
+      "id": "proj-fresher-2",
+      "title": "Task Flow Productivity App",
+      "subtitle": "Interactive Kanban Task Manager",
+      "category": "Frontend",
       "featured": true,
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
-      "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+      "description": "Interactive drag-and-drop task board for organizing daily study schedules and project milestones.",
+      "longDescription": "Built using modern React hooks and local storage persistence. Features task tagging, priority filters, and dark mode.",
       "tech": [
         "React",
-        "Stripe API",
-        "Tailwind CSS",
-        "Render"
+        "JavaScript",
+        "Tailwind CSS"
       ],
       "metrics": [
         {
-          "label": "Conversion",
-          "value": "12% Rate"
+          "label": "Features",
+          "value": "Drag & Drop"
         },
         {
-          "label": "Performance",
-          "value": "99/100"
+          "label": "Storage",
+          "value": "Local State"
         }
       ],
       "github": "https://github.com",
       "live": "https://example.com",
       "highlights": [
-        "Integrated Stripe Checkout API with automated webhook confirmation.",
-        "Configured social share previews increasing referral traffic."
+        "Implemented custom React hooks for persistent state storage.",
+        "Optimized mobile touch interaction for drag-and-drop actions."
       ]
     }
   ],
   "experience": [
     {
-      "id": "exp-free-1",
-      "company": "Independent Consultant",
-      "role": "Lead Freelance Web Developer",
-      "period": "2022 - Present",
-      "location": "Remote",
-      "type": "Freelance",
-      "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
+      "id": "exp-fresher-1",
+      "company": "TechInnovate Solutions",
+      "role": "Software Developer Intern",
+      "period": "Summer 2025 (3 Months)",
+      "location": "Hyderabad, India",
+      "type": "Internship",
+      "description": "Assisted senior engineers in developing and testing internal web tools and REST endpoint integrations.",
       "achievements": [
-        "Maintained a 100% 5-star rating across 25+ client contracts.",
-        "Built and deployed custom portfolio web applications with live admin CMS panels.",
-        "Helped clients scale web apps to handle high peak user traffic."
+        "Wrote unit tests achieving 85% code coverage for core utility modules.",
+        "Participated in daily agile standups and peer code reviews.",
+        "Fixed 15+ frontend UI responsiveness bugs across desktop and mobile screens."
       ],
       "skills": [
-        "React",
-        "Node.js",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "Client Management"
+        "JavaScript",
+        "HTML/CSS",
+        "Git",
+        "REST APIs"
       ]
     }
   ],
   "education": [
     {
-      "id": "edu-free-1",
-      "degree": "Bachelor of Science (B.Sc) in Computer Science",
-      "institution": "University of Technology",
-      "period": "2018 - 2022",
-      "description": "Graduated with top honors in Web Computing and User Interface Design."
+      "id": "edu-fresher-1",
+      "degree": "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
+      "institution": "State Technological University",
+      "period": "2022 - 2026",
+      "description": "Relevant Coursework: Data Structures, Analysis of Algorithms, Object-Oriented Programming, Database Systems, Web Technologies, Operating Systems."
     }
   ],
   "services": [
     {
-      "id": "srv-free-1",
-      "title": "Basic Developer Portfolio",
-      "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+      "id": "srv-fresher-1",
+      "title": "Junior Web Development",
+      "description": "Building clean, responsive landing pages, personal websites, and HTML/CSS/JavaScript components.",
       "icon": "Layout",
-      "pricing": "$99 / ₹8,000",
+      "pricing": "Entry-Level Rate",
       "featured": true
     },
     {
-      "id": "srv-free-2",
-      "title": "Full Dynamic Portfolio CMS",
-      "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
-      "icon": "Server",
-      "pricing": "$249 / ₹20,000",
-      "featured": true
-    },
-    {
-      "id": "srv-free-3",
-      "title": "VIP Personal Brand Package",
-      "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
-      "icon": "Sparkles",
-      "pricing": "$499 / ₹40,000",
+      "id": "srv-fresher-2",
+      "title": "Bug Fixing & UI Tweaks",
+      "description": "Diagnosing layout issues, fixing JavaScript bugs, and upgrading frontend responsiveness.",
+      "icon": "Code2",
+      "pricing": "Flexible",
       "featured": true
     }
   ],
   "testimonials": [
     {
-      "id": "test-free-1",
-      "name": "Emily Watson",
-      "role": "Agency Founder",
-      "company": "Apex Digital",
-      "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+      "id": "test-fresher-1",
+      "name": "Dr. R. K. Sharma",
+      "role": "Head of Computer Science Department",
+      "company": "State Technological University",
+      "content": "Alex showed exceptional dedication during the final-year capstone project. A quick learner with strong problem-solving skills and a great team attitude.",
       "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-      "visible": true
-    },
-    {
-      "id": "test-free-2",
-      "name": "Robert Vance",
-      "role": "Startup Founder",
-      "company": "Vance Media",
-      "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
       "visible": true
     }
   ],
@@ -584,485 +551,22 @@
     }
   ],
   "settings": {
-    "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
-    "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
-    "accentColor": "amber",
+    "siteTitle": "Tanesh — flutter",
+    "metaDescription": "Entry-level software engineer portfolio showcasing web development projects, CS fundamentals, and technical skills.",
+    "accentColor": "emerald",
     "themePreference": "dark",
     "resumeUrl": "#",
     "showHero": true,
     "showServices": true,
     "showBlog": false,
     "showTestimonials": true,
-    "footerText": "Designed & Built by Taylor Swiftly",
-    "activePreset": "freelancer",
-    "profileType": "Freelancer"
+    "footerText": "Designed & Built by Alex Morgan"
   },
   "adminUser": {
     "username": "admin",
     "password": "admin123"
   },
   "clients": [
-    {
-      "id": "client-1",
-      "name": "Arun Kumar",
-      "email": "taylor.consulting@example.com",
-      "role": "Freelance Web Developer & Software Consultant",
-      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-      "slug": "arun-kumar",
-      "status": "PUBLISHED",
-      "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-09-25T17:35:07.658Z",
-      "lastPublishedAt": "2026-09-23T18:45:53.211Z",
-      "isDefault": true,
-      "portfolioData": {
-        "personalInfo": {
-          "name": "Taylor Swiftly",
-          "role": "Freelance Web Developer & Software Consultant",
-          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-          "location": "Telangana, India",
-          "availability": "Available for New Freelance Projects & Monthly Retainers",
-          "email": "taylor.consulting@example.com",
-          "phone": "+91 98765 00004",
-          "github": "https://github.com",
-          "linkedin": "https://linkedin.com",
-          "twitter": "https://twitter.com",
-          "resumeUrl": "https://example.com/principal-resume.pdf"
-        },
-        "stats": [
-          {
-            "label": "Client Projects",
-            "value": "25+",
-            "description": "Delivered On-Time"
-          },
-          {
-            "label": "Client Rating",
-            "value": "5.0 ★",
-            "description": "100% Satisfaction"
-          },
-          {
-            "label": "Avg Turnaround",
-            "value": "48 Hours",
-            "description": "Fast Delivery Option"
-          },
-          {
-            "label": "Repeat Clients",
-            "value": "80%",
-            "description": "Long-Term Partnerships"
-          }
-        ],
-        "skills": [
-          {
-            "category": "Freelance Development Services",
-            "icon": "Sparkles",
-            "items": [
-              {
-                "name": "Custom Web Applications",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Dynamic Portfolio & CMS Development",
-                "level": 98,
-                "popular": true
-              },
-              {
-                "name": "React & Tailwind Frontend Engineering",
-                "level": 94,
-                "popular": true
-              },
-              {
-                "name": "API & Payment Integration",
-                "level": 90
-              }
-            ]
-          },
-          {
-            "category": "Core Technologies",
-            "icon": "Code2",
-            "items": [
-              {
-                "name": "JavaScript (ES6+) & TypeScript",
-                "level": 92,
-                "popular": true
-              },
-              {
-                "name": "React.js / Next.js",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Node.js & Express APIs",
-                "level": 88
-              },
-              {
-                "name": "PostgreSQL & MongoDB Database Setup",
-                "level": 86
-              }
-            ]
-          },
-          {
-            "category": "Deployment & Maintenance",
-            "icon": "Cloud",
-            "items": [
-              {
-                "name": "Cloud Deployment (Render / Vercel)",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Custom Domain & SSL Setup",
-                "level": 92
-              },
-              {
-                "name": "SEO & OpenGraph Metadata Optimization",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Ongoing Maintenance & Bug Fixes",
-                "level": 88
-              }
-            ]
-          }
-        ],
-        "projects": [
-          {
-            "id": "proj-free-1",
-            "title": "Client Portal & Asset Dashboard",
-            "subtitle": "Custom Client Web Platform",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
-            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
-            "tech": [
-              "React",
-              "Tailwind CSS",
-              "Node.js",
-              "PostgreSQL"
-            ],
-            "metrics": [
-              {
-                "label": "Delivery",
-                "value": "14 Days"
-              },
-              {
-                "label": "Rating",
-                "value": "5.0 ★"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
-              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
-            ]
-          },
-          {
-            "id": "proj-free-2",
-            "title": "SaaS Product Landing & Billing System",
-            "subtitle": "High-Converting Sales Web App",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
-            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
-            "tech": [
-              "React",
-              "Stripe API",
-              "Tailwind CSS",
-              "Render"
-            ],
-            "metrics": [
-              {
-                "label": "Conversion",
-                "value": "12% Rate"
-              },
-              {
-                "label": "Performance",
-                "value": "99/100"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Integrated Stripe Checkout API with automated webhook confirmation.",
-              "Configured social share previews increasing referral traffic."
-            ]
-          }
-        ],
-        "experience": [
-          {
-            "id": "exp-free-1",
-            "company": "Independent Consultant",
-            "role": "Lead Freelance Web Developer",
-            "period": "2022 - Present",
-            "location": "Remote",
-            "type": "Freelance",
-            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
-            "achievements": [
-              "Maintained a 100% 5-star rating across 25+ client contracts.",
-              "Built and deployed custom portfolio web applications with live admin CMS panels.",
-              "Helped clients scale web apps to handle high peak user traffic."
-            ],
-            "skills": [
-              "React",
-              "Node.js",
-              "PostgreSQL",
-              "Tailwind CSS",
-              "Client Management"
-            ]
-          }
-        ],
-        "education": [
-          {
-            "id": "edu-free-1",
-            "degree": "Bachelor of Science (B.Sc) in Computer Science",
-            "institution": "University of Technology",
-            "period": "2018 - 2022",
-            "description": "Graduated with top honors in Web Computing and User Interface Design."
-          }
-        ],
-        "services": [
-          {
-            "id": "srv-free-1",
-            "title": "Basic Developer Portfolio",
-            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
-            "icon": "Layout",
-            "pricing": "$99 / ₹8,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-2",
-            "title": "Full Dynamic Portfolio CMS",
-            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
-            "icon": "Server",
-            "pricing": "$249 / ₹20,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-3",
-            "title": "VIP Personal Brand Package",
-            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
-            "icon": "Sparkles",
-            "pricing": "$499 / ₹40,000",
-            "featured": true
-          }
-        ],
-        "blogs": [],
-        "testimonials": [
-          {
-            "id": "test-free-1",
-            "name": "Emily Watson",
-            "role": "Agency Founder",
-            "company": "Apex Digital",
-            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
-            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          },
-          {
-            "id": "test-free-2",
-            "name": "Robert Vance",
-            "role": "Startup Founder",
-            "company": "Vance Media",
-            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
-            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          }
-        ],
-        "settings": {
-          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
-          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
-          "accentColor": "amber",
-          "themePreference": "dark",
-          "resumeUrl": "#",
-          "showHero": true,
-          "showServices": true,
-          "showBlog": false,
-          "showTestimonials": true,
-          "footerText": "Designed & Built by Taylor Swiftly",
-          "activePreset": "freelancer",
-          "profileType": "Freelancer"
-        },
-        "designConfig": {
-          "template": "minimal-light",
-          "themeMode": "light",
-          "colors": {
-            "primary": "#2563eb",
-            "secondary": "#3b82f6",
-            "accent": "#1d4ed8",
-            "background": "#f8fafc",
-            "surface": "#ffffff",
-            "text": "#0f172a"
-          },
-          "fonts": {
-            "heading": "Space Grotesk",
-            "body": "Inter"
-          },
-          "layout": {
-            "hero": "left",
-            "projects": "cards",
-            "navigation": "top",
-            "contact": "cards"
-          },
-          "buttons": {
-            "style": "square",
-            "size": "medium"
-          },
-          "animations": "subtle",
-          "sections": [
-            {
-              "id": "hero",
-              "name": "Hero",
-              "visible": true,
-              "order": 1
-            },
-            {
-              "id": "about",
-              "name": "About",
-              "visible": true,
-              "order": 2
-            },
-            {
-              "id": "projects",
-              "name": "Projects Showcase",
-              "visible": true,
-              "order": 3
-            },
-            {
-              "id": "skills",
-              "name": "Skills",
-              "visible": true,
-              "order": 4
-            },
-            {
-              "id": "experience",
-              "name": "Work Experience",
-              "visible": true,
-              "order": 5
-            },
-            {
-              "id": "services",
-              "name": "Services",
-              "visible": true,
-              "order": 6
-            },
-            {
-              "id": "testimonials",
-              "name": "Testimonials",
-              "visible": true,
-              "order": 7
-            },
-            {
-              "id": "blog",
-              "name": "Blog / Articles",
-              "visible": true,
-              "order": 8
-            },
-            {
-              "id": "contact",
-              "name": "Contact",
-              "visible": true,
-              "order": 9
-            }
-          ]
-        },
-        "mediaLibrary": [
-          {
-            "id": "media-1",
-            "name": "Profile Avatar Photo",
-            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-            "type": "image",
-            "category": "profile",
-            "sizeKb": 245,
-            "dimensions": "600 x 600",
-            "uploadDate": "2026-09-01"
-          },
-          {
-            "id": "media-2",
-            "name": "Enterprise Microservices System",
-            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 820,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-05"
-          },
-          {
-            "id": "media-3",
-            "name": "React & Tailwind Dashboard",
-            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 650,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-10"
-          },
-          {
-            "id": "media-4",
-            "name": "Official Resume 2026",
-            "url": "#",
-            "type": "document",
-            "category": "resume",
-            "sizeKb": 340,
-            "dimensions": "PDF Document",
-            "uploadDate": "2026-09-12"
-          }
-        ],
-        "resumes": [
-          {
-            "id": "res-test-1790357704334",
-            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
-            "url": "https://example.com/principal-resume.pdf",
-            "uploadDate": "2026-09-24",
-            "sizeKb": 410,
-            "isActive": true
-          },
-          {
-            "id": "res-test-1790328291193",
-            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
-            "url": "https://example.com/principal-resume.pdf",
-            "uploadDate": "2026-09-24",
-            "sizeKb": 410,
-            "isActive": false
-          },
-          {
-            "id": "res-1",
-            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
-            "url": "#",
-            "uploadDate": "2026-09-15",
-            "sizeKb": 340,
-            "isActive": false
-          },
-          {
-            "id": "res-2",
-            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
-            "url": "#",
-            "uploadDate": "2025-10-20",
-            "sizeKb": 310,
-            "isActive": false
-          }
-        ],
-        "seo": {
-          "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
-          "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
-          "keywords": "Java, Cloud, Microservices, React, Architect",
-          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
-          "author": "Arun Kumar",
-          "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
-          "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
-          "socialShareImage": "https://images.unsplash.com/photo-og-cover"
-        },
-        "branding": {
-          "faviconUrl": "/favicon.svg",
-          "logoUrl": "/icons.svg",
-          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
-        }
-      }
-    },
     {
       "id": "client-1790189189046",
       "name": "Jane Doe Smith",
@@ -1072,7 +576,7 @@
       "slug": "jane-doe",
       "status": "PUBLISHED",
       "createdDate": "2026-09-23T18:46:29.053Z",
-      "lastUpdated": "2026-09-25T10:20:04.908Z",
+      "lastUpdated": "2026-09-25T17:44:50.963Z",
       "lastPublishedAt": "2026-09-23T18:46:29.115Z",
       "isDefault": false,
       "portfolioData": {
@@ -1512,917 +1016,6 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       }
-    },
-    {
-      "id": "client-1790194598454",
-      "name": "Jane Doe Smith",
-      "email": "jane@example.com",
-      "role": "Staff Frontend Engineer",
-      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-      "slug": "jane-doe-1",
-      "status": "PUBLISHED",
-      "createdDate": "2026-09-23T20:16:38.455Z",
-      "lastUpdated": "2026-09-23T20:16:38.512Z",
-      "lastPublishedAt": "2026-09-23T20:16:38.512Z",
-      "isDefault": false,
-      "portfolioData": {
-        "id": "experienced",
-        "name": "Experienced Developer",
-        "description": "Designed for mid-to-senior software engineers emphasizing professional work history, enterprise metrics, system architecture, and leadership.",
-        "targetAudience": "Mid & Senior Software Engineers (3+ Years Experience)",
-        "badge": "Experienced Pro",
-        "accentColor": "indigo",
-        "personalInfo": {
-          "name": "Jane Doe Smith",
-          "role": "Staff Frontend Engineer",
-          "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
-          "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
-          "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",
-          "location": "Telangana, India",
-          "availability": "Available for Senior Engineering Roles & Architecture Consulting",
-          "email": "jane@example.com",
-          "phone": "+91 98765 00002",
-          "github": "https://github.com",
-          "linkedin": "https://linkedin.com",
-          "twitter": "https://twitter.com",
-          "resumeUrl": "#"
-        },
-        "stats": [
-          {
-            "label": "Years Experience",
-            "value": "5+",
-            "description": "Enterprise Software Engineering"
-          },
-          {
-            "label": "API Throughput",
-            "value": "10k+ TPS",
-            "description": "High Concurrency Microservices"
-          },
-          {
-            "label": "Uptime SLA",
-            "value": "99.99%",
-            "description": "Production Cloud Deployments"
-          },
-          {
-            "label": "Team Lead",
-            "value": "6 Engineers",
-            "description": "Mentorship & Code Reviews"
-          }
-        ],
-        "skills": [
-          {
-            "category": "Enterprise Backend Architecture",
-            "icon": "Server",
-            "items": [
-              {
-                "name": "Distributed Microservices",
-                "level": 94,
-                "popular": true
-              },
-              {
-                "name": "Spring Boot / Node.js",
-                "level": 92,
-                "popular": true
-              },
-              {
-                "name": "REST & GraphQL APIs",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Event-Driven Messaging (Kafka/RabbitMQ)",
-                "level": 88
-              }
-            ]
-          },
-          {
-            "category": "Databases & High-Performance Caching",
-            "icon": "Database",
-            "items": [
-              {
-                "name": "PostgreSQL / MySQL Tuning",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Redis Distributed Cache",
-                "level": 88,
-                "popular": true
-              },
-              {
-                "name": "Database Schema Normalization",
-                "level": 92
-              },
-              {
-                "name": "NoSQL (MongoDB / DynamoDB)",
-                "level": 82
-              }
-            ]
-          },
-          {
-            "category": "DevOps & Cloud Infrastructure",
-            "icon": "Cloud",
-            "items": [
-              {
-                "name": "Docker & Kubernetes",
-                "level": 88,
-                "popular": true
-              },
-              {
-                "name": "AWS (EC2, S3, RDS, ECS)",
-                "level": 85,
-                "popular": true
-              },
-              {
-                "name": "CI/CD (GitHub Actions / Jenkins)",
-                "level": 90
-              },
-              {
-                "name": "System Monitoring (Prometheus/Grafana)",
-                "level": 82
-              }
-            ]
-          }
-        ],
-        "projects": [
-          {
-            "id": "proj-exp-1",
-            "title": "Enterprise Cloud Payment Engine",
-            "subtitle": "High-Throughput Distributed Payment Gateway",
-            "category": "Backend & Microservices",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
-            "description": "Distributed payment processing engine handling high-volume transaction workloads with multi-region failover.",
-            "longDescription": "Engineered event-driven microservices processing over $10M in transactions monthly. Implemented circuit breakers, distributed locking with Redis, and Kafka audit streams.",
-            "tech": [
-              "Java",
-              "Spring Boot",
-              "Kafka",
-              "PostgreSQL",
-              "Redis",
-              "Docker",
-              "AWS"
-            ],
-            "metrics": [
-              {
-                "label": "Transactions",
-                "value": "10k+ TPS"
-              },
-              {
-                "label": "Latency",
-                "value": "< 30ms"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Reduced database read load by 65% by implementing multi-level Redis caching.",
-              "Zero-downtime deployment pipelines using Kubernetes rolling updates."
-            ]
-          },
-          {
-            "id": "proj-exp-2",
-            "title": "Real-Time Telemetry Analytics Platform",
-            "subtitle": "Stream Processing & Monitoring System",
-            "category": "Cloud Architecture",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-            "description": "Real-time analytics dashboard monitoring server cluster metrics, request rates, and error traces.",
-            "longDescription": "Architected stream processing pipeline capturing logs across 50+ nodes and visualizing real-time metrics on Grafana dashboards.",
-            "tech": [
-              "Node.js",
-              "Kafka",
-              "Prometheus",
-              "Grafana",
-              "Docker"
-            ],
-            "metrics": [
-              {
-                "label": "Log Ingestion",
-                "value": "1M events/min"
-              },
-              {
-                "label": "Uptime",
-                "value": "99.99%"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Built custom alert triggers dispatching PagerDuty incidents automatically.",
-              "Decreased memory footprint per worker node by 40% through garbage collection tuning."
-            ]
-          }
-        ],
-        "experience": [
-          {
-            "id": "exp-exp-1",
-            "company": "Global Cloud Tech Inc.",
-            "role": "Senior Software Engineer / Tech Lead",
-            "period": "2023 - Present",
-            "location": "Hyderabad, India",
-            "type": "Full-time",
-            "description": "Leading the core backend platform squad responsible for cloud microservices and database infrastructure.",
-            "achievements": [
-              "Architected core API platform supporting 2M+ daily active users.",
-              "Mentored team of 6 software engineers and conducted quarterly technical design reviews.",
-              "Led migration from monolithic application to Docker containerized microservices."
-            ],
-            "skills": [
-              "Microservices",
-              "Spring Boot",
-              "PostgreSQL",
-              "Kafka",
-              "AWS"
-            ]
-          },
-          {
-            "id": "exp-exp-2",
-            "company": "Nexus Systems Solutions",
-            "role": "Software Engineer",
-            "period": "2021 - 2023",
-            "location": "Telangana, India",
-            "type": "Full-time",
-            "description": "Developed RESTful APIs, optimized SQL queries, and integrated third-party payment integrations.",
-            "achievements": [
-              "Optimized slow relational queries resulting in 50% faster API response times.",
-              "Implemented JWT authentication and RBAC authorization middleware."
-            ],
-            "skills": [
-              "Java",
-              "Spring Boot",
-              "MySQL",
-              "Redis",
-              "REST APIs"
-            ]
-          }
-        ],
-        "education": [
-          {
-            "id": "edu-exp-1",
-            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
-            "institution": "National Institute of Technology",
-            "period": "2017 - 2021",
-            "description": "Specialized in Software Architecture, Distributed Computing, and Database Security."
-          }
-        ],
-        "services": [
-          {
-            "id": "srv-exp-1",
-            "title": "Backend Architecture & Microservices",
-            "description": "Designing scalable, high-throughput microservice architectures with fault tolerance.",
-            "icon": "Server",
-            "pricing": "Consulting / Contract",
-            "featured": true
-          },
-          {
-            "id": "srv-exp-2",
-            "title": "Database Performance Tuning",
-            "description": "Optimizing PostgreSQL/MySQL query execution plans, indexing strategies, and Redis caching.",
-            "icon": "Database",
-            "pricing": "Hourly / Project",
-            "featured": true
-          }
-        ],
-        "testimonials": [
-          {
-            "id": "test-exp-1",
-            "name": "Sarah Jenkins",
-            "role": "VP of Engineering",
-            "company": "Global Cloud Tech",
-            "content": "David is a stellar senior engineer. His architectural decisions and database optimizations saved our platform during peak traffic events.",
-            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          }
-        ],
-        "blogs": [],
-        "messages": [],
-        "settings": {
-          "siteTitle": "Jane Doe — Senior React Developer",
-          "metaDescription": "Senior software engineer portfolio highlighting enterprise microservices, cloud backend architecture, and technical leadership.",
-          "accentColor": "indigo",
-          "themePreference": "dark",
-          "resumeUrl": "#",
-          "showHero": true,
-          "showServices": true,
-          "showBlog": false,
-          "showTestimonials": true,
-          "footerText": "Engineered by David Miller"
-        },
-        "designConfig": {
-          "template": "modern-dark",
-          "themeMode": "dark",
-          "colors": {
-            "primary": "#10b981",
-            "secondary": "#14b8a6",
-            "accent": "#059669",
-            "background": "#0a0d14",
-            "surface": "#121723",
-            "text": "#f1f5f9"
-          },
-          "fonts": {
-            "heading": "Inter",
-            "body": "Inter"
-          },
-          "layout": {
-            "hero": "centered",
-            "projects": "grid",
-            "navigation": "top",
-            "contact": "form"
-          },
-          "buttons": {
-            "style": "rounded",
-            "size": "medium"
-          },
-          "animations": "standard",
-          "sections": [
-            {
-              "id": "hero",
-              "name": "Hero",
-              "visible": true,
-              "order": 1
-            },
-            {
-              "id": "about",
-              "name": "About",
-              "visible": true,
-              "order": 2
-            },
-            {
-              "id": "skills",
-              "name": "Skills",
-              "visible": true,
-              "order": 3
-            },
-            {
-              "id": "projects",
-              "name": "Projects Showcase",
-              "visible": true,
-              "order": 4
-            },
-            {
-              "id": "services",
-              "name": "Services",
-              "visible": true,
-              "order": 5
-            },
-            {
-              "id": "experience",
-              "name": "Work Experience",
-              "visible": true,
-              "order": 6
-            },
-            {
-              "id": "blog",
-              "name": "Blog / Articles",
-              "visible": true,
-              "order": 7
-            },
-            {
-              "id": "testimonials",
-              "name": "Testimonials",
-              "visible": true,
-              "order": 8
-            },
-            {
-              "id": "contact",
-              "name": "Contact",
-              "visible": true,
-              "order": 9
-            }
-          ]
-        },
-        "mediaLibrary": [
-          {
-            "id": "media-1",
-            "name": "Profile Avatar Photo",
-            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-            "type": "image",
-            "category": "profile",
-            "sizeKb": 245,
-            "dimensions": "600 x 600",
-            "uploadDate": "2026-09-01"
-          },
-          {
-            "id": "media-2",
-            "name": "Enterprise Microservices System",
-            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 820,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-05"
-          },
-          {
-            "id": "media-3",
-            "name": "React & Tailwind Dashboard",
-            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 650,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-10"
-          },
-          {
-            "id": "media-4",
-            "name": "Official Resume 2026",
-            "url": "#",
-            "type": "document",
-            "category": "resume",
-            "sizeKb": 340,
-            "dimensions": "PDF Document",
-            "uploadDate": "2026-09-12"
-          }
-        ],
-        "resumes": [
-          {
-            "id": "res-1",
-            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
-            "url": "#",
-            "uploadDate": "2026-09-15",
-            "sizeKb": 340,
-            "isActive": true
-          },
-          {
-            "id": "res-2",
-            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
-            "url": "#",
-            "uploadDate": "2025-10-20",
-            "sizeKb": 310,
-            "isActive": false
-          }
-        ],
-        "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
-          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
-          "author": "Arun Kumar",
-          "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
-        },
-        "branding": {
-          "faviconUrl": "/favicon.svg",
-          "logoUrl": "/icons.svg",
-          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
-        }
-      }
-    },
-    {
-      "id": "client-2",
-      "name": "Taylor Swiftly",
-      "email": "jane@example.com",
-      "role": "Freelance Web Developer & Software Consultant",
-      "portfolioData": {
-        "personalInfo": {
-          "name": "Taylor Swiftly",
-          "role": "Lead Java & Full Stack Developer",
-          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-          "location": "Telangana, India",
-          "availability": "Available for New Freelance Projects & Monthly Retainers",
-          "email": "taylor.consulting@example.com",
-          "phone": "+91 98765 00004",
-          "github": "https://github.com",
-          "linkedin": "https://linkedin.com",
-          "twitter": "https://twitter.com",
-          "resumeUrl": "#"
-        },
-        "stats": [
-          {
-            "label": "Client Projects",
-            "value": "25+",
-            "description": "Delivered On-Time"
-          },
-          {
-            "label": "Client Rating",
-            "value": "5.0 ★",
-            "description": "100% Satisfaction"
-          },
-          {
-            "label": "Avg Turnaround",
-            "value": "48 Hours",
-            "description": "Fast Delivery Option"
-          },
-          {
-            "label": "Repeat Clients",
-            "value": "80%",
-            "description": "Long-Term Partnerships"
-          }
-        ],
-        "skills": [
-          {
-            "category": "Freelance Development Services",
-            "icon": "Sparkles",
-            "items": [
-              {
-                "name": "Custom Web Applications",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Dynamic Portfolio & CMS Development",
-                "level": 98,
-                "popular": true
-              },
-              {
-                "name": "React & Tailwind Frontend Engineering",
-                "level": 94,
-                "popular": true
-              },
-              {
-                "name": "API & Payment Integration",
-                "level": 90
-              }
-            ]
-          },
-          {
-            "category": "Core Technologies",
-            "icon": "Code2",
-            "items": [
-              {
-                "name": "JavaScript (ES6+) & TypeScript",
-                "level": 92,
-                "popular": true
-              },
-              {
-                "name": "React.js / Next.js",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Node.js & Express APIs",
-                "level": 88
-              },
-              {
-                "name": "PostgreSQL & MongoDB Database Setup",
-                "level": 86
-              }
-            ]
-          },
-          {
-            "category": "Deployment & Maintenance",
-            "icon": "Cloud",
-            "items": [
-              {
-                "name": "Cloud Deployment (Render / Vercel)",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Custom Domain & SSL Setup",
-                "level": 92
-              },
-              {
-                "name": "SEO & OpenGraph Metadata Optimization",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Ongoing Maintenance & Bug Fixes",
-                "level": 88
-              }
-            ]
-          }
-        ],
-        "projects": [
-          {
-            "id": "proj-1790357715155",
-            "title": "Automated Test Project",
-            "subtitle": "Vitest Microservice",
-            "category": "Backend & Microservices",
-            "description": "Project created during automated suite execution",
-            "tech": [
-              "Java",
-              "Spring Boot",
-              "JUnit"
-            ],
-            "featured": true
-          },
-          {
-            "id": "proj-free-1",
-            "title": "Client Portal & Asset Dashboard",
-            "subtitle": "Custom Client Web Platform",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
-            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
-            "tech": [
-              "React",
-              "Tailwind CSS",
-              "Node.js",
-              "PostgreSQL"
-            ],
-            "metrics": [
-              {
-                "label": "Delivery",
-                "value": "14 Days"
-              },
-              {
-                "label": "Rating",
-                "value": "5.0 ★"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
-              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
-            ]
-          },
-          {
-            "id": "proj-free-2",
-            "title": "SaaS Product Landing & Billing System",
-            "subtitle": "High-Converting Sales Web App",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
-            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
-            "tech": [
-              "React",
-              "Stripe API",
-              "Tailwind CSS",
-              "Render"
-            ],
-            "metrics": [
-              {
-                "label": "Conversion",
-                "value": "12% Rate"
-              },
-              {
-                "label": "Performance",
-                "value": "99/100"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Integrated Stripe Checkout API with automated webhook confirmation.",
-              "Configured social share previews increasing referral traffic."
-            ]
-          }
-        ],
-        "experience": [
-          {
-            "id": "exp-free-1",
-            "company": "Independent Consultant",
-            "role": "Lead Freelance Web Developer",
-            "period": "2022 - Present",
-            "location": "Remote",
-            "type": "Freelance",
-            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
-            "achievements": [
-              "Maintained a 100% 5-star rating across 25+ client contracts.",
-              "Built and deployed custom portfolio web applications with live admin CMS panels.",
-              "Helped clients scale web apps to handle high peak user traffic."
-            ],
-            "skills": [
-              "React",
-              "Node.js",
-              "PostgreSQL",
-              "Tailwind CSS",
-              "Client Management"
-            ]
-          }
-        ],
-        "education": [
-          {
-            "id": "edu-free-1",
-            "degree": "Bachelor of Science (B.Sc) in Computer Science",
-            "institution": "University of Technology",
-            "period": "2018 - 2022",
-            "description": "Graduated with top honors in Web Computing and User Interface Design."
-          }
-        ],
-        "services": [
-          {
-            "id": "srv-free-1",
-            "title": "Basic Developer Portfolio",
-            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
-            "icon": "Layout",
-            "pricing": "$99 / ₹8,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-2",
-            "title": "Full Dynamic Portfolio CMS",
-            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
-            "icon": "Server",
-            "pricing": "$249 / ₹20,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-3",
-            "title": "VIP Personal Brand Package",
-            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
-            "icon": "Sparkles",
-            "pricing": "$499 / ₹40,000",
-            "featured": true
-          }
-        ],
-        "blogs": [],
-        "testimonials": [
-          {
-            "id": "test-free-1",
-            "name": "Emily Watson",
-            "role": "Agency Founder",
-            "company": "Apex Digital",
-            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
-            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          },
-          {
-            "id": "test-free-2",
-            "name": "Robert Vance",
-            "role": "Startup Founder",
-            "company": "Vance Media",
-            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
-            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          }
-        ],
-        "settings": {
-          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
-          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
-          "accentColor": "amber",
-          "themePreference": "dark",
-          "resumeUrl": "#",
-          "showHero": true,
-          "showServices": true,
-          "showBlog": false,
-          "showTestimonials": true,
-          "footerText": "Designed & Built by Taylor Swiftly",
-          "activePreset": "freelancer",
-          "profileType": "Freelancer"
-        },
-        "designConfig": {
-          "template": "modern-dark",
-          "themeMode": "dark",
-          "colors": {
-            "primary": "#10b981",
-            "secondary": "#14b8a6",
-            "accent": "#059669",
-            "background": "#0a0d14",
-            "surface": "#121723",
-            "text": "#f1f5f9"
-          },
-          "fonts": {
-            "heading": "Inter",
-            "body": "Inter"
-          },
-          "layout": {
-            "hero": "centered",
-            "projects": "grid",
-            "navigation": "top",
-            "contact": "form"
-          },
-          "buttons": {
-            "style": "rounded",
-            "size": "medium"
-          },
-          "animations": "standard",
-          "sections": [
-            {
-              "id": "hero",
-              "name": "Hero",
-              "visible": true,
-              "order": 1
-            },
-            {
-              "id": "about",
-              "name": "About",
-              "visible": true,
-              "order": 2
-            },
-            {
-              "id": "skills",
-              "name": "Skills",
-              "visible": true,
-              "order": 3
-            },
-            {
-              "id": "projects",
-              "name": "Projects Showcase",
-              "visible": true,
-              "order": 4
-            },
-            {
-              "id": "services",
-              "name": "Services",
-              "visible": true,
-              "order": 5
-            },
-            {
-              "id": "experience",
-              "name": "Work Experience",
-              "visible": true,
-              "order": 6
-            },
-            {
-              "id": "blog",
-              "name": "Blog / Articles",
-              "visible": true,
-              "order": 7
-            },
-            {
-              "id": "testimonials",
-              "name": "Testimonials",
-              "visible": true,
-              "order": 8
-            },
-            {
-              "id": "contact",
-              "name": "Contact",
-              "visible": true,
-              "order": 9
-            }
-          ]
-        },
-        "mediaLibrary": [
-          {
-            "id": "media-1",
-            "name": "Profile Avatar Photo",
-            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-            "type": "image",
-            "category": "profile",
-            "sizeKb": 245,
-            "dimensions": "600 x 600",
-            "uploadDate": "2026-09-01"
-          },
-          {
-            "id": "media-2",
-            "name": "Enterprise Microservices System",
-            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 820,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-05"
-          },
-          {
-            "id": "media-3",
-            "name": "React & Tailwind Dashboard",
-            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 650,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-10"
-          },
-          {
-            "id": "media-4",
-            "name": "Official Resume 2026",
-            "url": "#",
-            "type": "document",
-            "category": "resume",
-            "sizeKb": 340,
-            "dimensions": "PDF Document",
-            "uploadDate": "2026-09-12"
-          }
-        ],
-        "resumes": [
-          {
-            "id": "res-1",
-            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
-            "url": "#",
-            "uploadDate": "2026-09-15",
-            "sizeKb": 340,
-            "isActive": true
-          },
-          {
-            "id": "res-2",
-            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
-            "url": "#",
-            "uploadDate": "2025-10-20",
-            "sizeKb": 310,
-            "isActive": false
-          }
-        ],
-        "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
-          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
-          "author": "Arun Kumar",
-          "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
-        },
-        "branding": {
-          "faviconUrl": "/favicon.svg",
-          "logoUrl": "/icons.svg",
-          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
-        }
-      },
-      "lastUpdated": "2026-09-25T17:35:15.155Z",
-      "slug": "priya-reddy",
-      "status": "PUBLISHED"
     },
     {
       "id": "client-1790271590109",
@@ -2890,7 +1483,7 @@
       "slug": "chintu",
       "status": "PUBLISHED",
       "createdDate": "2026-09-25T08:33:51.176Z",
-      "lastUpdated": "2026-09-25T08:33:51.177Z",
+      "lastUpdated": "2026-09-25T17:39:32.253Z",
       "lastPublishedAt": "2026-09-25T08:33:51.177Z",
       "portfolioData": {
         "personalInfo": {
@@ -2906,6 +1499,28 @@
           "linkedin": "https://linkedin.com",
           "resumeUrl": "#"
         },
+        "stats": [
+          {
+            "label": "Client Projects",
+            "value": "25+",
+            "description": "Delivered On-Time"
+          },
+          {
+            "label": "Client Rating",
+            "value": "5.0 ★",
+            "description": "100% Satisfaction"
+          },
+          {
+            "label": "Avg Turnaround",
+            "value": "48 Hours",
+            "description": "Fast Delivery Option"
+          },
+          {
+            "label": "Repeat Clients",
+            "value": "80%",
+            "description": "Long-Term Partnerships"
+          }
+        ],
         "skills": [],
         "projects": [],
         "experience": [],
@@ -3998,7 +2613,7 @@
       "slug": "ghfghf",
       "status": "DRAFT",
       "createdDate": "2026-09-25T09:59:54.760Z",
-      "lastUpdated": "2026-09-25T10:01:21.894Z",
+      "lastUpdated": "2026-09-25T17:52:45.147Z",
       "lastPublishedAt": "2026-09-25T10:00:10.537Z",
       "isDefault": false,
       "portfolioData": {
@@ -4411,9 +3026,1332 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       }
+    },
+    {
+      "id": "client-1790358290959",
+      "name": "Ajay",
+      "email": "ajay@gmail.com",
+      "role": "flutter",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "ajay",
+      "status": "PUBLISHED",
+      "createdDate": "2026-09-25T17:44:50.963Z",
+      "lastUpdated": "2026-09-25T17:49:11.453Z",
+      "lastPublishedAt": "2026-09-25T17:45:30.118Z",
+      "isDefault": false,
+      "portfolioData": {
+        "personalInfo": {
+          "name": "Ajay",
+          "role": "flutter",
+          "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
+          "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
+          "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",
+          "location": "Telangana, India",
+          "availability": "Available for Senior Engineering Roles & Architecture Consulting",
+          "email": "ajay@gmail.com",
+          "phone": "+91 98765 00002",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#"
+        },
+        "stats": [
+          {
+            "label": "Years Experience",
+            "value": "5+",
+            "description": "Enterprise Software Engineering"
+          },
+          {
+            "label": "API Throughput",
+            "value": "10k+ TPS",
+            "description": "High Concurrency Microservices"
+          },
+          {
+            "label": "Uptime SLA",
+            "value": "99.99%",
+            "description": "Production Cloud Deployments"
+          },
+          {
+            "label": "Team Lead",
+            "value": "6 Engineers",
+            "description": "Mentorship & Code Reviews"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Enterprise Backend Architecture",
+            "icon": "Server",
+            "items": [
+              {
+                "name": "Distributed Microservices",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "Spring Boot / Node.js",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "REST & GraphQL APIs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Event-Driven Messaging (Kafka/RabbitMQ)",
+                "level": 88
+              }
+            ]
+          },
+          {
+            "category": "Databases & High-Performance Caching",
+            "icon": "Database",
+            "items": [
+              {
+                "name": "PostgreSQL / MySQL Tuning",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Redis Distributed Cache",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Database Schema Normalization",
+                "level": 92
+              },
+              {
+                "name": "NoSQL (MongoDB / DynamoDB)",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "DevOps & Cloud Infrastructure",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Docker & Kubernetes",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "AWS (EC2, S3, RDS, ECS)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "CI/CD (GitHub Actions / Jenkins)",
+                "level": 90
+              },
+              {
+                "name": "System Monitoring (Prometheus/Grafana)",
+                "level": 82
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-exp-1",
+            "title": "Enterprise Cloud Payment Engine",
+            "subtitle": "High-Throughput Distributed Payment Gateway",
+            "category": "Backend & Microservices",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+            "description": "Distributed payment processing engine handling high-volume transaction workloads with multi-region failover.",
+            "longDescription": "Engineered event-driven microservices processing over $10M in transactions monthly. Implemented circuit breakers, distributed locking with Redis, and Kafka audit streams.",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "Kafka",
+              "PostgreSQL",
+              "Redis",
+              "Docker",
+              "AWS"
+            ],
+            "metrics": [
+              {
+                "label": "Transactions",
+                "value": "10k+ TPS"
+              },
+              {
+                "label": "Latency",
+                "value": "< 30ms"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Reduced database read load by 65% by implementing multi-level Redis caching.",
+              "Zero-downtime deployment pipelines using Kubernetes rolling updates."
+            ]
+          },
+          {
+            "id": "proj-exp-2",
+            "title": "Real-Time Telemetry Analytics Platform",
+            "subtitle": "Stream Processing & Monitoring System",
+            "category": "Cloud Architecture",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+            "description": "Real-time analytics dashboard monitoring server cluster metrics, request rates, and error traces.",
+            "longDescription": "Architected stream processing pipeline capturing logs across 50+ nodes and visualizing real-time metrics on Grafana dashboards.",
+            "tech": [
+              "Node.js",
+              "Kafka",
+              "Prometheus",
+              "Grafana",
+              "Docker"
+            ],
+            "metrics": [
+              {
+                "label": "Log Ingestion",
+                "value": "1M events/min"
+              },
+              {
+                "label": "Uptime",
+                "value": "99.99%"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Built custom alert triggers dispatching PagerDuty incidents automatically.",
+              "Decreased memory footprint per worker node by 40% through garbage collection tuning."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-exp-1",
+            "company": "Global Cloud Tech Inc.",
+            "role": "Senior Software Engineer / Tech Lead",
+            "period": "2023 - Present",
+            "location": "Hyderabad, India",
+            "type": "Full-time",
+            "description": "Leading the core backend platform squad responsible for cloud microservices and database infrastructure.",
+            "achievements": [
+              "Architected core API platform supporting 2M+ daily active users.",
+              "Mentored team of 6 software engineers and conducted quarterly technical design reviews.",
+              "Led migration from monolithic application to Docker containerized microservices."
+            ],
+            "skills": [
+              "Microservices",
+              "Spring Boot",
+              "PostgreSQL",
+              "Kafka",
+              "AWS"
+            ]
+          },
+          {
+            "id": "exp-exp-2",
+            "company": "Nexus Systems Solutions",
+            "role": "Software Engineer",
+            "period": "2021 - 2023",
+            "location": "Telangana, India",
+            "type": "Full-time",
+            "description": "Developed RESTful APIs, optimized SQL queries, and integrated third-party payment integrations.",
+            "achievements": [
+              "Optimized slow relational queries resulting in 50% faster API response times.",
+              "Implemented JWT authentication and RBAC authorization middleware."
+            ],
+            "skills": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "REST APIs"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-exp-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "institution": "National Institute of Technology",
+            "period": "2017 - 2021",
+            "description": "Specialized in Software Architecture, Distributed Computing, and Database Security."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-exp-1",
+            "title": "Backend Architecture & Microservices",
+            "description": "Designing scalable, high-throughput microservice architectures with fault tolerance.",
+            "icon": "Server",
+            "pricing": "Consulting / Contract",
+            "featured": true
+          },
+          {
+            "id": "srv-exp-2",
+            "title": "Database Performance Tuning",
+            "description": "Optimizing PostgreSQL/MySQL query execution plans, indexing strategies, and Redis caching.",
+            "icon": "Database",
+            "pricing": "Hourly / Project",
+            "featured": true
+          }
+        ],
+        "blogs": [],
+        "testimonials": [
+          {
+            "id": "test-exp-1",
+            "name": "Sarah Jenkins",
+            "role": "VP of Engineering",
+            "company": "Global Cloud Tech",
+            "content": "David is a stellar senior engineer. His architectural decisions and database optimizations saved our platform during peak traffic events.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "settings": {
+          "siteTitle": "Ajay — flutter",
+          "metaDescription": "Senior software engineer portfolio highlighting enterprise microservices, cloud backend architecture, and technical leadership.",
+          "accentColor": "indigo",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Engineered by David Miller"
+        },
+        "designConfig": {
+          "template": "modern-dark",
+          "themeMode": "dark",
+          "colors": {
+            "primary": "#10b981",
+            "secondary": "#14b8a6",
+            "accent": "#059669",
+            "background": "#0a0d14",
+            "surface": "#121723",
+            "text": "#f1f5f9"
+          },
+          "fonts": {
+            "heading": "Inter",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "centered",
+            "projects": "grid",
+            "navigation": "top",
+            "contact": "form"
+          },
+          "buttons": {
+            "style": "rounded",
+            "size": "medium"
+          },
+          "animations": "standard",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "type": "image",
+            "category": "profile",
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "name": "Enterprise Microservices System",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 820,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "name": "React & Tailwind Dashboard",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 650,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "name": "Official Resume 2026",
+            "url": "#",
+            "type": "document",
+            "category": "resume",
+            "sizeKb": 340,
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "url": "#",
+            "uploadDate": "2026-09-15",
+            "sizeKb": 340,
+            "isActive": true
+          },
+          {
+            "id": "res-2",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "url": "#",
+            "uploadDate": "2025-10-20",
+            "sizeKb": 310,
+            "isActive": false
+          }
+        ],
+        "seo": {
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+        },
+        "branding": {
+          "faviconUrl": "/favicon.svg",
+          "logoUrl": "/icons.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        }
+      }
+    },
+    {
+      "id": "client-1790358503010",
+      "name": "Tanesh",
+      "email": "tanesh112@gmail.com",
+      "role": "flutter",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "tanesh",
+      "status": "PUBLISHED",
+      "createdDate": "2026-09-25T17:48:23.015Z",
+      "lastUpdated": "2026-09-25T17:53:28.184Z",
+      "lastPublishedAt": "2026-09-25T17:52:26.864Z",
+      "isDefault": false,
+      "portfolioData": {
+        "personalInfo": {
+          "name": "Tanesh",
+          "role": "flutter",
+          "tagline": "Passionate Computer Science graduate with strong foundations in algorithms, web development, and object-oriented programming.",
+          "shortBio": "Eager junior developer seeking an entry-level software engineering role to contribute clean code, problem-solving skills, and rapid learning.",
+          "bio": "Graduated with honors in Computer Science. Dedicated to building responsive web applications, learning modern frameworks, and writing clean, maintainable code. Experienced with Git version control, REST APIs, and relational databases through academic coursework and hands-on personal projects.",
+          "location": "Telangana, India",
+          "availability": "Available for Immediate Full-Time Junior / Trainee Roles",
+          "email": "tanesh112@gmail.com",
+          "phone": "+91 98765 00001",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#"
+        },
+        "stats": [
+          {
+            "label": "Academic GPA",
+            "value": "8.8 / 10",
+            "description": "CS & Engineering Honors"
+          },
+          {
+            "label": "Projects Built",
+            "value": "6+",
+            "description": "Web & Mobile Repositories"
+          },
+          {
+            "label": "Coding Practice",
+            "value": "400+",
+            "description": "DSA Problems Solved"
+          },
+          {
+            "label": "Certifications",
+            "value": "3",
+            "description": "Verified Skill Badges"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Core Programming & CS Fundamentals",
+            "icon": "Code2",
+            "items": [
+              {
+                "name": "Java / C++",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "Data Structures & Algorithms",
+                "level": 82,
+                "popular": true
+              },
+              {
+                "name": "Object-Oriented Programming (OOP)",
+                "level": 88
+              },
+              {
+                "name": "Database Management (SQL)",
+                "level": 80
+              }
+            ]
+          },
+          {
+            "category": "Web Development",
+            "icon": "Layout",
+            "items": [
+              {
+                "name": "HTML5 & CSS3",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "JavaScript (ES6+)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "React Fundamentals",
+                "level": 78,
+                "popular": true
+              },
+              {
+                "name": "Tailwind CSS",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "Developer Tools & Version Control",
+            "icon": "Terminal",
+            "items": [
+              {
+                "name": "Git & GitHub",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "VS Code & Eclipse",
+                "level": 90
+              },
+              {
+                "name": "Postman API Testing",
+                "level": 80
+              },
+              {
+                "name": "Linux Command Line",
+                "level": 75
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-fresher-1",
+            "title": "Smart Campus Student Portal",
+            "subtitle": "Web-Based Academic Management System",
+            "category": "Web Development",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+            "description": "Full-featured web app allowing students to view attendance, submit assignments, and check exam schedules.",
+            "longDescription": "Developed as a final-year capstone project. Implemented user authentication, role-based access for students and faculty, and automated grade calculations.",
+            "tech": [
+              "JavaScript",
+              "React",
+              "HTML/CSS",
+              "SQLite"
+            ],
+            "metrics": [
+              {
+                "label": "User Roles",
+                "value": "Student & Admin"
+              },
+              {
+                "label": "Response",
+                "value": "< 150ms"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Built responsive frontend interfaces with clean component hierarchy.",
+              "Created relational database schema with indexed queries."
+            ]
+          },
+          {
+            "id": "proj-fresher-2",
+            "title": "Task Flow Productivity App",
+            "subtitle": "Interactive Kanban Task Manager",
+            "category": "Frontend",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+            "description": "Interactive drag-and-drop task board for organizing daily study schedules and project milestones.",
+            "longDescription": "Built using modern React hooks and local storage persistence. Features task tagging, priority filters, and dark mode.",
+            "tech": [
+              "React",
+              "JavaScript",
+              "Tailwind CSS"
+            ],
+            "metrics": [
+              {
+                "label": "Features",
+                "value": "Drag & Drop"
+              },
+              {
+                "label": "Storage",
+                "value": "Local State"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Implemented custom React hooks for persistent state storage.",
+              "Optimized mobile touch interaction for drag-and-drop actions."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-fresher-1",
+            "company": "TechInnovate Solutions",
+            "role": "Software Developer Intern",
+            "period": "Summer 2025 (3 Months)",
+            "location": "Hyderabad, India",
+            "type": "Internship",
+            "description": "Assisted senior engineers in developing and testing internal web tools and REST endpoint integrations.",
+            "achievements": [
+              "Wrote unit tests achieving 85% code coverage for core utility modules.",
+              "Participated in daily agile standups and peer code reviews.",
+              "Fixed 15+ frontend UI responsiveness bugs across desktop and mobile screens."
+            ],
+            "skills": [
+              "JavaScript",
+              "HTML/CSS",
+              "Git",
+              "REST APIs"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-fresher-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
+            "institution": "State Technological University",
+            "period": "2022 - 2026",
+            "description": "Relevant Coursework: Data Structures, Analysis of Algorithms, Object-Oriented Programming, Database Systems, Web Technologies, Operating Systems."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-fresher-1",
+            "title": "Junior Web Development",
+            "description": "Building clean, responsive landing pages, personal websites, and HTML/CSS/JavaScript components.",
+            "icon": "Layout",
+            "pricing": "Entry-Level Rate",
+            "featured": true
+          },
+          {
+            "id": "srv-fresher-2",
+            "title": "Bug Fixing & UI Tweaks",
+            "description": "Diagnosing layout issues, fixing JavaScript bugs, and upgrading frontend responsiveness.",
+            "icon": "Code2",
+            "pricing": "Flexible",
+            "featured": true
+          }
+        ],
+        "blogs": [],
+        "testimonials": [
+          {
+            "id": "test-fresher-1",
+            "name": "Dr. R. K. Sharma",
+            "role": "Head of Computer Science Department",
+            "company": "State Technological University",
+            "content": "Alex showed exceptional dedication during the final-year capstone project. A quick learner with strong problem-solving skills and a great team attitude.",
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "settings": {
+          "siteTitle": "Tanesh — flutter",
+          "metaDescription": "Entry-level software engineer portfolio showcasing web development projects, CS fundamentals, and technical skills.",
+          "accentColor": "emerald",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Designed & Built by Alex Morgan"
+        },
+        "designConfig": {
+          "template": "designer",
+          "themeMode": "dark",
+          "colors": {
+            "primary": "#f59e0b",
+            "secondary": "#d97706",
+            "accent": "#b45309",
+            "background": "#18181b",
+            "surface": "#27272a",
+            "text": "#fafafa"
+          },
+          "fonts": {
+            "heading": "Poppins",
+            "body": "Open Sans"
+          },
+          "layout": {
+            "hero": "split",
+            "projects": "cards",
+            "navigation": "minimal",
+            "contact": "form"
+          },
+          "buttons": {
+            "style": "pill",
+            "size": "medium"
+          },
+          "animations": "standard",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "type": "image",
+            "category": "profile",
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "name": "Enterprise Microservices System",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 820,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "name": "React & Tailwind Dashboard",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 650,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "name": "Official Resume 2026",
+            "url": "#",
+            "type": "document",
+            "category": "resume",
+            "sizeKb": 340,
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "url": "#",
+            "uploadDate": "2026-09-15",
+            "sizeKb": 340,
+            "isActive": true
+          },
+          {
+            "id": "res-2",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "url": "#",
+            "uploadDate": "2025-10-20",
+            "sizeKb": 310,
+            "isActive": false
+          }
+        ],
+        "seo": {
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+        },
+        "branding": {
+          "faviconUrl": "/favicon.svg",
+          "logoUrl": "/icons.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        }
+      }
+    },
+    {
+      "id": "client-1790358551448",
+      "name": "shiva",
+      "email": "shiva123@gmail.com",
+      "role": "software developer",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "shiva",
+      "status": "PUBLISHED",
+      "createdDate": "2026-09-25T17:49:11.453Z",
+      "lastUpdated": "2026-09-25T17:50:52.056Z",
+      "lastPublishedAt": "2026-09-25T17:50:52.056Z",
+      "isDefault": false,
+      "portfolioData": {
+        "personalInfo": {
+          "name": "shiva",
+          "role": "software developer",
+          "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
+          "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
+          "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",
+          "location": "Telangana, India",
+          "availability": "Available for Senior Engineering Roles & Architecture Consulting",
+          "email": "shiva123@gmail.com",
+          "phone": "+91 98765 00002",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#"
+        },
+        "stats": [
+          {
+            "label": "Years Experience",
+            "value": "5+",
+            "description": "Enterprise Software Engineering"
+          },
+          {
+            "label": "API Throughput",
+            "value": "10k+ TPS",
+            "description": "High Concurrency Microservices"
+          },
+          {
+            "label": "Uptime SLA",
+            "value": "99.99%",
+            "description": "Production Cloud Deployments"
+          },
+          {
+            "label": "Team Lead",
+            "value": "6 Engineers",
+            "description": "Mentorship & Code Reviews"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Enterprise Backend Architecture",
+            "icon": "Server",
+            "items": [
+              {
+                "name": "Distributed Microservices",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "Spring Boot / Node.js",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "REST & GraphQL APIs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Event-Driven Messaging (Kafka/RabbitMQ)",
+                "level": 88
+              }
+            ]
+          },
+          {
+            "category": "Databases & High-Performance Caching",
+            "icon": "Database",
+            "items": [
+              {
+                "name": "PostgreSQL / MySQL Tuning",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Redis Distributed Cache",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Database Schema Normalization",
+                "level": 92
+              },
+              {
+                "name": "NoSQL (MongoDB / DynamoDB)",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "DevOps & Cloud Infrastructure",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Docker & Kubernetes",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "AWS (EC2, S3, RDS, ECS)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "CI/CD (GitHub Actions / Jenkins)",
+                "level": 90
+              },
+              {
+                "name": "System Monitoring (Prometheus/Grafana)",
+                "level": 82
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-exp-1",
+            "title": "Enterprise Cloud Payment Engine",
+            "subtitle": "High-Throughput Distributed Payment Gateway",
+            "category": "Backend & Microservices",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+            "description": "Distributed payment processing engine handling high-volume transaction workloads with multi-region failover.",
+            "longDescription": "Engineered event-driven microservices processing over $10M in transactions monthly. Implemented circuit breakers, distributed locking with Redis, and Kafka audit streams.",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "Kafka",
+              "PostgreSQL",
+              "Redis",
+              "Docker",
+              "AWS"
+            ],
+            "metrics": [
+              {
+                "label": "Transactions",
+                "value": "10k+ TPS"
+              },
+              {
+                "label": "Latency",
+                "value": "< 30ms"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Reduced database read load by 65% by implementing multi-level Redis caching.",
+              "Zero-downtime deployment pipelines using Kubernetes rolling updates."
+            ]
+          },
+          {
+            "id": "proj-exp-2",
+            "title": "Real-Time Telemetry Analytics Platform",
+            "subtitle": "Stream Processing & Monitoring System",
+            "category": "Cloud Architecture",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+            "description": "Real-time analytics dashboard monitoring server cluster metrics, request rates, and error traces.",
+            "longDescription": "Architected stream processing pipeline capturing logs across 50+ nodes and visualizing real-time metrics on Grafana dashboards.",
+            "tech": [
+              "Node.js",
+              "Kafka",
+              "Prometheus",
+              "Grafana",
+              "Docker"
+            ],
+            "metrics": [
+              {
+                "label": "Log Ingestion",
+                "value": "1M events/min"
+              },
+              {
+                "label": "Uptime",
+                "value": "99.99%"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Built custom alert triggers dispatching PagerDuty incidents automatically.",
+              "Decreased memory footprint per worker node by 40% through garbage collection tuning."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-exp-1",
+            "company": "Global Cloud Tech Inc.",
+            "role": "Senior Software Engineer / Tech Lead",
+            "period": "2023 - Present",
+            "location": "Hyderabad, India",
+            "type": "Full-time",
+            "description": "Leading the core backend platform squad responsible for cloud microservices and database infrastructure.",
+            "achievements": [
+              "Architected core API platform supporting 2M+ daily active users.",
+              "Mentored team of 6 software engineers and conducted quarterly technical design reviews.",
+              "Led migration from monolithic application to Docker containerized microservices."
+            ],
+            "skills": [
+              "Microservices",
+              "Spring Boot",
+              "PostgreSQL",
+              "Kafka",
+              "AWS"
+            ]
+          },
+          {
+            "id": "exp-exp-2",
+            "company": "Nexus Systems Solutions",
+            "role": "Software Engineer",
+            "period": "2021 - 2023",
+            "location": "Telangana, India",
+            "type": "Full-time",
+            "description": "Developed RESTful APIs, optimized SQL queries, and integrated third-party payment integrations.",
+            "achievements": [
+              "Optimized slow relational queries resulting in 50% faster API response times.",
+              "Implemented JWT authentication and RBAC authorization middleware."
+            ],
+            "skills": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "REST APIs"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-exp-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "institution": "National Institute of Technology",
+            "period": "2017 - 2021",
+            "description": "Specialized in Software Architecture, Distributed Computing, and Database Security."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-exp-1",
+            "title": "Backend Architecture & Microservices",
+            "description": "Designing scalable, high-throughput microservice architectures with fault tolerance.",
+            "icon": "Server",
+            "pricing": "Consulting / Contract",
+            "featured": true
+          },
+          {
+            "id": "srv-exp-2",
+            "title": "Database Performance Tuning",
+            "description": "Optimizing PostgreSQL/MySQL query execution plans, indexing strategies, and Redis caching.",
+            "icon": "Database",
+            "pricing": "Hourly / Project",
+            "featured": true
+          }
+        ],
+        "blogs": [],
+        "testimonials": [
+          {
+            "id": "test-exp-1",
+            "name": "Sarah Jenkins",
+            "role": "VP of Engineering",
+            "company": "Global Cloud Tech",
+            "content": "David is a stellar senior engineer. His architectural decisions and database optimizations saved our platform during peak traffic events.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "settings": {
+          "siteTitle": "shiva — software developer",
+          "metaDescription": "Senior software engineer portfolio highlighting enterprise microservices, cloud backend architecture, and technical leadership.",
+          "accentColor": "indigo",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Engineered by David Miller"
+        },
+        "designConfig": {
+          "template": "professional",
+          "themeMode": "dark",
+          "colors": {
+            "primary": "#06b6d4",
+            "secondary": "#0891b2",
+            "accent": "#0e7490",
+            "background": "#0f172a",
+            "surface": "#1e293b",
+            "text": "#f8fafc"
+          },
+          "fonts": {
+            "heading": "Montserrat",
+            "body": "Roboto"
+          },
+          "layout": {
+            "hero": "split",
+            "projects": "featured",
+            "navigation": "top",
+            "contact": "form"
+          },
+          "buttons": {
+            "style": "rounded",
+            "size": "medium"
+          },
+          "animations": "standard",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "type": "image",
+            "category": "profile",
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "name": "Enterprise Microservices System",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 820,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "name": "React & Tailwind Dashboard",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 650,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "name": "Official Resume 2026",
+            "url": "#",
+            "type": "document",
+            "category": "resume",
+            "sizeKb": 340,
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "url": "#",
+            "uploadDate": "2026-09-15",
+            "sizeKb": 340,
+            "isActive": true
+          },
+          {
+            "id": "res-2",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "url": "#",
+            "uploadDate": "2025-10-20",
+            "sizeKb": 310,
+            "isActive": false
+          }
+        ],
+        "seo": {
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+        },
+        "branding": {
+          "faviconUrl": "/favicon.svg",
+          "logoUrl": "/icons.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        }
+      }
     }
   ],
-  "activeClientId": "client-2",
+  "activeClientId": "client-1790358503010",
   "activities": [
     {
       "id": "act-1",
@@ -4438,28 +4376,28 @@
     }
   ],
   "designConfig": {
-    "template": "modern-dark",
+    "template": "designer",
     "themeMode": "dark",
     "colors": {
-      "primary": "#10b981",
-      "secondary": "#14b8a6",
-      "accent": "#059669",
-      "background": "#0a0d14",
-      "surface": "#121723",
-      "text": "#f1f5f9"
+      "primary": "#f59e0b",
+      "secondary": "#d97706",
+      "accent": "#b45309",
+      "background": "#18181b",
+      "surface": "#27272a",
+      "text": "#fafafa"
     },
     "fonts": {
-      "heading": "Inter",
-      "body": "Inter"
+      "heading": "Poppins",
+      "body": "Open Sans"
     },
     "layout": {
-      "hero": "centered",
-      "projects": "grid",
-      "navigation": "top",
+      "hero": "split",
+      "projects": "cards",
+      "navigation": "minimal",
       "contact": "form"
     },
     "buttons": {
-      "style": "rounded",
+      "style": "pill",
       "size": "medium"
     },
     "animations": "standard",
@@ -4477,38 +4415,38 @@
         "order": 2
       },
       {
-        "id": "skills",
-        "name": "Skills",
-        "visible": true,
-        "order": 3
-      },
-      {
         "id": "projects",
         "name": "Projects Showcase",
         "visible": true,
-        "order": 4
+        "order": 3
       },
       {
         "id": "services",
         "name": "Services",
         "visible": true,
+        "order": 4
+      },
+      {
+        "id": "skills",
+        "name": "Skills",
+        "visible": true,
         "order": 5
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "visible": true,
+        "order": 6
       },
       {
         "id": "experience",
         "name": "Work Experience",
         "visible": true,
-        "order": 6
+        "order": 7
       },
       {
         "id": "blog",
         "name": "Blog / Articles",
-        "visible": true,
-        "order": 7
-      },
-      {
-        "id": "testimonials",
-        "name": "Testimonials",
         "visible": true,
         "order": 8
       },
