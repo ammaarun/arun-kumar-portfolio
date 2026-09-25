@@ -1,20 +1,30 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { api } from '../services/api';
 import { portfolioData as fallbackData } from '../data/portfolioData';
 
 const DataContext = createContext();
 
+const useSafeLocation = () => {
+  try {
+    return useLocation();
+  } catch (e) {
+    return { pathname: typeof window !== 'undefined' ? window.location.pathname : '' };
+  }
+};
+
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState(fallbackData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useSafeLocation();
 
   const fetchPortfolioData = async (overrideSlug = null) => {
     try {
       setLoading(true);
       setError(null);
 
-      const pathname = typeof window !== 'undefined' && window.location ? window.location.pathname : '';
+      const pathname = location?.pathname || (typeof window !== 'undefined' && window.location ? window.location.pathname : '');
       let slug = overrideSlug;
       if (!slug && pathname) {
         const portfolioMatch = pathname.match(/^\/portfolio\/([^/]+)/);
@@ -67,7 +77,7 @@ export const DataProvider = ({ children }) => {
       window.addEventListener('popstate', handleLocationChange);
       return () => window.removeEventListener('popstate', handleLocationChange);
     }
-  }, []);
+  }, [location?.pathname]);
 
   return (
     <DataContext.Provider value={{ data, loading, error, refreshData: fetchPortfolioData, refetchData: fetchPortfolioData, setData }}>

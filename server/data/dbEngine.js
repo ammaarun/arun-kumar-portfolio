@@ -323,11 +323,21 @@ const ensureMultiClientStructure = (db) => {
     db.activities = [ ...defaultActivities ];
   }
 
-  // Ensure every client has a designConfig, mediaLibrary, resumes, seo, and branding
+  // Ensure every client has a unique slug, designConfig, mediaLibrary, resumes, seo, and branding
+  const usedSlugs = new Set();
   db.clients.forEach(c => {
-    if (!c.slug) {
-      c.slug = (c.name || 'client').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    let baseSlug = (c.slug || c.name || 'client').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    if (!baseSlug) baseSlug = 'client';
+
+    let uniqueSlug = baseSlug;
+    let counter = 1;
+    while (usedSlugs.has(uniqueSlug)) {
+      uniqueSlug = `${baseSlug}-${counter}`;
+      counter++;
     }
+    c.slug = uniqueSlug;
+    usedSlugs.add(uniqueSlug);
+
     if (!c.status) {
       c.status = 'PUBLISHED';
     }

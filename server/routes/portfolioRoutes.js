@@ -12,11 +12,21 @@ router.get('/', (req, res) => {
   res.json({ success: true, data: publicData });
 });
 
-// Get public portfolio by slug
+// Get public portfolio by slug or client ID
 router.get('/slug/:slug', (req, res) => {
   const { slug } = req.params;
   const db = dbEngine.get();
-  const client = (db.clients || []).find(c => c.slug === slug);
+
+  let client = (db.clients || []).find(c => c.id === slug || c.slug === slug);
+  if (!client) {
+    const candidates = (db.clients || []).filter(c => c.slug === slug || c.id === slug);
+    if (candidates.length > 0) {
+      client = candidates.find(c => c.id === db.activeClientId) ||
+               candidates.find(c => c.status === 'PUBLISHED') ||
+               candidates[0];
+    }
+  }
+
   if (!client) {
     return res.status(404).json({ success: false, message: `Portfolio with slug '${slug}' not found.` });
   }

@@ -67,6 +67,19 @@ router.get('/clients/:id', (req, res) => {
   res.json({ success: true, data: client });
 });
 
+function generateUniqueSlug(requestedSlug, name, existingClients, currentClientId = null) {
+  let base = (requestedSlug || name || 'client').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  if (!base) base = 'client';
+
+  let candidate = base;
+  let counter = 1;
+  while ((existingClients || []).some(c => c.slug === candidate && c.id !== currentClientId)) {
+    candidate = `${base}-${counter}`;
+    counter++;
+  }
+  return candidate;
+}
+
 router.post('/clients', (req, res) => {
   const { name, email, role, profileImage, slug, presetId } = req.body;
   if (!name || !email) {
@@ -75,7 +88,7 @@ router.post('/clients', (req, res) => {
 
   const db = dbEngine.get();
   const newClientId = `client-${Date.now()}`;
-  const clientSlug = (slug || name.toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-|-$/g, '');
+  const clientSlug = generateUniqueSlug(slug, name, db.clients);
 
   let starterPortfolio = {
     personalInfo: {
@@ -170,7 +183,7 @@ router.put('/clients/:id', (req, res) => {
   if (email) client.email = email;
   if (role) client.role = role;
   if (profileImage) client.profileImage = profileImage;
-  if (slug) client.slug = slug;
+  client.slug = generateUniqueSlug(slug || client.slug, name || client.name, db.clients, client.id);
   client.lastUpdated = new Date().toISOString();
 
   // Also update portfolioData personalInfo if present
