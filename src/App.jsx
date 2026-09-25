@@ -62,6 +62,19 @@ function MainPublicPortfolio() {
     return () => window.removeEventListener('message', handleMessage);
   }, []);
 
+  const designConfig = overrideDesignConfig || data?.designConfig || {};
+  const themeStyles = generateThemeStyles(designConfig);
+  const isLightMode = designConfig.themeMode === 'light';
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isLightMode) {
+      root.classList.remove('dark');
+    } else {
+      root.classList.add('dark');
+    }
+  }, [isLightMode]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-slate-400 font-mono text-sm space-y-3">
@@ -112,19 +125,6 @@ function MainPublicPortfolio() {
       </div>
     );
   }
-
-  const designConfig = overrideDesignConfig || data?.designConfig || {};
-  const themeStyles = generateThemeStyles(designConfig);
-  const isLightMode = designConfig.themeMode === 'light';
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isLightMode) {
-      root.classList.remove('dark');
-    } else {
-      root.classList.add('dark');
-    }
-  }, [isLightMode]);
 
   const sectionComponents = {
     hero: (
