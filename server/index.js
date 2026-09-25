@@ -29,13 +29,15 @@ app.get('/api/health', (req, res) => {
 });
 
 // Serve static frontend assets in production
-const distPath = path.join(__dirname, '../dist');
+const distPath = path.resolve(__dirname, '../dist');
+const indexHtml = path.resolve(distPath, 'index.html');
+
 app.use(express.static(distPath));
 
 // SPA catch-all route for client-side routing
-app.get('{*path}', (req, res, next) => {
+app.use((req, res, next) => {
   if (req.path.startsWith('/api')) return next();
-  res.sendFile(path.join(distPath, 'index.html'), (err) => {
+  res.sendFile(indexHtml, (err) => {
     if (err) next();
   });
 });

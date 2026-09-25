@@ -6,19 +6,8 @@
   "badge": "Freelance Pro",
   "accentColor": "amber",
   "personalInfo": {
-    "name": "Taylor Swiftly",
-    "role": "Lead Java & Full Stack Developer",
-    "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-    "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-    "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-    "location": "Telangana, India",
-    "availability": "Available for New Freelance Projects & Monthly Retainers",
-    "email": "taylor.consulting@example.com",
-    "phone": "+91 98765 00004",
-    "github": "https://github.com",
-    "linkedin": "https://linkedin.com",
-    "twitter": "https://twitter.com",
-    "resumeUrl": "#"
+    "name": "Priya Reddy",
+    "role": "Frontend Architect"
   },
   "stats": [
     {
@@ -118,19 +107,6 @@
     }
   ],
   "projects": [
-    {
-      "id": "proj-1790321666913",
-      "title": "Automated Test Project",
-      "subtitle": "Vitest Microservice",
-      "category": "Backend & Microservices",
-      "description": "Project created during automated suite execution",
-      "tech": [
-        "Java",
-        "Spring Boot",
-        "JUnit"
-      ],
-      "featured": true
-    },
     {
       "id": "proj-free-1",
       "title": "Client Portal & Asset Dashboard",
@@ -276,6 +252,15 @@
   ],
   "blogs": [],
   "messages": [
+    {
+      "id": "msg-1790325390296",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-25T08:36:30.296Z",
+      "read": false
+    },
     {
       "id": "msg-1790277954274",
       "name": "Test Client",
@@ -566,7 +551,7 @@
       "slug": "arun-kumar",
       "status": "PUBLISHED",
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-09-25T07:34:18.324Z",
+      "lastUpdated": "2026-09-25T08:36:33.098Z",
       "lastPublishedAt": "2026-09-23T18:45:53.211Z",
       "isDefault": true,
       "portfolioData": {
@@ -583,7 +568,7 @@
           "github": "https://github.com",
           "linkedin": "https://linkedin.com",
           "twitter": "https://twitter.com",
-          "resumeUrl": "#"
+          "resumeUrl": "https://example.com/principal-resume.pdf"
         },
         "stats": [
           {
@@ -842,31 +827,31 @@
           "profileType": "Freelancer"
         },
         "designConfig": {
-          "template": "minimal-light",
-          "themeMode": "light",
+          "template": "modern-dark",
+          "themeMode": "dark",
           "colors": {
             "primary": "#2563eb",
-            "secondary": "#3b82f6",
-            "accent": "#1d4ed8",
-            "background": "#f8fafc",
-            "surface": "#ffffff",
-            "text": "#0f172a"
+            "secondary": "#14b8a6",
+            "accent": "#059669",
+            "background": "#0a0d14",
+            "surface": "#121723",
+            "text": "#f1f5f9"
           },
           "fonts": {
-            "heading": "Space Grotesk",
+            "heading": "Inter",
             "body": "Inter"
           },
           "layout": {
-            "hero": "left",
-            "projects": "cards",
+            "hero": "centered",
+            "projects": "grid",
             "navigation": "top",
-            "contact": "cards"
+            "contact": "form"
           },
           "buttons": {
-            "style": "square",
+            "style": "rounded",
             "size": "medium"
           },
-          "animations": "subtle",
+          "animations": "standard",
           "sections": [
             {
               "id": "hero",
@@ -881,38 +866,38 @@
               "order": 2
             },
             {
-              "id": "projects",
-              "name": "Projects Showcase",
+              "id": "skills",
+              "name": "Skills",
               "visible": true,
               "order": 3
             },
             {
-              "id": "skills",
-              "name": "Skills",
+              "id": "projects",
+              "name": "Projects Showcase",
               "visible": true,
               "order": 4
-            },
-            {
-              "id": "experience",
-              "name": "Work Experience",
-              "visible": true,
-              "order": 5
             },
             {
               "id": "services",
               "name": "Services",
               "visible": true,
-              "order": 6
+              "order": 5
             },
             {
-              "id": "testimonials",
-              "name": "Testimonials",
+              "id": "experience",
+              "name": "Work Experience",
               "visible": true,
-              "order": 7
+              "order": 6
             },
             {
               "id": "blog",
               "name": "Blog / Articles",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
               "visible": true,
               "order": 8
             },
@@ -968,12 +953,20 @@
         ],
         "resumes": [
           {
+            "id": "res-test-1790325392011",
+            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
+            "url": "https://example.com/principal-resume.pdf",
+            "uploadDate": "2026-09-24",
+            "sizeKb": 410,
+            "isActive": true
+          },
+          {
             "id": "res-1",
             "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "url": "#",
             "uploadDate": "2026-09-15",
             "sizeKb": 340,
-            "isActive": true
+            "isActive": false
           },
           {
             "id": "res-2",
@@ -985,15 +978,15 @@
           }
         ],
         "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
+          "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
+          "keywords": "Java, Cloud, Microservices, React, Architect",
           "canonicalUrl": "https://portfolio.example.com/arun-kumar",
           "author": "Arun Kumar",
           "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+          "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
+          "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
+          "socialShareImage": "https://images.unsplash.com/photo-og-cover"
         },
         "branding": {
           "faviconUrl": "/favicon.svg",
@@ -1918,24 +1911,13 @@
     },
     {
       "id": "client-2",
-      "name": "Taylor Swiftly",
+      "name": "Priya Reddy",
       "email": "jane@example.com",
       "role": "Freelance Web Developer & Software Consultant",
       "portfolioData": {
         "personalInfo": {
-          "name": "Taylor Swiftly",
-          "role": "Lead Java & Full Stack Developer",
-          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-          "location": "Telangana, India",
-          "availability": "Available for New Freelance Projects & Monthly Retainers",
-          "email": "taylor.consulting@example.com",
-          "phone": "+91 98765 00004",
-          "github": "https://github.com",
-          "linkedin": "https://linkedin.com",
-          "twitter": "https://twitter.com",
-          "resumeUrl": "#"
+          "name": "Priya Reddy",
+          "role": "Frontend Architect"
         },
         "stats": [
           {
@@ -2035,19 +2017,6 @@
           }
         ],
         "projects": [
-          {
-            "id": "proj-1790321666913",
-            "title": "Automated Test Project",
-            "subtitle": "Vitest Microservice",
-            "category": "Backend & Microservices",
-            "description": "Project created during automated suite execution",
-            "tech": [
-              "Java",
-              "Spring Boot",
-              "JUnit"
-            ],
-            "featured": true
-          },
           {
             "id": "proj-free-1",
             "title": "Client Portal & Asset Dashboard",
@@ -2207,31 +2176,31 @@
           "profileType": "Freelancer"
         },
         "designConfig": {
-          "template": "modern-dark",
-          "themeMode": "dark",
+          "template": "minimal-light",
+          "themeMode": "light",
           "colors": {
-            "primary": "#10b981",
-            "secondary": "#14b8a6",
-            "accent": "#059669",
-            "background": "#0a0d14",
-            "surface": "#121723",
-            "text": "#f1f5f9"
+            "primary": "#ec4899",
+            "secondary": "#3b82f6",
+            "accent": "#1d4ed8",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "text": "#0f172a"
           },
           "fonts": {
-            "heading": "Inter",
+            "heading": "Space Grotesk",
             "body": "Inter"
           },
           "layout": {
-            "hero": "centered",
-            "projects": "grid",
+            "hero": "left",
+            "projects": "cards",
             "navigation": "top",
-            "contact": "form"
+            "contact": "cards"
           },
           "buttons": {
-            "style": "rounded",
+            "style": "square",
             "size": "medium"
           },
-          "animations": "standard",
+          "animations": "subtle",
           "sections": [
             {
               "id": "hero",
@@ -2246,38 +2215,38 @@
               "order": 2
             },
             {
-              "id": "skills",
-              "name": "Skills",
+              "id": "projects",
+              "name": "Projects Showcase",
               "visible": true,
               "order": 3
             },
             {
-              "id": "projects",
-              "name": "Projects Showcase",
+              "id": "skills",
+              "name": "Skills",
               "visible": true,
               "order": 4
-            },
-            {
-              "id": "services",
-              "name": "Services",
-              "visible": true,
-              "order": 5
             },
             {
               "id": "experience",
               "name": "Work Experience",
               "visible": true,
-              "order": 6
+              "order": 5
             },
             {
-              "id": "blog",
-              "name": "Blog / Articles",
+              "id": "services",
+              "name": "Services",
               "visible": true,
-              "order": 7
+              "order": 6
             },
             {
               "id": "testimonials",
               "name": "Testimonials",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
               "visible": true,
               "order": 8
             },
@@ -2366,7 +2335,7 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       },
-      "lastUpdated": "2026-09-25T07:34:26.913Z",
+      "lastUpdated": "2026-09-25T08:36:33.099Z",
       "slug": "priya-reddy",
       "status": "PUBLISHED"
     },
@@ -2826,10 +2795,211 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       }
+    },
+    {
+      "id": "client-1790325231175",
+      "name": "Chintu",
+      "email": "chintu@gmail.com",
+      "role": "Web developer",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "chintu",
+      "status": "PUBLISHED",
+      "createdDate": "2026-09-25T08:33:51.176Z",
+      "lastUpdated": "2026-09-25T08:33:51.177Z",
+      "lastPublishedAt": "2026-09-25T08:33:51.177Z",
+      "portfolioData": {
+        "personalInfo": {
+          "name": "Chintu",
+          "email": "chintu@gmail.com",
+          "role": "Web developer",
+          "tagline": "Professional Developer Portfolio of Chintu",
+          "shortBio": "Web developer passionate about building web products.",
+          "bio": "Chintu is a dedicated Web developer.",
+          "location": "Telangana, India",
+          "availability": "Available for New Projects",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "resumeUrl": "#"
+        },
+        "skills": [],
+        "projects": [],
+        "experience": [],
+        "education": [],
+        "services": [],
+        "blogs": [],
+        "testimonials": [],
+        "settings": {},
+        "designConfig": {
+          "template": "modern-dark",
+          "themeMode": "dark",
+          "colors": {
+            "primary": "#10b981",
+            "secondary": "#14b8a6",
+            "accent": "#059669",
+            "background": "#0a0d14",
+            "surface": "#121723",
+            "text": "#f1f5f9"
+          },
+          "fonts": {
+            "heading": "Inter",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "centered",
+            "projects": "grid",
+            "navigation": "top",
+            "contact": "form"
+          },
+          "buttons": {
+            "style": "rounded",
+            "size": "medium"
+          },
+          "animations": "standard",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "type": "image",
+            "category": "profile",
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "name": "Enterprise Microservices System",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 820,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "name": "React & Tailwind Dashboard",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 650,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "name": "Official Resume 2026",
+            "url": "#",
+            "type": "document",
+            "category": "resume",
+            "sizeKb": 340,
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "url": "#",
+            "uploadDate": "2026-09-15",
+            "sizeKb": 340,
+            "isActive": true
+          },
+          {
+            "id": "res-2",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "url": "#",
+            "uploadDate": "2025-10-20",
+            "sizeKb": 310,
+            "isActive": false
+          }
+        ],
+        "seo": {
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+        },
+        "branding": {
+          "faviconUrl": "/favicon.svg",
+          "logoUrl": "/icons.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        }
+      }
     }
   ],
   "activeClientId": "client-2",
   "activities": [
+    {
+      "id": "act-1790325392024",
+      "type": "publish",
+      "description": "Portfolio status updated to PUBLISHED",
+      "timestamp": "2026-09-25T08:36:32.024Z",
+      "clientName": "Arun Kumar"
+    },
     {
       "id": "act-1",
       "type": "publish",
@@ -2853,31 +3023,31 @@
     }
   ],
   "designConfig": {
-    "template": "modern-dark",
-    "themeMode": "dark",
+    "template": "minimal-light",
+    "themeMode": "light",
     "colors": {
-      "primary": "#10b981",
-      "secondary": "#14b8a6",
-      "accent": "#059669",
-      "background": "#0a0d14",
-      "surface": "#121723",
-      "text": "#f1f5f9"
+      "primary": "#ec4899",
+      "secondary": "#3b82f6",
+      "accent": "#1d4ed8",
+      "background": "#f8fafc",
+      "surface": "#ffffff",
+      "text": "#0f172a"
     },
     "fonts": {
-      "heading": "Inter",
+      "heading": "Space Grotesk",
       "body": "Inter"
     },
     "layout": {
-      "hero": "centered",
-      "projects": "grid",
+      "hero": "left",
+      "projects": "cards",
       "navigation": "top",
-      "contact": "form"
+      "contact": "cards"
     },
     "buttons": {
-      "style": "rounded",
+      "style": "square",
       "size": "medium"
     },
-    "animations": "standard",
+    "animations": "subtle",
     "sections": [
       {
         "id": "hero",
@@ -2892,38 +3062,38 @@
         "order": 2
       },
       {
-        "id": "skills",
-        "name": "Skills",
+        "id": "projects",
+        "name": "Projects Showcase",
         "visible": true,
         "order": 3
       },
       {
-        "id": "projects",
-        "name": "Projects Showcase",
+        "id": "skills",
+        "name": "Skills",
         "visible": true,
         "order": 4
-      },
-      {
-        "id": "services",
-        "name": "Services",
-        "visible": true,
-        "order": 5
       },
       {
         "id": "experience",
         "name": "Work Experience",
         "visible": true,
-        "order": 6
+        "order": 5
       },
       {
-        "id": "blog",
-        "name": "Blog / Articles",
+        "id": "services",
+        "name": "Services",
         "visible": true,
-        "order": 7
+        "order": 6
       },
       {
         "id": "testimonials",
         "name": "Testimonials",
+        "visible": true,
+        "order": 7
+      },
+      {
+        "id": "blog",
+        "name": "Blog / Articles",
         "visible": true,
         "order": 8
       },
