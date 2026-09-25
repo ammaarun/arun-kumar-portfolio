@@ -89,7 +89,7 @@ export const MultiDevicePreviewModal = ({ client, isOpen, onClose }) => {
           {/* Right Action Icons */}
           <div className="flex items-center space-x-3">
             <a
-              href="/"
+              href={`/portfolio/${client.slug || ''}?preview=true`}
               target="_blank"
               rel="noreferrer"
               className="hidden md:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 hover:text-emerald-400 transition-colors"
@@ -111,7 +111,7 @@ export const MultiDevicePreviewModal = ({ client, isOpen, onClose }) => {
         <div className="flex-1 p-4 bg-[#0a0d14] flex items-center justify-center overflow-auto">
           <div className={`transition-all duration-300 bg-white dark:bg-[#0a0d14] overflow-hidden ${getViewportStyles()}`}>
             <iframe
-              src="/"
+              src={`/portfolio/${client.slug || ''}?preview=true`}
               title={`Preview ${client.name}`}
               className="w-full h-full border-none"
             />

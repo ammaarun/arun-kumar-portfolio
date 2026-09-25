@@ -15,8 +15,19 @@ export const DataProvider = ({ children }) => {
       setError(null);
 
       const pathname = typeof window !== 'undefined' && window.location ? window.location.pathname : '';
-      const match = pathname.match(/^\/portfolio\/([^/]+)/);
-      const slug = overrideSlug || (match ? match[1] : null);
+      let slug = overrideSlug;
+      if (!slug && pathname) {
+        const portfolioMatch = pathname.match(/^\/portfolio\/([^/]+)/);
+        if (portfolioMatch) {
+          slug = portfolioMatch[1];
+        } else {
+          const directMatch = pathname.match(/^\/([^/]+)/);
+          const reservedPaths = ['admin', 'blog', 'api', 'assets', 'favicon.svg', 'index.html', ''];
+          if (directMatch && !reservedPaths.includes(directMatch[1].toLowerCase())) {
+            slug = directMatch[1];
+          }
+        }
+      }
 
       let res;
       if (slug) {

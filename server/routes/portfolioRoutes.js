@@ -22,11 +22,19 @@ router.get('/slug/:slug', (req, res) => {
   }
 
   const pData = client.portfolioData || {};
+  const designConfig = pData.designConfig || defaultDesignConfig;
+  const sections = (designConfig.sections && designConfig.sections.length > 0)
+    ? designConfig.sections
+    : defaultDesignConfig.sections;
+
   res.json({
     success: true,
     data: {
       ...pData,
-      designConfig: pData.designConfig || defaultDesignConfig,
+      designConfig: {
+        ...designConfig,
+        sections
+      },
       status: client.status || 'PUBLISHED',
       slug: client.slug,
       clientName: client.name,

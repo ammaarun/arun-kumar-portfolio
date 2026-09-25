@@ -91,7 +91,9 @@ function MainPublicPortfolio() {
     );
   }
 
-  if (data.status === 'UNPUBLISHED' || data.status === 'PRIVATE') {
+  const isPreview = typeof window !== 'undefined' && (window.location.search.includes('preview=true') || window.self !== window.top);
+
+  if (!isPreview && (data.status === 'UNPUBLISHED' || data.status === 'PRIVATE')) {
     return (
       <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-center">
         <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4">
@@ -224,6 +226,7 @@ export default function App() {
               {/* Public Portfolio Routes */}
               <Route path="/" element={<MainPublicPortfolio />} />
               <Route path="/portfolio/:slug" element={<MainPublicPortfolio />} />
+              <Route path="/:slug" element={<MainPublicPortfolio />} />
               <Route path="/blog/:slug" element={<BlogPostView />} />
 
               {/* Admin Routes */}
