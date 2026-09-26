@@ -19,16 +19,41 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'About', href: '#about', icon: User },
-    { label: 'Skills', href: '#skills', icon: Code2 },
-    { label: 'Projects', href: '#projects', icon: Terminal },
-    { label: 'Services', href: '#services', icon: Sparkles },
-    { label: 'Experience', href: '#experience', icon: Briefcase },
-    { label: 'Blog', href: '#blog', icon: BookOpen },
-    { label: 'Testimonials', href: '#testimonials', icon: MessageSquare },
-    { label: 'Contact', href: '#contact', icon: Mail },
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    if (targetId) {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (typeof window !== 'undefined' && window.history) {
+          window.history.pushState(null, '', href);
+        }
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const allNavLinks = [
+    { id: 'about', label: 'About', href: '#about', icon: User },
+    { id: 'skills', label: 'Skills', href: '#skills', icon: Code2 },
+    { id: 'projects', label: 'Projects', href: '#projects', icon: Terminal },
+    { id: 'services', label: 'Services', href: '#services', icon: Sparkles },
+    { id: 'experience', label: 'Experience', href: '#experience', icon: Briefcase },
+    { id: 'blog', label: 'Blog', href: '#blog', icon: BookOpen },
+    { id: 'testimonials', label: 'Testimonials', href: '#testimonials', icon: MessageSquare },
+    { id: 'contact', label: 'Contact', href: '#contact', icon: Mail },
   ];
+
+  const sectionsConfig = data?.designConfig?.sections;
+  const navLinks = Array.isArray(sectionsConfig) && sectionsConfig.length > 0
+    ? allNavLinks.filter(link => {
+        const sec = sectionsConfig.find(s => s.id === link.id);
+        return !sec || sec.visible !== false;
+      })
+    : allNavLinks;
 
   return (
     <header 
@@ -40,7 +65,11 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#" className="flex items-center space-x-2 group focus:outline-none">
+        <a 
+          href="#" 
+          onClick={(e) => handleNavClick(e, '#')}
+          className="flex items-center space-x-2 group focus:outline-none"
+        >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white font-mono font-bold text-base shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
             AK
           </div>
@@ -60,7 +89,8 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry }) => {
             <a
               key={link.label}
               href={link.href}
-              className="px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-white dark:hover:bg-slate-800 rounded-full transition-all"
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-white dark:hover:bg-slate-800 rounded-full transition-all cursor-pointer"
             >
               {link.label}
             </a>
@@ -129,8 +159,8 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry }) => {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors cursor-pointer"
               >
                 <Icon className="w-4 h-4 text-emerald-500" />
                 <span>{link.label}</span>
