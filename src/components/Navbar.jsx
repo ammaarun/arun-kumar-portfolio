@@ -3,10 +3,13 @@ import { Sun, Moon, Menu, X, Command, FileText, Code2, Terminal, User, Briefcase
 import { useTheme } from '../context/ThemeContext';
 import { useData } from '../context/DataContext';
 
-export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry }) => {
-  const { theme, toggleTheme } = useTheme();
+export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme, onToggleTheme }) => {
+  const { theme, toggleTheme, toggleVisitorTheme } = useTheme();
   const { data } = useData();
   const personalInfo = data?.personalInfo || {};
+
+  const currentTheme = activeTheme || theme;
+  const handleToggle = onToggleTheme || (() => toggleVisitorTheme(currentTheme));
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -129,11 +132,11 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry }) => {
           </button>
 
           <button
-            onClick={toggleTheme}
+            onClick={handleToggle}
             className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-800 transition-colors"
             aria-label="Toggle dark/light theme"
           >
-            {theme === 'dark' ? (
+            {currentTheme === 'dark' ? (
               <Sun className="w-4 h-4 text-amber-400" />
             ) : (
               <Moon className="w-4 h-4 text-slate-700" />

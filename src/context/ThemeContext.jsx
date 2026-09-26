@@ -1,35 +1,48 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('ak_portfolio_theme');
-    if (savedTheme) {
-      return savedTheme;
+  const [adminTheme, setAdminTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('ak_portfolio_theme') || 'dark';
     }
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark';
-    }
-    return 'dark'; // Default to sleek dark mode
+    return 'dark';
   });
 
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('ak_portfolio_theme', theme);
-  }, [theme]);
+  const [visitorOverride, setVisitorOverride] = useState(null);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  const toggleAdminTheme = () => {
+    setAdminTheme(prev => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('ak_portfolio_theme', next);
+      }
+      return next;
+    });
+  };
+
+  const toggleVisitorTheme = (currentActiveTheme = 'dark') => {
+    setVisitorOverride(prev => {
+      if (prev === 'light') return 'dark';
+      if (prev === 'dark') return 'light';
+      return currentActiveTheme === 'light' ? 'dark' : 'light';
+    });
+  };
+
+  const resetVisitorOverride = () => {
+    setVisitorOverride(null);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ 
+      theme: adminTheme, 
+      toggleTheme: toggleAdminTheme, 
+      setTheme: setAdminTheme,
+      visitorOverride,
+      toggleVisitorTheme,
+      resetVisitorOverride
+    }}>
       {children}
     </ThemeContext.Provider>
   );

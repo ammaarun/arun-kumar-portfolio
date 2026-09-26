@@ -6,8 +6,8 @@
   "badge": "Freelance Pro",
   "accentColor": "amber",
   "personalInfo": {
-    "name": "Arun Kumar",
-    "role": "Lead Java & Full Stack Developer"
+    "name": "Priya Reddy",
+    "role": "Frontend Architect"
   },
   "stats": [
     {
@@ -127,6 +127,15 @@
   ],
   "blogs": [],
   "messages": [
+    {
+      "id": "msg-1790416530382",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-09-26T09:55:30.382Z",
+      "read": false
+    },
     {
       "id": "msg-1790413842724",
       "name": "Test Client",
@@ -471,7 +480,7 @@
       "slug": "jane-doe",
       "status": "PUBLISHED",
       "createdDate": "2026-09-23T18:46:29.053Z",
-      "lastUpdated": "2026-09-26T09:12:02.611Z",
+      "lastUpdated": "2026-09-26T09:55:31.366Z",
       "lastPublishedAt": "2026-09-23T18:46:29.115Z",
       "isDefault": false,
       "portfolioData": {
@@ -488,7 +497,7 @@
           "github": "https://github.com",
           "linkedin": "https://linkedin.com",
           "twitter": "https://twitter.com",
-          "resumeUrl": "#"
+          "resumeUrl": "https://example.com/principal-resume.pdf"
         },
         "stats": [
           {
@@ -873,12 +882,20 @@
         ],
         "resumes": [
           {
+            "id": "res-test-1790416531354",
+            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
+            "url": "https://example.com/principal-resume.pdf",
+            "uploadDate": "2026-09-24",
+            "sizeKb": 410,
+            "isActive": true
+          },
+          {
             "id": "res-1",
             "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "url": "#",
             "uploadDate": "2026-09-15",
             "sizeKb": 340,
-            "isActive": true
+            "isActive": false
           },
           {
             "id": "res-2",
@@ -890,15 +907,15 @@
           }
         ],
         "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
+          "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
+          "keywords": "Java, Cloud, Microservices, React, Architect",
           "canonicalUrl": "https://portfolio.example.com/arun-kumar",
           "author": "Arun Kumar",
           "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+          "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
+          "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
+          "socialShareImage": "https://images.unsplash.com/photo-og-cover"
         },
         "branding": {
           "faviconUrl": "/favicon.svg",
@@ -4389,7 +4406,7 @@
         },
         "designConfig": {
           "template": "minimal-light",
-          "themeMode": "light",
+          "themeMode": "system",
           "colors": {
             "primary": "#ec4899",
             "secondary": "#3b82f6",
@@ -4549,7 +4566,7 @@
       },
       "slug": "priya-reddy",
       "status": "PUBLISHED",
-      "lastUpdated": "2026-09-26T09:12:03.139Z"
+      "lastUpdated": "2026-09-26T10:12:29.148Z"
     },
     {
       "id": "client-1",
@@ -4852,11 +4869,18 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       },
-      "lastUpdated": "2026-09-26T09:15:06.969Z"
+      "lastUpdated": "2026-09-26T09:55:33.885Z"
     }
   ],
-  "activeClientId": "client-1",
+  "activeClientId": "client-2",
   "activities": [
+    {
+      "id": "act-1790416531381",
+      "type": "publish",
+      "description": "Portfolio status updated to PUBLISHED",
+      "timestamp": "2026-09-26T09:55:31.381Z",
+      "clientName": "Arun Kumar"
+    },
     {
       "id": "act-1790413911535",
       "type": "publish",
@@ -4894,31 +4918,31 @@
     }
   ],
   "designConfig": {
-    "template": "modern-dark",
-    "themeMode": "dark",
+    "template": "minimal-light",
+    "themeMode": "system",
     "colors": {
-      "primary": "#2563eb",
-      "secondary": "#14b8a6",
-      "accent": "#059669",
-      "background": "#0a0d14",
-      "surface": "#121723",
-      "text": "#f1f5f9"
+      "primary": "#ec4899",
+      "secondary": "#3b82f6",
+      "accent": "#1d4ed8",
+      "background": "#f8fafc",
+      "surface": "#ffffff",
+      "text": "#0f172a"
     },
     "fonts": {
-      "heading": "Inter",
+      "heading": "Space Grotesk",
       "body": "Inter"
     },
     "layout": {
-      "hero": "centered",
-      "projects": "grid",
+      "hero": "left",
+      "projects": "cards",
       "navigation": "top",
-      "contact": "form"
+      "contact": "cards"
     },
     "buttons": {
-      "style": "rounded",
+      "style": "square",
       "size": "medium"
     },
-    "animations": "standard",
+    "animations": "subtle",
     "sections": [
       {
         "id": "hero",
@@ -4933,38 +4957,38 @@
         "order": 2
       },
       {
-        "id": "skills",
-        "name": "Skills",
+        "id": "projects",
+        "name": "Projects Showcase",
         "visible": true,
         "order": 3
       },
       {
-        "id": "projects",
-        "name": "Projects Showcase",
+        "id": "skills",
+        "name": "Skills",
         "visible": true,
         "order": 4
-      },
-      {
-        "id": "services",
-        "name": "Services",
-        "visible": true,
-        "order": 5
       },
       {
         "id": "experience",
         "name": "Work Experience",
         "visible": true,
-        "order": 6
+        "order": 5
       },
       {
-        "id": "blog",
-        "name": "Blog / Articles",
+        "id": "services",
+        "name": "Services",
         "visible": true,
-        "order": 7
+        "order": 6
       },
       {
         "id": "testimonials",
         "name": "Testimonials",
+        "visible": true,
+        "order": 7
+      },
+      {
+        "id": "blog",
+        "name": "Blog / Articles",
         "visible": true,
         "order": 8
       },

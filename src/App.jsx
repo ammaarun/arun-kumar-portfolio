@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider, useData } from './context/DataContext';
 
@@ -29,6 +29,7 @@ import { generateThemeStyles } from './utils/themeUtils';
 
 function MainPublicPortfolio() {
   const { data, loading, error } = useData();
+  const { visitorOverride, toggleVisitorTheme } = useTheme();
   const [commandOpen, setCommandOpen] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -64,8 +65,26 @@ function MainPublicPortfolio() {
 
   const designConfig = overrideDesignConfig || data?.designConfig || {};
   const themeStyles = generateThemeStyles(designConfig);
-  const isLightMode = designConfig.themeMode === 'light';
 
+  // 1. SAVED THEME CONFIGURATION
+  const savedThemeMode = designConfig.themeMode || 'dark';
+
+  // 2. SYSTEM MODE RESOLUTION & BASE THEME
+  let baseTheme = 'dark';
+  if (savedThemeMode === 'system') {
+    const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    baseTheme = prefersDark ? 'dark' : 'light';
+  } else if (savedThemeMode === 'light') {
+    baseTheme = 'light';
+  } else {
+    baseTheme = 'dark';
+  }
+
+  // 3. FINAL ACTIVE THEME (incorporating temporary visitor override)
+  const activeTheme = visitorOverride !== null ? visitorOverride : baseTheme;
+  const isLightMode = activeTheme === 'light';
+
+  // THE SINGLE SOURCE OF DOM MANIPULATION IN THE ENTIRE APPLICATION
   useEffect(() => {
     const root = document.documentElement;
     if (isLightMode) {
@@ -183,6 +202,8 @@ function MainPublicPortfolio() {
         onOpenCommand={() => setCommandOpen(true)}
         onOpenResume={() => setResumeOpen(true)}
         onOpenInquiry={() => handleOpenInquiry('cms')}
+        activeTheme={activeTheme}
+        onToggleTheme={() => toggleVisitorTheme(activeTheme)}
       />
 
       <main>
