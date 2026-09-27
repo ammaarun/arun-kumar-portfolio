@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, User, Code2, Terminal, Briefcase, Sparkles, 
   BookOpen, MessageSquare, Mail, Settings, ExternalLink, LogOut, 
-  Sun, Moon, Menu, X, ShieldCheck, Layers, Users, ChevronDown, Palette,
+  Sun, Moon, Menu, X, ShieldCheck, Layers, Users, ChevronDown, ChevronRight, Palette,
   Image, FileText, Rocket
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -18,6 +18,21 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
   const [clients, setClients] = useState([]);
   const [activeClientId, setActiveClientId] = useState('');
   const [switchingClient, setSwitchingClient] = useState(false);
+
+  const [openGroups, setOpenGroups] = useState({
+    CONTENT: true,
+    DESIGN: true,
+    PUBLISHING: true,
+    COMMUNICATION: true,
+    SETTINGS: true,
+  });
+
+  const toggleGroup = (title) => {
+    setOpenGroups(prev => ({
+      ...prev,
+      [title]: !prev[title]
+    }));
+  };
 
   const fetchClientsList = async () => {
     if (!token) return;
@@ -64,13 +79,15 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
   const navCategories = [
     {
       title: 'MAIN',
+      collapsible: false,
       items: [
         { id: 'overview', label: 'Overview', icon: LayoutDashboard },
-        { id: 'clients', label: 'Client Portfolios', icon: Users },
+        { id: 'clients', label: 'Portfolios', icon: Users },
       ]
     },
     {
       title: 'CONTENT',
+      collapsible: true,
       items: [
         { id: 'profile', label: 'Profile & About', icon: User },
         { id: 'media', label: 'Media Library', icon: Image },
@@ -84,26 +101,44 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
       ]
     },
     {
-      title: 'DESIGN & PUBLISHING',
+      title: 'DESIGN',
+      collapsible: true,
       items: [
         { id: 'customize', label: 'Theme & Customizer', icon: Palette },
         { id: 'presets', label: 'Templates & Starters', icon: Layers },
+      ]
+    },
+    {
+      title: 'PUBLISHING',
+      collapsible: true,
+      items: [
         { id: 'publishing', label: 'Publishing Center', icon: Rocket },
       ]
     },
     {
       title: 'COMMUNICATION',
+      collapsible: true,
       items: [
         { id: 'messages', label: 'Contact Messages', icon: Mail },
       ]
     },
     {
       title: 'SETTINGS',
+      collapsible: true,
       items: [
         { id: 'settings', label: 'Website Settings', icon: Settings },
       ]
     }
   ];
+
+  useEffect(() => {
+    const parentCat = navCategories.find(cat => 
+      cat.collapsible && cat.items.some(item => item.id === activeTab)
+    );
+    if (parentCat) {
+      setOpenGroups(prev => ({ ...prev, [parentCat.title]: true }));
+    }
+  }, [activeTab]);
 
   const activeClientObj = clients.find(c => c.id === activeClientId);
 
@@ -131,35 +166,84 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
           </div>
 
           {/* Grouped Nav List */}
-          <div className="space-y-4 pt-2">
-            {navCategories.map((group) => (
-              <div key={group.title} className="space-y-1">
-                <h4 className="px-3 text-[10px] font-mono font-semibold text-slate-500 tracking-wider">
-                  {group.title}
-                </h4>
-                {group.items.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = activeTab === item.id;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => {
-                        setActiveTab(item.id);
-                        setSidebarOpen(false);
-                      }}
-                      className={`w-full flex items-center space-x-3 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
-                        isActive 
-                          ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' 
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-                      }`}
-                    >
-                      <Icon className="w-4 h-4 shrink-0" />
-                      <span>{item.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
+          <div className="space-y-3 pt-2">
+            {navCategories.map((group) => {
+              if (!group.collapsible) {
+                return (
+                  <div key={group.title} className="space-y-1">
+                    {group.items.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = activeTab === item.id;
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => {
+                            setActiveTab(item.id);
+                            setSidebarOpen(false);
+                          }}
+                          className={`w-full flex items-center space-x-3 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
+                            isActive 
+                              ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' 
+                              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                          }`}
+                        >
+                          <Icon className="w-4 h-4 shrink-0" />
+                          <span>{item.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                );
+              }
+
+              const isOpen = !!openGroups[group.title];
+              const hasActiveChild = group.items.some(i => i.id === activeTab);
+
+              return (
+                <div key={group.title} className="space-y-1 border-t border-slate-800/40 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => toggleGroup(group.title)}
+                    className="w-full flex items-center justify-between px-3 py-1.5 text-[10px] font-mono font-semibold text-slate-400 hover:text-slate-200 tracking-wider transition-colors group focus:outline-none"
+                  >
+                    <span className={hasActiveChild ? 'text-emerald-400 font-bold' : ''}>
+                      {group.title}
+                    </span>
+                    {isOpen ? (
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200 transition-transform" />
+                    ) : (
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-200 transition-transform" />
+                    )}
+                  </button>
+
+                  {isOpen && (
+                    <div className="space-y-1 transition-all duration-200">
+                      {group.items.map((item) => {
+                        const Icon = item.icon;
+                        const isActive = activeTab === item.id;
+                        return (
+                          <button
+                            key={item.id}
+                            onClick={() => {
+                              setActiveTab(item.id);
+                              setSidebarOpen(false);
+                            }}
+                            className={`w-full flex items-center space-x-3 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
+                              isActive 
+                                ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' 
+                                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                            }`}
+                          >
+                            <Icon className="w-4 h-4 shrink-0" />
+                            <span>{item.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
         </div>

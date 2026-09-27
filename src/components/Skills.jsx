@@ -75,31 +75,19 @@ export const Skills = () => {
                 </div>
 
                 {/* Items */}
-                <div className="space-y-4">
+                <div className="flex flex-wrap gap-2.5">
                   {group.items.map((item, iIdx) => (
-                    <div key={iIdx} className="space-y-1.5">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-semibold text-slate-800 dark:text-slate-200 flex items-center space-x-2">
-                          <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
-                          <span>{item.name}</span>
-                          {item.popular && (
-                            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono">
-                              <Star className="w-2.5 h-2.5 mr-0.5 fill-amber-400" /> Core
-                            </span>
-                          )}
+                    <div 
+                      key={iIdx}
+                      className="px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-[#0a0d14] border border-slate-200/80 dark:border-slate-800 flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 transition-all hover:border-emerald-500/40"
+                    >
+                      <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                      <span>{item.name}</span>
+                      {item.popular && (
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono shrink-0">
+                          <Star className="w-2.5 h-2.5 mr-0.5 fill-amber-400 shrink-0" /> Core
                         </span>
-                        <span className="font-mono text-slate-400 dark:text-slate-500">
-                          {item.level}%
-                        </span>
-                      </div>
-
-                      {/* Progress Bar */}
-                      <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-1000"
-                          style={{ width: `${item.level}%` }}
-                        />
-                      </div>
+                      )}
                     </div>
                   ))}
                 </div>
