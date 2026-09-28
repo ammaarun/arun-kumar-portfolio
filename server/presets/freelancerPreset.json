@@ -8,6 +8,12 @@
   "personalInfo": {
     "name": "Taylor Swiftly",
     "role": "Freelance Web Developer & Software Consultant",
+    "profileType": "freelancer",
+    "eyebrow": "FREELANCE DEVELOPER",
+    "specialization": "Custom Web Apps & Client Solutions",
+    "heroVisualType": "none",
+    "showFreelancerCTA": true,
+    "heroCtaText": "Request Custom Portfolio",
     "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
     "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
     "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",

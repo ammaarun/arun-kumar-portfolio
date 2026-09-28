@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Search, FileText, Code, User, Briefcase, Mail, Moon, Sun, X, Terminal, ExternalLink } from 'lucide-react';
+import { Search, FileText, Code, User, Briefcase, Mail, Moon, Sun, X, Terminal, ExternalLink, Sparkles } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useData } from '../context/DataContext';
 
@@ -22,6 +22,13 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
+
+  const sectionsConfig = data?.designConfig?.sections;
+  const isSectionVisible = (id) => {
+    if (!sectionsConfig || !Array.isArray(sectionsConfig) || sectionsConfig.length === 0) return true;
+    const sec = sectionsConfig.find(s => s.id === id);
+    return !sec || sec.visible !== false;
+  };
 
   const actions = [
     {
@@ -51,6 +58,16 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
       icon: Terminal,
       action: () => {
         document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+        onClose();
+      }
+    },
+    {
+      id: 'services',
+      label: 'Explore Services',
+      category: 'Navigation',
+      icon: Sparkles,
+      action: () => {
+        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
         onClose();
       }
     },
@@ -114,7 +131,7 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
         onClose();
       }
     }
-  ];
+  ].filter(item => item.category !== 'Navigation' || isSectionVisible(item.id));
 
   const filteredActions = actions.filter(item =>
     item.label.toLowerCase().includes(search.toLowerCase()) ||

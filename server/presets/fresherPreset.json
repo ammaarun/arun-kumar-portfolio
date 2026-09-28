@@ -8,6 +8,12 @@
   "personalInfo": {
     "name": "Alex Morgan",
     "role": "Software Engineering Graduate | Junior Developer",
+    "profileType": "fresher",
+    "eyebrow": "ENTRY-LEVEL DEVELOPER",
+    "specialization": "Full-Stack Web Development",
+    "heroVisualType": "code",
+    "showFreelancerCTA": false,
+    "heroCtaText": "Contact Me",
     "tagline": "Passionate Computer Science graduate with strong foundations in algorithms, web development, and object-oriented programming.",
     "shortBio": "Eager junior developer seeking an entry-level software engineering role to contribute clean code, problem-solving skills, and rapid learning.",
     "bio": "Graduated with honors in Computer Science. Dedicated to building responsive web applications, learning modern frameworks, and writing clean, maintainable code. Experienced with Git version control, REST APIs, and relational databases through academic coursework and hands-on personal projects.",

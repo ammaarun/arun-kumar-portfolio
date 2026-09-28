@@ -8,6 +8,12 @@
   "personalInfo": {
     "name": "Jordan Lee",
     "role": "Full-Stack Engineer | React & Node / Spring Specialist",
+    "profileType": "fullStack",
+    "eyebrow": "FULL-STACK ENGINEER",
+    "specialization": "Spring Boot & React Specialist",
+    "heroVisualType": "code",
+    "showFreelancerCTA": false,
+    "heroCtaText": "Get in Touch",
     "tagline": "Building complete digital web products — from pixel-perfect responsive UIs to robust server-side APIs.",
     "shortBio": "Versatile Full-Stack Developer with 3+ years of experience bridging the gap between frontend user experience and backend cloud infrastructure.",
     "bio": "Full-Stack Engineer adept at designing intuitive React user interfaces and connecting them with resilient REST/GraphQL backend microservices. Obsessed with clean code architecture, page load performance, state management, and seamless database migrations.",

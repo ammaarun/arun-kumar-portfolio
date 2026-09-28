@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Save, CheckCircle2, User, Mail, MapPin, Phone, Image, Trash2, Upload } from 'lucide-react';
+import { Save, CheckCircle2, User, Mail, MapPin, Phone, Image, Trash2, Upload, Sparkles } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { api } from '../../services/api';
 import { MediaPickerModal } from '../components/MediaPickerModal';
@@ -130,6 +130,81 @@ export const ProfileView = () => {
               onChange={(e) => setFormData({ ...formData, availability: e.target.value })}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
+          </div>
+        </div>
+
+        {/* Hero Identity & Specialization Section */}
+        <div className="p-4 rounded-xl bg-[#0a0d14] border border-slate-800 space-y-4">
+          <h4 className="text-sm font-bold text-white flex items-center space-x-2">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span>Hero Identity & Call to Action</span>
+          </h4>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-slate-300">Professional Label / Eyebrow</label>
+              <input
+                type="text"
+                value={formData.eyebrow !== undefined ? formData.eyebrow : (formData.shortRole || '')}
+                onChange={(e) => setFormData({ ...formData, eyebrow: e.target.value })}
+                placeholder="e.g. JAVA & FULL STACK"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+              <p className="text-[11px] text-slate-400">Top brand header label. Leave blank to omit.</p>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-slate-300">Specialization / Highlight</label>
+              <input
+                type="text"
+                value={formData.specialization || ''}
+                onChange={(e) => setFormData({ ...formData, specialization: e.target.value })}
+                placeholder="e.g. Spring Boot & React Specialist"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+              <p className="text-[11px] text-slate-400">Hero highlight badge & terminal footer label. Leave blank to omit.</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-slate-300">Hero Visual Panel Type</label>
+              <select
+                value={formData.heroVisualType || 'code'}
+                onChange={(e) => setFormData({ ...formData, heroVisualType: e.target.value })}
+                className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
+              >
+                <option value="code">Developer Terminal / Code Visual</option>
+                <option value="image">Profile / Avatar Photo</option>
+                <option value="none">None (Hide Visual Panel)</option>
+              </select>
+              <p className="text-[11px] text-slate-400">Select right-side visual element for Hero.</p>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-slate-300">Primary Hero CTA Button Text</label>
+              <input
+                type="text"
+                value={formData.heroCtaText || ''}
+                onChange={(e) => setFormData({ ...formData, heroCtaText: e.target.value })}
+                placeholder="e.g. Request Custom Portfolio or Get in Touch"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+              <p className="text-[11px] text-slate-400">Custom label for primary CTA button.</p>
+            </div>
+          </div>
+
+          <div className="pt-2 flex items-center space-x-3">
+            <input
+              type="checkbox"
+              id="showFreelancerCTA"
+              checked={formData.showFreelancerCTA !== undefined ? !!formData.showFreelancerCTA : formData.profileType === 'freelancer'}
+              onChange={(e) => setFormData({ ...formData, showFreelancerCTA: e.target.checked })}
+              className="w-4 h-4 rounded bg-[#121723] border-slate-800 text-emerald-500 focus:ring-emerald-500"
+            />
+            <label htmlFor="showFreelancerCTA" className="text-xs font-medium text-slate-300 cursor-pointer">
+              Enable Freelancer Custom Portfolio Pricing CTA Flow ("Request Custom Portfolio" & "Get Portfolio" Header Button)
+            </label>
           </div>
         </div>
 

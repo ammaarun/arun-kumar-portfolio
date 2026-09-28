@@ -52,11 +52,26 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme
 
   const sectionsConfig = data?.designConfig?.sections;
   const navLinks = Array.isArray(sectionsConfig) && sectionsConfig.length > 0
-    ? allNavLinks.filter(link => {
-        const sec = sectionsConfig.find(s => s.id === link.id);
-        return !sec || sec.visible !== false;
-      })
+    ? [...sectionsConfig]
+        .filter(sec => sec.visible !== false && sec.id !== 'hero')
+        .sort((a, b) => (a.order || 0) - (b.order || 0))
+        .map(sec => {
+          const match = allNavLinks.find(link => link.id === sec.id);
+          return match || { id: sec.id, label: sec.name || sec.id, href: `#${sec.id}`, icon: User };
+        })
     : allNavLinks;
+
+  const eyebrowLabel = personalInfo.eyebrow !== undefined
+    ? personalInfo.eyebrow
+    : (personalInfo.shortRole || personalInfo.professionalLabel || 'JAVA & FULL STACK');
+
+  const initials = personalInfo.name
+    ? personalInfo.name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase()
+    : 'AK';
+
+  const showFreelancerCTA = personalInfo.showFreelancerCTA !== undefined
+    ? personalInfo.showFreelancerCTA
+    : (personalInfo.profileType === 'freelancer' || data?.profileType === 'freelancer');
 
   return (
     <header 
@@ -74,15 +89,17 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme
           className="flex items-center space-x-2 group focus:outline-none"
         >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white font-mono font-bold text-base shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-            AK
+            {initials}
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base tracking-tight leading-tight group-hover:text-emerald-500 transition-colors">
               {personalInfo.name || 'Arun Kumar'}
             </span>
-            <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono tracking-wider uppercase">
-              JAVA & FULL STACK
-            </span>
+            {eyebrowLabel ? (
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono tracking-wider uppercase">
+                {eyebrowLabel}
+              </span>
+            ) : null}
           </div>
         </a>
 
@@ -102,14 +119,16 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme
 
         {/* Action Controls */}
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <button
-            onClick={onOpenInquiry}
-            className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl transition-all hover:scale-[1.02]"
-            title="Request a Custom Developer Portfolio"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Get Portfolio</span>
-          </button>
+          {showFreelancerCTA && (
+            <button
+              onClick={onOpenInquiry}
+              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl transition-all hover:scale-[1.02]"
+              title="Request a Custom Developer Portfolio"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+              <span>Get Portfolio</span>
+            </button>
+          )}
 
           <button
             onClick={onOpenCommand}

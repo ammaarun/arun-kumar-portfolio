@@ -2,6 +2,12 @@ export const portfolioData = {
   personalInfo: {
     name: "Arun Kumar",
     role: "Java Developer | Full Stack Developer",
+    profileType: "fullStack",
+    eyebrow: "JAVA & FULL STACK",
+    specialization: "Spring Boot & React Specialist",
+    heroVisualType: "code",
+    showFreelancerCTA: false,
+    heroCtaText: "Get in Touch",
     tagline: "Building scalable enterprise backends & high-performance modern web applications.",
     location: "Telangana, India",
     availability: "Available for Full-time Roles & High-Impact Freelance",

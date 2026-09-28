@@ -8,6 +8,12 @@
   "personalInfo": {
     "name": "David Miller",
     "role": "Senior Software Engineer | Microservices Specialist",
+    "profileType": "experienced",
+    "eyebrow": "SENIOR SOFTWARE ENGINEER",
+    "specialization": "Microservices & Cloud Architecture",
+    "heroVisualType": "code",
+    "showFreelancerCTA": false,
+    "heroCtaText": "Get in Touch",
     "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
     "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
     "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",

@@ -8,6 +8,12 @@
   "personalInfo": {
     "name": "Sam Rivera",
     "role": "Computer Science Student | Aspiring Developer",
+    "profileType": "student",
+    "eyebrow": "CS STUDENT & DEVELOPER",
+    "specialization": "Algorithms & Software Engineering",
+    "heroVisualType": "code",
+    "showFreelancerCTA": false,
+    "heroCtaText": "Contact Me",
     "tagline": "Pre-final year CS student passionate about web development, competitive programming, and open-source software.",
     "shortBio": "Computer Science undergrad actively seeking software engineering summer internships and open-source collaborations.",
     "bio": "Third-year Computer Science undergraduate with strong problem-solving skills and hands-on project experience in web technologies. Active member of the University Coding Club and participant in national hackathons.",
