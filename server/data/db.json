@@ -1,13 +1,13 @@
 {
-  "id": "fresher",
-  "name": "Fresher / Entry-Level Developer",
-  "description": "Ideal for recent graduates and entry-level developers highlighting academic foundation, personal projects, and core CS skills.",
-  "targetAudience": "Fresh Graduates & Entry-Level Job Seekers",
-  "badge": "Entry Level",
-  "accentColor": "emerald",
+  "id": "freelancer",
+  "name": "Freelancer",
+  "description": "Optimized for freelance developers and consultants offering custom client solutions, fixed-price packages, testimonials, and clear hire CTAs.",
+  "targetAudience": "Freelancers, Independent Developers & Agency Owners",
+  "badge": "Freelance Pro",
+  "accentColor": "amber",
   "personalInfo": {
     "name": "Alex Morgan",
-    "role": "Software Engineering Graduate | Junior Developer",
+    "role": "Lead Java & Full Stack Developer",
     "profileType": "fresher",
     "eyebrow": "ENTRY-LEVEL DEVELOPER",
     "specialization": "Full-Stack Web Development",
@@ -24,7 +24,7 @@
     "github": "https://github.com",
     "linkedin": "https://linkedin.com",
     "twitter": "https://twitter.com",
-    "resumeUrl": "#",
+    "resumeUrl": "https://example.com/principal-resume.pdf",
     "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
   },
   "stats": [
@@ -124,6 +124,19 @@
     }
   ],
   "projects": [
+    {
+      "id": "proj-1790876626651",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
     {
       "id": "proj-fresher-1",
       "title": "Smart Campus Student Portal",
@@ -251,6 +264,33 @@
   "blogs": [],
   "messages": [
     {
+      "id": "msg-1790878885302",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-01T18:21:25.302Z",
+      "read": false
+    },
+    {
+      "id": "msg-1790876625809",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-01T17:43:45.809Z",
+      "read": false
+    },
+    {
+      "id": "msg-1790876538147",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-01T17:42:18.147Z",
+      "read": false
+    },
+    {
       "id": "msg-1790621849773",
       "name": "Test Client",
       "email": "client@example.com",
@@ -308,20 +348,20 @@
   "clients": [
     {
       "id": "client-1",
-      "name": "Alex Morgan",
+      "name": "Arun Kumar",
       "email": "arunkumar.dev@example.com",
       "role": "Software Engineering Graduate | Junior Developer",
       "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
       "slug": "arun-kumar-lead",
       "status": "PUBLISHED",
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-09-28T19:32:04.125Z",
+      "lastUpdated": "2026-10-01T18:21:29.830Z",
       "lastPublishedAt": "2026-09-27T18:56:42.613Z",
       "isDefault": true,
       "portfolioData": {
         "personalInfo": {
           "name": "Alex Morgan",
-          "role": "Software Engineering Graduate | Junior Developer",
+          "role": "Lead Java & Full Stack Developer",
           "profileType": "fresher",
           "eyebrow": "ENTRY-LEVEL DEVELOPER",
           "specialization": "Full-Stack Web Development",
@@ -338,7 +378,7 @@
           "github": "https://github.com",
           "linkedin": "https://linkedin.com",
           "twitter": "https://twitter.com",
-          "resumeUrl": "#",
+          "resumeUrl": "https://example.com/principal-resume.pdf",
           "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
         },
         "stats": [
@@ -438,6 +478,19 @@
           }
         ],
         "projects": [
+          {
+            "id": "proj-1790876626651",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
           {
             "id": "proj-fresher-1",
             "title": "Smart Campus Student Portal",
@@ -578,31 +631,31 @@
           "profileType": "Fresher / Entry-Level Developer"
         },
         "designConfig": {
-          "template": "modern-dark",
-          "themeMode": "dark",
+          "template": "minimal-light",
+          "themeMode": "light",
           "colors": {
-            "primary": "#10b981",
-            "secondary": "#14b8a6",
-            "accent": "#059669",
-            "background": "#0a0d14",
-            "surface": "#121723",
-            "text": "#f1f5f9"
+            "primary": "#2563eb",
+            "secondary": "#3b82f6",
+            "accent": "#1d4ed8",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "text": "#0f172a"
           },
           "fonts": {
-            "heading": "Inter",
+            "heading": "Space Grotesk",
             "body": "Inter"
           },
           "layout": {
-            "hero": "centered",
-            "projects": "grid",
+            "hero": "left",
+            "projects": "cards",
             "navigation": "top",
-            "contact": "form"
+            "contact": "cards"
           },
           "buttons": {
-            "style": "rounded",
+            "style": "square",
             "size": "medium"
           },
-          "animations": "standard",
+          "animations": "subtle",
           "sections": [
             {
               "id": "hero",
@@ -617,38 +670,38 @@
               "order": 2
             },
             {
-              "id": "skills",
-              "name": "Skills",
-              "visible": false,
-              "order": 3
-            },
-            {
               "id": "projects",
               "name": "Projects Showcase",
               "visible": true,
-              "order": 4
+              "order": 3
             },
             {
-              "id": "services",
-              "name": "Services",
+              "id": "skills",
+              "name": "Skills",
               "visible": true,
-              "order": 5
+              "order": 4
             },
             {
               "id": "experience",
               "name": "Work Experience",
               "visible": true,
-              "order": 6
+              "order": 5
             },
             {
-              "id": "blog",
-              "name": "Blog / Articles",
+              "id": "services",
+              "name": "Services",
               "visible": true,
-              "order": 7
+              "order": 6
             },
             {
               "id": "testimonials",
               "name": "Testimonials",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
               "visible": true,
               "order": 8
             },
@@ -704,12 +757,20 @@
         ],
         "resumes": [
           {
+            "id": "res-test-1790875694522",
+            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
+            "url": "https://example.com/principal-resume.pdf",
+            "uploadDate": "2026-09-24",
+            "sizeKb": 410,
+            "isActive": true
+          },
+          {
             "id": "res-1",
             "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "url": "#",
             "uploadDate": "2026-09-15",
             "sizeKb": 340,
-            "isActive": true
+            "isActive": false
           },
           {
             "id": "res-2",
@@ -721,15 +782,15 @@
           }
         ],
         "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
+          "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
+          "keywords": "Java, Cloud, Microservices, React, Architect",
           "canonicalUrl": "https://portfolio.example.com/arun-kumar",
           "author": "Arun Kumar",
           "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+          "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
+          "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
+          "socialShareImage": "https://images.unsplash.com/photo-og-cover"
         },
         "branding": {
           "faviconUrl": "/favicon.svg",
@@ -747,9 +808,26 @@
       "status": "PUBLISHED",
       "portfolioData": {
         "personalInfo": {
-          "name": "Priya Reddy",
-          "role": "Frontend Architect",
-          "resumeUrl": "https://example.com/principal-resume.pdf"
+          "name": "Taylor Swiftly",
+          "role": "Lead Java & Full Stack Developer",
+          "profileType": "freelancer",
+          "eyebrow": "FREELANCE DEVELOPER",
+          "specialization": "Custom Web Apps & Client Solutions",
+          "heroVisualType": "none",
+          "showFreelancerCTA": true,
+          "heroCtaText": "Request Custom Portfolio",
+          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+          "location": "Telangana, India",
+          "availability": "Available for New Freelance Projects & Monthly Retainers",
+          "email": "taylor.consulting@example.com",
+          "phone": "+91 98765 00004",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "https://example.com/principal-resume.pdf",
+          "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
         },
         "stats": [
           {
@@ -850,7 +928,7 @@
         ],
         "projects": [
           {
-            "id": "proj-1790621926771",
+            "id": "proj-1790878887515",
             "title": "Automated Test Project",
             "subtitle": "Vitest Microservice",
             "category": "Backend & Microservices",
@@ -1021,10 +1099,485 @@
           "profileType": "Freelancer"
         },
         "designConfig": {
+          "template": "minimal-light",
+          "themeMode": "light",
+          "colors": {
+            "primary": "#ec4899",
+            "secondary": "#3b82f6",
+            "accent": "#1d4ed8",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "text": "#0f172a"
+          },
+          "fonts": {
+            "heading": "Space Grotesk",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "left",
+            "projects": "cards",
+            "navigation": "top",
+            "contact": "cards"
+          },
+          "buttons": {
+            "style": "square",
+            "size": "medium"
+          },
+          "animations": "subtle",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "type": "image",
+            "category": "profile",
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "name": "Enterprise Microservices System",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 820,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "name": "React & Tailwind Dashboard",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 650,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "name": "Official Resume 2026",
+            "url": "#",
+            "type": "document",
+            "category": "resume",
+            "sizeKb": 340,
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-test-1790878889809",
+            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
+            "url": "https://example.com/principal-resume.pdf",
+            "uploadDate": "2026-09-24",
+            "sizeKb": 410,
+            "isActive": true
+          },
+          {
+            "id": "res-1",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "url": "#",
+            "uploadDate": "2026-09-15",
+            "sizeKb": 340,
+            "isActive": false
+          },
+          {
+            "id": "res-2",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "url": "#",
+            "uploadDate": "2025-10-20",
+            "sizeKb": 310,
+            "isActive": false
+          }
+        ],
+        "seo": {
+          "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
+          "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
+          "keywords": "Java, Cloud, Microservices, React, Architect",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
+          "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
+          "socialShareImage": "https://images.unsplash.com/photo-og-cover"
+        },
+        "branding": {
+          "faviconUrl": "/favicon.svg",
+          "logoUrl": "/icons.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        }
+      },
+      "lastUpdated": "2026-10-01T18:21:29.819Z"
+    },
+    {
+      "id": "client-1790876537734",
+      "name": "Jane Doe Smith",
+      "email": "jane@example.com",
+      "role": "Staff Frontend Engineer",
+      "profession": "Senior React Developer",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "jane-doe",
+      "status": "DRAFT",
+      "createdDate": "2026-10-01T17:42:17.762Z",
+      "lastUpdated": "2026-10-01T17:42:17.830Z",
+      "lastPublishedAt": null,
+      "isDefault": false,
+      "portfolioData": {
+        "id": "experienced",
+        "name": "Experienced Developer",
+        "description": "Designed for mid-to-senior software engineers emphasizing professional work history, enterprise metrics, system architecture, and leadership.",
+        "targetAudience": "Mid & Senior Software Engineers (3+ Years Experience)",
+        "badge": "Experienced Pro",
+        "accentColor": "indigo",
+        "personalInfo": {
+          "name": "Jane Doe Smith",
+          "role": "Staff Frontend Engineer",
+          "profileType": "experienced",
+          "eyebrow": "SENIOR SOFTWARE ENGINEER",
+          "specialization": "Microservices & Cloud Architecture",
+          "heroVisualType": "code",
+          "showFreelancerCTA": false,
+          "heroCtaText": "Get in Touch",
+          "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
+          "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
+          "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",
+          "location": "Telangana, India",
+          "availability": "Available for Senior Engineering Roles & Architecture Consulting",
+          "email": "jane@example.com",
+          "phone": "+91 98765 00002",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#",
+          "profession": "Senior React Developer",
+          "industry": "Technology"
+        },
+        "stats": [
+          {
+            "label": "Years Experience",
+            "value": "5+",
+            "description": "Enterprise Software Engineering"
+          },
+          {
+            "label": "API Throughput",
+            "value": "10k+ TPS",
+            "description": "High Concurrency Microservices"
+          },
+          {
+            "label": "Uptime SLA",
+            "value": "99.99%",
+            "description": "Production Cloud Deployments"
+          },
+          {
+            "label": "Team Lead",
+            "value": "6 Engineers",
+            "description": "Mentorship & Code Reviews"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Enterprise Backend Architecture",
+            "icon": "Server",
+            "items": [
+              {
+                "name": "Distributed Microservices",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "Spring Boot / Node.js",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "REST & GraphQL APIs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Event-Driven Messaging (Kafka/RabbitMQ)",
+                "level": 88
+              }
+            ]
+          },
+          {
+            "category": "Databases & High-Performance Caching",
+            "icon": "Database",
+            "items": [
+              {
+                "name": "PostgreSQL / MySQL Tuning",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Redis Distributed Cache",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Database Schema Normalization",
+                "level": 92
+              },
+              {
+                "name": "NoSQL (MongoDB / DynamoDB)",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "DevOps & Cloud Infrastructure",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Docker & Kubernetes",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "AWS (EC2, S3, RDS, ECS)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "CI/CD (GitHub Actions / Jenkins)",
+                "level": 90
+              },
+              {
+                "name": "System Monitoring (Prometheus/Grafana)",
+                "level": 82
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-exp-1",
+            "title": "Enterprise Cloud Payment Engine",
+            "subtitle": "High-Throughput Distributed Payment Gateway",
+            "category": "Backend & Microservices",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+            "description": "Distributed payment processing engine handling high-volume transaction workloads with multi-region failover.",
+            "longDescription": "Engineered event-driven microservices processing over $10M in transactions monthly. Implemented circuit breakers, distributed locking with Redis, and Kafka audit streams.",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "Kafka",
+              "PostgreSQL",
+              "Redis",
+              "Docker",
+              "AWS"
+            ],
+            "metrics": [
+              {
+                "label": "Transactions",
+                "value": "10k+ TPS"
+              },
+              {
+                "label": "Latency",
+                "value": "< 30ms"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Reduced database read load by 65% by implementing multi-level Redis caching.",
+              "Zero-downtime deployment pipelines using Kubernetes rolling updates."
+            ]
+          },
+          {
+            "id": "proj-exp-2",
+            "title": "Real-Time Telemetry Analytics Platform",
+            "subtitle": "Stream Processing & Monitoring System",
+            "category": "Cloud Architecture",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+            "description": "Real-time analytics dashboard monitoring server cluster metrics, request rates, and error traces.",
+            "longDescription": "Architected stream processing pipeline capturing logs across 50+ nodes and visualizing real-time metrics on Grafana dashboards.",
+            "tech": [
+              "Node.js",
+              "Kafka",
+              "Prometheus",
+              "Grafana",
+              "Docker"
+            ],
+            "metrics": [
+              {
+                "label": "Log Ingestion",
+                "value": "1M events/min"
+              },
+              {
+                "label": "Uptime",
+                "value": "99.99%"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Built custom alert triggers dispatching PagerDuty incidents automatically.",
+              "Decreased memory footprint per worker node by 40% through garbage collection tuning."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-exp-1",
+            "company": "Global Cloud Tech Inc.",
+            "role": "Senior Software Engineer / Tech Lead",
+            "period": "2023 - Present",
+            "location": "Hyderabad, India",
+            "type": "Full-time",
+            "description": "Leading the core backend platform squad responsible for cloud microservices and database infrastructure.",
+            "achievements": [
+              "Architected core API platform supporting 2M+ daily active users.",
+              "Mentored team of 6 software engineers and conducted quarterly technical design reviews.",
+              "Led migration from monolithic application to Docker containerized microservices."
+            ],
+            "skills": [
+              "Microservices",
+              "Spring Boot",
+              "PostgreSQL",
+              "Kafka",
+              "AWS"
+            ]
+          },
+          {
+            "id": "exp-exp-2",
+            "company": "Nexus Systems Solutions",
+            "role": "Software Engineer",
+            "period": "2021 - 2023",
+            "location": "Telangana, India",
+            "type": "Full-time",
+            "description": "Developed RESTful APIs, optimized SQL queries, and integrated third-party payment integrations.",
+            "achievements": [
+              "Optimized slow relational queries resulting in 50% faster API response times.",
+              "Implemented JWT authentication and RBAC authorization middleware."
+            ],
+            "skills": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "REST APIs"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-exp-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "institution": "National Institute of Technology",
+            "period": "2017 - 2021",
+            "description": "Specialized in Software Architecture, Distributed Computing, and Database Security."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-exp-1",
+            "title": "Backend Architecture & Microservices",
+            "description": "Designing scalable, high-throughput microservice architectures with fault tolerance.",
+            "icon": "Server",
+            "pricing": "Consulting / Contract",
+            "featured": true
+          },
+          {
+            "id": "srv-exp-2",
+            "title": "Database Performance Tuning",
+            "description": "Optimizing PostgreSQL/MySQL query execution plans, indexing strategies, and Redis caching.",
+            "icon": "Database",
+            "pricing": "Hourly / Project",
+            "featured": true
+          }
+        ],
+        "testimonials": [
+          {
+            "id": "test-exp-1",
+            "name": "Sarah Jenkins",
+            "role": "VP of Engineering",
+            "company": "Global Cloud Tech",
+            "content": "David is a stellar senior engineer. His architectural decisions and database optimizations saved our platform during peak traffic events.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "blogs": [],
+        "messages": [],
+        "settings": {
+          "siteTitle": "Jane Doe — Senior React Developer",
+          "metaDescription": "Senior software engineer portfolio highlighting enterprise microservices, cloud backend architecture, and technical leadership.",
+          "accentColor": "indigo",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Engineered by David Miller"
+        },
+        "designConfig": {
           "template": "modern-dark",
           "themeMode": "dark",
           "colors": {
-            "primary": "#ec4899",
+            "primary": "#10b981",
             "secondary": "#14b8a6",
             "accent": "#059669",
             "background": "#0a0d14",
@@ -1147,20 +1700,12 @@
         ],
         "resumes": [
           {
-            "id": "res-test-1790621928942",
-            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
-            "url": "https://example.com/principal-resume.pdf",
-            "uploadDate": "2026-09-24",
-            "sizeKb": 410,
-            "isActive": true
-          },
-          {
             "id": "res-1",
             "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "url": "#",
             "uploadDate": "2026-09-15",
             "sizeKb": 340,
-            "isActive": false
+            "isActive": true
           },
           {
             "id": "res-2",
@@ -1172,27 +1717,499 @@
           }
         ],
         "seo": {
-          "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
-          "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
-          "keywords": "Java, Cloud, Microservices, React, Architect",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
           "canonicalUrl": "https://portfolio.example.com/arun-kumar",
           "author": "Arun Kumar",
           "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
-          "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
-          "socialShareImage": "https://images.unsplash.com/photo-og-cover"
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
         },
         "branding": {
           "faviconUrl": "/favicon.svg",
           "logoUrl": "/icons.svg",
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
-      },
-      "lastUpdated": "2026-09-28T18:58:49.173Z"
+      }
+    },
+    {
+      "id": "client-1790878885120",
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "role": "Senior React Developer",
+      "profession": "Senior React Developer",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "slug": "jane-doe-1",
+      "status": "DRAFT",
+      "createdDate": "2026-10-01T18:21:25.127Z",
+      "lastUpdated": "2026-10-01T18:21:25.127Z",
+      "lastPublishedAt": null,
+      "isDefault": false,
+      "portfolioData": {
+        "id": "experienced",
+        "name": "Experienced Developer",
+        "description": "Designed for mid-to-senior software engineers emphasizing professional work history, enterprise metrics, system architecture, and leadership.",
+        "targetAudience": "Mid & Senior Software Engineers (3+ Years Experience)",
+        "badge": "Experienced Pro",
+        "accentColor": "indigo",
+        "personalInfo": {
+          "name": "Jane Doe",
+          "role": "Senior React Developer",
+          "profileType": "experienced",
+          "eyebrow": "SENIOR SOFTWARE ENGINEER",
+          "specialization": "Microservices & Cloud Architecture",
+          "heroVisualType": "code",
+          "showFreelancerCTA": false,
+          "heroCtaText": "Get in Touch",
+          "tagline": "Architecting resilient distributed backends, high-throughput REST APIs, and scalable cloud solutions.",
+          "shortBio": "Senior Engineer with 5+ years of experience leading cross-functional teams, optimizing database performance, and building cloud-native applications.",
+          "bio": "Experienced software engineer with a track record of delivering mission-critical enterprise systems. Specialized in distributed microservice architectures, API gateways, performance tuning, and CI/CD pipelines. Proven ability to mentor junior engineers and collaborate closely with product management to ship scalable software.",
+          "location": "Telangana, India",
+          "availability": "Available for Senior Engineering Roles & Architecture Consulting",
+          "email": "jane@example.com",
+          "phone": "+91 98765 00002",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#",
+          "profession": "Senior React Developer",
+          "industry": "Technology"
+        },
+        "stats": [
+          {
+            "label": "Years Experience",
+            "value": "5+",
+            "description": "Enterprise Software Engineering"
+          },
+          {
+            "label": "API Throughput",
+            "value": "10k+ TPS",
+            "description": "High Concurrency Microservices"
+          },
+          {
+            "label": "Uptime SLA",
+            "value": "99.99%",
+            "description": "Production Cloud Deployments"
+          },
+          {
+            "label": "Team Lead",
+            "value": "6 Engineers",
+            "description": "Mentorship & Code Reviews"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Enterprise Backend Architecture",
+            "icon": "Server",
+            "items": [
+              {
+                "name": "Distributed Microservices",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "Spring Boot / Node.js",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "REST & GraphQL APIs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Event-Driven Messaging (Kafka/RabbitMQ)",
+                "level": 88
+              }
+            ]
+          },
+          {
+            "category": "Databases & High-Performance Caching",
+            "icon": "Database",
+            "items": [
+              {
+                "name": "PostgreSQL / MySQL Tuning",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Redis Distributed Cache",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Database Schema Normalization",
+                "level": 92
+              },
+              {
+                "name": "NoSQL (MongoDB / DynamoDB)",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "DevOps & Cloud Infrastructure",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Docker & Kubernetes",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "AWS (EC2, S3, RDS, ECS)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "CI/CD (GitHub Actions / Jenkins)",
+                "level": 90
+              },
+              {
+                "name": "System Monitoring (Prometheus/Grafana)",
+                "level": 82
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-exp-1",
+            "title": "Enterprise Cloud Payment Engine",
+            "subtitle": "High-Throughput Distributed Payment Gateway",
+            "category": "Backend & Microservices",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+            "description": "Distributed payment processing engine handling high-volume transaction workloads with multi-region failover.",
+            "longDescription": "Engineered event-driven microservices processing over $10M in transactions monthly. Implemented circuit breakers, distributed locking with Redis, and Kafka audit streams.",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "Kafka",
+              "PostgreSQL",
+              "Redis",
+              "Docker",
+              "AWS"
+            ],
+            "metrics": [
+              {
+                "label": "Transactions",
+                "value": "10k+ TPS"
+              },
+              {
+                "label": "Latency",
+                "value": "< 30ms"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Reduced database read load by 65% by implementing multi-level Redis caching.",
+              "Zero-downtime deployment pipelines using Kubernetes rolling updates."
+            ]
+          },
+          {
+            "id": "proj-exp-2",
+            "title": "Real-Time Telemetry Analytics Platform",
+            "subtitle": "Stream Processing & Monitoring System",
+            "category": "Cloud Architecture",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+            "description": "Real-time analytics dashboard monitoring server cluster metrics, request rates, and error traces.",
+            "longDescription": "Architected stream processing pipeline capturing logs across 50+ nodes and visualizing real-time metrics on Grafana dashboards.",
+            "tech": [
+              "Node.js",
+              "Kafka",
+              "Prometheus",
+              "Grafana",
+              "Docker"
+            ],
+            "metrics": [
+              {
+                "label": "Log Ingestion",
+                "value": "1M events/min"
+              },
+              {
+                "label": "Uptime",
+                "value": "99.99%"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Built custom alert triggers dispatching PagerDuty incidents automatically.",
+              "Decreased memory footprint per worker node by 40% through garbage collection tuning."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-exp-1",
+            "company": "Global Cloud Tech Inc.",
+            "role": "Senior Software Engineer / Tech Lead",
+            "period": "2023 - Present",
+            "location": "Hyderabad, India",
+            "type": "Full-time",
+            "description": "Leading the core backend platform squad responsible for cloud microservices and database infrastructure.",
+            "achievements": [
+              "Architected core API platform supporting 2M+ daily active users.",
+              "Mentored team of 6 software engineers and conducted quarterly technical design reviews.",
+              "Led migration from monolithic application to Docker containerized microservices."
+            ],
+            "skills": [
+              "Microservices",
+              "Spring Boot",
+              "PostgreSQL",
+              "Kafka",
+              "AWS"
+            ]
+          },
+          {
+            "id": "exp-exp-2",
+            "company": "Nexus Systems Solutions",
+            "role": "Software Engineer",
+            "period": "2021 - 2023",
+            "location": "Telangana, India",
+            "type": "Full-time",
+            "description": "Developed RESTful APIs, optimized SQL queries, and integrated third-party payment integrations.",
+            "achievements": [
+              "Optimized slow relational queries resulting in 50% faster API response times.",
+              "Implemented JWT authentication and RBAC authorization middleware."
+            ],
+            "skills": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "REST APIs"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-exp-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "institution": "National Institute of Technology",
+            "period": "2017 - 2021",
+            "description": "Specialized in Software Architecture, Distributed Computing, and Database Security."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-exp-1",
+            "title": "Backend Architecture & Microservices",
+            "description": "Designing scalable, high-throughput microservice architectures with fault tolerance.",
+            "icon": "Server",
+            "pricing": "Consulting / Contract",
+            "featured": true
+          },
+          {
+            "id": "srv-exp-2",
+            "title": "Database Performance Tuning",
+            "description": "Optimizing PostgreSQL/MySQL query execution plans, indexing strategies, and Redis caching.",
+            "icon": "Database",
+            "pricing": "Hourly / Project",
+            "featured": true
+          }
+        ],
+        "testimonials": [
+          {
+            "id": "test-exp-1",
+            "name": "Sarah Jenkins",
+            "role": "VP of Engineering",
+            "company": "Global Cloud Tech",
+            "content": "David is a stellar senior engineer. His architectural decisions and database optimizations saved our platform during peak traffic events.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "blogs": [],
+        "messages": [],
+        "settings": {
+          "siteTitle": "Jane Doe — Senior React Developer",
+          "metaDescription": "Senior software engineer portfolio highlighting enterprise microservices, cloud backend architecture, and technical leadership.",
+          "accentColor": "indigo",
+          "themePreference": "dark",
+          "resumeUrl": "#",
+          "showHero": true,
+          "showServices": true,
+          "showBlog": false,
+          "showTestimonials": true,
+          "footerText": "Engineered by David Miller"
+        },
+        "designConfig": {
+          "template": "modern-dark",
+          "themeMode": "dark",
+          "colors": {
+            "primary": "#10b981",
+            "secondary": "#14b8a6",
+            "accent": "#059669",
+            "background": "#0a0d14",
+            "surface": "#121723",
+            "text": "#f1f5f9"
+          },
+          "fonts": {
+            "heading": "Inter",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "centered",
+            "projects": "grid",
+            "navigation": "top",
+            "contact": "form"
+          },
+          "buttons": {
+            "style": "rounded",
+            "size": "medium"
+          },
+          "animations": "standard",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "type": "image",
+            "category": "profile",
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "name": "Enterprise Microservices System",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 820,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "name": "React & Tailwind Dashboard",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 650,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "name": "Official Resume 2026",
+            "url": "#",
+            "type": "document",
+            "category": "resume",
+            "sizeKb": 340,
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "url": "#",
+            "uploadDate": "2026-09-15",
+            "sizeKb": 340,
+            "isActive": true
+          },
+          {
+            "id": "res-2",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "url": "#",
+            "uploadDate": "2025-10-20",
+            "sizeKb": 310,
+            "isActive": false
+          }
+        ],
+        "seo": {
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+        },
+        "branding": {
+          "faviconUrl": "/favicon.svg",
+          "logoUrl": "/icons.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        }
+      }
     }
   ],
   "activeClientId": "client-1",
   "activities": [
+    {
+      "id": "act-1790878889830",
+      "type": "publish",
+      "description": "Portfolio status updated to PUBLISHED",
+      "timestamp": "2026-10-01T18:21:29.830Z",
+      "clientName": "Arun Kumar"
+    },
     {
       "id": "act-1",
       "type": "publish",
@@ -1216,31 +2233,31 @@
     }
   ],
   "designConfig": {
-    "template": "modern-dark",
-    "themeMode": "dark",
+    "template": "minimal-light",
+    "themeMode": "light",
     "colors": {
-      "primary": "#10b981",
-      "secondary": "#14b8a6",
-      "accent": "#059669",
-      "background": "#0a0d14",
-      "surface": "#121723",
-      "text": "#f1f5f9"
+      "primary": "#2563eb",
+      "secondary": "#3b82f6",
+      "accent": "#1d4ed8",
+      "background": "#f8fafc",
+      "surface": "#ffffff",
+      "text": "#0f172a"
     },
     "fonts": {
-      "heading": "Inter",
+      "heading": "Space Grotesk",
       "body": "Inter"
     },
     "layout": {
-      "hero": "centered",
-      "projects": "grid",
+      "hero": "left",
+      "projects": "cards",
       "navigation": "top",
-      "contact": "form"
+      "contact": "cards"
     },
     "buttons": {
-      "style": "rounded",
+      "style": "square",
       "size": "medium"
     },
-    "animations": "standard",
+    "animations": "subtle",
     "sections": [
       {
         "id": "hero",
@@ -1255,38 +2272,38 @@
         "order": 2
       },
       {
-        "id": "skills",
-        "name": "Skills",
-        "visible": false,
-        "order": 3
-      },
-      {
         "id": "projects",
         "name": "Projects Showcase",
         "visible": true,
-        "order": 4
+        "order": 3
       },
       {
-        "id": "services",
-        "name": "Services",
+        "id": "skills",
+        "name": "Skills",
         "visible": true,
-        "order": 5
+        "order": 4
       },
       {
         "id": "experience",
         "name": "Work Experience",
         "visible": true,
-        "order": 6
+        "order": 5
       },
       {
-        "id": "blog",
-        "name": "Blog / Articles",
+        "id": "services",
+        "name": "Services",
         "visible": true,
-        "order": 7
+        "order": 6
       },
       {
         "id": "testimonials",
         "name": "Testimonials",
+        "visible": true,
+        "order": 7
+      },
+      {
+        "id": "blog",
+        "name": "Blog / Articles",
         "visible": true,
         "order": 8
       },
@@ -1342,12 +2359,20 @@
   ],
   "resumes": [
     {
+      "id": "res-test-1790875694522",
+      "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
+      "url": "https://example.com/principal-resume.pdf",
+      "uploadDate": "2026-09-24",
+      "sizeKb": 410,
+      "isActive": true
+    },
+    {
       "id": "res-1",
       "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
       "url": "#",
       "uploadDate": "2026-09-15",
       "sizeKb": 340,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "res-2",
@@ -1359,15 +2384,15 @@
     }
   ],
   "seo": {
-    "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-    "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-    "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+    "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
+    "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
+    "keywords": "Java, Cloud, Microservices, React, Architect",
     "canonicalUrl": "https://portfolio.example.com/arun-kumar",
     "author": "Arun Kumar",
     "robots": "index, follow",
-    "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-    "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-    "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+    "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
+    "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
+    "socialShareImage": "https://images.unsplash.com/photo-og-cover"
   },
   "branding": {
     "faviconUrl": "/favicon.svg",

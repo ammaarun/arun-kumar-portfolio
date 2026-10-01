@@ -17,6 +17,8 @@ import { TestimonialsView } from './views/TestimonialsView';
 import { MessagesView } from './views/MessagesView';
 import { SettingsView } from './views/SettingsView';
 
+import { SectionBuilderView } from './views/SectionBuilderView';
+
 export const AdminDashboardPlaceholder = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -26,6 +28,8 @@ export const AdminDashboardPlaceholder = () => {
         return <OverviewView setActiveTab={setActiveTab} />;
       case 'clients':
         return <ClientsView setActiveTab={setActiveTab} />;
+      case 'sections':
+        return <SectionBuilderView />;
       case 'customize':
         return <CustomizeView />;
       case 'presets':

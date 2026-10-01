@@ -1,0 +1,67 @@
+{
+  "id": "designer",
+  "name": "UI/UX & Product Designer",
+  "description": "Tailored for product designers, UI/UX designers, and visual strategists featuring case studies, design tools, wireframes, and design systems.",
+  "targetAudience": "UI/UX Designers, Product Designers, Graphic Designers & Visual Strategists",
+  "badge": "Design Pro",
+  "accentColor": "fuchsia",
+  "personalInfo": {
+    "name": "Rahul Verma",
+    "role": "Lead Product & UI/UX Designer",
+    "profileType": "designer",
+    "eyebrow": "PRODUCT DESIGNER",
+    "specialization": "Design Systems, User Research & Interactive Prototyping",
+    "heroVisualType": "image",
+    "imageStyle": "natural-portrait",
+    "showFreelancerCTA": false,
+    "heroCtaText": "View Case Studies",
+    "tagline": "Crafting intuitive, accessible, and delight-driven digital product experiences.",
+    "shortBio": "Product designer with 4+ years of experience designing mobile & web apps, user research, wireframing, and Figma design systems.",
+    "bio": "Focused on human-centered design, user journeys, interaction animation, and translating product strategy into high-converting visual UIs.",
+    "location": "Mumbai, India",
+    "availability": "Available for Full-time Roles & Product Design Contracts",
+    "email": "rahul.designer@example.com",
+    "phone": "+91 98765 00007",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Products Designed", "value": "20+", "description": "Web & Mobile Apps" },
+    { "label": "User Testing", "value": "150+ Hours", "description": "Usability Interviews" },
+    { "label": "Design Tokens", "value": "500+", "description": "System Components" },
+    { "label": "Client Rating", "value": "4.9 ★", "description": "Satisfaction Score" }
+  ],
+  "skills": [
+    {
+      "category": "Design & Prototyping Tools",
+      "icon": "Layout",
+      "items": [
+        { "name": "Figma & Design Systems", "level": 98, "popular": true },
+        { "name": "Adobe XD & Illustrator", "level": 90, "popular": true },
+        { "name": "Protopie / Framer Motion", "level": 85, "popular": false }
+      ]
+    },
+    {
+      "category": "UX Methodology & Strategy",
+      "icon": "Heart",
+      "items": [
+        { "name": "User Journey Mapping", "level": 92, "popular": true },
+        { "name": "Usability & Accessibility (WCAG)", "level": 90, "popular": true },
+        { "name": "Information Architecture", "level": 88, "popular": false }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-designer-1",
+      "title": "Fintech Mobile Banking App — End-to-End Redesign Case Study",
+      "category": "UI/UX Case Study",
+      "description": "Redesigned onboarding flows and transaction screens, resulting in a 32% increase in completed signups.",
+      "tags": ["Figma", "User Research", "Prototyping", "Design System"],
+      "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+      "featured": true
+    }
+  ]
+}

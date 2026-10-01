@@ -1,0 +1,92 @@
+{
+  "id": "dataAnalyst",
+  "name": "Data Analyst",
+  "description": "Optimized for data analysts and data scientists showcasing SQL, Python, Tableau, Power BI dashboards, and data-driven business insights.",
+  "targetAudience": "Data Analysts, Data Scientists, BI Developers & Analytics Engineers",
+  "badge": "Analytics Pro",
+  "accentColor": "teal",
+  "personalInfo": {
+    "name": "Priya Sharma",
+    "role": "Senior Data Analyst & Business Intelligence Specialist",
+    "profileType": "analyst",
+    "eyebrow": "DATA ANALYST",
+    "specialization": "Python, SQL, Tableau & Predictive Modeling",
+    "heroVisualType": "image",
+    "imageStyle": "natural-portrait",
+    "showFreelancerCTA": false,
+    "heroCtaText": "View Data Projects",
+    "tagline": "Turning complex multi-source datasets into actionable business insights and executive dashboards.",
+    "shortBio": "Passionate data analyst with 3+ years of experience building predictive models, optimizing SQL queries, and designing live BI dashboards.",
+    "bio": "Specializing in exploratory data analysis, ETL pipelines, A/B experimentation, and interactive dashboarding using Python, SQL, Tableau, and Power BI.",
+    "location": "Bangalore, India",
+    "availability": "Available for Full-time Roles & Analytics Consulting",
+    "email": "priya.analyst@example.com",
+    "phone": "+91 98765 43210",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Dashboards Built", "value": "35+", "description": "Tableau & Power BI" },
+    { "label": "SQL Query Speedup", "value": "60%", "description": "ETL Optimization" },
+    { "label": "Data Processed", "value": "50M+", "description": "Records Analyzed" },
+    { "label": "Accuracy Score", "value": "99.4%", "description": "Model Precision" }
+  ],
+  "skills": [
+    {
+      "category": "Data Analysis & Languages",
+      "icon": "Database",
+      "items": [
+        { "name": "Python (Pandas / NumPy)", "level": 92, "popular": true },
+        { "name": "Advanced SQL & CTEs", "level": 95, "popular": true },
+        { "name": "R & Statistical Analysis", "level": 80, "popular": false }
+      ]
+    },
+    {
+      "category": "BI & Visualization Tools",
+      "icon": "Layout",
+      "items": [
+        { "name": "Tableau Desktop & Server", "level": 90, "popular": true },
+        { "name": "Power BI & DAX", "level": 88, "popular": true },
+        { "name": "Google Looker Studio", "level": 85, "popular": false }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-analyst-1",
+      "title": "E-Commerce Customer Churn Prediction & Retention Dashboard",
+      "category": "Data Science & BI",
+      "description": "Constructed a Logistic Regression and Random Forest model in Python to predict churn risk, lowering subscriber loss by 18%.",
+      "tags": ["Python", "Pandas", "Scikit-Learn", "Tableau", "SQL"],
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+      "featured": true
+    },
+    {
+      "id": "proj-analyst-2",
+      "title": "Executive Revenue Performance & Pipeline Analytics",
+      "category": "Business Intelligence",
+      "description": "Built an automated ETL data pipeline aggregating sales from PostgreSQL into Power BI with real-time KPI tracking.",
+      "tags": ["Power BI", "PostgreSQL", "ETL", "DAX"],
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+      "featured": true
+    }
+  ],
+  "experience": [
+    {
+      "company": "Global Analytics Corp",
+      "role": "Senior Data Analyst",
+      "period": "2023 - Present",
+      "location": "Bangalore, India",
+      "type": "Full-time",
+      "description": "Leading business analytics and building automated executive reporting dashboards for enterprise clients.",
+      "achievements": [
+        "Architected enterprise Tableau dashboards used daily by 200+ C-suite stakeholders.",
+        "Refactored SQL queries across Snowflake warehouse, reducing execution time by 40%.",
+        "Designed A/B test experiments that increased conversion rates by 14%."
+      ],
+      "skills": ["Python", "SQL", "Tableau", "Snowflake", "A/B Testing"]
+    }
+  ]
+}

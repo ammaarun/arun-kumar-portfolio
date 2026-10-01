@@ -104,6 +104,7 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
       title: 'DESIGN',
       collapsible: true,
       items: [
+        { id: 'sections', label: 'Section Builder', icon: Layers },
         { id: 'customize', label: 'Theme & Customizer', icon: Palette },
         { id: 'presets', label: 'Templates & Starters', icon: Layers },
       ]

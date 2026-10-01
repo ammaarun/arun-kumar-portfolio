@@ -20,6 +20,8 @@ import { ResumeModal } from './components/ResumeModal';
 import { ProjectModal } from './components/ProjectModal';
 import { ClientInquiryModal } from './components/ClientInquiryModal';
 
+import { CustomSectionRenderer } from './components/CustomSectionRenderer';
+
 import { UserX, Lock, Loader2 } from 'lucide-react';
 import { BlogPostView } from './components/BlogPostView';
 import { AdminLogin } from './admin/AdminLogin';
@@ -207,7 +209,13 @@ function MainPublicPortfolio() {
       />
 
       <main>
-        {activeSections.map(sec => sectionComponents[sec.id] || null)}
+        {activeSections.map(sec => {
+          const builtinComponent = sectionComponents[sec.id];
+          if (builtinComponent && sec.type !== 'custom') {
+            return builtinComponent;
+          }
+          return <CustomSectionRenderer key={sec.id} section={sec} />;
+        })}
       </main>
 
       <Footer />

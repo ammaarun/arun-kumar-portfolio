@@ -81,7 +81,11 @@ function generateUniqueSlug(requestedSlug, name, existingClients, currentClientI
 }
 
 router.post('/clients', (req, res) => {
-  const { name, email, role, profileImage, slug, presetId } = req.body;
+  const { 
+    name, email, role, profession, industry, profileImage, slug, presetId, templateId,
+    location, phone, github, linkedin, twitter, eyebrow, specialization, sections
+  } = req.body;
+
   if (!name || !email) {
     return res.status(400).json({ success: false, message: 'Client name and email are required.' });
   }
@@ -90,19 +94,28 @@ router.post('/clients', (req, res) => {
   const newClientId = `client-${Date.now()}`;
   const clientSlug = generateUniqueSlug(slug, name, db.clients);
 
+  const activeRole = role || profession || 'Software Professional';
+
   let starterPortfolio = {
     personalInfo: {
       name,
       email,
-      role: role || 'Software Developer',
-      tagline: `Professional Developer Portfolio of ${name}`,
-      shortBio: `${role || 'Software Developer'} passionate about building web products.`,
-      bio: `${name} is a dedicated ${role || 'Software Developer'}.`,
-      location: 'Telangana, India',
-      availability: 'Available for New Projects',
-      github: 'https://github.com',
-      linkedin: 'https://linkedin.com',
-      resumeUrl: '#'
+      role: activeRole,
+      profession: profession || activeRole,
+      industry: industry || 'Technology',
+      eyebrow: eyebrow || (profession ? profession.toUpperCase() : 'PROFESSIONAL'),
+      specialization: specialization || `${activeRole} Specialist`,
+      tagline: `Professional Portfolio of ${name}`,
+      shortBio: `${activeRole} passionate about building impactful solutions.`,
+      bio: `${name} is a dedicated ${activeRole}.`,
+      location: location || 'Telangana, India',
+      availability: 'Available for New Projects & Consultations',
+      phone: phone || '',
+      github: github || 'https://github.com',
+      linkedin: linkedin || 'https://linkedin.com',
+      twitter: twitter || 'https://twitter.com',
+      resumeUrl: '#',
+      heroVisualType: 'image'
     },
     skills: [],
     projects: [],
@@ -112,10 +125,14 @@ router.post('/clients', (req, res) => {
     blogs: [],
     testimonials: [],
     settings: {
-      siteTitle: `${name} — ${role || 'Developer Portfolio'}`,
+      siteTitle: `${name} — ${activeRole}`,
       metaDescription: `Portfolio website of ${name}`,
       accentColor: 'emerald',
       themePreference: 'dark'
+    },
+    designConfig: {
+      ...defaultDesignConfig,
+      template: templateId || 'modern-dark'
     }
   };
 
@@ -131,11 +148,22 @@ router.post('/clients', (req, res) => {
             ...presetObj.personalInfo,
             name,
             email,
-            role: role || presetObj.personalInfo.role
+            role: activeRole,
+            profession: profession || presetObj.personalInfo.profession || activeRole,
+            industry: industry || presetObj.personalInfo.industry || 'Technology',
+            location: location || presetObj.personalInfo.location,
+            phone: phone || presetObj.personalInfo.phone,
+            github: github || presetObj.personalInfo.github,
+            linkedin: linkedin || presetObj.personalInfo.linkedin,
+            twitter: twitter || presetObj.personalInfo.twitter
           },
           settings: {
             ...presetObj.settings,
-            siteTitle: `${name} — ${role || presetObj.personalInfo.role}`
+            siteTitle: `${name} — ${activeRole}`
+          },
+          designConfig: {
+            ...(presetObj.designConfig || defaultDesignConfig),
+            template: templateId || presetObj.designConfig?.template || 'modern-dark'
           }
         };
       } catch (err) {
@@ -144,11 +172,30 @@ router.post('/clients', (req, res) => {
     }
   }
 
+  // Override template if explicitly chosen
+  if (templateId) {
+    const targetTemplate = visualTemplates.find(t => t.id === templateId);
+    if (targetTemplate && targetTemplate.designConfig) {
+      starterPortfolio.designConfig = {
+        ...starterPortfolio.designConfig,
+        ...targetTemplate.designConfig,
+        template: templateId
+      };
+    }
+  }
+
+  // Override sections if custom section configuration passed
+  if (Array.isArray(sections) && sections.length > 0) {
+    starterPortfolio.designConfig = starterPortfolio.designConfig || { ...defaultDesignConfig };
+    starterPortfolio.designConfig.sections = sections;
+  }
+
   const newClient = {
     id: newClientId,
     name,
     email,
-    role: role || 'Software Developer',
+    role: activeRole,
+    profession: profession || activeRole,
     profileImage: profileImage || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     slug: clientSlug,
     status: 'DRAFT',
@@ -165,9 +212,46 @@ router.post('/clients', (req, res) => {
 
   res.json({
     success: true,
-    message: `Client ${name} created successfully.`,
+    message: `Portfolio for ${name} created successfully.`,
     data: newClient
   });
+});
+
+router.post('/clients/:id/duplicate', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  const sourceClient = (db.clients || []).find(c => c.id === id);
+  if (!sourceClient) {
+    return res.status(404).json({ success: false, message: 'Source portfolio not found.' });
+  }
+
+  const newId = `client-${Date.now()}`;
+  const copyName = `${sourceClient.name} (Copy)`;
+  const copySlug = generateUniqueSlug(`${sourceClient.slug}-copy`, copyName, db.clients);
+
+  const duplicatedPortfolioData = JSON.parse(JSON.stringify(sourceClient.portfolioData || {}));
+  if (duplicatedPortfolioData.personalInfo) {
+    duplicatedPortfolioData.personalInfo.name = copyName;
+  }
+
+  const duplicatedClient = {
+    ...JSON.parse(JSON.stringify(sourceClient)),
+    id: newId,
+    name: copyName,
+    slug: copySlug,
+    status: 'DRAFT',
+    isDefault: false,
+    createdDate: new Date().toISOString(),
+    lastUpdated: new Date().toISOString(),
+    lastPublishedAt: null,
+    portfolioData: duplicatedPortfolioData
+  };
+
+  db.clients = db.clients || [];
+  db.clients.push(duplicatedClient);
+  dbEngine.save(db);
+
+  res.json({ success: true, message: `Portfolio duplicated as '${copyName}'.`, data: duplicatedClient });
 });
 
 router.put('/clients/:id', (req, res) => {

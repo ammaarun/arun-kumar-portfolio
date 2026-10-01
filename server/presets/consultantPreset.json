@@ -1,0 +1,58 @@
+{
+  "id": "consultant",
+  "name": "Business & Strategy Consultant",
+  "description": "Designed for business advisors, management consultants, and strategy leads showcasing client impact metrics, services, case studies, and advisory offerings.",
+  "targetAudience": "Business Consultants, Strategy Advisors, Management Leads & Executive Coaches",
+  "badge": "Consultant Pro",
+  "accentColor": "indigo",
+  "personalInfo": {
+    "name": "Vikram Malhotra",
+    "role": "Management & Digital Transformation Consultant",
+    "profileType": "consultant",
+    "eyebrow": "BUSINESS STRATEGIST",
+    "specialization": "Digital Transformation, Operational Efficiency & Enterprise Growth",
+    "heroVisualType": "image",
+    "imageStyle": "natural-portrait",
+    "showFreelancerCTA": false,
+    "heroCtaText": "Schedule Advisory Consultation",
+    "tagline": "Advising enterprise leadership on digital transformation, operational scaling, and revenue optimization.",
+    "shortBio": "Management consultant with 7+ years of experience steering corporate restructuring, process optimization, and growth strategy.",
+    "bio": "Partnering with founders and executive leadership teams to diagnose operational bottlenecks, formulate strategic roadmaps, and implement scalable systems.",
+    "location": "New Delhi, India",
+    "availability": "Available for Executive Advisory & Retainer Projects",
+    "email": "vikram.advisory@example.com",
+    "phone": "+91 98765 00009",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Revenue Impacted", "value": "$12M+", "description": "Client Value Created" },
+    { "label": "Projects Advisory", "value": "40+", "description": "Corporate Retainers" },
+    { "label": "Efficiency Gain", "value": "35%", "description": "Avg Process Speedup" },
+    { "label": "Client Retention", "value": "90%", "description": "Long-term Partnerships" }
+  ],
+  "skills": [
+    {
+      "category": "Strategic Capabilities",
+      "icon": "ShieldCheck",
+      "items": [
+        { "name": "Digital Transformation & Roadmap", "level": 95, "popular": true },
+        { "name": "Financial Modeling & Valuation", "level": 90, "popular": true },
+        { "name": "Change Management & Operations", "level": 92, "popular": false }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-consultant-1",
+      "title": "Supply Chain Automation & Cost Reduction for FMCG Leader",
+      "category": "Management Consulting",
+      "description": "Formulated supply chain optimization strategy reducing annual logistics cost by $2.4M.",
+      "tags": ["Strategy", "Operations", "Cost Reduction", "Supply Chain"],
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+      "featured": true
+    }
+  ]
+}

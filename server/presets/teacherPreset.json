@@ -1,0 +1,58 @@
+{
+  "id": "teacher",
+  "name": "Teacher / Educator",
+  "description": "Tailored for educators, professors, and instructors highlighting subject mastery, teaching philosophy, course modules, student testimonials, and certifications.",
+  "targetAudience": "Teachers, University Professors, Tutors & Online Course Creators",
+  "badge": "Education Pro",
+  "accentColor": "emerald",
+  "personalInfo": {
+    "name": "Sneha Patel",
+    "role": "Computer Science Educator & Academic Mentor",
+    "profileType": "teacher",
+    "eyebrow": "EDUCATOR & MENTOR",
+    "specialization": "Data Structures, Algorithms & Web Development Education",
+    "heroVisualType": "image",
+    "imageStyle": "natural-portrait",
+    "showFreelancerCTA": false,
+    "heroCtaText": "Explore Courses & Curriculum",
+    "tagline": "Inspiring the next generation of engineers through student-centered, practical problem solving.",
+    "shortBio": "Computer Science educator with 6+ years of teaching experience across undergraduate algorithms, web development, and mentor programs.",
+    "bio": "Dedicated academic instructor committed to breaking down complex algorithms into intuitive concepts. Experienced in curriculum design, lab instruction, and mentoring student projects.",
+    "location": "Hyderabad, Telangana, India",
+    "availability": "Available for University Faculty Roles, Guest Lectures & Workshops",
+    "email": "sneha.patel.edu@example.com",
+    "phone": "+91 98765 00008",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com",
+    "twitter": "https://twitter.com",
+    "resumeUrl": "#"
+  },
+  "stats": [
+    { "label": "Students Taught", "value": "1,200+", "description": "Undergraduates & Professionals" },
+    { "label": "Course Rating", "value": "4.95 / 5", "description": "Student Feedback" },
+    { "label": "Workshops Led", "value": "25+", "description": "National & Regional" },
+    { "label": "Pass Percentage", "value": "98%", "description": "Academic Distinction" }
+  ],
+  "skills": [
+    {
+      "category": "Core Subjects & Pedagogy",
+      "icon": "BookOpen",
+      "items": [
+        { "name": "Data Structures & Algorithms", "level": 98, "popular": true },
+        { "name": "Full Stack Web Development", "level": 92, "popular": true },
+        { "name": "Object-Oriented Programming (Java / C++)", "level": 95, "popular": false }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-teacher-1",
+      "title": "Interactive Data Structures Visualizer for CS Students",
+      "category": "Educational Tool",
+      "description": "Developed an open-source web visualization tool used in university classrooms to demonstrate sorting and tree algorithms.",
+      "tags": ["Educational Tech", "Algorithms", "React", "Visualization"],
+      "image": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
+      "featured": true
+    }
+  ]
+}
