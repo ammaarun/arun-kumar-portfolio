@@ -261,19 +261,18 @@ const initialDb = {
   }
 };
 
-const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
 let pool = null;
 let memoryCache = null;
 
-if (connectionString) {
+function initPool() {
+  if (pool) return pool;
+  const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  if (!connectionString) return null;
   const sslOptions = connectionString.includes('localhost') || connectionString.includes('127.0.0.1')
     ? false
     : { rejectUnauthorized: false };
-
-  pool = new pg.Pool({
-    connectionString,
-    ssl: sslOptions
-  });
+  pool = new pg.Pool({ connectionString, ssl: sslOptions });
+  return pool;
 }
 
 // Helper to ensure database structure includes multi-client schema & designConfig
@@ -377,6 +376,7 @@ const ensureMultiClientStructure = (db) => {
 
 export const dbEngine = {
   async init() {
+    pool = initPool();
     if (!pool) {
       memoryCache = this.getFromFile();
       memoryCache = ensureMultiClientStructure(memoryCache);
