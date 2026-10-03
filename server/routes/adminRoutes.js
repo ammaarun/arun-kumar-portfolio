@@ -2,9 +2,19 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import multer from 'multer';
 import { dbEngine, defaultDesignConfig, defaultMediaLibrary, defaultResumes, defaultSeo, defaultBranding } from '../data/dbEngine.js';
 import { verifyToken } from '../middleware/authMiddleware.js';
 import { visualTemplates } from '../templates/visualTemplates.js';
+import {
+  generateObjectKey,
+  uploadToStorage,
+  deleteFromStorage,
+  getPresignedGetUrl,
+  validateFile,
+  ALLOWED_TYPES,
+  MAX_FILE_SIZE_BYTES,
+} from '../utils/storageService.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -699,6 +709,21 @@ router.put('/settings', (req, res) => {
 });
 
 // --- Media Library Endpoints ---
+
+// multer: memory storage — file buffer never written to disk
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: MAX_FILE_SIZE_BYTES },
+  fileFilter: (_req, file, cb) => {
+    if (ALLOWED_TYPES[file.mimetype]) {
+      cb(null, true);
+    } else {
+      cb(new Error(`File type "${file.mimetype}" is not allowed.`));
+    }
+  },
+});
+
+// GET /api/admin/media — list with optional category/search filters
 router.get('/media', (req, res) => {
   const db = dbEngine.get();
   let media = db.mediaLibrary || defaultMediaLibrary;
@@ -716,6 +741,122 @@ router.get('/media', (req, res) => {
   res.json({ success: true, data: media });
 });
 
+// POST /api/admin/media/upload — binary file upload → Neon Object Storage
+// Must be defined BEFORE /media/:id routes to avoid route conflict
+//
+// Custom middleware to call multer and intercept its errors (MIME rejection,
+// file-too-large) so we return 400 instead of falling through to Express 500.
+const uploadSingle = (req, res, next) => {
+  upload.single('file')(req, res, (err) => {
+    if (err) {
+      // MulterError codes: LIMIT_FILE_SIZE, LIMIT_UNEXPECTED_FILE, etc.
+      const msg = err.message || 'File upload error.';
+      return res.status(400).json({ success: false, message: msg });
+    }
+    next();
+  });
+};
+
+router.post('/media/upload', uploadSingle, async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: 'No file provided.' });
+    }
+
+    const { name, category } = req.body;
+    if (!name) {
+      return res.status(400).json({ success: false, message: 'Asset name is required.' });
+    }
+
+    // Validate MIME + size (multer fileFilter already checks MIME, but double-check here)
+    const validation = validateFile(req.file.mimetype, req.file.size);
+    if (!validation.valid) {
+      return res.status(400).json({ success: false, message: validation.error });
+    }
+
+    // Determine portfolio context — admin context is always the active client
+    const db = dbEngine.get();
+    const portfolioId = db.activeClientId || 'client-1';
+
+    const safeCategory = category || 'other';
+    const objectKey = generateObjectKey(portfolioId, safeCategory, req.file.mimetype);
+
+    // Upload binary to Neon Object Storage
+    await uploadToStorage(req.file.buffer, objectKey, req.file.mimetype);
+
+    // Build serve URL (admin preview goes through authenticated serve endpoint)
+    const servePath = `/api/admin/media/serve/${encodeURIComponent(objectKey)}`;
+
+    // Determine media type label
+    const mediaType = req.file.mimetype === 'application/pdf' ? 'document' : 'image';
+
+    // Persist metadata to db.mediaLibrary
+    const newMedia = {
+      id: `media-${Date.now()}`,
+      name: name.trim(),
+      url: servePath,              // Used for admin preview
+      objectKey,                   // S3 key for deletion / serve
+      portfolioId,
+      type: mediaType,
+      category: safeCategory,
+      mimeType: req.file.mimetype,
+      sizeKb: Math.round(req.file.size / 1024),
+      dimensions: mediaType === 'document' ? 'PDF Document' : 'Uploaded',
+      uploadDate: new Date().toISOString().split('T')[0],
+      storageBackend: 'neon',
+    };
+
+    db.mediaLibrary = db.mediaLibrary || [];
+    db.mediaLibrary.unshift(newMedia);
+    dbEngine.logActivity('media', `Uploaded asset to Neon storage: ${name}`);
+
+    try {
+      dbEngine.save(db);
+    } catch (dbErr) {
+      // Metadata save failed — clean up the orphaned S3 object
+      console.error('[Media Upload] Metadata save failed, attempting S3 cleanup:', dbErr.message);
+      await deleteFromStorage(objectKey).catch(e =>
+        console.error('[Media Upload] S3 cleanup also failed:', e.message)
+      );
+      return res.status(500).json({
+        success: false,
+        message: 'File stored but metadata save failed. File has been removed. Please retry.',
+      });
+    }
+
+    res.json({ success: true, message: 'Media asset uploaded to Neon Object Storage.', data: newMedia });
+  } catch (err) {
+    console.error('[Media Upload] Error:', err.message);
+    if (err.message && err.message.startsWith('File type')) {
+      return res.status(400).json({ success: false, message: err.message });
+    }
+    res.status(500).json({ success: false, message: 'Upload failed: ' + err.message });
+  }
+});
+
+// GET /api/admin/media/serve/*objectKey — generate presigned URL for admin preview
+// objectKey is URI-encoded in the path; decode before use
+router.get('/media/serve/*objectKey', async (req, res) => {
+  try {
+    const objectKey = decodeURIComponent(req.params.objectKey);
+
+    // Verify the objectKey actually belongs to a media record owned by this admin
+    const db = dbEngine.get();
+    const record = (db.mediaLibrary || []).find(m => m.objectKey === objectKey);
+    if (!record) {
+      return res.status(404).json({ success: false, message: 'Media record not found.' });
+    }
+
+    const presignedUrl = await getPresignedGetUrl(objectKey, 3600);
+    // Redirect to presigned URL so the browser loads the asset directly from Neon storage
+    res.redirect(302, presignedUrl);
+  } catch (err) {
+    console.error('[Media Serve] Error:', err.message);
+    res.status(500).json({ success: false, message: 'Could not generate access URL.' });
+  }
+});
+
+// POST /api/admin/media — URL-paste mode (backward-compatible, still supported)
 router.post('/media', (req, res) => {
   const { name, url, type, category, sizeKb, dimensions } = req.body;
   if (!name || !url) {
@@ -731,17 +872,19 @@ router.post('/media', (req, res) => {
     category: category || 'other',
     sizeKb: sizeKb || Math.floor(Math.random() * 500 + 100),
     dimensions: dimensions || (type === 'document' ? 'PDF Document' : '1200 x 800'),
-    uploadDate: new Date().toISOString().split('T')[0]
+    uploadDate: new Date().toISOString().split('T')[0],
+    storageBackend: 'url',  // Marks this as a URL-reference record
   };
 
   db.mediaLibrary = db.mediaLibrary || [ ...defaultMediaLibrary ];
   db.mediaLibrary.unshift(newMedia);
-  dbEngine.logActivity('media', `Uploaded media asset: ${name}`);
+  dbEngine.logActivity('media', `Saved media URL reference: ${name}`);
   dbEngine.save(db);
 
-  res.json({ success: true, message: 'Media asset uploaded successfully.', data: newMedia });
+  res.json({ success: true, message: 'Media asset saved successfully.', data: newMedia });
 });
 
+// PUT /api/admin/media/:id — update metadata
 router.put('/media/:id', (req, res) => {
   const { id } = req.params;
   const db = dbEngine.get();
@@ -753,21 +896,49 @@ router.put('/media/:id', (req, res) => {
   const updatedMedia = {
     ...db.mediaLibrary[mediaIndex],
     ...req.body,
+    // Prevent client from overwriting objectKey or storageBackend
+    objectKey: db.mediaLibrary[mediaIndex].objectKey,
+    storageBackend: db.mediaLibrary[mediaIndex].storageBackend,
     uploadDate: new Date().toISOString().split('T')[0]
   };
   db.mediaLibrary[mediaIndex] = updatedMedia;
-  dbEngine.logActivity('media', `Replaced media asset: ${updatedMedia.name}`);
+  dbEngine.logActivity('media', `Updated media asset: ${updatedMedia.name}`);
   dbEngine.save(db);
 
   res.json({ success: true, message: 'Media asset updated successfully.', data: updatedMedia });
 });
 
-router.delete('/media/:id', (req, res) => {
-  const { id } = req.params;
-  const db = dbEngine.get();
-  db.mediaLibrary = (db.mediaLibrary || []).filter(m => m.id !== id);
-  dbEngine.save(db);
-  res.json({ success: true, message: 'Media asset deleted successfully.' });
+// DELETE /api/admin/media/:id — delete metadata + S3 object (if present)
+router.delete('/media/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const db = dbEngine.get();
+    const record = (db.mediaLibrary || []).find(m => m.id === id);
+
+    if (!record) {
+      return res.status(404).json({ success: false, message: 'Media asset not found.' });
+    }
+
+    // Delete the S3 object first if this is a Neon-stored asset
+    if (record.objectKey && record.storageBackend === 'neon') {
+      try {
+        await deleteFromStorage(record.objectKey);
+      } catch (s3Err) {
+        console.error('[Media Delete] S3 deletion error (continuing):', s3Err.message);
+        // Continue to remove metadata even if S3 deletion fails to avoid orphaned records
+      }
+    }
+
+    // Remove metadata from array
+    db.mediaLibrary = (db.mediaLibrary || []).filter(m => m.id !== id);
+    dbEngine.logActivity('media', `Deleted media asset: ${record.name}`);
+    dbEngine.save(db);
+
+    res.json({ success: true, message: 'Media asset deleted successfully.' });
+  } catch (err) {
+    console.error('[Media Delete] Error:', err.message);
+    res.status(500).json({ success: false, message: 'Delete failed: ' + err.message });
+  }
 });
 
 // --- Resume Management & Versioning Endpoints ---

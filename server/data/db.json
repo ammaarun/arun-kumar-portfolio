@@ -6,26 +6,9 @@
   "badge": "Freelance Pro",
   "accentColor": "amber",
   "personalInfo": {
-    "name": "Alex Morgan",
-    "role": "Lead Java & Full Stack Developer",
-    "profileType": "fresher",
-    "eyebrow": "ENTRY-LEVEL DEVELOPER",
-    "specialization": "Full-Stack Web Development",
-    "heroVisualType": "none",
-    "showFreelancerCTA": false,
-    "heroCtaText": "Contact Me",
-    "tagline": "Passionate Computer Science graduate with strong foundations in algorithms, web development, and object-oriented programming.",
-    "shortBio": "Eager junior developer seeking an entry-level software engineering role to contribute clean code, problem-solving skills, and rapid learning.",
-    "bio": "Graduated with honors in Computer Science. Dedicated to building responsive web applications, learning modern frameworks, and writing clean, maintainable code. Experienced with Git version control, REST APIs, and relational databases through academic coursework and hands-on personal projects.",
-    "location": "Telangana, India",
-    "availability": "Available for Immediate Full-Time Junior / Trainee Roles",
-    "email": "alex.morgan.dev@example.com",
-    "phone": "+91 98765 00001",
-    "github": "https://github.com",
-    "linkedin": "https://linkedin.com",
-    "twitter": "https://twitter.com",
-    "resumeUrl": "https://example.com/principal-resume.pdf",
-    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+    "name": "Priya Reddy",
+    "role": "Frontend Architect",
+    "resumeUrl": "https://example.com/principal-resume.pdf"
   },
   "stats": [
     {
@@ -124,6 +107,19 @@
     }
   ],
   "projects": [
+    {
+      "id": "proj-1791028533611",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
     {
       "id": "proj-1790876626651",
       "title": "Automated Test Project",
@@ -264,6 +260,33 @@
   "blogs": [],
   "messages": [
     {
+      "id": "msg-1791028535229",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-03T11:55:35.229Z",
+      "read": false
+    },
+    {
+      "id": "msg-1791028480535",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-03T11:54:40.535Z",
+      "read": false
+    },
+    {
+      "id": "msg-1791028243467",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-03T11:50:43.467Z",
+      "read": false
+    },
+    {
       "id": "msg-1790878885302",
       "name": "Test Client",
       "email": "client@example.com",
@@ -355,7 +378,7 @@
       "slug": "arun-kumar-lead",
       "status": "PUBLISHED",
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-10-01T18:21:29.830Z",
+      "lastUpdated": "2026-10-03T11:55:34.970Z",
       "lastPublishedAt": "2026-09-27T18:56:42.613Z",
       "isDefault": true,
       "portfolioData": {
@@ -478,6 +501,19 @@
           }
         ],
         "projects": [
+          {
+            "id": "proj-1791028533611",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
           {
             "id": "proj-1790876626651",
             "title": "Automated Test Project",
@@ -808,127 +844,109 @@
       "status": "PUBLISHED",
       "portfolioData": {
         "personalInfo": {
-          "name": "Taylor Swiftly",
-          "role": "Lead Java & Full Stack Developer",
-          "profileType": "freelancer",
-          "eyebrow": "FREELANCE DEVELOPER",
-          "specialization": "Custom Web Apps & Client Solutions",
-          "heroVisualType": "none",
-          "showFreelancerCTA": true,
-          "heroCtaText": "Request Custom Portfolio",
-          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-          "location": "Telangana, India",
-          "availability": "Available for New Freelance Projects & Monthly Retainers",
-          "email": "taylor.consulting@example.com",
-          "phone": "+91 98765 00004",
-          "github": "https://github.com",
-          "linkedin": "https://linkedin.com",
-          "twitter": "https://twitter.com",
-          "resumeUrl": "https://example.com/principal-resume.pdf",
-          "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+          "name": "Priya Reddy",
+          "role": "Frontend Architect",
+          "resumeUrl": "https://example.com/principal-resume.pdf"
         },
         "stats": [
           {
-            "label": "Client Projects",
-            "value": "25+",
-            "description": "Delivered On-Time"
+            "label": "Academic GPA",
+            "value": "8.8 / 10",
+            "description": "CS & Engineering Honors"
           },
           {
-            "label": "Client Rating",
-            "value": "5.0 ★",
-            "description": "100% Satisfaction"
+            "label": "Projects Built",
+            "value": "6+",
+            "description": "Web & Mobile Repositories"
           },
           {
-            "label": "Avg Turnaround",
-            "value": "48 Hours",
-            "description": "Fast Delivery Option"
+            "label": "Coding Practice",
+            "value": "400+",
+            "description": "DSA Problems Solved"
           },
           {
-            "label": "Repeat Clients",
-            "value": "80%",
-            "description": "Long-Term Partnerships"
+            "label": "Certifications",
+            "value": "3",
+            "description": "Verified Skill Badges"
           }
         ],
         "skills": [
           {
-            "category": "Freelance Development Services",
-            "icon": "Sparkles",
-            "items": [
-              {
-                "name": "Custom Web Applications",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Dynamic Portfolio & CMS Development",
-                "level": 98,
-                "popular": true
-              },
-              {
-                "name": "React & Tailwind Frontend Engineering",
-                "level": 94,
-                "popular": true
-              },
-              {
-                "name": "API & Payment Integration",
-                "level": 90
-              }
-            ]
-          },
-          {
-            "category": "Core Technologies",
+            "category": "Core Programming & CS Fundamentals",
             "icon": "Code2",
             "items": [
               {
-                "name": "JavaScript (ES6+) & TypeScript",
-                "level": 92,
+                "name": "Java / C++",
+                "level": 85,
                 "popular": true
               },
               {
-                "name": "React.js / Next.js",
-                "level": 90,
+                "name": "Data Structures & Algorithms",
+                "level": 82,
                 "popular": true
               },
               {
-                "name": "Node.js & Express APIs",
+                "name": "Object-Oriented Programming (OOP)",
                 "level": 88
               },
               {
-                "name": "PostgreSQL & MongoDB Database Setup",
-                "level": 86
+                "name": "Database Management (SQL)",
+                "level": 80
               }
             ]
           },
           {
-            "category": "Deployment & Maintenance",
-            "icon": "Cloud",
+            "category": "Web Development",
+            "icon": "Layout",
             "items": [
               {
-                "name": "Cloud Deployment (Render / Vercel)",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Custom Domain & SSL Setup",
-                "level": 92
-              },
-              {
-                "name": "SEO & OpenGraph Metadata Optimization",
+                "name": "HTML5 & CSS3",
                 "level": 90,
                 "popular": true
               },
               {
-                "name": "Ongoing Maintenance & Bug Fixes",
-                "level": 88
+                "name": "JavaScript (ES6+)",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "React Fundamentals",
+                "level": 78,
+                "popular": true
+              },
+              {
+                "name": "Tailwind CSS",
+                "level": 82
+              }
+            ]
+          },
+          {
+            "category": "Developer Tools & Version Control",
+            "icon": "Terminal",
+            "items": [
+              {
+                "name": "Git & GitHub",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "VS Code & Eclipse",
+                "level": 90
+              },
+              {
+                "name": "Postman API Testing",
+                "level": 80
+              },
+              {
+                "name": "Linux Command Line",
+                "level": 75
               }
             ]
           }
         ],
         "projects": [
           {
-            "id": "proj-1790878887515",
+            "id": "proj-1791028533611",
             "title": "Automated Test Project",
             "subtitle": "Vitest Microservice",
             "category": "Backend & Microservices",
@@ -941,189 +959,183 @@
             "featured": true
           },
           {
-            "id": "proj-free-1",
-            "title": "Client Portal & Asset Dashboard",
-            "subtitle": "Custom Client Web Platform",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
-            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
+            "id": "proj-1790876626651",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
             "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
+          {
+            "id": "proj-fresher-1",
+            "title": "Smart Campus Student Portal",
+            "subtitle": "Web-Based Academic Management System",
+            "category": "Web Development",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+            "description": "Full-featured web app allowing students to view attendance, submit assignments, and check exam schedules.",
+            "longDescription": "Developed as a final-year capstone project. Implemented user authentication, role-based access for students and faculty, and automated grade calculations.",
+            "tech": [
+              "JavaScript",
               "React",
-              "Tailwind CSS",
-              "Node.js",
-              "PostgreSQL"
+              "HTML/CSS",
+              "SQLite"
             ],
             "metrics": [
               {
-                "label": "Delivery",
-                "value": "14 Days"
+                "label": "User Roles",
+                "value": "Student & Admin"
               },
               {
-                "label": "Rating",
-                "value": "5.0 ★"
+                "label": "Response",
+                "value": "< 150ms"
               }
             ],
             "github": "https://github.com",
             "live": "https://example.com",
             "highlights": [
-              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
-              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+              "Built responsive frontend interfaces with clean component hierarchy.",
+              "Created relational database schema with indexed queries."
             ]
           },
           {
-            "id": "proj-free-2",
-            "title": "SaaS Product Landing & Billing System",
-            "subtitle": "High-Converting Sales Web App",
-            "category": "Freelance Client Work",
+            "id": "proj-fresher-2",
+            "title": "Task Flow Productivity App",
+            "subtitle": "Interactive Kanban Task Manager",
+            "category": "Frontend",
             "featured": true,
             "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
-            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+            "description": "Interactive drag-and-drop task board for organizing daily study schedules and project milestones.",
+            "longDescription": "Built using modern React hooks and local storage persistence. Features task tagging, priority filters, and dark mode.",
             "tech": [
               "React",
-              "Stripe API",
-              "Tailwind CSS",
-              "Render"
+              "JavaScript",
+              "Tailwind CSS"
             ],
             "metrics": [
               {
-                "label": "Conversion",
-                "value": "12% Rate"
+                "label": "Features",
+                "value": "Drag & Drop"
               },
               {
-                "label": "Performance",
-                "value": "99/100"
+                "label": "Storage",
+                "value": "Local State"
               }
             ],
             "github": "https://github.com",
             "live": "https://example.com",
             "highlights": [
-              "Integrated Stripe Checkout API with automated webhook confirmation.",
-              "Configured social share previews increasing referral traffic."
+              "Implemented custom React hooks for persistent state storage.",
+              "Optimized mobile touch interaction for drag-and-drop actions."
             ]
           }
         ],
         "experience": [
           {
-            "id": "exp-free-1",
-            "company": "Independent Consultant",
-            "role": "Lead Freelance Web Developer",
-            "period": "2022 - Present",
-            "location": "Remote",
-            "type": "Freelance",
-            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
+            "id": "exp-fresher-1",
+            "company": "TechInnovate Solutions",
+            "role": "Software Developer Intern",
+            "period": "Summer 2025 (3 Months)",
+            "location": "Hyderabad, India",
+            "type": "Internship",
+            "description": "Assisted senior engineers in developing and testing internal web tools and REST endpoint integrations.",
             "achievements": [
-              "Maintained a 100% 5-star rating across 25+ client contracts.",
-              "Built and deployed custom portfolio web applications with live admin CMS panels.",
-              "Helped clients scale web apps to handle high peak user traffic."
+              "Wrote unit tests achieving 85% code coverage for core utility modules.",
+              "Participated in daily agile standups and peer code reviews.",
+              "Fixed 15+ frontend UI responsiveness bugs across desktop and mobile screens."
             ],
             "skills": [
-              "React",
-              "Node.js",
-              "PostgreSQL",
-              "Tailwind CSS",
-              "Client Management"
+              "JavaScript",
+              "HTML/CSS",
+              "Git",
+              "REST APIs"
             ]
           }
         ],
         "education": [
           {
-            "id": "edu-free-1",
-            "degree": "Bachelor of Science (B.Sc) in Computer Science",
-            "institution": "University of Technology",
-            "period": "2018 - 2022",
-            "description": "Graduated with top honors in Web Computing and User Interface Design."
+            "id": "edu-fresher-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
+            "institution": "State Technological University",
+            "period": "2022 - 2026",
+            "description": "Relevant Coursework: Data Structures, Analysis of Algorithms, Object-Oriented Programming, Database Systems, Web Technologies, Operating Systems."
           }
         ],
         "services": [
           {
-            "id": "srv-free-1",
-            "title": "Basic Developer Portfolio",
-            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+            "id": "srv-fresher-1",
+            "title": "Junior Web Development",
+            "description": "Building clean, responsive landing pages, personal websites, and HTML/CSS/JavaScript components.",
             "icon": "Layout",
-            "pricing": "$99 / ₹8,000",
+            "pricing": "Entry-Level Rate",
             "featured": true
           },
           {
-            "id": "srv-free-2",
-            "title": "Full Dynamic Portfolio CMS",
-            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
-            "icon": "Server",
-            "pricing": "$249 / ₹20,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-3",
-            "title": "VIP Personal Brand Package",
-            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
-            "icon": "Sparkles",
-            "pricing": "$499 / ₹40,000",
+            "id": "srv-fresher-2",
+            "title": "Bug Fixing & UI Tweaks",
+            "description": "Diagnosing layout issues, fixing JavaScript bugs, and upgrading frontend responsiveness.",
+            "icon": "Code2",
+            "pricing": "Flexible",
             "featured": true
           }
         ],
         "blogs": [],
         "testimonials": [
           {
-            "id": "test-free-1",
-            "name": "Emily Watson",
-            "role": "Agency Founder",
-            "company": "Apex Digital",
-            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+            "id": "test-fresher-1",
+            "name": "Dr. R. K. Sharma",
+            "role": "Head of Computer Science Department",
+            "company": "State Technological University",
+            "content": "Alex showed exceptional dedication during the final-year capstone project. A quick learner with strong problem-solving skills and a great team attitude.",
             "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          },
-          {
-            "id": "test-free-2",
-            "name": "Robert Vance",
-            "role": "Startup Founder",
-            "company": "Vance Media",
-            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
-            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
             "visible": true
           }
         ],
         "settings": {
-          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
-          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
-          "accentColor": "amber",
+          "siteTitle": "Alex Morgan — Junior Software Developer Portfolio",
+          "metaDescription": "Entry-level software engineer portfolio showcasing web development projects, CS fundamentals, and technical skills.",
+          "accentColor": "emerald",
           "themePreference": "dark",
           "resumeUrl": "#",
           "showHero": true,
           "showServices": true,
           "showBlog": false,
           "showTestimonials": true,
-          "footerText": "Designed & Built by Taylor Swiftly",
-          "activePreset": "freelancer",
-          "profileType": "Freelancer"
+          "footerText": "Designed & Built by Alex Morgan",
+          "activePreset": "fresher",
+          "profileType": "Fresher / Entry-Level Developer"
         },
         "designConfig": {
-          "template": "minimal-light",
-          "themeMode": "light",
+          "template": "modern-dark",
+          "themeMode": "dark",
           "colors": {
             "primary": "#ec4899",
-            "secondary": "#3b82f6",
-            "accent": "#1d4ed8",
-            "background": "#f8fafc",
-            "surface": "#ffffff",
-            "text": "#0f172a"
+            "secondary": "#14b8a6",
+            "accent": "#059669",
+            "background": "#0a0d14",
+            "surface": "#121723",
+            "text": "#f1f5f9"
           },
           "fonts": {
-            "heading": "Space Grotesk",
+            "heading": "Inter",
             "body": "Inter"
           },
           "layout": {
-            "hero": "left",
-            "projects": "cards",
+            "hero": "centered",
+            "projects": "grid",
             "navigation": "top",
-            "contact": "cards"
+            "contact": "form"
           },
           "buttons": {
-            "style": "square",
+            "style": "rounded",
             "size": "medium"
           },
-          "animations": "subtle",
+          "animations": "standard",
           "sections": [
             {
               "id": "hero",
@@ -1138,38 +1150,38 @@
               "order": 2
             },
             {
-              "id": "projects",
-              "name": "Projects Showcase",
+              "id": "skills",
+              "name": "Skills",
               "visible": true,
               "order": 3
             },
             {
-              "id": "skills",
-              "name": "Skills",
+              "id": "projects",
+              "name": "Projects Showcase",
               "visible": true,
               "order": 4
-            },
-            {
-              "id": "experience",
-              "name": "Work Experience",
-              "visible": true,
-              "order": 5
             },
             {
               "id": "services",
               "name": "Services",
               "visible": true,
-              "order": 6
+              "order": 5
             },
             {
-              "id": "testimonials",
-              "name": "Testimonials",
+              "id": "experience",
+              "name": "Work Experience",
               "visible": true,
-              "order": 7
+              "order": 6
             },
             {
               "id": "blog",
               "name": "Blog / Articles",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
               "visible": true,
               "order": 8
             },
@@ -1225,7 +1237,7 @@
         ],
         "resumes": [
           {
-            "id": "res-test-1790878889809",
+            "id": "res-test-1791028534888",
             "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
             "url": "https://example.com/principal-resume.pdf",
             "uploadDate": "2026-09-24",
@@ -1266,7 +1278,7 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       },
-      "lastUpdated": "2026-10-01T18:21:29.819Z"
+      "lastUpdated": "2026-10-03T11:55:35.229Z"
     },
     {
       "id": "client-1790876537734",
@@ -2201,8 +2213,183 @@
       }
     }
   ],
-  "activeClientId": "client-1",
+  "activeClientId": "client-2",
   "activities": [
+    {
+      "id": "act-1791028534901",
+      "type": "publish",
+      "description": "Portfolio status updated to PUBLISHED",
+      "timestamp": "2026-10-03T11:55:34.901Z",
+      "clientName": "Arun Kumar"
+    },
+    {
+      "id": "act-1791028527088",
+      "type": "media",
+      "description": "Updated media asset: Updated Name",
+      "timestamp": "2026-10-03T11:55:27.088Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028527062",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Protect Key Test",
+      "timestamp": "2026-10-03T11:55:27.062Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028527025",
+      "type": "media",
+      "description": "Deleted media asset: URL Delete Test",
+      "timestamp": "2026-10-03T11:55:27.025Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028527012",
+      "type": "media",
+      "description": "Saved media URL reference: URL Delete Test",
+      "timestamp": "2026-10-03T11:55:27.012Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028526993",
+      "type": "media",
+      "description": "Deleted media asset: Delete Test Asset",
+      "timestamp": "2026-10-03T11:55:26.994Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028526972",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Delete Test Asset",
+      "timestamp": "2026-10-03T11:55:26.972Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028526933",
+      "type": "media",
+      "description": "Saved media URL reference: Unsplash Photo",
+      "timestamp": "2026-10-03T11:55:26.933Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028526870",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Serve Test Asset",
+      "timestamp": "2026-10-03T11:55:26.870Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028526769",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Project Thumbnail Test",
+      "timestamp": "2026-10-03T11:55:26.769Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028526747",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: My Resume 2026",
+      "timestamp": "2026-10-03T11:55:26.747Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028526653",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: My Profile Photo",
+      "timestamp": "2026-10-03T11:55:26.653Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028480305",
+      "type": "publish",
+      "description": "Portfolio status updated to PUBLISHED",
+      "timestamp": "2026-10-03T11:54:40.305Z",
+      "clientName": "Arun Kumar"
+    },
+    {
+      "id": "act-1791028472168",
+      "type": "media",
+      "description": "Updated media asset: Updated Name",
+      "timestamp": "2026-10-03T11:54:32.168Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028472132",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Protect Key Test",
+      "timestamp": "2026-10-03T11:54:32.132Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028472097",
+      "type": "media",
+      "description": "Deleted media asset: URL Delete Test",
+      "timestamp": "2026-10-03T11:54:32.097Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028472081",
+      "type": "media",
+      "description": "Saved media URL reference: URL Delete Test",
+      "timestamp": "2026-10-03T11:54:32.081Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028472065",
+      "type": "media",
+      "description": "Deleted media asset: Delete Test Asset",
+      "timestamp": "2026-10-03T11:54:32.065Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028472046",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Delete Test Asset",
+      "timestamp": "2026-10-03T11:54:32.046Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028472003",
+      "type": "media",
+      "description": "Saved media URL reference: Unsplash Photo",
+      "timestamp": "2026-10-03T11:54:32.003Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028471969",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Serve Test Asset",
+      "timestamp": "2026-10-03T11:54:31.969Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028471846",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Project Thumbnail Test",
+      "timestamp": "2026-10-03T11:54:31.846Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028471814",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: My Resume 2026",
+      "timestamp": "2026-10-03T11:54:31.814Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028471648",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: My Profile Photo",
+      "timestamp": "2026-10-03T11:54:31.648Z",
+      "clientName": "Priya Reddy"
+    },
+    {
+      "id": "act-1791028246292",
+      "type": "publish",
+      "description": "Portfolio status updated to PUBLISHED",
+      "timestamp": "2026-10-03T11:50:46.292Z",
+      "clientName": "Arun Kumar"
+    },
     {
       "id": "act-1790878889830",
       "type": "publish",
@@ -2233,31 +2420,31 @@
     }
   ],
   "designConfig": {
-    "template": "minimal-light",
-    "themeMode": "light",
+    "template": "modern-dark",
+    "themeMode": "dark",
     "colors": {
-      "primary": "#2563eb",
-      "secondary": "#3b82f6",
-      "accent": "#1d4ed8",
-      "background": "#f8fafc",
-      "surface": "#ffffff",
-      "text": "#0f172a"
+      "primary": "#ec4899",
+      "secondary": "#14b8a6",
+      "accent": "#059669",
+      "background": "#0a0d14",
+      "surface": "#121723",
+      "text": "#f1f5f9"
     },
     "fonts": {
-      "heading": "Space Grotesk",
+      "heading": "Inter",
       "body": "Inter"
     },
     "layout": {
-      "hero": "left",
-      "projects": "cards",
+      "hero": "centered",
+      "projects": "grid",
       "navigation": "top",
-      "contact": "cards"
+      "contact": "form"
     },
     "buttons": {
-      "style": "square",
+      "style": "rounded",
       "size": "medium"
     },
-    "animations": "subtle",
+    "animations": "standard",
     "sections": [
       {
         "id": "hero",
@@ -2272,38 +2459,38 @@
         "order": 2
       },
       {
-        "id": "projects",
-        "name": "Projects Showcase",
+        "id": "skills",
+        "name": "Skills",
         "visible": true,
         "order": 3
       },
       {
-        "id": "skills",
-        "name": "Skills",
+        "id": "projects",
+        "name": "Projects Showcase",
         "visible": true,
         "order": 4
-      },
-      {
-        "id": "experience",
-        "name": "Work Experience",
-        "visible": true,
-        "order": 5
       },
       {
         "id": "services",
         "name": "Services",
         "visible": true,
-        "order": 6
+        "order": 5
       },
       {
-        "id": "testimonials",
-        "name": "Testimonials",
+        "id": "experience",
+        "name": "Work Experience",
         "visible": true,
-        "order": 7
+        "order": 6
       },
       {
         "id": "blog",
         "name": "Blog / Articles",
+        "visible": true,
+        "order": 7
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
         "visible": true,
         "order": 8
       },
@@ -2359,7 +2546,7 @@
   ],
   "resumes": [
     {
-      "id": "res-test-1790875694522",
+      "id": "res-test-1791028534888",
       "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
       "url": "https://example.com/principal-resume.pdf",
       "uploadDate": "2026-09-24",

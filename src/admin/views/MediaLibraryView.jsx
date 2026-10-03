@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Image, Plus, Search, Trash2, Eye, RefreshCw, Upload, 
-  CheckCircle2, FileText, Download, Layers, ShieldCheck, X 
+  CheckCircle2, FileText, Download, Layers, ShieldCheck, X,
+  CloudUpload, Link as LinkIcon
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -17,12 +18,16 @@ export const MediaLibraryView = () => {
   const [previewAsset, setPreviewAsset] = useState(null);
   const [replaceAsset, setReplaceAsset] = useState(null);
 
-  // New Upload Form
+  // Upload form state
+  const [uploadMode, setUploadMode] = useState('file'); // 'file' | 'url'
   const [name, setName] = useState('');
   const [url, setUrl] = useState('');
   const [type, setType] = useState('image');
   const [category, setCategory] = useState('projects');
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(null); // null | 'uploading' | 'done'
   const [submitting, setSubmitting] = useState(false);
+  const fileInputRef = useRef(null);
 
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -49,6 +54,62 @@ export const MediaLibraryView = () => {
     fetchMedia();
   }, [token, categoryFilter, search]);
 
+  const resetUploadForm = () => {
+    setName('');
+    setUrl('');
+    setType('image');
+    setCategory('projects');
+    setSelectedFile(null);
+    setUploadProgress(null);
+    setError('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  // --- File Upload (Neon Object Storage) ---
+  const handleFileUpload = async (e) => {
+    e.preventDefault();
+    if (!name) { setError('Please enter an asset name.'); return; }
+    if (!selectedFile) { setError('Please select a file to upload.'); return; }
+
+    setSubmitting(true);
+    setError('');
+    setUploadProgress('uploading');
+
+    try {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      formData.append('name', name);
+      formData.append('category', category);
+
+      const res = await fetch('/api/admin/media/upload', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        // NOTE: Do NOT set Content-Type header — browser sets it with boundary for multipart
+        body: formData,
+      });
+
+      const resData = await res.json();
+      if (resData.success) {
+        setUploadProgress('done');
+        setUploadOpen(false);
+        resetUploadForm();
+        fetchMedia();
+        setMessage('File uploaded to Neon Object Storage.');
+        setTimeout(() => setMessage(''), 4000);
+      } else {
+        setUploadProgress(null);
+        setError(resData.message || 'Upload failed.');
+      }
+    } catch (err) {
+      console.error('Error uploading file:', err);
+      setUploadProgress(null);
+      setError('Network error during upload.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  // --- URL-paste mode (backward-compatible) ---
   const handleUploadMedia = async (e) => {
     e.preventDefault();
     if (!name || !url) return;
@@ -73,17 +134,16 @@ export const MediaLibraryView = () => {
       const resData = await res.json();
       if (resData.success) {
         setUploadOpen(false);
-        setName('');
-        setUrl('');
+        resetUploadForm();
         fetchMedia();
-        setMessage('Media asset uploaded successfully.');
+        setMessage('Media URL saved to library.');
         setTimeout(() => setMessage(''), 3000);
       } else {
-        setError(resData.message || 'Failed to upload asset.');
+        setError(resData.message || 'Failed to save asset.');
       }
     } catch (err) {
-      console.error('Error uploading media asset:', err);
-      setError('Network error uploading asset.');
+      console.error('Error saving media URL:', err);
+      setError('Network error saving asset.');
     } finally {
       setSubmitting(false);
     }
@@ -141,6 +201,18 @@ export const MediaLibraryView = () => {
     }
   };
 
+  /**
+   * Resolve the URL to use for rendering a preview image/thumbnail.
+   * - Neon-stored assets: use the authenticated serve endpoint (redirects to presigned URL)
+   * - Legacy URL-paste assets: use the URL directly
+   */
+  const resolvePreviewUrl = (asset) => {
+    if (asset.storageBackend === 'neon' && asset.objectKey) {
+      return `/api/admin/media/serve/${encodeURIComponent(asset.objectKey)}`;
+    }
+    return asset.url;
+  };
+
   const categoriesList = [
     { id: 'all', label: 'All Assets' },
     { id: 'profile', label: 'Profile' },
@@ -170,7 +242,7 @@ export const MediaLibraryView = () => {
         </div>
 
         <button
-          onClick={() => setUploadOpen(true)}
+          onClick={() => { resetUploadForm(); setUploadOpen(true); }}
           className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-xs font-bold text-white shadow-lg shadow-emerald-500/20 flex items-center space-x-2 transition-all self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
@@ -253,16 +325,21 @@ export const MediaLibraryView = () => {
                   </div>
                 ) : (
                   <img
-                    src={asset.url}
+                    src={resolvePreviewUrl(asset)}
                     alt={asset.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 )}
 
-                <div className="absolute top-2 left-2">
+                <div className="absolute top-2 left-2 flex items-center gap-1.5">
                   <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-slate-950/80 text-emerald-400 rounded-md border border-emerald-500/30 backdrop-blur-md capitalize">
                     {asset.category}
                   </span>
+                  {asset.storageBackend === 'neon' && (
+                    <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-slate-950/80 text-teal-400 rounded-md border border-teal-500/30 backdrop-blur-md">
+                      Neon
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -317,49 +394,96 @@ export const MediaLibraryView = () => {
                 <Upload className="w-4 h-4 text-emerald-400" />
                 <span>Upload Portfolio Asset</span>
               </h3>
-              <button onClick={() => setUploadOpen(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => { setUploadOpen(false); resetUploadForm(); }} className="text-slate-400 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleUploadMedia} className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono text-slate-300">Asset Name / Title</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Profile Photo 2026"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
+            {/* Upload mode toggle */}
+            <div className="flex rounded-xl bg-[#0a0d14] border border-slate-800 p-1">
+              <button
+                type="button"
+                onClick={() => setUploadMode('file')}
+                className={`flex-1 flex items-center justify-center space-x-1.5 py-2 rounded-lg text-xs font-semibold transition-all ${
+                  uploadMode === 'file'
+                    ? 'bg-emerald-600 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <CloudUpload className="w-3.5 h-3.5" />
+                <span>Upload File</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setUploadMode('url')}
+                className={`flex-1 flex items-center justify-center space-x-1.5 py-2 rounded-lg text-xs font-semibold transition-all ${
+                  uploadMode === 'url'
+                    ? 'bg-slate-700 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <LinkIcon className="w-3.5 h-3.5" />
+                <span>Paste URL</span>
+              </button>
+            </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono text-slate-300">Image / File URL</label>
-                <input
-                  type="url"
-                  required
-                  placeholder="https://images.unsplash.com/..."
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
+            {/* FILE UPLOAD MODE */}
+            {uploadMode === 'file' ? (
+              <form onSubmit={handleFileUpload} className="space-y-4">
+                {/* Asset name */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-mono text-slate-300">Asset Type</label>
-                  <select
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
-                  >
-                    <option value="image">Image</option>
-                    <option value="document">Document (PDF)</option>
-                  </select>
+                  <label className="text-xs font-mono text-slate-300">Asset Name / Title</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Profile Photo 2026"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  />
                 </div>
 
+                {/* File picker */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-slate-300">
+                    File <span className="text-slate-500">(JPEG, PNG, WebP, GIF, PDF · max 10 MB)</span>
+                  </label>
+                  <div
+                    onClick={() => fileInputRef.current?.click()}
+                    className={`w-full px-4 py-6 rounded-xl border-2 border-dashed cursor-pointer transition-colors text-center ${
+                      selectedFile
+                        ? 'border-emerald-500/60 bg-emerald-500/5'
+                        : 'border-slate-700 hover:border-emerald-500/50 bg-[#0a0d14]'
+                    }`}
+                  >
+                    {selectedFile ? (
+                      <div className="space-y-1">
+                        <CloudUpload className="w-6 h-6 text-emerald-400 mx-auto" />
+                        <p className="text-xs font-semibold text-emerald-400 truncate">{selectedFile.name}</p>
+                        <p className="text-[10px] font-mono text-slate-500">
+                          {Math.round(selectedFile.size / 1024)} KB · {selectedFile.type}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="space-y-1">
+                        <CloudUpload className="w-6 h-6 text-slate-500 mx-auto" />
+                        <p className="text-xs text-slate-400">Click to select a file</p>
+                      </div>
+                    )}
+                  </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
+                    className="hidden"
+                    onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) setSelectedFile(f);
+                    }}
+                  />
+                </div>
+
+                {/* Category */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-mono text-slate-300">Category</label>
                   <select
@@ -375,26 +499,115 @@ export const MediaLibraryView = () => {
                     <option value="other">Other</option>
                   </select>
                 </div>
-              </div>
 
-              <div className="pt-3 flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setUploadOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-900 text-xs font-semibold text-slate-300 hover:text-white"
-                >
-                  Cancel
-                </button>
+                {error && (
+                  <p className="text-xs text-rose-400 font-mono">{error}</p>
+                )}
 
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-500/20"
-                >
-                  {submitting ? 'Uploading...' : 'Save to Library'}
-                </button>
-              </div>
-            </form>
+                {/* Upload progress */}
+                {uploadProgress === 'uploading' && (
+                  <div className="flex items-center space-x-2 text-xs text-emerald-400 font-mono">
+                    <div className="w-3 h-3 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin" />
+                    <span>Uploading to Neon Object Storage...</span>
+                  </div>
+                )}
+
+                <div className="pt-3 flex justify-end space-x-2">
+                  <button
+                    type="button"
+                    onClick={() => { setUploadOpen(false); resetUploadForm(); }}
+                    className="px-4 py-2 rounded-xl bg-slate-900 text-xs font-semibold text-slate-300 hover:text-white"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={submitting || !selectedFile || !name}
+                    className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-xs font-bold text-white shadow-lg shadow-emerald-500/20"
+                  >
+                    {submitting ? 'Uploading...' : 'Upload to Neon'}
+                  </button>
+                </div>
+              </form>
+            ) : (
+              /* URL PASTE MODE */
+              <form onSubmit={handleUploadMedia} className="space-y-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-slate-300">Asset Name / Title</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Profile Photo 2026"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-slate-300">Image / File URL</label>
+                  <input
+                    type="url"
+                    required
+                    placeholder="https://images.unsplash.com/..."
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-slate-300">Asset Type</label>
+                    <select
+                      value={type}
+                      onChange={(e) => setType(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    >
+                      <option value="image">Image</option>
+                      <option value="document">Document (PDF)</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-slate-300">Category</label>
+                    <select
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    >
+                      <option value="profile">Profile</option>
+                      <option value="projects">Projects</option>
+                      <option value="blogs">Blogs</option>
+                      <option value="certificates">Certificates</option>
+                      <option value="resume">Resume</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                {error && (
+                  <p className="text-xs text-rose-400 font-mono">{error}</p>
+                )}
+
+                <div className="pt-3 flex justify-end space-x-2">
+                  <button
+                    type="button"
+                    onClick={() => { setUploadOpen(false); resetUploadForm(); }}
+                    className="px-4 py-2 rounded-xl bg-slate-900 text-xs font-semibold text-slate-300 hover:text-white"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-500/20"
+                  >
+                    {submitting ? 'Saving...' : 'Save to Library'}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}
@@ -416,16 +629,30 @@ export const MediaLibraryView = () => {
                   <FileText className="w-16 h-16 text-emerald-400 mx-auto" />
                   <p className="text-sm font-semibold text-white">{previewAsset.name}</p>
                   <p className="text-xs text-slate-400 font-mono">PDF Document ({previewAsset.sizeKb} KB)</p>
+                  {previewAsset.storageBackend === 'neon' && previewAsset.objectKey && (
+                    <a
+                      href={resolvePreviewUrl(previewAsset)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Download</span>
+                    </a>
+                  )}
                 </div>
               ) : (
-                <img src={previewAsset.url} alt={previewAsset.name} className="max-h-96 w-auto object-contain" />
+                <img src={resolvePreviewUrl(previewAsset)} alt={previewAsset.name} className="max-h-96 w-auto object-contain" />
               )}
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-400 font-mono pt-2">
+            <div className="flex items-center justify-between text-xs text-slate-400 font-mono pt-2 flex-wrap gap-2">
               <span>Category: {previewAsset.category}</span>
               <span>Dimensions: {previewAsset.dimensions}</span>
               <span>Size: {previewAsset.sizeKb} KB</span>
+              {previewAsset.storageBackend === 'neon' && (
+                <span className="text-teal-400">Stored: Neon Object Storage</span>
+              )}
             </div>
           </div>
         </div>
