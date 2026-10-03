@@ -263,7 +263,13 @@ export const ProjectsView = () => {
       <MediaPickerModal
         isOpen={mediaPickerOpen}
         onClose={() => setMediaPickerOpen(false)}
-        onSelectMedia={(selectedUrl) => setFormData({ ...formData, image: selectedUrl })}
+        onSelectMedia={(mediaRecord) => {
+          // Store stable reference — never store presigned URLs or serve paths
+          const imageValue = mediaRecord.storageBackend === 'neon'
+            ? `neon::${mediaRecord.id}`
+            : (mediaRecord.url || '');
+          setFormData({ ...formData, image: imageValue });
+        }}
         currentUrl={formData.image}
       />
     </div>

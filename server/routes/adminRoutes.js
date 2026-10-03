@@ -808,9 +808,9 @@ router.post('/media/upload', uploadSingle, async (req, res) => {
 
     db.mediaLibrary = db.mediaLibrary || [];
     db.mediaLibrary.unshift(newMedia);
-    dbEngine.logActivity('media', `Uploaded asset to Neon storage: ${name}`);
 
     try {
+      // save() BEFORE logActivity() — see delete route comment for explanation
       dbEngine.save(db);
     } catch (dbErr) {
       // Metadata save failed — clean up the orphaned S3 object
@@ -824,6 +824,7 @@ router.post('/media/upload', uploadSingle, async (req, res) => {
       });
     }
 
+    dbEngine.logActivity('media', `Uploaded asset to Neon storage: ${name}`);
     res.json({ success: true, message: 'Media asset uploaded to Neon Object Storage.', data: newMedia });
   } catch (err) {
     console.error('[Media Upload] Error:', err.message);
@@ -835,24 +836,102 @@ router.post('/media/upload', uploadSingle, async (req, res) => {
 });
 
 // GET /api/admin/media/serve/*objectKey — generate presigned URL for admin preview
-// objectKey is URI-encoded in the path; decode before use
+// Returns JSON { success, presignedUrl } — do NOT redirect.
+// An <img> tag cannot attach Authorization headers and cannot follow auth-required
+// redirects. The frontend fetches this endpoint with the Bearer token and uses the
+// returned presignedUrl as the <img src>.
 router.get('/media/serve/*objectKey', async (req, res) => {
   try {
     const objectKey = decodeURIComponent(req.params.objectKey);
 
-    // Verify the objectKey actually belongs to a media record owned by this admin
+    // Verify the objectKey actually belongs to a record in this admin's media library
     const db = dbEngine.get();
     const record = (db.mediaLibrary || []).find(m => m.objectKey === objectKey);
     if (!record) {
+      console.warn('[Media Serve] objectKey not found in media library:', objectKey);
       return res.status(404).json({ success: false, message: 'Media record not found.' });
     }
 
+    // Generate a short-lived presigned GET URL — bucket stays private
     const presignedUrl = await getPresignedGetUrl(objectKey, 3600);
-    // Redirect to presigned URL so the browser loads the asset directly from Neon storage
-    res.redirect(302, presignedUrl);
+
+    // Return the URL as JSON — frontend uses it as <img src>
+    res.json({ success: true, presignedUrl });
   } catch (err) {
-    console.error('[Media Serve] Error:', err.message);
-    res.status(500).json({ success: false, message: 'Could not generate access URL.' });
+    console.error('[Media Serve] Error generating presigned URL:', err.name, '-', err.message);
+    res.status(500).json({ success: false, message: 'Could not generate access URL: ' + err.message });
+  }
+});
+
+// POST /api/admin/media/:id/replace — upload a new file for a Neon-stored asset
+// Safe replace: upload new → update metadata → delete old (only if both succeed)
+router.post('/media/:id/replace', uploadSingle, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const db = dbEngine.get();
+    const mediaIndex = (db.mediaLibrary || []).findIndex(m => m.id === id);
+
+    if (mediaIndex === -1) {
+      return res.status(404).json({ success: false, message: 'Media asset not found.' });
+    }
+
+    const existingRecord = db.mediaLibrary[mediaIndex];
+
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: 'No replacement file provided.' });
+    }
+
+    const validation = validateFile(req.file.mimetype, req.file.size);
+    if (!validation.valid) {
+      return res.status(400).json({ success: false, message: validation.error });
+    }
+
+    const portfolioId = existingRecord.portfolioId || db.activeClientId || 'client-1';
+    const oldObjectKey = existingRecord.objectKey;
+    const newObjectKey = generateObjectKey(portfolioId, existingRecord.category, req.file.mimetype);
+
+    // Step 1: Upload new object FIRST — if this fails, the old object is untouched
+    await uploadToStorage(req.file.buffer, newObjectKey, req.file.mimetype);
+
+    // Step 2: Update metadata — if this fails, attempt to delete the NEW object (orphan cleanup)
+    const mediaType = req.file.mimetype === 'application/pdf' ? 'document' : 'image';
+    const updatedRecord = {
+      ...existingRecord,
+      objectKey: newObjectKey,
+      url: `/api/admin/media/serve/${encodeURIComponent(newObjectKey)}`,
+      type: mediaType,
+      mimeType: req.file.mimetype,
+      sizeKb: Math.round(req.file.size / 1024),
+      uploadDate: new Date().toISOString().split('T')[0],
+    };
+    db.mediaLibrary[mediaIndex] = updatedRecord;
+
+    try {
+      dbEngine.save(db);
+    } catch (dbErr) {
+      // Metadata update failed — clean up the newly uploaded object, keep old
+      console.error('[Media Replace] Metadata save failed, cleaning up new object:', dbErr.message);
+      await deleteFromStorage(newObjectKey).catch(e =>
+        console.error('[Media Replace] New object cleanup failed:', e.message)
+      );
+      return res.status(500).json({
+        success: false,
+        message: 'Replacement upload succeeded but metadata update failed. Old asset preserved.',
+      });
+    }
+
+    // Step 3: Only now delete the old object (metadata is committed)
+    if (oldObjectKey && existingRecord.storageBackend === 'neon') {
+      await deleteFromStorage(oldObjectKey).catch(e =>
+        console.error('[Media Replace] Old object deletion failed (non-fatal):', e.message)
+      );
+    }
+
+    dbEngine.logActivity('media', `Replaced Neon asset: ${updatedRecord.name}`);
+    res.json({ success: true, message: 'Media asset replaced successfully.', data: updatedRecord });
+  } catch (err) {
+    console.error('[Media Replace] Error:', err.name, '-', err.message);
+    res.status(500).json({ success: false, message: 'Replace failed: ' + err.message });
   }
 });
 
@@ -878,8 +957,9 @@ router.post('/media', (req, res) => {
 
   db.mediaLibrary = db.mediaLibrary || [ ...defaultMediaLibrary ];
   db.mediaLibrary.unshift(newMedia);
-  dbEngine.logActivity('media', `Saved media URL reference: ${name}`);
+  // save() BEFORE logActivity() — see delete route comment for explanation
   dbEngine.save(db);
+  dbEngine.logActivity('media', `Saved media URL reference: ${name}`);
 
   res.json({ success: true, message: 'Media asset saved successfully.', data: newMedia });
 });
@@ -931,8 +1011,11 @@ router.delete('/media/:id', async (req, res) => {
 
     // Remove metadata from array
     db.mediaLibrary = (db.mediaLibrary || []).filter(m => m.id !== id);
-    dbEngine.logActivity('media', `Deleted media asset: ${record.name}`);
+    // IMPORTANT: save() BEFORE logActivity() — logActivity calls dbEngine.get() internally
+    // which runs ensureMultiClientStructure() and resets db.mediaLibrary from the active
+    // client's portfolioData (which hasn't been updated yet). Saving first commits the change.
     dbEngine.save(db);
+    dbEngine.logActivity('media', `Deleted media asset: ${record.name}`);
 
     res.json({ success: true, message: 'Media asset deleted successfully.' });
   } catch (err) {

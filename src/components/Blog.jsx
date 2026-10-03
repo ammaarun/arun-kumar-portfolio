@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Calendar, Tag, ArrowRight, X, Clock } from 'lucide-react';
 import { useData } from '../context/DataContext';
+import { NeonPublicImage } from './NeonPublicImage';
 
 export const Blog = () => {
   const { data } = useData();
@@ -33,13 +34,14 @@ export const Blog = () => {
               key={post.id}
               className="group rounded-2xl bg-[#121723] border border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 flex flex-col overflow-hidden"
             >
-              {/* Cover Image */}
+              {/* Cover Image — hidden gracefully if broken or missing */}
               {post.coverImage && (
                 <div className="relative h-48 overflow-hidden bg-[#0a0d14]">
-                  <img 
-                    src={post.coverImage} 
+                  <NeonPublicImage
+                    src={post.coverImage}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fallback={null}
                   />
                   <div className="absolute top-3 left-3 flex items-center space-x-2">
                     <span className="px-2.5 py-1 text-[11px] font-mono font-semibold rounded-md bg-[#0a0d14]/90 text-emerald-400 border border-slate-800 backdrop-blur-md">

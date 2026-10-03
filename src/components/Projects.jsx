@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Terminal, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import { useData } from '../context/DataContext';
+import { NeonPublicImage } from './NeonPublicImage';
 
 export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
   const { data } = useData();
@@ -65,7 +66,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
             >
               {/* Image Preview Container */}
               <div className="relative h-52 overflow-hidden bg-[#0a0d14]">
-                <img
+                <NeonPublicImage
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Plus, Trash2, BookOpen } from 'lucide-react';
+import { Plus, Trash2, BookOpen, Image } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { api } from '../../services/api';
+import { MediaPickerModal } from '../components/MediaPickerModal';
 
 export const BlogView = () => {
   const { data, refreshData } = useData();
@@ -14,6 +15,7 @@ export const BlogView = () => {
   const [tagsInput, setTagsInput] = useState('');
   const [coverImage, setCoverImage] = useState('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80');
   const [saving, setSaving] = useState(false);
+  const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
 
   const handleTitleChange = (val) => {
     setTitle(val);
@@ -100,13 +102,27 @@ export const BlogView = () => {
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs text-slate-300">Cover Image URL</label>
-            <input
-              type="url"
-              value={coverImage}
-              onChange={(e) => setCoverImage(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
-            />
+            <label className="text-xs text-slate-300">Cover Image</label>
+            <div className="flex items-center space-x-2">
+              <input
+                type="text"
+                value={coverImage}
+                onChange={(e) => setCoverImage(e.target.value)}
+                placeholder="https://... or choose from library"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
+              />
+              <button
+                type="button"
+                onClick={() => setMediaPickerOpen(true)}
+                className="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white shrink-0 flex items-center space-x-1"
+              >
+                <Image className="w-3.5 h-3.5" />
+                <span>Library</span>
+              </button>
+            </div>
+            {coverImage?.startsWith('neon::') && (
+              <p className="text-[10px] text-teal-400 font-mono">✓ Neon asset: {coverImage}</p>
+            )}
           </div>
         </div>
 
@@ -158,6 +174,18 @@ export const BlogView = () => {
           </div>
         ))}
       </div>
+
+      <MediaPickerModal
+        isOpen={mediaPickerOpen}
+        onClose={() => setMediaPickerOpen(false)}
+        onSelectMedia={(mediaRecord) => {
+          const imageValue = mediaRecord.storageBackend === 'neon'
+            ? `neon::${mediaRecord.id}`
+            : (mediaRecord.url || '');
+          setCoverImage(imageValue);
+        }}
+        currentUrl={coverImage}
+      />
     </div>
   );
 };

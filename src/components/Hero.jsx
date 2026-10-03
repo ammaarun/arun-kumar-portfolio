@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowRight, MapPin, Download, Mail, Check, Copy, Code2, Terminal, Sparkles, User } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
 import { useData } from '../context/DataContext';
+import { NeonPublicImage } from './NeonPublicImage';
 
 export const Hero = ({ onOpenResume, onOpenInquiry }) => {
   const { data } = useData();
@@ -187,13 +188,16 @@ export const Hero = ({ onOpenResume, onOpenInquiry }) => {
               {visualType === 'image' ? (
                 <div className="flex justify-center">
                   <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-[#121723] group">
-                    {personalInfo.image ? (
-                      <img src={personalInfo.image} alt={personalInfo.name || 'Hero'} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-500">
-                        <User className="w-20 h-20 text-emerald-500/30" />
-                      </div>
-                    )}
+                    <NeonPublicImage
+                      src={personalInfo.image}
+                      alt={personalInfo.name || 'Hero'}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fallback={
+                        <div className="w-full h-full flex items-center justify-center text-slate-500">
+                          <User className="w-20 h-20 text-emerald-500/30" />
+                        </div>
+                      }
+                    />
                   </div>
                 </div>
               ) : visualType === 'highlights' ? (

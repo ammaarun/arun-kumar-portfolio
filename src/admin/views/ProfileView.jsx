@@ -1,15 +1,57 @@
-import React, { useState } from 'react';
-import { Save, CheckCircle2, User, Mail, MapPin, Phone, Image, Trash2, Upload, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Save, CheckCircle2, User, Image, Trash2, Sparkles, AlertCircle } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { MediaPickerModal } from '../components/MediaPickerModal';
 
+// Resolves a neon::<mediaId> ref into a presigned URL for admin preview.
+// Falls back to null on error so the avatar placeholder shows instead of a broken image.
+const useNeonImageUrl = (imageRef, token) => {
+  const [src, setSrc] = useState(null);
+  const [err, setErr] = useState(false);
+
+  useEffect(() => {
+    if (!imageRef?.startsWith('neon::') || !token) {
+      setSrc(imageRef || null);
+      setErr(false);
+      return;
+    }
+    let cancelled = false;
+    setErr(false);
+    setSrc(null);
+    const mediaId = imageRef.replace('neon::', '');
+    // Fetch the media record list to get the objectKey, then get presigned URL
+    fetch(`/api/admin/media?search=${encodeURIComponent(mediaId)}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(r => r.json())
+      .then(d => {
+        const record = (d.data || []).find(m => m.id === mediaId);
+        if (!record?.objectKey) { if (!cancelled) setErr(true); return; }
+        return fetch(`/api/admin/media/serve/${encodeURIComponent(record.objectKey)}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      })
+      .then(r => r?.json())
+      .then(d => { if (!cancelled) { if (d?.presignedUrl) setSrc(d.presignedUrl); else setErr(true); } })
+      .catch(() => { if (!cancelled) setErr(true); });
+    return () => { cancelled = true; };
+  }, [imageRef, token]);
+
+  return { src, err };
+};
+
 export const ProfileView = () => {
   const { data, refreshData } = useData();
+  const { token } = useAuth();
   const [formData, setFormData] = useState(data.personalInfo || {});
   const [saving, setSaving] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
+
+  // Resolve admin preview of the current image value
+  const { src: previewSrc, err: previewErr } = useNeonImageUrl(formData.image, token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,7 +91,13 @@ export const ProfileView = () => {
         {/* Profile Avatar Section */}
         <div className="p-4 rounded-xl bg-[#0a0d14] border border-slate-800 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
           <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-emerald-500/40 bg-slate-900 shrink-0">
-            {formData.image ? (
+            {formData.image && !previewErr && previewSrc ? (
+              <img src={previewSrc} alt={formData.name || 'Profile Avatar'} className="w-full h-full object-cover" />
+            ) : formData.image && !previewErr && !previewSrc && formData.image.startsWith('neon::') ? (
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="w-4 h-4 border-2 border-teal-400 border-t-transparent rounded-full animate-spin" />
+              </div>
+            ) : formData.image && !formData.image.startsWith('neon::') ? (
               <img src={formData.image} alt={formData.name || 'Profile Avatar'} className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-slate-500">
@@ -298,7 +346,13 @@ export const ProfileView = () => {
       <MediaPickerModal
         isOpen={mediaPickerOpen}
         onClose={() => setMediaPickerOpen(false)}
-        onSelectMedia={(selectedUrl) => setFormData({ ...formData, image: selectedUrl })}
+        onSelectMedia={(mediaRecord) => {
+          // Store stable reference — never store presigned URLs or serve paths
+          const imageValue = mediaRecord.storageBackend === 'neon'
+            ? `neon::${mediaRecord.id}`
+            : (mediaRecord.url || '');
+          setFormData({ ...formData, image: imageValue });
+        }}
         currentUrl={formData.image}
       />
     </div>
