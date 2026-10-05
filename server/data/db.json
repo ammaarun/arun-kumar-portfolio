@@ -1,331 +1,1044 @@
 {
-  "id": "dataAnalyst",
-  "name": "Data Analyst",
-  "description": "Optimized for data analysts and data scientists showcasing SQL, Python, Tableau, Power BI dashboards, and data-driven business insights.",
-  "targetAudience": "Data Analysts, Data Scientists, BI Developers & Analytics Engineers",
-  "badge": "Analytics Pro",
-  "accentColor": "teal",
+  "id": "freelancer",
+  "name": "Freelancer",
+  "description": "Optimized for freelance developers and consultants offering custom client solutions, fixed-price packages, testimonials, and clear hire CTAs.",
+  "targetAudience": "Freelancers, Independent Developers & Agency Owners",
+  "badge": "Freelance Pro",
+  "accentColor": "amber",
   "personalInfo": {
-    "name": "ajay",
-    "role": "Senior Data Analyst & Business Intelligence Specialist",
-    "profileType": "analyst",
-    "eyebrow": "DATA ANALYST",
-    "specialization": "Python, SQL, Tableau & Predictive Modeling",
-    "heroVisualType": "image",
-    "imageStyle": "natural-portrait",
-    "showFreelancerCTA": false,
-    "heroCtaText": "View Data Projects",
-    "tagline": "Turning complex multi-source datasets into actionable business insights and executive dashboards.",
-    "shortBio": "Passionate data analyst with 3+ years of experience building predictive models, optimizing SQL queries, and designing live BI dashboards.",
-    "bio": "Specializing in exploratory data analysis, ETL pipelines, A/B experimentation, and interactive dashboarding using Python, SQL, Tableau, and Power BI.",
-    "location": "Bangalore, India",
-    "availability": "Available for Full-time Roles & Analytics Consulting",
-    "email": "priya.analyst@example.com",
-    "phone": "+91 98765 43210",
+    "name": "Taylor Swiftly",
+    "role": "Freelance Web Developer & Software Consultant",
+    "profileType": "freelancer",
+    "eyebrow": "FREELANCE DEVELOPER",
+    "specialization": "Custom Web Apps & Client Solutions",
+    "heroVisualType": "none",
+    "showFreelancerCTA": true,
+    "heroCtaText": "Request Custom Portfolio",
+    "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+    "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+    "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+    "location": "Telangana, India",
+    "availability": "Available for New Freelance Projects & Monthly Retainers",
+    "email": "taylor.consulting@example.com",
+    "phone": "+91 98765 00004",
     "github": "https://github.com",
     "linkedin": "https://linkedin.com",
     "twitter": "https://twitter.com",
-    "resumeUrl": "#",
-    "image": "neon::media-1791054772867"
+    "resumeUrl": "#"
   },
   "stats": [
     {
-      "label": "Dashboards Built",
-      "value": "35+",
-      "description": "Tableau & Power BI"
+      "label": "Client Projects",
+      "value": "25+",
+      "description": "Delivered On-Time"
     },
     {
-      "label": "SQL Query Speedup",
-      "value": "60%",
-      "description": "ETL Optimization"
+      "label": "Client Rating",
+      "value": "5.0 ★",
+      "description": "100% Satisfaction"
     },
     {
-      "label": "Data Processed",
-      "value": "50M+",
-      "description": "Records Analyzed"
+      "label": "Avg Turnaround",
+      "value": "48 Hours",
+      "description": "Fast Delivery Option"
     },
     {
-      "label": "Accuracy Score",
-      "value": "99.4%",
-      "description": "Model Precision"
+      "label": "Repeat Clients",
+      "value": "80%",
+      "description": "Long-Term Partnerships"
     }
   ],
   "skills": [
     {
-      "category": "Data Analysis & Languages",
-      "icon": "Database",
+      "category": "Freelance Development Services",
+      "icon": "Sparkles",
       "items": [
         {
-          "name": "Python (Pandas / NumPy)",
-          "level": 92,
-          "popular": true
-        },
-        {
-          "name": "Advanced SQL & CTEs",
+          "name": "Custom Web Applications",
           "level": 95,
           "popular": true
         },
         {
-          "name": "R & Statistical Analysis",
-          "level": 80,
-          "popular": false
+          "name": "Dynamic Portfolio & CMS Development",
+          "level": 98,
+          "popular": true
+        },
+        {
+          "name": "React & Tailwind Frontend Engineering",
+          "level": 94,
+          "popular": true
+        },
+        {
+          "name": "API & Payment Integration",
+          "level": 90
         }
       ]
     },
     {
-      "category": "BI & Visualization Tools",
-      "icon": "Layout",
+      "category": "Core Technologies",
+      "icon": "Code2",
       "items": [
         {
-          "name": "Tableau Desktop & Server",
+          "name": "JavaScript (ES6+) & TypeScript",
+          "level": 92,
+          "popular": true
+        },
+        {
+          "name": "React.js / Next.js",
           "level": 90,
           "popular": true
         },
         {
-          "name": "Power BI & DAX",
-          "level": 88,
+          "name": "Node.js & Express APIs",
+          "level": 88
+        },
+        {
+          "name": "PostgreSQL & MongoDB Database Setup",
+          "level": 86
+        }
+      ]
+    },
+    {
+      "category": "Deployment & Maintenance",
+      "icon": "Cloud",
+      "items": [
+        {
+          "name": "Cloud Deployment (Render / Vercel)",
+          "level": 95,
           "popular": true
         },
         {
-          "name": "Google Looker Studio",
-          "level": 85,
-          "popular": false
+          "name": "Custom Domain & SSL Setup",
+          "level": 92
+        },
+        {
+          "name": "SEO & OpenGraph Metadata Optimization",
+          "level": 90,
+          "popular": true
+        },
+        {
+          "name": "Ongoing Maintenance & Bug Fixes",
+          "level": 88
         }
       ]
     }
   ],
   "projects": [
     {
-      "id": "proj-analyst-1",
-      "title": "E-Commerce Customer Churn Prediction & Retention Dashboard",
-      "category": "Data Science & BI",
-      "description": "Constructed a Logistic Regression and Random Forest model in Python to predict churn risk, lowering subscriber loss by 18%.",
-      "tags": [
-        "Python",
-        "Pandas",
-        "Scikit-Learn",
-        "Tableau",
-        "SQL"
+      "id": "proj-free-1",
+      "title": "Client Portal & Asset Dashboard",
+      "subtitle": "Custom Client Web Platform",
+      "category": "Freelance Client Work",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+      "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+      "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
+      "tech": [
+        "React",
+        "Tailwind CSS",
+        "Node.js",
+        "PostgreSQL"
       ],
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-      "featured": true
+      "metrics": [
+        {
+          "label": "Delivery",
+          "value": "14 Days"
+        },
+        {
+          "label": "Rating",
+          "value": "5.0 ★"
+        }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+        "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+      ]
     },
     {
-      "id": "proj-analyst-2",
-      "title": "Executive Revenue Performance & Pipeline Analytics",
-      "category": "Business Intelligence",
-      "description": "Built an automated ETL data pipeline aggregating sales from PostgreSQL into Power BI with real-time KPI tracking.",
-      "tags": [
-        "Power BI",
-        "PostgreSQL",
-        "ETL",
-        "DAX"
+      "id": "proj-free-2",
+      "title": "SaaS Product Landing & Billing System",
+      "subtitle": "High-Converting Sales Web App",
+      "category": "Freelance Client Work",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+      "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+      "tech": [
+        "React",
+        "Stripe API",
+        "Tailwind CSS",
+        "Render"
       ],
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-      "featured": true
+      "metrics": [
+        {
+          "label": "Conversion",
+          "value": "12% Rate"
+        },
+        {
+          "label": "Performance",
+          "value": "99/100"
+        }
+      ],
+      "github": "https://github.com",
+      "live": "https://example.com",
+      "highlights": [
+        "Integrated Stripe Checkout API with automated webhook confirmation.",
+        "Configured social share previews increasing referral traffic."
+      ]
     }
   ],
   "experience": [
     {
-      "company": "Global Analytics Corp",
-      "role": "Senior Data Analyst",
-      "period": "2023 - Present",
-      "location": "Bangalore, India",
-      "type": "Full-time",
-      "description": "Leading business analytics and building automated executive reporting dashboards for enterprise clients.",
+      "id": "exp-free-1",
+      "company": "Independent Consultant",
+      "role": "Lead Freelance Web Developer",
+      "period": "2022 - Present",
+      "location": "Remote",
+      "type": "Freelance",
+      "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
       "achievements": [
-        "Architected enterprise Tableau dashboards used daily by 200+ C-suite stakeholders.",
-        "Refactored SQL queries across Snowflake warehouse, reducing execution time by 40%.",
-        "Designed A/B test experiments that increased conversion rates by 14%."
+        "Maintained a 100% 5-star rating across 25+ client contracts.",
+        "Built and deployed custom portfolio web applications with live admin CMS panels.",
+        "Helped clients scale web apps to handle high peak user traffic."
       ],
       "skills": [
-        "Python",
-        "SQL",
-        "Tableau",
-        "Snowflake",
-        "A/B Testing"
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Client Management"
       ]
     }
   ],
+  "education": [
+    {
+      "id": "edu-free-1",
+      "degree": "Bachelor of Science (B.Sc) in Computer Science",
+      "institution": "University of Technology",
+      "period": "2018 - 2022",
+      "description": "Graduated with top honors in Web Computing and User Interface Design."
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-free-1",
+      "title": "Basic Developer Portfolio",
+      "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+      "icon": "Layout",
+      "pricing": "$99 / ₹8,000",
+      "featured": true
+    },
+    {
+      "id": "srv-free-2",
+      "title": "Full Dynamic Portfolio CMS",
+      "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
+      "icon": "Server",
+      "pricing": "$249 / ₹20,000",
+      "featured": true
+    },
+    {
+      "id": "srv-free-3",
+      "title": "VIP Personal Brand Package",
+      "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
+      "icon": "Sparkles",
+      "pricing": "$499 / ₹40,000",
+      "featured": true
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-free-1",
+      "name": "Emily Watson",
+      "role": "Agency Founder",
+      "company": "Apex Digital",
+      "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    },
+    {
+      "id": "test-free-2",
+      "name": "Robert Vance",
+      "role": "Startup Founder",
+      "company": "Vance Media",
+      "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      "visible": true
+    }
+  ],
+  "blogs": [],
+  "messages": [
+    {
+      "id": "msg-1791218075209",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-05T16:34:35.209Z",
+      "read": false
+    }
+  ],
+  "settings": {
+    "showBlog": false,
+    "showHero": true,
+    "resumeUrl": "#",
+    "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
+    "footerText": "Designed & Built by Taylor Swiftly",
+    "accentColor": "amber",
+    "profileType": "Freelancer",
+    "activePreset": "freelancer",
+    "showServices": true,
+    "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
+    "themePreference": "dark",
+    "showTestimonials": true
+  },
   "adminUser": {
     "password": "admin123",
     "username": "admin"
   },
-  "messages": [],
   "clients": [
     {
       "id": "client-1",
-      "name": "Priya Sharma",
-      "role": "Senior Data Analyst & Business Intelligence Specialist",
-      "slug": "arun-kumar",
+      "name": "Taylor Swiftly",
+      "role": "Freelance Web Developer & Software Consultant",
+      "slug": "arun-kumar-lead",
       "email": "arunkumar.dev@example.com",
       "status": "PUBLISHED",
       "isDefault": true,
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-10-03T19:13:46.013Z",
+      "lastUpdated": "2026-10-05T16:34:39.223Z",
       "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
       "portfolioData": {
         "personalInfo": {
-          "name": "ajay",
-          "role": "Senior Data Analyst & Business Intelligence Specialist",
-          "profileType": "analyst",
-          "eyebrow": "DATA ANALYST",
-          "specialization": "Python, SQL, Tableau & Predictive Modeling",
-          "heroVisualType": "image",
-          "imageStyle": "natural-portrait",
-          "showFreelancerCTA": false,
-          "heroCtaText": "View Data Projects",
-          "tagline": "Turning complex multi-source datasets into actionable business insights and executive dashboards.",
-          "shortBio": "Passionate data analyst with 3+ years of experience building predictive models, optimizing SQL queries, and designing live BI dashboards.",
-          "bio": "Specializing in exploratory data analysis, ETL pipelines, A/B experimentation, and interactive dashboarding using Python, SQL, Tableau, and Power BI.",
-          "location": "Bangalore, India",
-          "availability": "Available for Full-time Roles & Analytics Consulting",
-          "email": "priya.analyst@example.com",
-          "phone": "+91 98765 43210",
+          "name": "Taylor Swiftly",
+          "role": "Freelance Web Developer & Software Consultant",
+          "profileType": "freelancer",
+          "eyebrow": "FREELANCE DEVELOPER",
+          "specialization": "Custom Web Apps & Client Solutions",
+          "heroVisualType": "none",
+          "showFreelancerCTA": true,
+          "heroCtaText": "Request Custom Portfolio",
+          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+          "location": "Telangana, India",
+          "availability": "Available for New Freelance Projects & Monthly Retainers",
+          "email": "taylor.consulting@example.com",
+          "phone": "+91 98765 00004",
           "github": "https://github.com",
           "linkedin": "https://linkedin.com",
           "twitter": "https://twitter.com",
-          "resumeUrl": "#",
-          "image": "neon::media-1791054772867"
+          "resumeUrl": "#"
         },
         "stats": [
           {
-            "label": "Dashboards Built",
-            "value": "35+",
-            "description": "Tableau & Power BI"
+            "label": "Client Projects",
+            "value": "25+",
+            "description": "Delivered On-Time"
           },
           {
-            "label": "SQL Query Speedup",
-            "value": "60%",
-            "description": "ETL Optimization"
+            "label": "Client Rating",
+            "value": "5.0 ★",
+            "description": "100% Satisfaction"
           },
           {
-            "label": "Data Processed",
-            "value": "50M+",
-            "description": "Records Analyzed"
+            "label": "Avg Turnaround",
+            "value": "48 Hours",
+            "description": "Fast Delivery Option"
           },
           {
-            "label": "Accuracy Score",
-            "value": "99.4%",
-            "description": "Model Precision"
+            "label": "Repeat Clients",
+            "value": "80%",
+            "description": "Long-Term Partnerships"
           }
         ],
         "skills": [
           {
-            "category": "Data Analysis & Languages",
-            "icon": "Database",
+            "category": "Freelance Development Services",
+            "icon": "Sparkles",
             "items": [
               {
-                "name": "Python (Pandas / NumPy)",
-                "level": 92,
-                "popular": true
-              },
-              {
-                "name": "Advanced SQL & CTEs",
+                "name": "Custom Web Applications",
                 "level": 95,
                 "popular": true
               },
               {
-                "name": "R & Statistical Analysis",
-                "level": 80,
-                "popular": false
+                "name": "Dynamic Portfolio & CMS Development",
+                "level": 98,
+                "popular": true
+              },
+              {
+                "name": "React & Tailwind Frontend Engineering",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "API & Payment Integration",
+                "level": 90
               }
             ]
           },
           {
-            "category": "BI & Visualization Tools",
-            "icon": "Layout",
+            "category": "Core Technologies",
+            "icon": "Code2",
             "items": [
               {
-                "name": "Tableau Desktop & Server",
+                "name": "JavaScript (ES6+) & TypeScript",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "React.js / Next.js",
                 "level": 90,
                 "popular": true
               },
               {
-                "name": "Power BI & DAX",
-                "level": 88,
+                "name": "Node.js & Express APIs",
+                "level": 88
+              },
+              {
+                "name": "PostgreSQL & MongoDB Database Setup",
+                "level": 86
+              }
+            ]
+          },
+          {
+            "category": "Deployment & Maintenance",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Cloud Deployment (Render / Vercel)",
+                "level": 95,
                 "popular": true
               },
               {
-                "name": "Google Looker Studio",
-                "level": 85,
-                "popular": false
+                "name": "Custom Domain & SSL Setup",
+                "level": 92
+              },
+              {
+                "name": "SEO & OpenGraph Metadata Optimization",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Ongoing Maintenance & Bug Fixes",
+                "level": 88
               }
             ]
           }
         ],
         "projects": [
           {
-            "id": "proj-analyst-1",
-            "title": "E-Commerce Customer Churn Prediction & Retention Dashboard",
-            "category": "Data Science & BI",
-            "description": "Constructed a Logistic Regression and Random Forest model in Python to predict churn risk, lowering subscriber loss by 18%.",
-            "tags": [
-              "Python",
-              "Pandas",
-              "Scikit-Learn",
-              "Tableau",
-              "SQL"
+            "id": "proj-free-1",
+            "title": "Client Portal & Asset Dashboard",
+            "subtitle": "Custom Client Web Platform",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
+            "tech": [
+              "React",
+              "Tailwind CSS",
+              "Node.js",
+              "PostgreSQL"
             ],
-            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-            "featured": true
+            "metrics": [
+              {
+                "label": "Delivery",
+                "value": "14 Days"
+              },
+              {
+                "label": "Rating",
+                "value": "5.0 ★"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+            ]
           },
           {
-            "id": "proj-analyst-2",
-            "title": "Executive Revenue Performance & Pipeline Analytics",
-            "category": "Business Intelligence",
-            "description": "Built an automated ETL data pipeline aggregating sales from PostgreSQL into Power BI with real-time KPI tracking.",
-            "tags": [
-              "Power BI",
-              "PostgreSQL",
-              "ETL",
-              "DAX"
+            "id": "proj-free-2",
+            "title": "SaaS Product Landing & Billing System",
+            "subtitle": "High-Converting Sales Web App",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+            "tech": [
+              "React",
+              "Stripe API",
+              "Tailwind CSS",
+              "Render"
             ],
-            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-            "featured": true
+            "metrics": [
+              {
+                "label": "Conversion",
+                "value": "12% Rate"
+              },
+              {
+                "label": "Performance",
+                "value": "99/100"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Integrated Stripe Checkout API with automated webhook confirmation.",
+              "Configured social share previews increasing referral traffic."
+            ]
           }
         ],
         "experience": [
           {
-            "company": "Global Analytics Corp",
-            "role": "Senior Data Analyst",
-            "period": "2023 - Present",
-            "location": "Bangalore, India",
-            "type": "Full-time",
-            "description": "Leading business analytics and building automated executive reporting dashboards for enterprise clients.",
+            "id": "exp-free-1",
+            "company": "Independent Consultant",
+            "role": "Lead Freelance Web Developer",
+            "period": "2022 - Present",
+            "location": "Remote",
+            "type": "Freelance",
+            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
             "achievements": [
-              "Architected enterprise Tableau dashboards used daily by 200+ C-suite stakeholders.",
-              "Refactored SQL queries across Snowflake warehouse, reducing execution time by 40%.",
-              "Designed A/B test experiments that increased conversion rates by 14%."
+              "Maintained a 100% 5-star rating across 25+ client contracts.",
+              "Built and deployed custom portfolio web applications with live admin CMS panels.",
+              "Helped clients scale web apps to handle high peak user traffic."
             ],
             "skills": [
-              "Python",
-              "SQL",
-              "Tableau",
-              "Snowflake",
-              "A/B Testing"
+              "React",
+              "Node.js",
+              "PostgreSQL",
+              "Tailwind CSS",
+              "Client Management"
             ]
           }
         ],
+        "education": [
+          {
+            "id": "edu-free-1",
+            "degree": "Bachelor of Science (B.Sc) in Computer Science",
+            "institution": "University of Technology",
+            "period": "2018 - 2022",
+            "description": "Graduated with top honors in Web Computing and User Interface Design."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-free-1",
+            "title": "Basic Developer Portfolio",
+            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+            "icon": "Layout",
+            "pricing": "$99 / ₹8,000",
+            "featured": true
+          },
+          {
+            "id": "srv-free-2",
+            "title": "Full Dynamic Portfolio CMS",
+            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
+            "icon": "Server",
+            "pricing": "$249 / ₹20,000",
+            "featured": true
+          },
+          {
+            "id": "srv-free-3",
+            "title": "VIP Personal Brand Package",
+            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
+            "icon": "Sparkles",
+            "pricing": "$499 / ₹40,000",
+            "featured": true
+          }
+        ],
+        "blogs": [],
+        "testimonials": [
+          {
+            "id": "test-free-1",
+            "name": "Emily Watson",
+            "role": "Agency Founder",
+            "company": "Apex Digital",
+            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          },
+          {
+            "id": "test-free-2",
+            "name": "Robert Vance",
+            "role": "Startup Founder",
+            "company": "Vance Media",
+            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
         "settings": {
-          "showBlog": true,
+          "showBlog": false,
           "showHero": true,
           "resumeUrl": "#",
-          "siteTitle": "Arun Kumar — Java Developer & Full Stack Developer",
-          "footerText": "Designed & Engineered by Arun Kumar",
-          "accentColor": "emerald",
+          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
+          "footerText": "Designed & Built by Taylor Swiftly",
+          "accentColor": "amber",
+          "profileType": "Freelancer",
+          "activePreset": "freelancer",
           "showServices": true,
-          "metaDescription": "Personal Developer Portfolio & CMS of Arun Kumar based in Telangana, India.",
+          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
           "themePreference": "dark",
-          "showTestimonials": true,
-          "activePreset": "dataAnalyst",
-          "profileType": "Data Analyst"
+          "showTestimonials": true
+        },
+        "designConfig": {
+          "template": "minimal-light",
+          "themeMode": "light",
+          "colors": {
+            "primary": "#2563eb",
+            "secondary": "#3b82f6",
+            "accent": "#1d4ed8",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "text": "#0f172a"
+          },
+          "fonts": {
+            "heading": "Space Grotesk",
+            "body": "Inter"
+          },
+          "layout": {
+            "hero": "left",
+            "projects": "cards",
+            "navigation": "top",
+            "contact": "cards"
+          },
+          "buttons": {
+            "style": "square",
+            "size": "medium"
+          },
+          "animations": "subtle",
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "visible": true,
+              "order": 1
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "visible": true,
+              "order": 2
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "visible": true,
+              "order": 3
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "visible": true,
+              "order": 4
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "visible": true,
+              "order": 5
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "visible": true,
+              "order": 6
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "visible": true,
+              "order": 8
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "visible": true,
+              "order": 9
+            }
+          ]
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "type": "image",
+            "category": "profile",
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "name": "Enterprise Microservices System",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 820,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "name": "React & Tailwind Dashboard",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "type": "image",
+            "category": "projects",
+            "sizeKb": 650,
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "name": "Official Resume 2026",
+            "url": "#",
+            "type": "document",
+            "category": "resume",
+            "sizeKb": 340,
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "url": "#",
+            "uploadDate": "2026-09-15",
+            "sizeKb": 340,
+            "isActive": true
+          },
+          {
+            "id": "res-2",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "url": "#",
+            "uploadDate": "2025-10-20",
+            "sizeKb": 310,
+            "isActive": false
+          }
+        ],
+        "seo": {
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+        },
+        "branding": {
+          "faviconUrl": "/favicon.svg",
+          "logoUrl": "/icons.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        }
+      },
+      "lastPublishedAt": "2026-10-02T18:38:37.314Z"
+    },
+    {
+      "id": "client-2",
+      "name": "David Miller",
+      "email": "david@example.com",
+      "role": "Senior Developer",
+      "slug": "david-miller",
+      "status": "PUBLISHED",
+      "portfolioData": {
+        "personalInfo": {
+          "name": "Taylor Swiftly",
+          "role": "Freelance Web Developer & Software Consultant",
+          "profileType": "freelancer",
+          "eyebrow": "FREELANCE DEVELOPER",
+          "specialization": "Custom Web Apps & Client Solutions",
+          "heroVisualType": "none",
+          "showFreelancerCTA": true,
+          "heroCtaText": "Request Custom Portfolio",
+          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
+          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
+          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
+          "location": "Telangana, India",
+          "availability": "Available for New Freelance Projects & Monthly Retainers",
+          "email": "taylor.consulting@example.com",
+          "phone": "+91 98765 00004",
+          "github": "https://github.com",
+          "linkedin": "https://linkedin.com",
+          "twitter": "https://twitter.com",
+          "resumeUrl": "#"
+        },
+        "stats": [
+          {
+            "label": "Client Projects",
+            "value": "25+",
+            "description": "Delivered On-Time"
+          },
+          {
+            "label": "Client Rating",
+            "value": "5.0 ★",
+            "description": "100% Satisfaction"
+          },
+          {
+            "label": "Avg Turnaround",
+            "value": "48 Hours",
+            "description": "Fast Delivery Option"
+          },
+          {
+            "label": "Repeat Clients",
+            "value": "80%",
+            "description": "Long-Term Partnerships"
+          }
+        ],
+        "skills": [
+          {
+            "category": "Freelance Development Services",
+            "icon": "Sparkles",
+            "items": [
+              {
+                "name": "Custom Web Applications",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Dynamic Portfolio & CMS Development",
+                "level": 98,
+                "popular": true
+              },
+              {
+                "name": "React & Tailwind Frontend Engineering",
+                "level": 94,
+                "popular": true
+              },
+              {
+                "name": "API & Payment Integration",
+                "level": 90
+              }
+            ]
+          },
+          {
+            "category": "Core Technologies",
+            "icon": "Code2",
+            "items": [
+              {
+                "name": "JavaScript (ES6+) & TypeScript",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "React.js / Next.js",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Node.js & Express APIs",
+                "level": 88
+              },
+              {
+                "name": "PostgreSQL & MongoDB Database Setup",
+                "level": 86
+              }
+            ]
+          },
+          {
+            "category": "Deployment & Maintenance",
+            "icon": "Cloud",
+            "items": [
+              {
+                "name": "Cloud Deployment (Render / Vercel)",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Custom Domain & SSL Setup",
+                "level": 92
+              },
+              {
+                "name": "SEO & OpenGraph Metadata Optimization",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Ongoing Maintenance & Bug Fixes",
+                "level": 88
+              }
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-free-1",
+            "title": "Client Portal & Asset Dashboard",
+            "subtitle": "Custom Client Web Platform",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
+            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
+            "tech": [
+              "React",
+              "Tailwind CSS",
+              "Node.js",
+              "PostgreSQL"
+            ],
+            "metrics": [
+              {
+                "label": "Delivery",
+                "value": "14 Days"
+              },
+              {
+                "label": "Rating",
+                "value": "5.0 ★"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
+              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
+            ]
+          },
+          {
+            "id": "proj-free-2",
+            "title": "SaaS Product Landing & Billing System",
+            "subtitle": "High-Converting Sales Web App",
+            "category": "Freelance Client Work",
+            "featured": true,
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
+            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
+            "tech": [
+              "React",
+              "Stripe API",
+              "Tailwind CSS",
+              "Render"
+            ],
+            "metrics": [
+              {
+                "label": "Conversion",
+                "value": "12% Rate"
+              },
+              {
+                "label": "Performance",
+                "value": "99/100"
+              }
+            ],
+            "github": "https://github.com",
+            "live": "https://example.com",
+            "highlights": [
+              "Integrated Stripe Checkout API with automated webhook confirmation.",
+              "Configured social share previews increasing referral traffic."
+            ]
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-free-1",
+            "company": "Independent Consultant",
+            "role": "Lead Freelance Web Developer",
+            "period": "2022 - Present",
+            "location": "Remote",
+            "type": "Freelance",
+            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
+            "achievements": [
+              "Maintained a 100% 5-star rating across 25+ client contracts.",
+              "Built and deployed custom portfolio web applications with live admin CMS panels.",
+              "Helped clients scale web apps to handle high peak user traffic."
+            ],
+            "skills": [
+              "React",
+              "Node.js",
+              "PostgreSQL",
+              "Tailwind CSS",
+              "Client Management"
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu-free-1",
+            "degree": "Bachelor of Science (B.Sc) in Computer Science",
+            "institution": "University of Technology",
+            "period": "2018 - 2022",
+            "description": "Graduated with top honors in Web Computing and User Interface Design."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-free-1",
+            "title": "Basic Developer Portfolio",
+            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
+            "icon": "Layout",
+            "pricing": "$99 / ₹8,000",
+            "featured": true
+          },
+          {
+            "id": "srv-free-2",
+            "title": "Full Dynamic Portfolio CMS",
+            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
+            "icon": "Server",
+            "pricing": "$249 / ₹20,000",
+            "featured": true
+          },
+          {
+            "id": "srv-free-3",
+            "title": "VIP Personal Brand Package",
+            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
+            "icon": "Sparkles",
+            "pricing": "$499 / ₹40,000",
+            "featured": true
+          }
+        ],
+        "blogs": [],
+        "testimonials": [
+          {
+            "id": "test-free-1",
+            "name": "Emily Watson",
+            "role": "Agency Founder",
+            "company": "Apex Digital",
+            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          },
+          {
+            "id": "test-free-2",
+            "name": "Robert Vance",
+            "role": "Startup Founder",
+            "company": "Vance Media",
+            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+            "visible": true
+          }
+        ],
+        "settings": {
+          "showBlog": false,
+          "showHero": true,
+          "resumeUrl": "#",
+          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
+          "footerText": "Designed & Built by Taylor Swiftly",
+          "accentColor": "amber",
+          "profileType": "Freelancer",
+          "activePreset": "freelancer",
+          "showServices": true,
+          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
+          "themePreference": "dark",
+          "showTestimonials": true
         },
         "designConfig": {
           "template": "modern-dark",
           "themeMode": "dark",
           "colors": {
-            "primary": "#10b981",
+            "primary": "#ec4899",
             "secondary": "#14b8a6",
             "accent": "#059669",
             "background": "#0a0d14",
@@ -406,32 +1119,14 @@
         },
         "mediaLibrary": [
           {
-            "id": "media-1791054772867",
-            "name": "profile1",
-            "url": "/api/admin/media/serve/clients%2Fclient-1%2Fprofile%2Fa4b4c35b-9829-4fd9-b6b4-745b17f515fe.jpg",
-            "objectKey": "clients/client-1/profile/a4b4c35b-9829-4fd9-b6b4-745b17f515fe.jpg",
-            "portfolioId": "client-1",
+            "id": "media-1",
+            "name": "Profile Avatar Photo",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
             "type": "image",
             "category": "profile",
-            "mimeType": "image/jpeg",
-            "sizeKb": 144,
-            "dimensions": "Uploaded",
-            "uploadDate": "2026-10-03",
-            "storageBackend": "neon"
-          },
-          {
-            "id": "media-1791054387716",
-            "name": "arunprofile",
-            "url": "/api/admin/media/serve/clients%2Fclient-1%2Fprofile%2F3c84950f-2ecd-4b61-8ec3-557e96e16ca7.jpg",
-            "objectKey": "clients/client-1/profile/3c84950f-2ecd-4b61-8ec3-557e96e16ca7.jpg",
-            "portfolioId": "client-1",
-            "type": "image",
-            "category": "profile",
-            "mimeType": "image/jpeg",
-            "sizeKb": 105,
-            "dimensions": "Uploaded",
-            "uploadDate": "2026-10-03",
-            "storageBackend": "neon"
+            "sizeKb": 245,
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
           },
           {
             "id": "media-2",
@@ -499,46 +1194,11 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       },
-      "lastPublishedAt": "2026-10-02T18:38:37.314Z"
+      "lastUpdated": "2026-10-05T16:34:39.224Z"
     }
   ],
-  "activeClientId": "client-1",
-  "settings": {
-    "showBlog": true,
-    "showHero": true,
-    "resumeUrl": "#",
-    "siteTitle": "Arun Kumar — Java Developer & Full Stack Developer",
-    "footerText": "Designed & Engineered by Arun Kumar",
-    "accentColor": "emerald",
-    "showServices": true,
-    "metaDescription": "Personal Developer Portfolio & CMS of Arun Kumar based in Telangana, India.",
-    "themePreference": "dark",
-    "showTestimonials": true,
-    "activePreset": "dataAnalyst",
-    "profileType": "Data Analyst"
-  },
+  "activeClientId": "client-2",
   "activities": [
-    {
-      "id": "act-1791054772872",
-      "type": "media",
-      "description": "Uploaded asset to Neon storage: profile1",
-      "timestamp": "2026-10-03T19:12:52.872Z",
-      "clientName": "ajay"
-    },
-    {
-      "id": "act-1791054387726",
-      "type": "media",
-      "description": "Uploaded asset to Neon storage: arunprofile",
-      "timestamp": "2026-10-03T19:06:27.726Z",
-      "clientName": "ajay"
-    },
-    {
-      "id": "act-1791054282858",
-      "type": "media",
-      "description": "Deleted media asset: Profile Avatar Photo",
-      "timestamp": "2026-10-03T19:04:42.858Z",
-      "clientName": "ajay"
-    },
     {
       "id": "act-1",
       "type": "publish",
@@ -565,7 +1225,7 @@
     "template": "modern-dark",
     "themeMode": "dark",
     "colors": {
-      "primary": "#10b981",
+      "primary": "#ec4899",
       "secondary": "#14b8a6",
       "accent": "#059669",
       "background": "#0a0d14",
@@ -646,32 +1306,14 @@
   },
   "mediaLibrary": [
     {
-      "id": "media-1791054772867",
-      "name": "profile1",
-      "url": "/api/admin/media/serve/clients%2Fclient-1%2Fprofile%2Fa4b4c35b-9829-4fd9-b6b4-745b17f515fe.jpg",
-      "objectKey": "clients/client-1/profile/a4b4c35b-9829-4fd9-b6b4-745b17f515fe.jpg",
-      "portfolioId": "client-1",
+      "id": "media-1",
+      "name": "Profile Avatar Photo",
+      "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
       "type": "image",
       "category": "profile",
-      "mimeType": "image/jpeg",
-      "sizeKb": 144,
-      "dimensions": "Uploaded",
-      "uploadDate": "2026-10-03",
-      "storageBackend": "neon"
-    },
-    {
-      "id": "media-1791054387716",
-      "name": "arunprofile",
-      "url": "/api/admin/media/serve/clients%2Fclient-1%2Fprofile%2F3c84950f-2ecd-4b61-8ec3-557e96e16ca7.jpg",
-      "objectKey": "clients/client-1/profile/3c84950f-2ecd-4b61-8ec3-557e96e16ca7.jpg",
-      "portfolioId": "client-1",
-      "type": "image",
-      "category": "profile",
-      "mimeType": "image/jpeg",
-      "sizeKb": 105,
-      "dimensions": "Uploaded",
-      "uploadDate": "2026-10-03",
-      "storageBackend": "neon"
+      "sizeKb": 245,
+      "dimensions": "600 x 600",
+      "uploadDate": "2026-09-01"
     },
     {
       "id": "media-2",

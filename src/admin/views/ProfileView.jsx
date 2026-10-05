@@ -347,11 +347,13 @@ export const ProfileView = () => {
         isOpen={mediaPickerOpen}
         onClose={() => setMediaPickerOpen(false)}
         onSelectMedia={(mediaRecord) => {
-          // Store stable reference — never store presigned URLs or serve paths
+          // Store stable reference — never store presigned URLs or serve paths.
+          // Use functional updater to avoid stale-closure bug: formData captured
+          // at modal-open time would overwrite intermediate state with old image.
           const imageValue = mediaRecord.storageBackend === 'neon'
             ? `neon::${mediaRecord.id}`
             : (mediaRecord.url || '');
-          setFormData({ ...formData, image: imageValue });
+          setFormData(prev => ({ ...prev, image: imageValue }));
         }}
         currentUrl={formData.image}
       />

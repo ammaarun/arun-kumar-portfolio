@@ -264,11 +264,12 @@ export const ProjectsView = () => {
         isOpen={mediaPickerOpen}
         onClose={() => setMediaPickerOpen(false)}
         onSelectMedia={(mediaRecord) => {
-          // Store stable reference — never store presigned URLs or serve paths
+          // Store stable reference — never store presigned URLs or serve paths.
+          // Functional updater avoids stale-closure overwrite of current form state.
           const imageValue = mediaRecord.storageBackend === 'neon'
             ? `neon::${mediaRecord.id}`
             : (mediaRecord.url || '');
-          setFormData({ ...formData, image: imageValue });
+          setFormData(prev => ({ ...prev, image: imageValue }));
         }}
         currentUrl={formData.image}
       />
