@@ -32,17 +32,22 @@ router.get('/media/:mediaId', async (req, res) => {
       }
     }
 
-    // Also check root db.mediaLibrary (active client context)
+    // Fallback: check root db.mediaLibrary (the active client's synced view).
+    // Media records do NOT carry a portfolioId field — resolve the owner from
+    // db.activeClientId instead, which is always the currently active client.
     if (!mediaRecord) {
       const rootFound = (db.mediaLibrary || []).find(m => m.id === mediaId);
       if (rootFound) {
         mediaRecord = rootFound;
-        // Find the owning client by portfolioId stored on the record
-        owningClient = (db.clients || []).find(c => c.id === rootFound.portfolioId);
+        // Use activeClientId as the owning client — root mediaLibrary IS the active client's list
+        owningClient = (db.clients || []).find(c => c.id === db.activeClientId)
+                    || (db.clients || [])[0]
+                    || null;
       }
     }
 
     if (!mediaRecord) {
+      console.log(`[Public Media] mediaId not found: ${mediaId}`);
       return res.status(404).json({ success: false, message: 'Media asset not found.' });
     }
 
@@ -51,15 +56,19 @@ router.get('/media/:mediaId', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Media asset is not a Neon storage asset.' });
     }
 
-    // 3. Verify the owning portfolio is PUBLISHED
-    if (!owningClient || (owningClient.status && owningClient.status !== 'PUBLISHED')) {
+    // 3. Verify the owning portfolio is publicly available.
+    // A missing status field defaults to PUBLISHED (all seeded clients start as PUBLISHED).
+    // Only explicitly non-PUBLISHED statuses (e.g. 'DRAFT') are rejected.
+    const clientStatus = owningClient?.status;
+    if (!owningClient || (clientStatus && clientStatus !== 'PUBLISHED')) {
+      console.log(`[Public Media] owningClient not found or not PUBLISHED. clientId=${owningClient?.id}, status=${clientStatus}`);
       return res.status(403).json({ success: false, message: 'Portfolio is not publicly available.' });
     }
 
     // 4. Generate a short-lived presigned GET URL (60s — enough for one page load)
     const presignedUrl = await getPresignedGetUrl(mediaRecord.objectKey, 60);
 
-    // 5. 302 redirect — a public <img> tag CAN follow a 302 redirect (no auth header needed)
+    // 5. 302 redirect — a public <img> tag follows 302 redirects automatically
     res.redirect(302, presignedUrl);
   } catch (err) {
     console.error('[Public Media] Error resolving media:', err.name, '-', err.message);

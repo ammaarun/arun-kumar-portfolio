@@ -6,25 +6,9 @@
   "badge": "Freelance Pro",
   "accentColor": "amber",
   "personalInfo": {
-    "name": "Taylor Swiftly",
-    "role": "Freelance Web Developer & Software Consultant",
-    "profileType": "freelancer",
-    "eyebrow": "FREELANCE DEVELOPER",
-    "specialization": "Custom Web Apps & Client Solutions",
-    "heroVisualType": "none",
-    "showFreelancerCTA": true,
-    "heroCtaText": "Request Custom Portfolio",
-    "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-    "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-    "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-    "location": "Telangana, India",
-    "availability": "Available for New Freelance Projects & Monthly Retainers",
-    "email": "taylor.consulting@example.com",
-    "phone": "+91 98765 00004",
-    "github": "https://github.com",
-    "linkedin": "https://linkedin.com",
-    "twitter": "https://twitter.com",
-    "resumeUrl": "#"
+    "name": "Priya Reddy",
+    "role": "Frontend Architect",
+    "resumeUrl": "https://example.com/principal-resume.pdf"
   },
   "stats": [
     {
@@ -124,6 +108,19 @@
     }
   ],
   "projects": [
+    {
+      "id": "proj-1791220496227",
+      "title": "Automated Test Project",
+      "subtitle": "Vitest Microservice",
+      "category": "Backend & Microservices",
+      "description": "Project created during automated suite execution",
+      "tech": [
+        "Java",
+        "Spring Boot",
+        "JUnit"
+      ],
+      "featured": true
+    },
     {
       "id": "proj-free-1",
       "title": "Client Portal & Asset Dashboard",
@@ -270,6 +267,15 @@
   "blogs": [],
   "messages": [
     {
+      "id": "msg-1791220498964",
+      "name": "Test Client",
+      "email": "client@example.com",
+      "subject": "Freelance Inquiry",
+      "message": "Hello Arun, I would like to discuss a Java project.",
+      "createdAt": "2026-10-05T17:14:58.964Z",
+      "read": false
+    },
+    {
       "id": "msg-1791218075209",
       "name": "Test Client",
       "email": "client@example.com",
@@ -300,19 +306,19 @@
   "clients": [
     {
       "id": "client-1",
-      "name": "Taylor Swiftly",
+      "name": "Arun Kumar",
       "role": "Freelance Web Developer & Software Consultant",
       "slug": "arun-kumar-lead",
       "email": "arunkumar.dev@example.com",
       "status": "PUBLISHED",
       "isDefault": true,
       "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-10-05T16:34:39.223Z",
+      "lastUpdated": "2026-10-05T17:14:58.860Z",
       "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
       "portfolioData": {
         "personalInfo": {
           "name": "Taylor Swiftly",
-          "role": "Freelance Web Developer & Software Consultant",
+          "role": "Lead Java & Full Stack Developer",
           "profileType": "freelancer",
           "eyebrow": "FREELANCE DEVELOPER",
           "specialization": "Custom Web Apps & Client Solutions",
@@ -429,6 +435,19 @@
           }
         ],
         "projects": [
+          {
+            "id": "proj-1791220496227",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
           {
             "id": "proj-free-1",
             "title": "Client Portal & Asset Dashboard",
@@ -758,25 +777,9 @@
       "status": "PUBLISHED",
       "portfolioData": {
         "personalInfo": {
-          "name": "Taylor Swiftly",
-          "role": "Freelance Web Developer & Software Consultant",
-          "profileType": "freelancer",
-          "eyebrow": "FREELANCE DEVELOPER",
-          "specialization": "Custom Web Apps & Client Solutions",
-          "heroVisualType": "none",
-          "showFreelancerCTA": true,
-          "heroCtaText": "Request Custom Portfolio",
-          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-          "location": "Telangana, India",
-          "availability": "Available for New Freelance Projects & Monthly Retainers",
-          "email": "taylor.consulting@example.com",
-          "phone": "+91 98765 00004",
-          "github": "https://github.com",
-          "linkedin": "https://linkedin.com",
-          "twitter": "https://twitter.com",
-          "resumeUrl": "#"
+          "name": "Priya Reddy",
+          "role": "Frontend Architect",
+          "resumeUrl": "https://example.com/principal-resume.pdf"
         },
         "stats": [
           {
@@ -876,6 +879,19 @@
           }
         ],
         "projects": [
+          {
+            "id": "proj-1791220496227",
+            "title": "Automated Test Project",
+            "subtitle": "Vitest Microservice",
+            "category": "Backend & Microservices",
+            "description": "Project created during automated suite execution",
+            "tech": [
+              "Java",
+              "Spring Boot",
+              "JUnit"
+            ],
+            "featured": true
+          },
           {
             "id": "proj-free-1",
             "title": "Client Portal & Asset Dashboard",
@@ -1035,31 +1051,31 @@
           "showTestimonials": true
         },
         "designConfig": {
-          "template": "modern-dark",
-          "themeMode": "dark",
+          "template": "minimal-light",
+          "themeMode": "light",
           "colors": {
-            "primary": "#ec4899",
-            "secondary": "#14b8a6",
-            "accent": "#059669",
-            "background": "#0a0d14",
-            "surface": "#121723",
-            "text": "#f1f5f9"
+            "primary": "#2563eb",
+            "secondary": "#3b82f6",
+            "accent": "#1d4ed8",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "text": "#0f172a"
           },
           "fonts": {
-            "heading": "Inter",
+            "heading": "Space Grotesk",
             "body": "Inter"
           },
           "layout": {
-            "hero": "centered",
-            "projects": "grid",
+            "hero": "left",
+            "projects": "cards",
             "navigation": "top",
-            "contact": "form"
+            "contact": "cards"
           },
           "buttons": {
-            "style": "rounded",
+            "style": "square",
             "size": "medium"
           },
-          "animations": "standard",
+          "animations": "subtle",
           "sections": [
             {
               "id": "hero",
@@ -1074,38 +1090,38 @@
               "order": 2
             },
             {
-              "id": "skills",
-              "name": "Skills",
+              "id": "projects",
+              "name": "Projects Showcase",
               "visible": true,
               "order": 3
             },
             {
-              "id": "projects",
-              "name": "Projects Showcase",
+              "id": "skills",
+              "name": "Skills",
               "visible": true,
               "order": 4
-            },
-            {
-              "id": "services",
-              "name": "Services",
-              "visible": true,
-              "order": 5
             },
             {
               "id": "experience",
               "name": "Work Experience",
               "visible": true,
-              "order": 6
+              "order": 5
             },
             {
-              "id": "blog",
-              "name": "Blog / Articles",
+              "id": "services",
+              "name": "Services",
               "visible": true,
-              "order": 7
+              "order": 6
             },
             {
               "id": "testimonials",
               "name": "Testimonials",
+              "visible": true,
+              "order": 7
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
               "visible": true,
               "order": 8
             },
@@ -1161,12 +1177,20 @@
         ],
         "resumes": [
           {
+            "id": "res-test-1791220498549",
+            "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
+            "url": "https://example.com/principal-resume.pdf",
+            "uploadDate": "2026-09-24",
+            "sizeKb": 410,
+            "isActive": true
+          },
+          {
             "id": "res-1",
             "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "url": "#",
             "uploadDate": "2026-09-15",
             "sizeKb": 340,
-            "isActive": true
+            "isActive": false
           },
           {
             "id": "res-2",
@@ -1178,15 +1202,15 @@
           }
         ],
         "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
+          "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
+          "keywords": "Java, Cloud, Microservices, React, Architect",
           "canonicalUrl": "https://portfolio.example.com/arun-kumar",
           "author": "Arun Kumar",
           "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+          "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
+          "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
+          "socialShareImage": "https://images.unsplash.com/photo-og-cover"
         },
         "branding": {
           "faviconUrl": "/favicon.svg",
@@ -1194,11 +1218,109 @@
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       },
-      "lastUpdated": "2026-10-05T16:34:39.224Z"
+      "lastUpdated": "2026-10-05T17:14:59.184Z"
     }
   ],
   "activeClientId": "client-2",
   "activities": [
+    {
+      "id": "act-1791220498564",
+      "type": "publish",
+      "description": "Portfolio status updated to PUBLISHED",
+      "timestamp": "2026-10-05T17:14:58.564Z",
+      "clientName": "Arun Kumar"
+    },
+    {
+      "id": "act-1791220488278",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Blog Neon Cover",
+      "timestamp": "2026-10-05T17:14:48.279Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220488172",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Project Neon Cover",
+      "timestamp": "2026-10-05T17:14:48.172Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220488114",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Hero Neon Image",
+      "timestamp": "2026-10-05T17:14:48.114Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220488051",
+      "type": "media",
+      "description": "Deleted media asset: Delete Then Public",
+      "timestamp": "2026-10-05T17:14:48.051Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220488035",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Delete Then Public",
+      "timestamp": "2026-10-05T17:14:48.035Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487989",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Ownership Test",
+      "timestamp": "2026-10-05T17:14:47.989Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487910",
+      "type": "media",
+      "description": "Saved media URL reference: URL Paste Asset Sel",
+      "timestamp": "2026-10-05T17:14:47.910Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487812",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Public 302 Test",
+      "timestamp": "2026-10-05T17:14:47.812Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487598",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Profile Neon",
+      "timestamp": "2026-10-05T17:14:47.598Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487565",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Shape Test",
+      "timestamp": "2026-10-05T17:14:47.565Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487183",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Auth Test Asset",
+      "timestamp": "2026-10-05T17:14:47.183Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487128",
+      "type": "media",
+      "description": "Saved media URL reference: Unsplash Photo",
+      "timestamp": "2026-10-05T17:14:47.128Z",
+      "clientName": "Taylor Swiftly"
+    },
+    {
+      "id": "act-1791220487071",
+      "type": "media",
+      "description": "Uploaded asset to Neon storage: Preview Test Asset",
+      "timestamp": "2026-10-05T17:14:47.071Z",
+      "clientName": "Taylor Swiftly"
+    },
     {
       "id": "act-1",
       "type": "publish",
@@ -1222,31 +1344,31 @@
     }
   ],
   "designConfig": {
-    "template": "modern-dark",
-    "themeMode": "dark",
+    "template": "minimal-light",
+    "themeMode": "light",
     "colors": {
-      "primary": "#ec4899",
-      "secondary": "#14b8a6",
-      "accent": "#059669",
-      "background": "#0a0d14",
-      "surface": "#121723",
-      "text": "#f1f5f9"
+      "primary": "#2563eb",
+      "secondary": "#3b82f6",
+      "accent": "#1d4ed8",
+      "background": "#f8fafc",
+      "surface": "#ffffff",
+      "text": "#0f172a"
     },
     "fonts": {
-      "heading": "Inter",
+      "heading": "Space Grotesk",
       "body": "Inter"
     },
     "layout": {
-      "hero": "centered",
-      "projects": "grid",
+      "hero": "left",
+      "projects": "cards",
       "navigation": "top",
-      "contact": "form"
+      "contact": "cards"
     },
     "buttons": {
-      "style": "rounded",
+      "style": "square",
       "size": "medium"
     },
-    "animations": "standard",
+    "animations": "subtle",
     "sections": [
       {
         "id": "hero",
@@ -1261,38 +1383,38 @@
         "order": 2
       },
       {
-        "id": "skills",
-        "name": "Skills",
+        "id": "projects",
+        "name": "Projects Showcase",
         "visible": true,
         "order": 3
       },
       {
-        "id": "projects",
-        "name": "Projects Showcase",
+        "id": "skills",
+        "name": "Skills",
         "visible": true,
         "order": 4
-      },
-      {
-        "id": "services",
-        "name": "Services",
-        "visible": true,
-        "order": 5
       },
       {
         "id": "experience",
         "name": "Work Experience",
         "visible": true,
-        "order": 6
+        "order": 5
       },
       {
-        "id": "blog",
-        "name": "Blog / Articles",
+        "id": "services",
+        "name": "Services",
         "visible": true,
-        "order": 7
+        "order": 6
       },
       {
         "id": "testimonials",
         "name": "Testimonials",
+        "visible": true,
+        "order": 7
+      },
+      {
+        "id": "blog",
+        "name": "Blog / Articles",
         "visible": true,
         "order": 8
       },
@@ -1348,12 +1470,20 @@
   ],
   "resumes": [
     {
+      "id": "res-test-1791220498549",
+      "name": "Arun-Kumar-Principal-Architect-Resume-2026.pdf",
+      "url": "https://example.com/principal-resume.pdf",
+      "uploadDate": "2026-09-24",
+      "sizeKb": 410,
+      "isActive": true
+    },
+    {
       "id": "res-1",
       "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
       "url": "#",
       "uploadDate": "2026-09-15",
       "sizeKb": 340,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "res-2",
@@ -1365,15 +1495,15 @@
     }
   ],
   "seo": {
-    "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-    "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-    "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+    "pageTitle": "Arun Kumar | Lead Cloud Architect & Full-Stack Engineer",
+    "metaDescription": "Senior Lead Architect specializing in high-throughput Java microservices, Kubernetes, Spring Cloud, and React.",
+    "keywords": "Java, Cloud, Microservices, React, Architect",
     "canonicalUrl": "https://portfolio.example.com/arun-kumar",
     "author": "Arun Kumar",
     "robots": "index, follow",
-    "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-    "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-    "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+    "socialShareTitle": "Arun Kumar — Cloud Architecture & Engineering Portfolio",
+    "socialShareDescription": "Discover enterprise microservice architectures and high-performance backend systems.",
+    "socialShareImage": "https://images.unsplash.com/photo-og-cover"
   },
   "branding": {
     "faviconUrl": "/favicon.svg",
