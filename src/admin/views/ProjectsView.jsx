@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Plus, Trash2, Edit3, ExternalLink, Terminal, CheckCircle2, X } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { api } from '../../services/api';
@@ -26,6 +26,11 @@ export const ProjectsView = () => {
   });
 
   const [saving, setSaving] = useState(false);
+
+  // Field updater — always uses functional setState to avoid stale-closure overwrites.
+  const updateField = useCallback((field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  }, []);
 
   const openNewModal = () => {
     setEditingId(null);
@@ -56,8 +61,11 @@ export const ProjectsView = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
-    const techArray = formData.techInput ? formData.techInput.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const payload = { ...formData, tech: techArray };
+    // Capture current snapshot via functional read
+    let snapshot;
+    setFormData(prev => { snapshot = prev; return prev; });
+    const techArray = snapshot.techInput ? snapshot.techInput.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const payload = { ...snapshot, tech: techArray };
     delete payload.techInput;
 
     try {
@@ -156,7 +164,7 @@ export const ProjectsView = () => {
                     type="text"
                     required
                     value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    onChange={(e) => updateField('title', e.target.value)}
                     className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
                   />
                 </div>
@@ -165,7 +173,7 @@ export const ProjectsView = () => {
                   <label className="text-xs text-slate-300">Category *</label>
                   <select
                     value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    onChange={(e) => updateField('category', e.target.value)}
                     className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
                   >
                     <option value="Backend & Microservices">Backend & Microservices</option>
@@ -179,7 +187,7 @@ export const ProjectsView = () => {
                 <input
                   type="text"
                   value={formData.subtitle}
-                  onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
+                  onChange={(e) => updateField('subtitle', e.target.value)}
                   className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
                 />
               </div>
@@ -190,7 +198,7 @@ export const ProjectsView = () => {
                   rows={2}
                   required
                   value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  onChange={(e) => updateField('description', e.target.value)}
                   className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
                 />
               </div>
@@ -201,7 +209,7 @@ export const ProjectsView = () => {
                   type="text"
                   placeholder="Java 17, Spring Boot, Kafka, React, Redis"
                   value={formData.techInput}
-                  onChange={(e) => setFormData({ ...formData, techInput: e.target.value })}
+                  onChange={(e) => updateField('techInput', e.target.value)}
                   className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono"
                 />
               </div>
@@ -212,7 +220,7 @@ export const ProjectsView = () => {
                   <input
                     type="text"
                     value={formData.image}
-                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                    onChange={(e) => updateField('image', e.target.value)}
                     className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono"
                   />
                   <button
@@ -231,7 +239,7 @@ export const ProjectsView = () => {
                   <input
                     type="url"
                     value={formData.github}
-                    onChange={(e) => setFormData({ ...formData, github: e.target.value })}
+                    onChange={(e) => updateField('github', e.target.value)}
                     className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
                   />
                 </div>
@@ -241,7 +249,7 @@ export const ProjectsView = () => {
                   <input
                     type="url"
                     value={formData.live}
-                    onChange={(e) => setFormData({ ...formData, live: e.target.value })}
+                    onChange={(e) => updateField('live', e.target.value)}
                     className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
                   />
                 </div>

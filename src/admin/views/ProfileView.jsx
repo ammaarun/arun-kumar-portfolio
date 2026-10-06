@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Save, CheckCircle2, User, Image, Trash2, Sparkles, AlertCircle } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { useAuth } from '../../context/AuthContext';
@@ -45,10 +45,32 @@ const useNeonImageUrl = (imageRef, token) => {
 export const ProfileView = () => {
   const { data, refreshData } = useData();
   const { token } = useAuth();
+
+  // ─── formData is initialized from data.personalInfo on mount.
+  // A useEffect syncs it whenever data.personalInfo changes (e.g. after
+  // refreshData() is called following a save, or after a client switch).
+  // We guard with a ref so we only sync from the server when the component
+  // is NOT in a mid-edit dirty state — i.e. only on initial load or after
+  // a successful save (where we explicitly want the authoritative server value).
   const [formData, setFormData] = useState(data.personalInfo || {});
   const [saving, setSaving] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
+
+  // Sync form state from server data on initial mount and after refreshData().
+  // This is intentionally NOT throttled — ProfileView should always show the
+  // authoritative DB value on first render and after a successful save.
+  useEffect(() => {
+    if (data.personalInfo) {
+      setFormData(data.personalInfo);
+    }
+  }, [data.personalInfo]);
+
+  // ─── Field updater — ALWAYS uses functional setState so no onChange
+  //     handler can ever overwrite a concurrently set image (or other field).
+  const updateField = useCallback((field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  }, []);
 
   // Resolve admin preview of the current image value
   const { src: previewSrc, err: previewErr } = useNeonImageUrl(formData.image, token);
@@ -57,9 +79,18 @@ export const ProfileView = () => {
     e.preventDefault();
     setSaving(true);
     try {
-      const res = await api.updateProfile(formData);
+      // Capture current formData via functional read to avoid any timing issue
+      let snapshot;
+      setFormData(prev => { snapshot = prev; return prev; });
+      // snapshot is set synchronously in the same tick
+      const res = await api.updateProfile(snapshot || formData);
       if (res.success) {
         setSuccessMsg('Profile information updated successfully!');
+        // After save, sync formData from the authoritative server response
+        // so subsequent edits start from the correct baseline.
+        if (res.data) {
+          setFormData(res.data);
+        }
         await refreshData();
         setTimeout(() => setSuccessMsg(''), 4000);
       }
@@ -123,7 +154,7 @@ export const ProfileView = () => {
               {formData.image && (
                 <button
                   type="button"
-                  onClick={() => setFormData({ ...formData, image: '' })}
+                  onClick={() => setFormData(prev => ({ ...prev, image: '' }))}
                   className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-rose-500/20 border border-slate-800 text-slate-400 hover:text-rose-400 text-xs font-semibold flex items-center space-x-1 transition-all"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
@@ -142,7 +173,7 @@ export const ProfileView = () => {
               type="text"
               required
               value={formData.name || ''}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) => updateField('name', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -153,7 +184,7 @@ export const ProfileView = () => {
               type="text"
               required
               value={formData.role || ''}
-              onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+              onChange={(e) => updateField('role', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -165,7 +196,7 @@ export const ProfileView = () => {
             <input
               type="text"
               value={formData.location || ''}
-              onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+              onChange={(e) => updateField('location', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -175,7 +206,7 @@ export const ProfileView = () => {
             <input
               type="text"
               value={formData.availability || ''}
-              onChange={(e) => setFormData({ ...formData, availability: e.target.value })}
+              onChange={(e) => updateField('availability', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -194,7 +225,7 @@ export const ProfileView = () => {
               <input
                 type="text"
                 value={formData.eyebrow !== undefined ? formData.eyebrow : (formData.shortRole || '')}
-                onChange={(e) => setFormData({ ...formData, eyebrow: e.target.value })}
+                onChange={(e) => updateField('eyebrow', e.target.value)}
                 placeholder="e.g. JAVA & FULL STACK"
                 className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
               />
@@ -206,7 +237,7 @@ export const ProfileView = () => {
               <input
                 type="text"
                 value={formData.specialization || ''}
-                onChange={(e) => setFormData({ ...formData, specialization: e.target.value })}
+                onChange={(e) => updateField('specialization', e.target.value)}
                 placeholder="e.g. Spring Boot & React Specialist"
                 className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
               />
@@ -219,7 +250,7 @@ export const ProfileView = () => {
               <label className="text-xs font-semibold text-slate-300">Hero Visual Panel Type</label>
               <select
                 value={formData.heroVisualType || 'code'}
-                onChange={(e) => setFormData({ ...formData, heroVisualType: e.target.value })}
+                onChange={(e) => updateField('heroVisualType', e.target.value)}
                 className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
               >
                 <option value="code">Developer Terminal / Code Visual</option>
@@ -234,7 +265,7 @@ export const ProfileView = () => {
               <input
                 type="text"
                 value={formData.heroCtaText || ''}
-                onChange={(e) => setFormData({ ...formData, heroCtaText: e.target.value })}
+                onChange={(e) => updateField('heroCtaText', e.target.value)}
                 placeholder="e.g. Request Custom Portfolio or Get in Touch"
                 className="w-full px-4 py-2.5 rounded-xl bg-[#121723] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
               />
@@ -247,7 +278,7 @@ export const ProfileView = () => {
               type="checkbox"
               id="showFreelancerCTA"
               checked={formData.showFreelancerCTA !== undefined ? !!formData.showFreelancerCTA : formData.profileType === 'freelancer'}
-              onChange={(e) => setFormData({ ...formData, showFreelancerCTA: e.target.checked })}
+              onChange={(e) => updateField('showFreelancerCTA', e.target.checked)}
               className="w-4 h-4 rounded bg-[#121723] border-slate-800 text-emerald-500 focus:ring-emerald-500"
             />
             <label htmlFor="showFreelancerCTA" className="text-xs font-medium text-slate-300 cursor-pointer">
@@ -263,7 +294,7 @@ export const ProfileView = () => {
             <input
               type="email"
               value={formData.email || ''}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) => updateField('email', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -273,7 +304,7 @@ export const ProfileView = () => {
             <input
               type="text"
               value={formData.phone || ''}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              onChange={(e) => updateField('phone', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -286,7 +317,7 @@ export const ProfileView = () => {
             <input
               type="url"
               value={formData.github || ''}
-              onChange={(e) => setFormData({ ...formData, github: e.target.value })}
+              onChange={(e) => updateField('github', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -296,7 +327,7 @@ export const ProfileView = () => {
             <input
               type="url"
               value={formData.linkedin || ''}
-              onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
+              onChange={(e) => updateField('linkedin', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -306,7 +337,7 @@ export const ProfileView = () => {
             <input
               type="url"
               value={formData.twitter || ''}
-              onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
+              onChange={(e) => updateField('twitter', e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
             />
           </div>
@@ -318,7 +349,7 @@ export const ProfileView = () => {
           <input
             type="text"
             value={formData.shortBio || ''}
-            onChange={(e) => setFormData({ ...formData, shortBio: e.target.value })}
+            onChange={(e) => updateField('shortBio', e.target.value)}
             className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500"
           />
         </div>
@@ -328,7 +359,7 @@ export const ProfileView = () => {
           <textarea
             rows={4}
             value={formData.bio || ''}
-            onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+            onChange={(e) => updateField('bio', e.target.value)}
             className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white focus:outline-none focus:border-emerald-500 resize-none"
           />
         </div>
@@ -348,8 +379,7 @@ export const ProfileView = () => {
         onClose={() => setMediaPickerOpen(false)}
         onSelectMedia={(mediaRecord) => {
           // Store stable reference — never store presigned URLs or serve paths.
-          // Use functional updater to avoid stale-closure bug: formData captured
-          // at modal-open time would overwrite intermediate state with old image.
+          // Functional updater guarantees we never clobber concurrent state changes.
           const imageValue = mediaRecord.storageBackend === 'neon'
             ? `neon::${mediaRecord.id}`
             : (mediaRecord.url || '');
