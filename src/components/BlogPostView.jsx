@@ -31,7 +31,7 @@ export const BlogPostView = () => {
         </p>
         <button
           onClick={() => navigate('/')}
-          className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-semibold text-xs flex items-center space-x-2 hover:bg-emerald-700 transition-colors"
+          className="px-4 py-2 rounded-xl bg-emerald-600 text-slate-900 dark:text-white font-semibold text-xs flex items-center space-x-2 hover:bg-emerald-700 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Return to Portfolio</span>
@@ -81,7 +81,7 @@ export const BlogPostView = () => {
           
           {/* Metadata Header */}
           <div className="space-y-4 border-b border-slate-200 dark:border-slate-800 pb-6">
-            <div className="flex items-center space-x-3 text-xs font-mono text-slate-400">
+            <div className="flex items-center space-x-3 text-xs font-mono text-slate-600 dark:text-slate-400">
               <span className="flex items-center space-x-1 text-emerald-500 font-semibold">
                 <Calendar className="w-3.5 h-3.5" />
                 <span>{post.publishedDate}</span>

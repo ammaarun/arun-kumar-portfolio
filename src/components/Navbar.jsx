@@ -77,7 +77,7 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme
     <header 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled 
-          ? 'py-3.5 bg-[#0a0d14]/85 dark:bg-[#0a0d14]/90 backdrop-blur-md shadow-lg border-b border-slate-800/80' 
+          ? 'py-3.5 bg-slate-50 dark:bg-[#0a0d14]/85 dark:bg-[#0a0d14]/90 backdrop-blur-md shadow-lg border-b border-slate-200/80 dark:border-slate-800/80' 
           : 'py-5 bg-transparent'
       }`}
     >
@@ -88,7 +88,7 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme
           onClick={(e) => handleNavClick(e, '#')}
           className="flex items-center space-x-2.5 group focus:outline-none"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white font-mono font-bold text-sm shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-slate-900 dark:text-white font-mono font-bold text-sm shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
             {initials}
           </div>
           <div className="flex flex-col">
@@ -137,14 +137,14 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme
           >
             <Command className="w-3.5 h-3.5 text-emerald-400" />
             <span className="font-mono">Search</span>
-            <kbd className="px-1.5 py-0.5 text-[10px] bg-white dark:bg-slate-800 text-slate-400 rounded font-mono border border-slate-200 dark:border-slate-700">
+            <kbd className="px-1.5 py-0.5 text-[10px] bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded font-mono border border-slate-200 dark:border-slate-700">
               ⌘K
             </kbd>
           </button>
 
           <button
             onClick={onOpenResume}
-            className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-md shadow-emerald-500/20 transition-all hover:scale-[1.02]"
+            className="flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-900 dark:text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-md shadow-emerald-500/20 transition-all hover:scale-[1.02]"
           >
             <FileText className="w-3.5 h-3.5" />
             <span className="hidden xs:inline">CV / Resume</span>

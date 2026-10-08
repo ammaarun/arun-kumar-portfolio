@@ -23,7 +23,7 @@ export const ProjectModal = ({ project, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg transition-colors"
+            className="p-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -39,7 +39,7 @@ export const ProjectModal = ({ project, onClose }) => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
-              <span className="text-white text-sm font-semibold">
+              <span className="text-slate-900 dark:text-white text-sm font-semibold">
                 {project.subtitle}
               </span>
             </div>
@@ -47,7 +47,7 @@ export const ProjectModal = ({ project, onClose }) => {
 
           {/* Description */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 font-mono">
               Overview & Architecture
             </h4>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -58,7 +58,7 @@ export const ProjectModal = ({ project, onClose }) => {
           {/* Performance Metrics */}
           {project.metrics && (
             <div className="space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono flex items-center space-x-1.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 font-mono flex items-center space-x-1.5">
                 <BarChart3 className="w-3.5 h-3.5 text-emerald-500" />
                 <span>Performance & Key Impact Metrics</span>
               </h4>
@@ -80,7 +80,7 @@ export const ProjectModal = ({ project, onClose }) => {
           {/* Key Architecture Highlights */}
           {project.highlights && (
             <div className="space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono flex items-center space-x-1.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 font-mono flex items-center space-x-1.5">
                 <Cpu className="w-3.5 h-3.5 text-emerald-500" />
                 <span>Key Technical Highlights</span>
               </h4>
@@ -97,7 +97,7 @@ export const ProjectModal = ({ project, onClose }) => {
 
           {/* Tech Stack Badges */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono flex items-center space-x-1.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 font-mono flex items-center space-x-1.5">
               <Layers className="w-3.5 h-3.5 text-emerald-500" />
               <span>Tech Stack Used</span>
             </h4>
@@ -131,7 +131,7 @@ export const ProjectModal = ({ project, onClose }) => {
                 href={project.live}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors"
+                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-slate-900 dark:text-white transition-colors"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>Live Demo</span>
@@ -140,7 +140,7 @@ export const ProjectModal = ({ project, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
+            className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-700 dark:text-slate-300"
           >
             Close Window
           </button>

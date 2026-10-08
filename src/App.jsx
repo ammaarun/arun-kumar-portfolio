@@ -71,11 +71,22 @@ function MainPublicPortfolio() {
   // 1. SAVED THEME CONFIGURATION
   const savedThemeMode = designConfig.themeMode || 'dark';
 
-  // 2. SYSTEM MODE RESOLUTION & BASE THEME
+  // 2. SYSTEM MODE RESOLUTION
+  const [systemPrefersDark, setSystemPrefersDark] = useState(
+    typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e) => setSystemPrefersDark(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   let baseTheme = 'dark';
   if (savedThemeMode === 'system') {
-    const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    baseTheme = prefersDark ? 'dark' : 'light';
+    baseTheme = systemPrefersDark ? 'dark' : 'light';
   } else if (savedThemeMode === 'light') {
     baseTheme = 'light';
   } else {
@@ -98,7 +109,7 @@ function MainPublicPortfolio() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-slate-400 font-mono text-sm space-y-3">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-slate-500 dark:text-slate-400 font-mono text-sm space-y-3">
         <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
         <span>Loading Portfolio...</span>
       </div>
@@ -107,12 +118,12 @@ function MainPublicPortfolio() {
 
   if (error || !data) {
     return (
-      <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-center">
         <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-4">
           <UserX className="w-8 h-8" />
         </div>
-        <h1 className="text-2xl font-bold text-white mb-2">Portfolio Not Found</h1>
-        <p className="text-sm text-slate-400 max-w-md mb-6">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Portfolio Not Found</h1>
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md mb-6">
           The requested client portfolio could not be found or has been removed.
         </p>
         <a 
@@ -129,12 +140,12 @@ function MainPublicPortfolio() {
 
   if (!isPreview && (data.status === 'UNPUBLISHED' || data.status === 'PRIVATE')) {
     return (
-      <div className="min-h-screen bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#0a0d14] flex flex-col items-center justify-center p-6 text-center">
         <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4">
           <Lock className="w-8 h-8" />
         </div>
-        <h1 className="text-2xl font-bold text-white mb-2">Portfolio Unavailable</h1>
-        <p className="text-sm text-slate-400 max-w-md mb-6">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Portfolio Unavailable</h1>
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md mb-6">
           This portfolio is currently unpublished or set to private mode.
         </p>
         <a 

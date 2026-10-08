@@ -67,7 +67,7 @@ export const About = () => {
   const pillars = getPillars();
 
   return (
-    <section id="about" className="py-20 relative bg-[#0a0d14] border-t border-slate-800/80">
+    <section id="about" className="py-20 relative bg-slate-50 dark:bg-[#0a0d14] border-t border-slate-200/80 dark:border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -76,10 +76,10 @@ export const About = () => {
             <Cpu className="w-3.5 h-3.5" />
             <span>BACKGROUND & PHILOSOPHY</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {personalInfo.aboutHeading || 'Professional Philosophy & Expertise'}
           </h2>
-          <p className="text-base text-slate-400">
+          <p className="text-base text-slate-600 dark:text-slate-400">
             {personalInfo.aboutSubtitle || 'A closer look into how I approach problem solving, project delivery, and quality.'}
           </p>
         </div>
@@ -87,16 +87,16 @@ export const About = () => {
         {/* Narrative & Key Stats Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
           {/* Bio Narrative */}
-          <div className="lg:col-span-6 space-y-5 text-slate-300">
-            <h3 className="text-2xl font-bold text-white leading-snug">
+          <div className="lg:col-span-6 space-y-5 text-slate-700 dark:text-slate-300">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white leading-snug">
               {personalInfo.bioHeader || 'Delivering impactful results through dedication and precision'}
             </h3>
             <p className="leading-relaxed">
               {personalInfo.bio}
             </p>
             {personalInfo.location && (
-              <p className="leading-relaxed text-slate-400">
-                Based in <strong className="text-white">{personalInfo.location}</strong>, I take pride in developing high-quality solutions that solve real-world problems while maintaining high professional standards.
+              <p className="leading-relaxed text-slate-600 dark:text-slate-400">
+                Based in <strong className="text-slate-900 dark:text-white">{personalInfo.location}</strong>, I take pride in developing high-quality solutions that solve real-world problems while maintaining high professional standards.
               </p>
             )}
             <div className="pt-2 flex items-center space-x-3 text-xs font-mono text-emerald-400 font-semibold">
@@ -110,15 +110,15 @@ export const About = () => {
             {stats.map((stat, idx) => (
               <div 
                 key={idx}
-                className="p-6 rounded-2xl bg-[#121723] border border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 group"
+                className="p-6 rounded-2xl bg-white dark:bg-[#121723] border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 group"
               >
                 <div className="text-3xl sm:text-4xl font-bold font-mono text-emerald-400 group-hover:scale-105 transition-transform origin-left">
                   {stat.value}
                 </div>
-                <div className="text-sm font-bold text-white mt-2">
+                <div className="text-sm font-bold text-slate-900 dark:text-white mt-2">
                   {stat.label}
                 </div>
-                <div className="text-xs text-slate-400 mt-1">
+                <div className="text-xs text-slate-600 dark:text-slate-400 mt-1">
                   {stat.description}
                 </div>
               </div>
@@ -133,16 +133,16 @@ export const About = () => {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[#121723] border border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-white dark:bg-[#121723] border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   <div className="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h4 className="text-base font-bold text-white">
+                  <h4 className="text-base font-bold text-slate-900 dark:text-white">
                     {pillar.title}
                   </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>

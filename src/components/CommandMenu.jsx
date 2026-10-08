@@ -146,7 +146,7 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
       >
         {/* Search Header */}
         <div className="relative flex items-center px-4 border-b border-slate-200 dark:border-slate-800">
-          <Search className="w-5 h-5 text-slate-400 dark:text-slate-500 mr-3" />
+          <Search className="w-5 h-5 text-slate-600 dark:text-slate-400 dark:text-slate-500 mr-3" />
           <input
             type="text"
             placeholder="Type a command or search section..."
@@ -157,7 +157,7 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
           />
           <button 
             onClick={onClose}
-            className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg"
+            className="p-1 text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg"
           >
             <X className="w-5 h-5" />
           </button>

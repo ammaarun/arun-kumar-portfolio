@@ -20,7 +20,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
     : 'grid-cols-1 md:grid-cols-2';
 
   return (
-    <section id="projects" className="py-20 relative bg-[#0a0d14] border-t border-slate-800/80">
+    <section id="projects" className="py-20 relative bg-slate-50 dark:bg-[#0a0d14] border-t border-slate-200/80 dark:border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -29,10 +29,10 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
             <Terminal className="w-3.5 h-3.5" />
             <span>PORTFOLIO SHOWCASE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Featured Projects & Deliverables
           </h2>
-          <p className="text-base text-slate-400">
+          <p className="text-base text-slate-600 dark:text-slate-400">
             A selection of real-world projects, case studies, and key deliverables.
           </p>
         </div>
@@ -48,7 +48,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                   filter === cat
                     ? 'bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20'
-                    : 'bg-[#121723] text-slate-300 border border-slate-800 hover:border-slate-700'
+                    : 'bg-white dark:bg-[#121723] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:border-slate-700'
                 }`}
               >
                 {cat}
@@ -62,10 +62,10 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group rounded-2xl bg-[#121723] border border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 flex flex-col overflow-hidden"
+              className="group rounded-2xl bg-white dark:bg-[#121723] border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 flex flex-col overflow-hidden"
             >
               {/* Image Preview Container */}
-              <div className="relative h-52 overflow-hidden bg-[#0a0d14]">
+              <div className="relative h-52 overflow-hidden bg-slate-50 dark:bg-[#0a0d14]">
                 <NeonPublicImage
                   src={project.image}
                   alt={project.title}
@@ -73,7 +73,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
                 />
                 {project.category && (
                   <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 text-[11px] font-mono font-semibold rounded-md bg-[#0a0d14]/90 text-emerald-400 border border-slate-800 backdrop-blur-md">
+                    <span className="px-2.5 py-1 text-[11px] font-mono font-semibold rounded-md bg-slate-50 dark:bg-[#0a0d14]/90 text-emerald-400 border border-slate-200 dark:border-slate-800 backdrop-blur-md">
                       {project.category}
                     </span>
                   </div>
@@ -83,7 +83,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
               {/* Card Content */}
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-400 transition-colors">
                     {project.title}
                   </h3>
                   {project.subtitle && (
@@ -91,7 +91,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
                       {project.subtitle}
                     </p>
                   )}
-                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed line-clamp-3">
                     {project.description}
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
                     {(project.tech || project.tags).map((t, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-2 py-0.5 text-[11px] font-mono bg-[#0a0d14] text-slate-300 rounded border border-slate-800"
+                        className="px-2 py-0.5 text-[11px] font-mono bg-slate-50 dark:bg-[#0a0d14] text-slate-700 dark:text-slate-300 rounded border border-slate-200 dark:border-slate-800"
                       >
                         {t}
                       </span>
@@ -111,7 +111,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
                 )}
 
                 {/* Footer Buttons */}
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
                   <button
                     onClick={() => onSelectProject(project)}
                     className="inline-flex items-center space-x-1 text-xs font-bold text-emerald-400 hover:underline"
@@ -126,7 +126,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
                         href={project.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-white hover:bg-slate-200 dark:bg-slate-800 transition-colors"
                         title="Repository"
                       >
                         <GithubIcon className="w-4 h-4" />
@@ -137,7 +137,7 @@ export const Projects = ({ onSelectProject, layoutVariant = 'grid' }) => {
                         href={project.live}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 rounded-lg text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition-colors"
+                        className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-emerald-400 hover:bg-slate-200 dark:bg-slate-800 transition-colors"
                         title="Live Demo"
                       >
                         <ExternalLink className="w-4 h-4" />

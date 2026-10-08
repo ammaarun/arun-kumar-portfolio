@@ -1,1124 +1,468 @@
 {
-  "id": "freelancer",
-  "name": "Freelancer",
-  "description": "Optimized for freelance developers and consultants offering custom client solutions, fixed-price packages, testimonials, and clear hire CTAs.",
-  "targetAudience": "Freelancers, Independent Developers & Agency Owners",
-  "badge": "Freelance Pro",
-  "accentColor": "amber",
-  "personalInfo": {
-    "name": "Priya Reddy",
-    "role": "Frontend Architect"
+  "id": "consultant",
+  "seo": {
+    "author": "Arun Kumar",
+    "robots": "index, follow",
+    "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+    "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+    "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+    "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+    "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+    "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+    "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
   },
+  "name": "Business & Strategy Consultant",
+  "badge": "Consultant Pro",
+  "blogs": [],
   "stats": [
     {
-      "label": "Client Projects",
-      "value": "25+",
-      "description": "Delivered On-Time"
+      "label": "Revenue Impacted",
+      "value": "$12M+",
+      "description": "Client Value Created"
     },
     {
-      "label": "Client Rating",
-      "value": "5.0 ★",
-      "description": "100% Satisfaction"
+      "label": "Projects Advisory",
+      "value": "40+",
+      "description": "Corporate Retainers"
     },
     {
-      "label": "Avg Turnaround",
-      "value": "48 Hours",
-      "description": "Fast Delivery Option"
+      "label": "Efficiency Gain",
+      "value": "35%",
+      "description": "Avg Process Speedup"
     },
     {
-      "label": "Repeat Clients",
-      "value": "80%",
-      "description": "Long-Term Partnerships"
+      "label": "Client Retention",
+      "value": "90%",
+      "description": "Long-term Partnerships"
     }
   ],
-  "skills": [
-    {
-      "category": "Freelance Development Services",
-      "icon": "Sparkles",
-      "items": [
-        {
-          "name": "Custom Web Applications",
-          "level": 95,
-          "popular": true
-        },
-        {
-          "name": "Dynamic Portfolio & CMS Development",
-          "level": 98,
-          "popular": true
-        },
-        {
-          "name": "React & Tailwind Frontend Engineering",
-          "level": 94,
-          "popular": true
-        },
-        {
-          "name": "API & Payment Integration",
-          "level": 90
-        }
-      ]
-    },
-    {
-      "category": "Core Technologies",
-      "icon": "Code2",
-      "items": [
-        {
-          "name": "JavaScript (ES6+) & TypeScript",
-          "level": 92,
-          "popular": true
-        },
-        {
-          "name": "React.js / Next.js",
-          "level": 90,
-          "popular": true
-        },
-        {
-          "name": "Node.js & Express APIs",
-          "level": 88
-        },
-        {
-          "name": "PostgreSQL & MongoDB Database Setup",
-          "level": 86
-        }
-      ]
-    },
-    {
-      "category": "Deployment & Maintenance",
-      "icon": "Cloud",
-      "items": [
-        {
-          "name": "Cloud Deployment (Render / Vercel)",
-          "level": 95,
-          "popular": true
-        },
-        {
-          "name": "Custom Domain & SSL Setup",
-          "level": 92
-        },
-        {
-          "name": "SEO & OpenGraph Metadata Optimization",
-          "level": 90,
-          "popular": true
-        },
-        {
-          "name": "Ongoing Maintenance & Bug Fixes",
-          "level": 88
-        }
-      ]
-    }
-  ],
-  "projects": [
-    {
-      "id": "proj-free-1",
-      "title": "Client Portal & Asset Dashboard",
-      "subtitle": "Custom Client Web Platform",
-      "category": "Freelance Client Work",
-      "featured": true,
-      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-      "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
-      "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
-      "tech": [
-        "React",
-        "Tailwind CSS",
-        "Node.js",
-        "PostgreSQL"
-      ],
-      "metrics": [
-        {
-          "label": "Delivery",
-          "value": "14 Days"
-        },
-        {
-          "label": "Rating",
-          "value": "5.0 ★"
-        }
-      ],
-      "github": "https://github.com",
-      "live": "https://example.com",
-      "highlights": [
-        "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
-        "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
-      ]
-    },
-    {
-      "id": "proj-free-2",
-      "title": "SaaS Product Landing & Billing System",
-      "subtitle": "High-Converting Sales Web App",
-      "category": "Freelance Client Work",
-      "featured": true,
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-      "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
-      "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
-      "tech": [
-        "React",
-        "Stripe API",
-        "Tailwind CSS",
-        "Render"
-      ],
-      "metrics": [
-        {
-          "label": "Conversion",
-          "value": "12% Rate"
-        },
-        {
-          "label": "Performance",
-          "value": "99/100"
-        }
-      ],
-      "github": "https://github.com",
-      "live": "https://example.com",
-      "highlights": [
-        "Integrated Stripe Checkout API with automated webhook confirmation.",
-        "Configured social share previews increasing referral traffic."
-      ]
-    }
-  ],
-  "experience": [
-    {
-      "id": "exp-free-1",
-      "company": "Independent Consultant",
-      "role": "Lead Freelance Web Developer",
-      "period": "2022 - Present",
-      "location": "Remote",
-      "type": "Freelance",
-      "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
-      "achievements": [
-        "Maintained a 100% 5-star rating across 25+ client contracts.",
-        "Built and deployed custom portfolio web applications with live admin CMS panels.",
-        "Helped clients scale web apps to handle high peak user traffic."
-      ],
-      "skills": [
-        "React",
-        "Node.js",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "Client Management"
-      ]
-    }
-  ],
-  "education": [
-    {
-      "id": "edu-free-1",
-      "degree": "Bachelor of Science (B.Sc) in Computer Science",
-      "institution": "University of Technology",
-      "period": "2018 - 2022",
-      "description": "Graduated with top honors in Web Computing and User Interface Design."
-    }
-  ],
-  "services": [
-    {
-      "id": "srv-free-1",
-      "title": "Basic Developer Portfolio",
-      "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
-      "icon": "Layout",
-      "pricing": "$99 / ₹8,000",
-      "featured": true
-    },
-    {
-      "id": "srv-free-2",
-      "title": "Full Dynamic Portfolio CMS",
-      "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
-      "icon": "Server",
-      "pricing": "$249 / ₹20,000",
-      "featured": true
-    },
-    {
-      "id": "srv-free-3",
-      "title": "VIP Personal Brand Package",
-      "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
-      "icon": "Sparkles",
-      "pricing": "$499 / ₹40,000",
-      "featured": true
-    }
-  ],
-  "testimonials": [
-    {
-      "id": "test-free-1",
-      "name": "Emily Watson",
-      "role": "Agency Founder",
-      "company": "Apex Digital",
-      "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
-      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-      "visible": true
-    },
-    {
-      "id": "test-free-2",
-      "name": "Robert Vance",
-      "role": "Startup Founder",
-      "company": "Vance Media",
-      "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
-      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-      "visible": true
-    }
-  ],
-  "blogs": [],
-  "messages": [
-    {
-      "id": "msg-1791308634791",
-      "name": "Test Client",
-      "email": "client@example.com",
-      "subject": "Freelance Inquiry",
-      "message": "Hello Arun, I would like to discuss a Java project.",
-      "createdAt": "2026-10-06T17:43:54.791Z",
-      "read": false
-    }
-  ],
-  "settings": {
-    "showBlog": false,
-    "showHero": true,
-    "resumeUrl": "#",
-    "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
-    "footerText": "Designed & Built by Taylor Swiftly",
-    "accentColor": "amber",
-    "profileType": "Freelancer",
-    "activePreset": "freelancer",
-    "showServices": true,
-    "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
-    "themePreference": "dark",
-    "showTestimonials": true
-  },
-  "adminUser": {
-    "password": "admin123",
-    "username": "admin"
-  },
+  "skills": [],
   "clients": [
     {
-      "id": "client-1",
-      "name": "Arun Kumar",
-      "role": "Freelance Web Developer & Software Consultant",
-      "slug": "arun-kumar",
-      "email": "arunkumar.dev@example.com",
+      "id": "client-1791222839112",
+      "name": "ajay",
+      "role": "flutter",
+      "slug": "ajay",
+      "email": "gfhjk",
       "status": "PUBLISHED",
-      "isDefault": true,
-      "createdDate": "2026-09-01T00:00:00.000Z",
-      "lastUpdated": "2026-10-06T17:43:58.003Z",
+      "isDefault": false,
+      "profession": "Software Developer",
+      "createdDate": "2026-10-05T17:53:59.113Z",
+      "lastUpdated": "2026-10-08T16:38:13.833Z",
       "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
       "portfolioData": {
-        "personalInfo": {
-          "name": "Taylor Swiftly",
-          "role": "Freelance Web Developer & Software Consultant",
-          "profileType": "freelancer",
-          "eyebrow": "FREELANCE DEVELOPER",
-          "specialization": "Custom Web Apps & Client Solutions",
-          "heroVisualType": "none",
-          "showFreelancerCTA": true,
-          "heroCtaText": "Request Custom Portfolio",
-          "tagline": "Transforming business ideas into fast, responsive, conversion-driven web applications and client platforms.",
-          "shortBio": "Independent full-stack developer helping startups, agencies, and business owners build high-converting web apps and custom portals.",
-          "bio": "Freelance software engineer specializing in building high-performance web products, SaaS platforms, and custom developer portfolio portals. Focused on rapid 48-hour delivery, clean code, client satisfaction, and responsive design across all devices.",
-          "location": "Telangana, India",
-          "availability": "Available for New Freelance Projects & Monthly Retainers",
-          "email": "taylor.consulting@example.com",
-          "phone": "+91 98765 00004",
-          "github": "https://github.com",
-          "linkedin": "https://linkedin.com",
-          "twitter": "https://twitter.com",
-          "resumeUrl": "#"
+        "seo": {
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
         },
+        "blogs": [],
         "stats": [
           {
-            "label": "Client Projects",
-            "value": "25+",
-            "description": "Delivered On-Time"
+            "label": "Revenue Impacted",
+            "value": "$12M+",
+            "description": "Client Value Created"
           },
           {
-            "label": "Client Rating",
-            "value": "5.0 ★",
-            "description": "100% Satisfaction"
+            "label": "Projects Advisory",
+            "value": "40+",
+            "description": "Corporate Retainers"
           },
           {
-            "label": "Avg Turnaround",
-            "value": "48 Hours",
-            "description": "Fast Delivery Option"
+            "label": "Efficiency Gain",
+            "value": "35%",
+            "description": "Avg Process Speedup"
           },
           {
-            "label": "Repeat Clients",
-            "value": "80%",
-            "description": "Long-Term Partnerships"
+            "label": "Client Retention",
+            "value": "90%",
+            "description": "Long-term Partnerships"
           }
         ],
-        "skills": [
-          {
-            "category": "Freelance Development Services",
-            "icon": "Sparkles",
-            "items": [
-              {
-                "name": "Custom Web Applications",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Dynamic Portfolio & CMS Development",
-                "level": 98,
-                "popular": true
-              },
-              {
-                "name": "React & Tailwind Frontend Engineering",
-                "level": 94,
-                "popular": true
-              },
-              {
-                "name": "API & Payment Integration",
-                "level": 90
-              }
-            ]
-          },
-          {
-            "category": "Core Technologies",
-            "icon": "Code2",
-            "items": [
-              {
-                "name": "JavaScript (ES6+) & TypeScript",
-                "level": 92,
-                "popular": true
-              },
-              {
-                "name": "React.js / Next.js",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Node.js & Express APIs",
-                "level": 88
-              },
-              {
-                "name": "PostgreSQL & MongoDB Database Setup",
-                "level": 86
-              }
-            ]
-          },
-          {
-            "category": "Deployment & Maintenance",
-            "icon": "Cloud",
-            "items": [
-              {
-                "name": "Cloud Deployment (Render / Vercel)",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Custom Domain & SSL Setup",
-                "level": 92
-              },
-              {
-                "name": "SEO & OpenGraph Metadata Optimization",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Ongoing Maintenance & Bug Fixes",
-                "level": 88
-              }
-            ]
-          }
-        ],
-        "projects": [
-          {
-            "id": "proj-free-1",
-            "title": "Client Portal & Asset Dashboard",
-            "subtitle": "Custom Client Web Platform",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
-            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
-            "tech": [
-              "React",
-              "Tailwind CSS",
-              "Node.js",
-              "PostgreSQL"
-            ],
-            "metrics": [
-              {
-                "label": "Delivery",
-                "value": "14 Days"
-              },
-              {
-                "label": "Rating",
-                "value": "5.0 ★"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
-              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
-            ]
-          },
-          {
-            "id": "proj-free-2",
-            "title": "SaaS Product Landing & Billing System",
-            "subtitle": "High-Converting Sales Web App",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
-            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
-            "tech": [
-              "React",
-              "Stripe API",
-              "Tailwind CSS",
-              "Render"
-            ],
-            "metrics": [
-              {
-                "label": "Conversion",
-                "value": "12% Rate"
-              },
-              {
-                "label": "Performance",
-                "value": "99/100"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Integrated Stripe Checkout API with automated webhook confirmation.",
-              "Configured social share previews increasing referral traffic."
-            ]
-          }
-        ],
-        "experience": [
-          {
-            "id": "exp-free-1",
-            "company": "Independent Consultant",
-            "role": "Lead Freelance Web Developer",
-            "period": "2022 - Present",
-            "location": "Remote",
-            "type": "Freelance",
-            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
-            "achievements": [
-              "Maintained a 100% 5-star rating across 25+ client contracts.",
-              "Built and deployed custom portfolio web applications with live admin CMS panels.",
-              "Helped clients scale web apps to handle high peak user traffic."
-            ],
-            "skills": [
-              "React",
-              "Node.js",
-              "PostgreSQL",
-              "Tailwind CSS",
-              "Client Management"
-            ]
-          }
-        ],
-        "education": [
-          {
-            "id": "edu-free-1",
-            "degree": "Bachelor of Science (B.Sc) in Computer Science",
-            "institution": "University of Technology",
-            "period": "2018 - 2022",
-            "description": "Graduated with top honors in Web Computing and User Interface Design."
-          }
-        ],
-        "services": [
-          {
-            "id": "srv-free-1",
-            "title": "Basic Developer Portfolio",
-            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
-            "icon": "Layout",
-            "pricing": "$99 / ₹8,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-2",
-            "title": "Full Dynamic Portfolio CMS",
-            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
-            "icon": "Server",
-            "pricing": "$249 / ₹20,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-3",
-            "title": "VIP Personal Brand Package",
-            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
-            "icon": "Sparkles",
-            "pricing": "$499 / ₹40,000",
-            "featured": true
-          }
-        ],
-        "blogs": [],
-        "testimonials": [
-          {
-            "id": "test-free-1",
-            "name": "Emily Watson",
-            "role": "Agency Founder",
-            "company": "Apex Digital",
-            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
-            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          },
-          {
-            "id": "test-free-2",
-            "name": "Robert Vance",
-            "role": "Startup Founder",
-            "company": "Vance Media",
-            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
-            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          }
-        ],
-        "settings": {
-          "showBlog": false,
-          "showHero": true,
-          "resumeUrl": "#",
-          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
-          "footerText": "Designed & Built by Taylor Swiftly",
-          "accentColor": "amber",
-          "profileType": "Freelancer",
-          "activePreset": "freelancer",
-          "showServices": true,
-          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
-          "themePreference": "dark",
-          "showTestimonials": true
-        },
-        "designConfig": {
-          "template": "minimal-light",
-          "themeMode": "light",
-          "colors": {
-            "primary": "#2563eb",
-            "secondary": "#3b82f6",
-            "accent": "#1d4ed8",
-            "background": "#f8fafc",
-            "surface": "#ffffff",
-            "text": "#0f172a"
-          },
-          "fonts": {
-            "heading": "Space Grotesk",
-            "body": "Inter"
-          },
-          "layout": {
-            "hero": "left",
-            "projects": "cards",
-            "navigation": "top",
-            "contact": "cards"
-          },
-          "buttons": {
-            "style": "square",
-            "size": "medium"
-          },
-          "animations": "subtle",
-          "sections": [
-            {
-              "id": "hero",
-              "name": "Hero",
-              "visible": true,
-              "order": 1
-            },
-            {
-              "id": "about",
-              "name": "About",
-              "visible": true,
-              "order": 2
-            },
-            {
-              "id": "projects",
-              "name": "Projects Showcase",
-              "visible": true,
-              "order": 3
-            },
-            {
-              "id": "skills",
-              "name": "Skills",
-              "visible": true,
-              "order": 4
-            },
-            {
-              "id": "experience",
-              "name": "Work Experience",
-              "visible": true,
-              "order": 5
-            },
-            {
-              "id": "services",
-              "name": "Services",
-              "visible": true,
-              "order": 6
-            },
-            {
-              "id": "testimonials",
-              "name": "Testimonials",
-              "visible": true,
-              "order": 7
-            },
-            {
-              "id": "blog",
-              "name": "Blog / Articles",
-              "visible": true,
-              "order": 8
-            },
-            {
-              "id": "contact",
-              "name": "Contact",
-              "visible": true,
-              "order": 9
-            }
-          ]
-        },
-        "mediaLibrary": [
-          {
-            "id": "media-1",
-            "name": "Profile Avatar Photo",
-            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-            "type": "image",
-            "category": "profile",
-            "sizeKb": 245,
-            "dimensions": "600 x 600",
-            "uploadDate": "2026-09-01"
-          },
-          {
-            "id": "media-2",
-            "name": "Enterprise Microservices System",
-            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 820,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-05"
-          },
-          {
-            "id": "media-3",
-            "name": "React & Tailwind Dashboard",
-            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-            "type": "image",
-            "category": "projects",
-            "sizeKb": 650,
-            "dimensions": "1200 x 800",
-            "uploadDate": "2026-09-10"
-          },
-          {
-            "id": "media-4",
-            "name": "Official Resume 2026",
-            "url": "#",
-            "type": "document",
-            "category": "resume",
-            "sizeKb": 340,
-            "dimensions": "PDF Document",
-            "uploadDate": "2026-09-12"
-          }
-        ],
+        "skills": [],
         "resumes": [
           {
             "id": "res-1",
-            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "url": "#",
-            "uploadDate": "2026-09-15",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "sizeKb": 340,
-            "isActive": true
+            "isActive": true,
+            "uploadDate": "2026-09-15"
           },
           {
             "id": "res-2",
-            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
             "url": "#",
-            "uploadDate": "2025-10-20",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
             "sizeKb": 310,
-            "isActive": false
+            "isActive": false,
+            "uploadDate": "2025-10-20"
           }
         ],
-        "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
-          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
-          "author": "Arun Kumar",
-          "robots": "index, follow",
-          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
-        },
         "branding": {
-          "faviconUrl": "/favicon.svg",
           "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
-        }
-      },
-      "lastPublishedAt": "2026-10-02T18:38:37.314Z"
-    },
-    {
-      "id": "client-2",
-      "name": "Priya Reddy",
-      "email": "jane@example.com",
-      "role": "UX Designer",
-      "portfolioData": {
-        "personalInfo": {
-          "name": "Priya Reddy",
-          "role": "Frontend Architect"
         },
-        "stats": [
-          {
-            "label": "Client Projects",
-            "value": "25+",
-            "description": "Delivered On-Time"
-          },
-          {
-            "label": "Client Rating",
-            "value": "5.0 ★",
-            "description": "100% Satisfaction"
-          },
-          {
-            "label": "Avg Turnaround",
-            "value": "48 Hours",
-            "description": "Fast Delivery Option"
-          },
-          {
-            "label": "Repeat Clients",
-            "value": "80%",
-            "description": "Long-Term Partnerships"
-          }
-        ],
-        "skills": [
-          {
-            "category": "Freelance Development Services",
-            "icon": "Sparkles",
-            "items": [
-              {
-                "name": "Custom Web Applications",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Dynamic Portfolio & CMS Development",
-                "level": 98,
-                "popular": true
-              },
-              {
-                "name": "React & Tailwind Frontend Engineering",
-                "level": 94,
-                "popular": true
-              },
-              {
-                "name": "API & Payment Integration",
-                "level": 90
-              }
-            ]
-          },
-          {
-            "category": "Core Technologies",
-            "icon": "Code2",
-            "items": [
-              {
-                "name": "JavaScript (ES6+) & TypeScript",
-                "level": 92,
-                "popular": true
-              },
-              {
-                "name": "React.js / Next.js",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Node.js & Express APIs",
-                "level": 88
-              },
-              {
-                "name": "PostgreSQL & MongoDB Database Setup",
-                "level": 86
-              }
-            ]
-          },
-          {
-            "category": "Deployment & Maintenance",
-            "icon": "Cloud",
-            "items": [
-              {
-                "name": "Cloud Deployment (Render / Vercel)",
-                "level": 95,
-                "popular": true
-              },
-              {
-                "name": "Custom Domain & SSL Setup",
-                "level": 92
-              },
-              {
-                "name": "SEO & OpenGraph Metadata Optimization",
-                "level": 90,
-                "popular": true
-              },
-              {
-                "name": "Ongoing Maintenance & Bug Fixes",
-                "level": 88
-              }
-            ]
-          }
-        ],
-        "projects": [
-          {
-            "id": "proj-free-1",
-            "title": "Client Portal & Asset Dashboard",
-            "subtitle": "Custom Client Web Platform",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-            "description": "Custom client portal for a digital agency allowing clients to track project progress, review deliverables, and approve invoices.",
-            "longDescription": "Designed and delivered custom web platform within 2 weeks. Includes authentication, document upload, and automated status notifications.",
-            "tech": [
-              "React",
-              "Tailwind CSS",
-              "Node.js",
-              "PostgreSQL"
-            ],
-            "metrics": [
-              {
-                "label": "Delivery",
-                "value": "14 Days"
-              },
-              {
-                "label": "Rating",
-                "value": "5.0 ★"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Delivered project 3 days ahead of deadline with zero post-launch bugs.",
-              "Created responsive dashboard UI optimized for mobile tablet and desktop browsers."
-            ]
-          },
-          {
-            "id": "proj-free-2",
-            "title": "SaaS Product Landing & Billing System",
-            "subtitle": "High-Converting Sales Web App",
-            "category": "Freelance Client Work",
-            "featured": true,
-            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-            "description": "High-converting marketing landing page integrated with Stripe subscription checkout and user onboarding.",
-            "longDescription": "Helped early-stage SaaS client launch their web product. Achieved 99/100 Lighthouse performance and 12% trial conversion rate.",
-            "tech": [
-              "React",
-              "Stripe API",
-              "Tailwind CSS",
-              "Render"
-            ],
-            "metrics": [
-              {
-                "label": "Conversion",
-                "value": "12% Rate"
-              },
-              {
-                "label": "Performance",
-                "value": "99/100"
-              }
-            ],
-            "github": "https://github.com",
-            "live": "https://example.com",
-            "highlights": [
-              "Integrated Stripe Checkout API with automated webhook confirmation.",
-              "Configured social share previews increasing referral traffic."
-            ]
-          }
-        ],
-        "experience": [
-          {
-            "id": "exp-free-1",
-            "company": "Independent Consultant",
-            "role": "Lead Freelance Web Developer",
-            "period": "2022 - Present",
-            "location": "Remote",
-            "type": "Freelance",
-            "description": "Providing end-to-end web engineering, custom portfolio development, and technical consulting to 25+ global clients.",
-            "achievements": [
-              "Maintained a 100% 5-star rating across 25+ client contracts.",
-              "Built and deployed custom portfolio web applications with live admin CMS panels.",
-              "Helped clients scale web apps to handle high peak user traffic."
-            ],
-            "skills": [
-              "React",
-              "Node.js",
-              "PostgreSQL",
-              "Tailwind CSS",
-              "Client Management"
-            ]
-          }
-        ],
-        "education": [
-          {
-            "id": "edu-free-1",
-            "degree": "Bachelor of Science (B.Sc) in Computer Science",
-            "institution": "University of Technology",
-            "period": "2018 - 2022",
-            "description": "Graduated with top honors in Web Computing and User Interface Design."
-          }
-        ],
-        "services": [
-          {
-            "id": "srv-free-1",
-            "title": "Basic Developer Portfolio",
-            "description": "Responsive React portfolio layout, custom theme, contact form, and free deployment setup.",
-            "icon": "Layout",
-            "pricing": "$99 / ₹8,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-2",
-            "title": "Full Dynamic Portfolio CMS",
-            "description": "Complete full-stack CMS with protected Admin Dashboard, 10 CRUD views, and cloud database persistence.",
-            "icon": "Server",
-            "pricing": "$249 / ₹20,000",
-            "featured": true
-          },
-          {
-            "id": "srv-free-3",
-            "title": "VIP Personal Brand Package",
-            "description": "Full Dynamic CMS + Custom Domain Setup + Resume Design + OpenGraph SEO + 1 Year Maintenance.",
-            "icon": "Sparkles",
-            "pricing": "$499 / ₹40,000",
-            "featured": true
-          }
-        ],
-        "blogs": [],
-        "testimonials": [
-          {
-            "id": "test-free-1",
-            "name": "Emily Watson",
-            "role": "Agency Founder",
-            "company": "Apex Digital",
-            "content": "Taylor delivered our custom platform ahead of schedule and with top-tier quality. Communication was flawless. Highly recommended for any web project!",
-            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          },
-          {
-            "id": "test-free-2",
-            "name": "Robert Vance",
-            "role": "Startup Founder",
-            "company": "Vance Media",
-            "content": "Building our product with Taylor was the best investment we made. Fast, responsive, and extremely knowledgeable about web technologies.",
-            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-            "visible": true
-          }
-        ],
+        "projects": [],
+        "services": [],
         "settings": {
-          "showBlog": false,
-          "showHero": true,
-          "resumeUrl": "#",
-          "siteTitle": "Taylor Swiftly — Freelance Web Developer & Consultant",
-          "footerText": "Designed & Built by Taylor Swiftly",
-          "accentColor": "amber",
-          "profileType": "Freelancer",
-          "activePreset": "freelancer",
-          "showServices": true,
-          "metaDescription": "Freelance web developer portfolio offering custom web applications, dynamic portfolio CMS portals, and consulting services.",
-          "themePreference": "dark",
-          "showTestimonials": true
+          "siteTitle": "ajay — flutter",
+          "accentColor": "emerald",
+          "metaDescription": "Portfolio website of ajay",
+          "themePreference": "dark"
         },
+        "education": [],
+        "experience": [],
         "designConfig": {
-          "template": "modern-dark",
-          "themeMode": "dark",
-          "colors": {
-            "primary": "#10b981",
-            "secondary": "#14b8a6",
-            "accent": "#059669",
-            "background": "#0a0d14",
-            "surface": "#121723",
-            "text": "#f1f5f9"
-          },
           "fonts": {
-            "heading": "Inter",
-            "body": "Inter"
+            "body": "Inter",
+            "heading": "Inter"
+          },
+          "colors": {
+            "text": "#f1f5f9",
+            "accent": "#059669",
+            "primary": "#10b981",
+            "surface": "#121723",
+            "secondary": "#14b8a6",
+            "background": "#0a0d14"
           },
           "layout": {
             "hero": "centered",
+            "contact": "form",
             "projects": "grid",
-            "navigation": "top",
-            "contact": "form"
+            "navigation": "top"
           },
           "buttons": {
-            "style": "rounded",
-            "size": "medium"
+            "size": "medium",
+            "style": "rounded"
           },
-          "animations": "standard",
           "sections": [
             {
               "id": "hero",
               "name": "Hero",
-              "visible": true,
-              "order": 1
+              "order": 1,
+              "visible": true
             },
             {
               "id": "about",
               "name": "About",
-              "visible": true,
-              "order": 2
+              "order": 2,
+              "visible": true
             },
             {
               "id": "skills",
               "name": "Skills",
-              "visible": true,
-              "order": 3
+              "order": 3,
+              "visible": true
             },
             {
               "id": "projects",
               "name": "Projects Showcase",
-              "visible": true,
-              "order": 4
+              "order": 4,
+              "visible": true
             },
             {
               "id": "services",
               "name": "Services",
-              "visible": true,
-              "order": 5
+              "order": 5,
+              "visible": true
             },
             {
               "id": "experience",
               "name": "Work Experience",
-              "visible": true,
-              "order": 6
+              "order": 6,
+              "visible": true
             },
             {
               "id": "blog",
               "name": "Blog / Articles",
-              "visible": true,
-              "order": 7
+              "order": 7,
+              "visible": true
             },
             {
               "id": "testimonials",
               "name": "Testimonials",
-              "visible": true,
-              "order": 8
+              "order": 8,
+              "visible": true
             },
             {
               "id": "contact",
               "name": "Contact",
-              "visible": true,
-              "order": 9
+              "order": 9,
+              "visible": true
             }
-          ]
+          ],
+          "template": "modern-dark",
+          "themeMode": "light",
+          "animations": "standard"
         },
         "mediaLibrary": [
           {
-            "id": "media-1",
-            "name": "Profile Avatar Photo",
-            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-            "type": "image",
-            "category": "profile",
-            "sizeKb": 245,
-            "dimensions": "600 x 600",
-            "uploadDate": "2026-09-01"
-          },
-          {
             "id": "media-2",
-            "name": "Enterprise Microservices System",
             "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
             "type": "image",
-            "category": "projects",
             "sizeKb": 820,
+            "category": "projects",
             "dimensions": "1200 x 800",
             "uploadDate": "2026-09-05"
           },
           {
             "id": "media-3",
-            "name": "React & Tailwind Dashboard",
             "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
             "type": "image",
-            "category": "projects",
             "sizeKb": 650,
+            "category": "projects",
             "dimensions": "1200 x 800",
             "uploadDate": "2026-09-10"
           },
           {
             "id": "media-4",
-            "name": "Official Resume 2026",
             "url": "#",
+            "name": "Official Resume 2026",
             "type": "document",
-            "category": "resume",
             "sizeKb": 340,
+            "category": "resume",
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "personalInfo": {
+          "bio": "ajay is a dedicated flutter.",
+          "name": "ajay",
+          "role": "flutter",
+          "email": "gfhjk@gmail.com",
+          "image": "neon::media-1791476173999",
+          "phone": "",
+          "github": "https://github.com",
+          "eyebrow": "SOFTWARE DEVELOPER",
+          "tagline": "Professional Portfolio of ajay",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "Telangana, India",
+          "shortBio": "flutter passionate about building impactful solutions.",
+          "resumeUrl": "#",
+          "profession": "Software Developer",
+          "availability": "Available for New Projects & Consultations",
+          "heroVisualType": "image",
+          "specialization": "flutter Specialist"
+        },
+        "testimonials": []
+      },
+      "lastPublishedAt": "2026-10-08T15:59:06.307Z"
+    },
+    {
+      "id": "client-1791285374962",
+      "name": "Arun Kumar",
+      "role": "Freelancer",
+      "slug": "arun-kumar",
+      "email": "vsakshi@gmail.com",
+      "status": "PUBLISHED",
+      "isDefault": false,
+      "profession": "Freelancer ",
+      "createdDate": "2026-10-06T11:16:14.962Z",
+      "lastUpdated": "2026-10-08T17:25:40.504Z",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "portfolioData": {
+        "personalInfo": {
+          "bio": "Arun Kumar is a dedicated Freelancer.",
+          "name": "Arun Kumar",
+          "role": "Freelancer",
+          "email": "vsakshi@gmail.com",
+          "image": "neon::media-1791474828159",
+          "phone": "",
+          "github": "https://github.com",
+          "eyebrow": "FREELANCER ",
+          "tagline": "Professional Portfolio of Arun Kumar",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "Telangana, India",
+          "shortBio": "Freelancer passionate about building impactful solutions.",
+          "resumeUrl": "#",
+          "profession": "Freelancer ",
+          "availability": "Available for New Projects & Consultations",
+          "heroVisualType": "image",
+          "specialization": "Freelancer Specialist"
+        },
+        "stats": [
+          {
+            "label": "Revenue Impacted",
+            "value": "$12M+",
+            "description": "Client Value Created"
+          },
+          {
+            "label": "Projects Advisory",
+            "value": "40+",
+            "description": "Corporate Retainers"
+          },
+          {
+            "label": "Efficiency Gain",
+            "value": "35%",
+            "description": "Avg Process Speedup"
+          },
+          {
+            "label": "Client Retention",
+            "value": "90%",
+            "description": "Long-term Partnerships"
+          }
+        ],
+        "skills": [],
+        "projects": [],
+        "experience": [],
+        "education": [],
+        "services": [],
+        "blogs": [],
+        "testimonials": [],
+        "settings": {
+          "siteTitle": "Arun Kumar — Freelancer",
+          "accentColor": "emerald",
+          "metaDescription": "Portfolio website of Arun Kumar",
+          "themePreference": "dark"
+        },
+        "designConfig": {
+          "fonts": {
+            "body": "Inter",
+            "heading": "Inter"
+          },
+          "colors": {
+            "text": "#f1f5f9",
+            "accent": "#059669",
+            "primary": "#10b981",
+            "surface": "#121723",
+            "secondary": "#14b8a6",
+            "background": "#0a0d14"
+          },
+          "layout": {
+            "hero": "centered",
+            "contact": "form",
+            "projects": "grid",
+            "navigation": "top"
+          },
+          "buttons": {
+            "size": "medium",
+            "style": "rounded"
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "order": 1,
+              "visible": true
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "order": 2,
+              "visible": true
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "order": 3,
+              "visible": true
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "order": 4,
+              "visible": true
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "order": 5,
+              "visible": true
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "order": 6,
+              "visible": true
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "order": 7,
+              "visible": true
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "order": 8,
+              "visible": true
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "order": 9,
+              "visible": true
+            }
+          ],
+          "template": "modern-dark",
+          "themeMode": "light",
+          "animations": "standard"
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1791474828159",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791285374962%2Fprofile%2F5079e9b5-1790-4efd-a56b-cd88895dbbba.jpg",
+            "name": "arun",
+            "type": "image",
+            "sizeKb": 105,
+            "category": "profile",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791285374962/profile/5079e9b5-1790-4efd-a56b-cd88895dbbba.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791285374962",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "name": "Profile Avatar Photo",
+            "type": "image",
+            "sizeKb": 245,
+            "category": "profile",
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
+            "type": "image",
+            "sizeKb": 820,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
+            "type": "image",
+            "sizeKb": 650,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "url": "#",
+            "name": "Official Resume 2026",
+            "type": "document",
+            "sizeKb": 340,
+            "category": "resume",
             "dimensions": "PDF Document",
             "uploadDate": "2026-09-12"
           }
@@ -1126,231 +470,2572 @@
         "resumes": [
           {
             "id": "res-1",
-            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "url": "#",
-            "uploadDate": "2026-09-15",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
             "sizeKb": 340,
-            "isActive": true
+            "isActive": true,
+            "uploadDate": "2026-09-15"
           },
           {
             "id": "res-2",
-            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
             "url": "#",
-            "uploadDate": "2025-10-20",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
             "sizeKb": 310,
-            "isActive": false
+            "isActive": false,
+            "uploadDate": "2025-10-20"
           }
         ],
         "seo": {
-          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
-          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
           "author": "Arun Kumar",
           "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
           "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
         },
         "branding": {
-          "faviconUrl": "/favicon.svg",
           "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
           "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
         }
       },
-      "slug": "priya-reddy",
+      "lastPublishedAt": "2026-10-08T17:25:40.504Z"
+    },
+    {
+      "id": "client-1791286210728",
+      "name": "arun",
+      "role": "Software Developer",
+      "slug": "arun",
+      "email": "gh",
       "status": "PUBLISHED",
-      "lastUpdated": "2026-10-06T17:43:58.008Z"
-    }
-  ],
-  "activeClientId": "client-2",
-  "activities": [
-    {
-      "id": "act-1791308636223",
-      "type": "publish",
-      "description": "Portfolio status updated to PUBLISHED",
-      "timestamp": "2026-10-06T17:43:56.223Z",
-      "clientName": "Arun Kumar"
-    },
-    {
-      "id": "act-1",
-      "type": "publish",
-      "description": "Portfolio published to live domain",
-      "timestamp": "2026-09-24T10:00:00Z",
-      "clientName": "Arun Kumar"
-    },
-    {
-      "id": "act-2",
-      "type": "project",
-      "description": "Added project: Enterprise Java Microservice",
-      "timestamp": "2026-09-23T15:30:00Z",
-      "clientName": "Arun Kumar"
-    },
-    {
-      "id": "act-3",
-      "type": "design",
-      "description": "Applied Visual Template: Modern Dark",
-      "timestamp": "2026-09-22T18:45:00Z",
-      "clientName": "Arun Kumar"
-    }
-  ],
-  "designConfig": {
-    "template": "modern-dark",
-    "themeMode": "dark",
-    "colors": {
-      "primary": "#10b981",
-      "secondary": "#14b8a6",
-      "accent": "#059669",
-      "background": "#0a0d14",
-      "surface": "#121723",
-      "text": "#f1f5f9"
-    },
-    "fonts": {
-      "heading": "Inter",
-      "body": "Inter"
-    },
-    "layout": {
-      "hero": "centered",
-      "projects": "grid",
-      "navigation": "top",
-      "contact": "form"
-    },
-    "buttons": {
-      "style": "rounded",
-      "size": "medium"
-    },
-    "animations": "standard",
-    "sections": [
-      {
-        "id": "hero",
-        "name": "Hero",
-        "visible": true,
-        "order": 1
+      "isDefault": false,
+      "profession": "Software Developer",
+      "createdDate": "2026-10-06T11:30:10.728Z",
+      "lastUpdated": "2026-10-08T16:11:06.400Z",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "portfolioData": {
+        "seo": {
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
+        },
+        "blogs": [],
+        "stats": [
+          {
+            "label": "Revenue Impacted",
+            "value": "$12M+",
+            "description": "Client Value Created"
+          },
+          {
+            "label": "Projects Advisory",
+            "value": "40+",
+            "description": "Corporate Retainers"
+          },
+          {
+            "label": "Efficiency Gain",
+            "value": "35%",
+            "description": "Avg Process Speedup"
+          },
+          {
+            "label": "Client Retention",
+            "value": "90%",
+            "description": "Long-term Partnerships"
+          }
+        ],
+        "skills": [],
+        "resumes": [
+          {
+            "id": "res-1",
+            "url": "#",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "sizeKb": 340,
+            "isActive": true,
+            "uploadDate": "2026-09-15"
+          },
+          {
+            "id": "res-2",
+            "url": "#",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "sizeKb": 310,
+            "isActive": false,
+            "uploadDate": "2025-10-20"
+          }
+        ],
+        "branding": {
+          "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        },
+        "projects": [],
+        "services": [],
+        "settings": {
+          "siteTitle": "arun — Software Developer",
+          "accentColor": "emerald",
+          "metaDescription": "Portfolio website of arun",
+          "themePreference": "dark"
+        },
+        "education": [],
+        "experience": [],
+        "designConfig": {
+          "fonts": {
+            "body": "Inter",
+            "heading": "Inter"
+          },
+          "colors": {
+            "text": "#f1f5f9",
+            "accent": "#059669",
+            "primary": "#10b981",
+            "surface": "#121723",
+            "secondary": "#14b8a6",
+            "background": "#0a0d14"
+          },
+          "layout": {
+            "hero": "centered",
+            "contact": "form",
+            "projects": "grid",
+            "navigation": "top"
+          },
+          "buttons": {
+            "size": "medium",
+            "style": "rounded"
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "order": 1,
+              "visible": true
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "order": 2,
+              "visible": true
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "order": 3,
+              "visible": true
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "order": 4,
+              "visible": true
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "order": 5,
+              "visible": true
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "order": 6,
+              "visible": true
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "order": 7,
+              "visible": true
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "order": 8,
+              "visible": true
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "order": 9,
+              "visible": true
+            }
+          ],
+          "template": "modern-dark",
+          "themeMode": "dark",
+          "animations": "standard"
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1791474917237",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791286210728%2Fprojects%2F33c357d1-5e25-4870-82da-9e6b729a77eb.jpg",
+            "name": "profile",
+            "type": "image",
+            "sizeKb": 119,
+            "category": "projects",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791286210728/projects/33c357d1-5e25-4870-82da-9e6b729a77eb.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791286210728",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1791474522982",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791286210728%2Fprojects%2F65598fab-d97d-47a9-8308-a5b0da2f2047.jpg",
+            "name": "lk",
+            "type": "image",
+            "sizeKb": 997,
+            "category": "projects",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791286210728/projects/65598fab-d97d-47a9-8308-a5b0da2f2047.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791286210728",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "name": "Profile Avatar Photo",
+            "type": "image",
+            "sizeKb": 245,
+            "category": "profile",
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
+            "type": "image",
+            "sizeKb": 820,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
+            "type": "image",
+            "sizeKb": 650,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "url": "#",
+            "name": "Official Resume 2026",
+            "type": "document",
+            "sizeKb": 340,
+            "category": "resume",
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "personalInfo": {
+          "bio": "arun is a dedicated Software Developer.",
+          "name": "arun",
+          "role": "Software Developer",
+          "email": "gh@hhj",
+          "image": "neon::media-1791474917237",
+          "phone": "",
+          "github": "https://github.com",
+          "eyebrow": "SOFTWARE DEVELOPER",
+          "tagline": "Professional Portfolio of arun",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "Telangana, India",
+          "shortBio": "Software Developer passionate about building impactful solutions.",
+          "resumeUrl": "#",
+          "profession": "Software Developer",
+          "availability": "Available for New Projects & Consultations",
+          "heroVisualType": "image",
+          "specialization": "Software Developer Specialist"
+        },
+        "testimonials": []
       },
-      {
-        "id": "about",
-        "name": "About",
-        "visible": true,
-        "order": 2
-      },
-      {
-        "id": "skills",
-        "name": "Skills",
-        "visible": true,
-        "order": 3
-      },
-      {
-        "id": "projects",
-        "name": "Projects Showcase",
-        "visible": true,
-        "order": 4
-      },
-      {
-        "id": "services",
-        "name": "Services",
-        "visible": true,
-        "order": 5
-      },
-      {
-        "id": "experience",
-        "name": "Work Experience",
-        "visible": true,
-        "order": 6
-      },
-      {
-        "id": "blog",
-        "name": "Blog / Articles",
-        "visible": true,
-        "order": 7
-      },
-      {
-        "id": "testimonials",
-        "name": "Testimonials",
-        "visible": true,
-        "order": 8
-      },
-      {
-        "id": "contact",
-        "name": "Contact",
-        "visible": true,
-        "order": 9
-      }
-    ]
-  },
-  "mediaLibrary": [
-    {
-      "id": "media-1",
-      "name": "Profile Avatar Photo",
-      "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-      "type": "image",
-      "category": "profile",
-      "sizeKb": 245,
-      "dimensions": "600 x 600",
-      "uploadDate": "2026-09-01"
+      "lastPublishedAt": "2026-10-08T15:50:57.442Z"
     },
     {
-      "id": "media-2",
-      "name": "Enterprise Microservices System",
-      "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-      "type": "image",
-      "category": "projects",
-      "sizeKb": 820,
-      "dimensions": "1200 x 800",
-      "uploadDate": "2026-09-05"
+      "id": "client-1791286784172",
+      "name": "ghfhf",
+      "role": "Consultant",
+      "slug": "ghfhf",
+      "email": "gghv",
+      "status": "PUBLISHED",
+      "isDefault": false,
+      "profession": "Consultant",
+      "createdDate": "2026-10-06T11:39:44.172Z",
+      "lastUpdated": "2026-10-08T16:11:11.907Z",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "portfolioData": {
+        "seo": {
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
+        },
+        "blogs": [],
+        "stats": [
+          {
+            "label": "Revenue Impacted",
+            "value": "$12M+",
+            "description": "Client Value Created"
+          },
+          {
+            "label": "Projects Advisory",
+            "value": "40+",
+            "description": "Corporate Retainers"
+          },
+          {
+            "label": "Efficiency Gain",
+            "value": "35%",
+            "description": "Avg Process Speedup"
+          },
+          {
+            "label": "Client Retention",
+            "value": "90%",
+            "description": "Long-term Partnerships"
+          }
+        ],
+        "skills": [
+          {
+            "icon": "ShieldCheck",
+            "items": [
+              {
+                "name": "Digital Transformation & Roadmap",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "Financial Modeling & Valuation",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Change Management & Operations",
+                "level": 92,
+                "popular": false
+              }
+            ],
+            "category": "Strategic Capabilities"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "url": "#",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "sizeKb": 340,
+            "isActive": true,
+            "uploadDate": "2026-09-15"
+          },
+          {
+            "id": "res-2",
+            "url": "#",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "sizeKb": 310,
+            "isActive": false,
+            "uploadDate": "2025-10-20"
+          }
+        ],
+        "branding": {
+          "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        },
+        "projects": [
+          {
+            "id": "proj-consultant-1",
+            "tags": [
+              "Strategy",
+              "Operations",
+              "Cost Reduction",
+              "Supply Chain"
+            ],
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+            "title": "Supply Chain Automation & Cost Reduction for FMCG Leader",
+            "category": "Management Consulting",
+            "featured": true,
+            "description": "Formulated supply chain optimization strategy reducing annual logistics cost by $2.4M."
+          }
+        ],
+        "services": [],
+        "settings": {
+          "siteTitle": "ghfhf — Consultant"
+        },
+        "education": [],
+        "experience": [],
+        "designConfig": {
+          "fonts": {
+            "body": "Inter",
+            "heading": "Inter"
+          },
+          "colors": {
+            "text": "#f1f5f9",
+            "accent": "#059669",
+            "primary": "#10b981",
+            "surface": "#121723",
+            "secondary": "#14b8a6",
+            "background": "#0a0d14"
+          },
+          "layout": {
+            "hero": "centered",
+            "contact": "form",
+            "projects": "grid",
+            "navigation": "top"
+          },
+          "buttons": {
+            "size": "medium",
+            "style": "rounded"
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "order": 1,
+              "visible": true
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "order": 2,
+              "visible": true
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "order": 3,
+              "visible": true
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "order": 4,
+              "visible": true
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "order": 5,
+              "visible": true
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "order": 6,
+              "visible": true
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "order": 7,
+              "visible": true
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "order": 8,
+              "visible": true
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "order": 9,
+              "visible": true
+            }
+          ],
+          "template": "modern-dark",
+          "themeMode": "dark",
+          "animations": "standard"
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1791468688603",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791286784172%2Fprofile%2F208c7431-045a-4bbe-b5e1-049ecde83cc0.jpg",
+            "name": "crtfr",
+            "type": "image",
+            "sizeKb": 997,
+            "category": "profile",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791286784172/profile/208c7431-045a-4bbe-b5e1-049ecde83cc0.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791286784172",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "name": "Profile Avatar Photo",
+            "type": "image",
+            "sizeKb": 245,
+            "category": "profile",
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
+            "type": "image",
+            "sizeKb": 820,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
+            "type": "image",
+            "sizeKb": 650,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "url": "#",
+            "name": "Official Resume 2026",
+            "type": "document",
+            "sizeKb": 340,
+            "category": "resume",
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "personalInfo": {
+          "bio": "Partnering with founders and executive leadership teams to diagnose operational bottlenecks, formulate strategic roadmaps, and implement scalable systems.",
+          "name": "ghfhf",
+          "role": "Consultant",
+          "email": "gghv@g",
+          "image": "neon::media-1791468688603",
+          "phone": "+91 98765 00009",
+          "github": "https://github.com",
+          "eyebrow": "BUSINESS STRATEGIST",
+          "tagline": "Advising enterprise leadership on digital transformation, operational scaling, and revenue optimization.",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "New Delhi, India",
+          "shortBio": "Management consultant with 7+ years of experience steering corporate restructuring, process optimization, and growth strategy.",
+          "resumeUrl": "#",
+          "imageStyle": "natural-portrait",
+          "profession": "Consultant",
+          "heroCtaText": "Schedule Advisory Consultation",
+          "profileType": "consultant",
+          "availability": "Available for Executive Advisory & Retainer Projects",
+          "heroVisualType": "image",
+          "specialization": "Digital Transformation, Operational Efficiency & Enterprise Growth",
+          "showFreelancerCTA": false
+        },
+        "testimonials": []
+      },
+      "lastPublishedAt": "2026-10-08T15:46:38.669Z"
     },
     {
-      "id": "media-3",
-      "name": "React & Tailwind Dashboard",
-      "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-      "type": "image",
-      "category": "projects",
-      "sizeKb": 650,
-      "dimensions": "1200 x 800",
-      "uploadDate": "2026-09-10"
+      "id": "client-1791310475219",
+      "name": "kjjbj",
+      "role": "Data Analyst",
+      "slug": "kjjbj",
+      "email": "bbhj@bn",
+      "status": "PUBLISHED",
+      "isDefault": false,
+      "profession": "Data Analyst",
+      "createdDate": "2026-10-06T18:14:35.219Z",
+      "lastUpdated": "2026-10-08T16:30:04.708Z",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "portfolioData": {
+        "seo": {
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
+        },
+        "blogs": [],
+        "stats": [
+          {
+            "label": "Dashboards Built",
+            "value": "35+",
+            "description": "Tableau & Power BI"
+          },
+          {
+            "label": "SQL Query Speedup",
+            "value": "60%",
+            "description": "ETL Optimization"
+          },
+          {
+            "label": "Data Processed",
+            "value": "50M+",
+            "description": "Records Analyzed"
+          },
+          {
+            "label": "Accuracy Score",
+            "value": "99.4%",
+            "description": "Model Precision"
+          }
+        ],
+        "skills": [
+          {
+            "icon": "Database",
+            "items": [
+              {
+                "name": "Python (Pandas / NumPy)",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "Advanced SQL & CTEs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "R & Statistical Analysis",
+                "level": 80,
+                "popular": false
+              }
+            ],
+            "category": "Data Analysis & Languages"
+          },
+          {
+            "icon": "Layout",
+            "items": [
+              {
+                "name": "Tableau Desktop & Server",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Power BI & DAX",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Google Looker Studio",
+                "level": 85,
+                "popular": false
+              }
+            ],
+            "category": "BI & Visualization Tools"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "url": "#",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "sizeKb": 340,
+            "isActive": true,
+            "uploadDate": "2026-09-15"
+          },
+          {
+            "id": "res-2",
+            "url": "#",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "sizeKb": 310,
+            "isActive": false,
+            "uploadDate": "2025-10-20"
+          }
+        ],
+        "branding": {
+          "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        },
+        "projects": [
+          {
+            "id": "proj-analyst-1",
+            "tags": [
+              "Python",
+              "Pandas",
+              "Scikit-Learn",
+              "Tableau",
+              "SQL"
+            ],
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+            "title": "E-Commerce Customer Churn Prediction & Retention Dashboard",
+            "category": "Data Science & BI",
+            "featured": true,
+            "description": "Constructed a Logistic Regression and Random Forest model in Python to predict churn risk, lowering subscriber loss by 18%."
+          },
+          {
+            "id": "proj-analyst-2",
+            "tags": [
+              "Power BI",
+              "PostgreSQL",
+              "ETL",
+              "DAX"
+            ],
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+            "title": "Executive Revenue Performance & Pipeline Analytics",
+            "category": "Business Intelligence",
+            "featured": true,
+            "description": "Built an automated ETL data pipeline aggregating sales from PostgreSQL into Power BI with real-time KPI tracking."
+          }
+        ],
+        "services": [],
+        "settings": {
+          "siteTitle": "kjjbj — Data Analyst"
+        },
+        "education": [],
+        "experience": [
+          {
+            "role": "Senior Data Analyst",
+            "type": "Full-time",
+            "period": "2023 - Present",
+            "skills": [
+              "Python",
+              "SQL",
+              "Tableau",
+              "Snowflake",
+              "A/B Testing"
+            ],
+            "company": "Global Analytics Corp",
+            "location": "Bangalore, India",
+            "description": "Leading business analytics and building automated executive reporting dashboards for enterprise clients.",
+            "achievements": [
+              "Architected enterprise Tableau dashboards used daily by 200+ C-suite stakeholders.",
+              "Refactored SQL queries across Snowflake warehouse, reducing execution time by 40%.",
+              "Designed A/B test experiments that increased conversion rates by 14%."
+            ]
+          }
+        ],
+        "designConfig": {
+          "fonts": {
+            "body": "Inter",
+            "heading": "Space Grotesk"
+          },
+          "colors": {
+            "text": "#0f172a",
+            "accent": "#1d4ed8",
+            "primary": "#2563eb",
+            "surface": "#ffffff",
+            "secondary": "#3b82f6",
+            "background": "#f8fafc"
+          },
+          "layout": {
+            "hero": "left",
+            "contact": "cards",
+            "projects": "cards",
+            "navigation": "top"
+          },
+          "buttons": {
+            "size": "medium",
+            "style": "square"
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "order": 1,
+              "visible": true
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "order": 2,
+              "visible": true
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "order": 3,
+              "visible": true
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "order": 4,
+              "visible": true
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "order": 5,
+              "visible": true
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "order": 6,
+              "visible": true
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "order": 7,
+              "visible": true
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "order": 8,
+              "visible": true
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "order": 9,
+              "visible": true
+            }
+          ],
+          "template": "minimal-light",
+          "themeMode": "light",
+          "animations": "subtle"
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1791469097042",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791310475219%2Fprofile%2F6a3eada9-431a-4529-ae82-0ebda7622d20.jpg",
+            "name": "hghjgh",
+            "type": "image",
+            "sizeKb": 105,
+            "category": "profile",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791310475219/profile/6a3eada9-431a-4529-ae82-0ebda7622d20.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791310475219",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1791468964794",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791310475219%2Fprofile%2F708435b1-8374-4cc6-a0d4-7d251fa78476.jpg",
+            "name": "gkjjk",
+            "type": "image",
+            "sizeKb": 997,
+            "category": "profile",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791310475219/profile/708435b1-8374-4cc6-a0d4-7d251fa78476.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791310475219",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1791467085392",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791310475219%2Fprofile%2F68de080c-a820-458c-bb13-5e2942baf21d.jpg",
+            "name": "alex",
+            "type": "image",
+            "sizeKb": 2741,
+            "category": "profile",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791310475219/profile/68de080c-a820-458c-bb13-5e2942baf21d.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791310475219",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "name": "Profile Avatar Photo",
+            "type": "image",
+            "sizeKb": 245,
+            "category": "profile",
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
+            "type": "image",
+            "sizeKb": 820,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
+            "type": "image",
+            "sizeKb": 650,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "url": "#",
+            "name": "Official Resume 2026",
+            "type": "document",
+            "sizeKb": 340,
+            "category": "resume",
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "personalInfo": {
+          "bio": "Specializing in exploratory data analysis, ETL pipelines, A/B experimentation, and interactive dashboarding using Python, SQL, Tableau, and Power BI.",
+          "name": "kjjbj",
+          "role": "Data Analyst",
+          "email": "bbhj@bn",
+          "image": "neon::media-1791468964794",
+          "phone": "+91 98765 43210",
+          "github": "https://github.com",
+          "eyebrow": "DATA ANALYST",
+          "tagline": "Turning complex multi-source datasets into actionable business insights and executive dashboards.",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "Bangalore, India",
+          "shortBio": "Passionate data analyst with 3+ years of experience building predictive models, optimizing SQL queries, and designing live BI dashboards.",
+          "resumeUrl": "#",
+          "imageStyle": "natural-portrait",
+          "profession": "Data Analyst",
+          "heroCtaText": "View Data Projects",
+          "profileType": "analyst",
+          "availability": "Available for Full-time Roles & Analytics Consulting",
+          "heroVisualType": "image",
+          "specialization": "Python, SQL, Tableau & Predictive Modeling",
+          "showFreelancerCTA": false
+        },
+        "testimonials": []
+      },
+      "lastPublishedAt": "2026-10-08T16:30:04.708Z"
     },
     {
-      "id": "media-4",
-      "name": "Official Resume 2026",
-      "url": "#",
-      "type": "document",
-      "category": "resume",
-      "sizeKb": 340,
-      "dimensions": "PDF Document",
-      "uploadDate": "2026-09-12"
+      "id": "client-1791475523327",
+      "name": "kjhgfds",
+      "role": "Data Scientist",
+      "slug": "kjhgfds",
+      "email": "kljh",
+      "status": "PUBLISHED",
+      "isDefault": false,
+      "profession": "Data Scientist",
+      "createdDate": "2026-10-08T16:05:23.328Z",
+      "lastUpdated": "2026-10-08T16:28:43.760Z",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "portfolioData": {
+        "seo": {
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
+        },
+        "blogs": [],
+        "stats": [
+          {
+            "label": "Dashboards Built",
+            "value": "35+",
+            "description": "Tableau & Power BI"
+          },
+          {
+            "label": "SQL Query Speedup",
+            "value": "60%",
+            "description": "ETL Optimization"
+          },
+          {
+            "label": "Data Processed",
+            "value": "50M+",
+            "description": "Records Analyzed"
+          },
+          {
+            "label": "Accuracy Score",
+            "value": "99.4%",
+            "description": "Model Precision"
+          }
+        ],
+        "skills": [
+          {
+            "icon": "Database",
+            "items": [
+              {
+                "name": "Python (Pandas / NumPy)",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "Advanced SQL & CTEs",
+                "level": 95,
+                "popular": true
+              },
+              {
+                "name": "R & Statistical Analysis",
+                "level": 80,
+                "popular": false
+              }
+            ],
+            "category": "Data Analysis & Languages"
+          },
+          {
+            "icon": "Layout",
+            "items": [
+              {
+                "name": "Tableau Desktop & Server",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Power BI & DAX",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Google Looker Studio",
+                "level": 85,
+                "popular": false
+              }
+            ],
+            "category": "BI & Visualization Tools"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "url": "#",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "sizeKb": 340,
+            "isActive": true,
+            "uploadDate": "2026-09-15"
+          },
+          {
+            "id": "res-2",
+            "url": "#",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "sizeKb": 310,
+            "isActive": false,
+            "uploadDate": "2025-10-20"
+          }
+        ],
+        "branding": {
+          "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        },
+        "projects": [
+          {
+            "id": "proj-analyst-1",
+            "tags": [
+              "Python",
+              "Pandas",
+              "Scikit-Learn",
+              "Tableau",
+              "SQL"
+            ],
+            "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+            "title": "E-Commerce Customer Churn Prediction & Retention Dashboard",
+            "category": "Data Science & BI",
+            "featured": true,
+            "description": "Constructed a Logistic Regression and Random Forest model in Python to predict churn risk, lowering subscriber loss by 18%."
+          },
+          {
+            "id": "proj-analyst-2",
+            "tags": [
+              "Power BI",
+              "PostgreSQL",
+              "ETL",
+              "DAX"
+            ],
+            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+            "title": "Executive Revenue Performance & Pipeline Analytics",
+            "category": "Business Intelligence",
+            "featured": true,
+            "description": "Built an automated ETL data pipeline aggregating sales from PostgreSQL into Power BI with real-time KPI tracking."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-stud-1",
+            "icon": "Code2",
+            "title": "Peer Tutoring & DSA Help",
+            "pricing": "Peer Rate",
+            "featured": true,
+            "description": "One-on-one tutoring for junior CS students in Data Structures, Java, and C++ fundamentals."
+          }
+        ],
+        "settings": {
+          "siteTitle": "kjhgfds — Data Scientist"
+        },
+        "education": [
+          {
+            "id": "edu-stud-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "period": "2023 - 2027 (Expected)",
+            "description": "Current CGPA: 9.1 / 10. Core Subjects: Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks.",
+            "institution": "University College of Engineering"
+          }
+        ],
+        "experience": [
+          {
+            "role": "Senior Data Analyst",
+            "type": "Full-time",
+            "period": "2023 - Present",
+            "skills": [
+              "Python",
+              "SQL",
+              "Tableau",
+              "Snowflake",
+              "A/B Testing"
+            ],
+            "company": "Global Analytics Corp",
+            "location": "Bangalore, India",
+            "description": "Leading business analytics and building automated executive reporting dashboards for enterprise clients.",
+            "achievements": [
+              "Architected enterprise Tableau dashboards used daily by 200+ C-suite stakeholders.",
+              "Refactored SQL queries across Snowflake warehouse, reducing execution time by 40%.",
+              "Designed A/B test experiments that increased conversion rates by 14%."
+            ]
+          }
+        ],
+        "designConfig": {
+          "fonts": {
+            "body": "Poppins",
+            "heading": "Playfair Display"
+          },
+          "colors": {
+            "text": "#f9fafb",
+            "accent": "#d946ef",
+            "primary": "#ec4899",
+            "surface": "#1f2937",
+            "secondary": "#8b5cf6",
+            "background": "#111827"
+          },
+          "layout": {
+            "hero": "image",
+            "contact": "form",
+            "projects": "featured",
+            "navigation": "minimal"
+          },
+          "buttons": {
+            "size": "large",
+            "style": "pill"
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "order": 1,
+              "visible": true
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "order": 2,
+              "visible": true
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "order": 3,
+              "visible": true
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "order": 4,
+              "visible": true
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "order": 5,
+              "visible": true
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "order": 6,
+              "visible": true
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "order": 7,
+              "visible": true
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "order": 8,
+              "visible": true
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "order": 9,
+              "visible": true
+            }
+          ],
+          "template": "creative",
+          "themeMode": "dark",
+          "animations": "standard"
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "name": "Profile Avatar Photo",
+            "type": "image",
+            "sizeKb": 245,
+            "category": "profile",
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
+            "type": "image",
+            "sizeKb": 820,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
+            "type": "image",
+            "sizeKb": 650,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "url": "#",
+            "name": "Official Resume 2026",
+            "type": "document",
+            "sizeKb": 340,
+            "category": "resume",
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "personalInfo": {
+          "bio": "Specializing in exploratory data analysis, ETL pipelines, A/B experimentation, and interactive dashboarding using Python, SQL, Tableau, and Power BI.",
+          "name": "kjhgfds",
+          "role": "Data Scientist",
+          "email": "kljh@bv",
+          "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+          "phone": "+91 98765 43210",
+          "github": "https://github.com",
+          "eyebrow": "DATA ANALYST",
+          "tagline": "Turning complex multi-source datasets into actionable business insights and executive dashboards.",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "Bangalore, India",
+          "shortBio": "Passionate data analyst with 3+ years of experience building predictive models, optimizing SQL queries, and designing live BI dashboards.",
+          "resumeUrl": "#",
+          "imageStyle": "natural-portrait",
+          "profession": "Data Scientist",
+          "heroCtaText": "View Data Projects",
+          "profileType": "analyst",
+          "availability": "Available for Full-time Roles & Analytics Consulting",
+          "heroVisualType": "image",
+          "specialization": "Python, SQL, Tableau & Predictive Modeling",
+          "showFreelancerCTA": false
+        },
+        "testimonials": [
+          {
+            "id": "test-stud-1",
+            "name": "Prof. A. K. Varma",
+            "role": "Faculty Advisor",
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+            "company": "University Coding Club",
+            "content": "Sam is an energetic, highly disciplined student leader. Consistently achieves top grades while helping peers learn software engineering fundamentals.",
+            "visible": true
+          }
+        ]
+      },
+      "lastPublishedAt": "2026-10-08T16:08:12.530Z"
+    },
+    {
+      "id": "client-1791475560473",
+      "name": "qwertyu",
+      "role": "Student",
+      "slug": "qwertyu",
+      "email": "bv",
+      "status": "PUBLISHED",
+      "isDefault": false,
+      "profession": "Student",
+      "createdDate": "2026-10-08T16:06:00.473Z",
+      "lastUpdated": "2026-10-08T16:39:40.378Z",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "portfolioData": {
+        "seo": {
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
+        },
+        "blogs": [],
+        "stats": [
+          {
+            "label": "Current Semester",
+            "value": "6th Sem",
+            "description": "B.Tech Computer Science"
+          },
+          {
+            "label": "Academic GPA",
+            "value": "9.1 / 10",
+            "description": "Top 5% of Batch"
+          },
+          {
+            "label": "Hackathons",
+            "value": "4 Entered",
+            "description": "2x First Place Winner"
+          },
+          {
+            "label": "Coding Problems",
+            "value": "350+",
+            "description": "LeetCode & CodeChef"
+          }
+        ],
+        "skills": [
+          {
+            "icon": "Code2",
+            "items": [
+              {
+                "name": "C++ / Java",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "Data Structures & Algorithms",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "Object-Oriented Programming (OOP)",
+                "level": 86
+              },
+              {
+                "name": "Relational Databases (SQL)",
+                "level": 82,
+                "popular": true
+              }
+            ],
+            "category": "Academic & Programming Fundamentals"
+          },
+          {
+            "icon": "Layout",
+            "items": [
+              {
+                "name": "HTML5, CSS3, JavaScript",
+                "level": 88,
+                "popular": true
+              },
+              {
+                "name": "React.js Basics",
+                "level": 78,
+                "popular": true
+              },
+              {
+                "name": "Tailwind CSS",
+                "level": 80
+              },
+              {
+                "name": "Node.js Basics",
+                "level": 72
+              }
+            ],
+            "category": "Web Technologies"
+          },
+          {
+            "icon": "Terminal",
+            "items": [
+              {
+                "name": "Git & GitHub Workflow",
+                "level": 85,
+                "popular": true
+              },
+              {
+                "name": "Linux Shell Commands",
+                "level": 78
+              },
+              {
+                "name": "Technical Blogging",
+                "level": 80
+              },
+              {
+                "name": "Campus Event Organizer",
+                "level": 90,
+                "popular": true
+              }
+            ],
+            "category": "Tools & Extracurriculars"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "url": "#",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "sizeKb": 340,
+            "isActive": true,
+            "uploadDate": "2026-09-15"
+          },
+          {
+            "id": "res-2",
+            "url": "#",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "sizeKb": 310,
+            "isActive": false,
+            "uploadDate": "2025-10-20"
+          }
+        ],
+        "branding": {
+          "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        },
+        "projects": [
+          {
+            "id": "proj-stud-1",
+            "live": "https://example.com",
+            "tech": [
+              "JavaScript",
+              "React",
+              "HTML/CSS",
+              "Firebase"
+            ],
+            "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+            "title": "Campus Event & Workshop Finder",
+            "github": "https://github.com",
+            "metrics": [
+              {
+                "label": "Award",
+                "value": "1st Place Winner"
+              },
+              {
+                "label": "Registrations",
+                "value": "500+ Students"
+              }
+            ],
+            "category": "Academic Project",
+            "featured": true,
+            "subtitle": "Hackathon 1st Place Winning Project",
+            "highlights": [
+              "Awarded 1st Place among 40 participating university teams.",
+              "Built responsive frontend UI in under 24 hours with live Firebase real-time database."
+            ],
+            "description": "Web app for university students to discover, RSVP, and receive notifications for campus technical workshops and hackathons.",
+            "longDescription": "Built during 24-hour campus hackathon and won 1st place. Implemented interactive map view, registration forms, and calendar syncing."
+          },
+          {
+            "id": "proj-stud-2",
+            "live": "https://example.com",
+            "tech": [
+              "JavaScript",
+              "HTML5 Canvas",
+              "CSS3"
+            ],
+            "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+            "title": "Algorithm Visualizer & Comparator",
+            "github": "https://github.com",
+            "metrics": [
+              {
+                "label": "Algorithms",
+                "value": "8 Visualized"
+              },
+              {
+                "label": "Speed Control",
+                "value": "Interactive"
+              }
+            ],
+            "category": "Academic Project",
+            "featured": true,
+            "subtitle": "Interactive Computer Science Learning Tool",
+            "highlights": [
+              "Used by 200+ class students during DSA course revision.",
+              "Implemented smooth canvas animations without external graphical dependencies."
+            ],
+            "description": "Interactive web tool visually animating sorting and searching algorithms to help fellow students learn DSA concepts.",
+            "longDescription": "Created to demonstrate sorting algorithms (Bubble, Merge, Quick Sort) with step-by-step speed controls and execution time comparisons."
+          }
+        ],
+        "services": [
+          {
+            "id": "srv-stud-1",
+            "icon": "Code2",
+            "title": "Peer Tutoring & DSA Help",
+            "pricing": "Peer Rate",
+            "featured": true,
+            "description": "One-on-one tutoring for junior CS students in Data Structures, Java, and C++ fundamentals."
+          }
+        ],
+        "settings": {
+          "showBlog": false,
+          "showHero": true,
+          "resumeUrl": "#",
+          "siteTitle": "qwertyu — Student",
+          "footerText": "Created by Sam Rivera",
+          "accentColor": "rose",
+          "showServices": true,
+          "metaDescription": "CS student portfolio showcasing academic projects, hackathon achievements, DSA fundamentals, and extracurricular leadership.",
+          "themePreference": "dark",
+          "showTestimonials": true
+        },
+        "education": [
+          {
+            "id": "edu-stud-1",
+            "degree": "Bachelor of Technology (B.Tech) in Computer Science",
+            "period": "2023 - 2027 (Expected)",
+            "description": "Current CGPA: 9.1 / 10. Core Subjects: Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks.",
+            "institution": "University College of Engineering"
+          }
+        ],
+        "experience": [
+          {
+            "id": "exp-stud-1",
+            "role": "Technical Lead & Event Coordinator",
+            "type": "Extracurricular",
+            "period": "2024 - Present",
+            "skills": [
+              "Event Management",
+              "Peer Mentorship",
+              "Git",
+              "Public Speaking"
+            ],
+            "company": "University Coding Club",
+            "location": "Campus",
+            "description": "Organizing weekly DSA problem-solving sessions, workshops on Git/GitHub, and annual campus coding competitions.",
+            "achievements": [
+              "Mentored 60+ junior students in basic programming and Git version control.",
+              "Co-organized Annual Hackathon with over 200 registered participants."
+            ]
+          }
+        ],
+        "designConfig": {
+          "fonts": {
+            "body": "Open Sans",
+            "heading": "Poppins"
+          },
+          "colors": {
+            "text": "#fafafa",
+            "accent": "#b45309",
+            "primary": "#f59e0b",
+            "surface": "#27272a",
+            "secondary": "#d97706",
+            "background": "#18181b"
+          },
+          "layout": {
+            "hero": "split",
+            "contact": "form",
+            "projects": "cards",
+            "navigation": "minimal"
+          },
+          "buttons": {
+            "size": "medium",
+            "style": "pill"
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "order": 1,
+              "visible": true
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "order": 2,
+              "visible": true
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "order": 3,
+              "visible": true
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "order": 4,
+              "visible": true
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "order": 5,
+              "visible": true
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "order": 6,
+              "visible": true
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "order": 7,
+              "visible": true
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "order": 8,
+              "visible": true
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "order": 9,
+              "visible": true
+            }
+          ],
+          "template": "designer",
+          "themeMode": "dark",
+          "animations": "standard"
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "name": "Profile Avatar Photo",
+            "type": "image",
+            "sizeKb": 245,
+            "category": "profile",
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
+            "type": "image",
+            "sizeKb": 820,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
+            "type": "image",
+            "sizeKb": 650,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "url": "#",
+            "name": "Official Resume 2026",
+            "type": "document",
+            "sizeKb": 340,
+            "category": "resume",
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "personalInfo": {
+          "bio": "Third-year Computer Science undergraduate with strong problem-solving skills and hands-on project experience in web technologies. Active member of the University Coding Club and participant in national hackathons.",
+          "name": "qwertyu",
+          "role": "Student",
+          "email": "bv@mn",
+          "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+          "phone": "+91 98765 00005",
+          "github": "https://github.com",
+          "eyebrow": "CS STUDENT & DEVELOPER",
+          "tagline": "Pre-final year CS student passionate about web development, competitive programming, and open-source software.",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "Telangana, India",
+          "shortBio": "Computer Science undergrad actively seeking software engineering summer internships and open-source collaborations.",
+          "resumeUrl": "#",
+          "profession": "Student",
+          "heroCtaText": "Contact Me",
+          "profileType": "student",
+          "availability": "Available for Summer 2026 Software Internships",
+          "heroVisualType": "code",
+          "specialization": "Algorithms & Software Engineering",
+          "showFreelancerCTA": false
+        },
+        "testimonials": [
+          {
+            "id": "test-stud-1",
+            "name": "Prof. A. K. Varma",
+            "role": "Faculty Advisor",
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+            "company": "University Coding Club",
+            "content": "Sam is an energetic, highly disciplined student leader. Consistently achieves top grades while helping peers learn software engineering fundamentals.",
+            "visible": true
+          }
+        ]
+      },
+      "lastPublishedAt": "2026-10-08T16:07:03.221Z"
+    },
+    {
+      "id": "client-1791476663655",
+      "name": "ersi",
+      "role": "Digital Marketer",
+      "slug": "ersi",
+      "email": "lkjhb@ty",
+      "status": "PUBLISHED",
+      "isDefault": false,
+      "profession": "Digital Marketer",
+      "createdDate": "2026-10-08T16:24:23.655Z",
+      "lastUpdated": "2026-10-08T16:30:25.368Z",
+      "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "portfolioData": {
+        "seo": {
+          "author": "Arun Kumar",
+          "robots": "index, follow",
+          "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
+          "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
+          "canonicalUrl": "https://portfolio.example.com/arun-kumar",
+          "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
+          "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+          "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
+          "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios."
+        },
+        "blogs": [],
+        "stats": [
+          {
+            "label": "Products Designed",
+            "value": "20+",
+            "description": "Web & Mobile Apps"
+          },
+          {
+            "label": "User Testing",
+            "value": "150+ Hours",
+            "description": "Usability Interviews"
+          },
+          {
+            "label": "Design Tokens",
+            "value": "500+",
+            "description": "System Components"
+          },
+          {
+            "label": "Client Rating",
+            "value": "4.9 ★",
+            "description": "Satisfaction Score"
+          }
+        ],
+        "skills": [
+          {
+            "icon": "Layout",
+            "items": [
+              {
+                "name": "Figma & Design Systems",
+                "level": 98,
+                "popular": true
+              },
+              {
+                "name": "Adobe XD & Illustrator",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Protopie / Framer Motion",
+                "level": 85,
+                "popular": false
+              }
+            ],
+            "category": "Design & Prototyping Tools"
+          },
+          {
+            "icon": "Heart",
+            "items": [
+              {
+                "name": "User Journey Mapping",
+                "level": 92,
+                "popular": true
+              },
+              {
+                "name": "Usability & Accessibility (WCAG)",
+                "level": 90,
+                "popular": true
+              },
+              {
+                "name": "Information Architecture",
+                "level": 88,
+                "popular": false
+              }
+            ],
+            "category": "UX Methodology & Strategy"
+          }
+        ],
+        "resumes": [
+          {
+            "id": "res-1",
+            "url": "#",
+            "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
+            "sizeKb": 340,
+            "isActive": true,
+            "uploadDate": "2026-09-15"
+          },
+          {
+            "id": "res-2",
+            "url": "#",
+            "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
+            "sizeKb": 310,
+            "isActive": false,
+            "uploadDate": "2025-10-20"
+          }
+        ],
+        "branding": {
+          "logoUrl": "/icons.svg",
+          "faviconUrl": "/favicon.svg",
+          "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
+        },
+        "projects": [
+          {
+            "id": "proj-designer-1",
+            "tags": [
+              "Figma",
+              "User Research",
+              "Prototyping",
+              "Design System"
+            ],
+            "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+            "title": "Fintech Mobile Banking App — End-to-End Redesign Case Study",
+            "category": "UI/UX Case Study",
+            "featured": true,
+            "description": "Redesigned onboarding flows and transaction screens, resulting in a 32% increase in completed signups."
+          }
+        ],
+        "services": [],
+        "settings": {
+          "siteTitle": "ersi — Digital Marketer"
+        },
+        "education": [],
+        "experience": [],
+        "designConfig": {
+          "fonts": {
+            "body": "Open Sans",
+            "heading": "Poppins"
+          },
+          "colors": {
+            "text": "#fafafa",
+            "accent": "#b45309",
+            "primary": "#f59e0b",
+            "surface": "#27272a",
+            "secondary": "#d97706",
+            "background": "#18181b"
+          },
+          "layout": {
+            "hero": "split",
+            "contact": "form",
+            "projects": "cards",
+            "navigation": "minimal"
+          },
+          "buttons": {
+            "size": "medium",
+            "style": "pill"
+          },
+          "sections": [
+            {
+              "id": "hero",
+              "name": "Hero",
+              "order": 1,
+              "visible": true
+            },
+            {
+              "id": "about",
+              "name": "About",
+              "order": 2,
+              "visible": true
+            },
+            {
+              "id": "projects",
+              "name": "Projects Showcase",
+              "order": 3,
+              "visible": true
+            },
+            {
+              "id": "services",
+              "name": "Services",
+              "order": 4,
+              "visible": true
+            },
+            {
+              "id": "skills",
+              "name": "Skills",
+              "order": 5,
+              "visible": true
+            },
+            {
+              "id": "testimonials",
+              "name": "Testimonials",
+              "order": 6,
+              "visible": true
+            },
+            {
+              "id": "experience",
+              "name": "Work Experience",
+              "order": 7,
+              "visible": true
+            },
+            {
+              "id": "blog",
+              "name": "Blog / Articles",
+              "order": 8,
+              "visible": true
+            },
+            {
+              "id": "contact",
+              "name": "Contact",
+              "order": 9,
+              "visible": true
+            }
+          ],
+          "template": "designer",
+          "themeMode": "dark",
+          "animations": "standard"
+        },
+        "mediaLibrary": [
+          {
+            "id": "media-1791476777380",
+            "url": "/api/admin/media/serve/clients%2Fclient-1791476663655%2Fprojects%2Fd265a026-30c1-4003-8564-2f6a338899dc.jpg",
+            "name": "kjhb",
+            "type": "image",
+            "sizeKb": 997,
+            "category": "projects",
+            "mimeType": "image/jpeg",
+            "objectKey": "clients/client-1791476663655/projects/d265a026-30c1-4003-8564-2f6a338899dc.jpg",
+            "dimensions": "Uploaded",
+            "uploadDate": "2026-10-08",
+            "portfolioId": "client-1791476663655",
+            "storageBackend": "neon"
+          },
+          {
+            "id": "media-1",
+            "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+            "name": "Profile Avatar Photo",
+            "type": "image",
+            "sizeKb": 245,
+            "category": "profile",
+            "dimensions": "600 x 600",
+            "uploadDate": "2026-09-01"
+          },
+          {
+            "id": "media-2",
+            "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+            "name": "Enterprise Microservices System",
+            "type": "image",
+            "sizeKb": 820,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-05"
+          },
+          {
+            "id": "media-3",
+            "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+            "name": "React & Tailwind Dashboard",
+            "type": "image",
+            "sizeKb": 650,
+            "category": "projects",
+            "dimensions": "1200 x 800",
+            "uploadDate": "2026-09-10"
+          },
+          {
+            "id": "media-4",
+            "url": "#",
+            "name": "Official Resume 2026",
+            "type": "document",
+            "sizeKb": 340,
+            "category": "resume",
+            "dimensions": "PDF Document",
+            "uploadDate": "2026-09-12"
+          }
+        ],
+        "personalInfo": {
+          "bio": "Focused on human-centered design, user journeys, interaction animation, and translating product strategy into high-converting visual UIs.",
+          "name": "ersi",
+          "role": "Digital Marketer",
+          "email": "lkjhb@ty",
+          "image": "neon::media-1791476777380",
+          "phone": "+91 98765 00007",
+          "github": "https://github.com",
+          "eyebrow": "PRODUCT DESIGNER",
+          "tagline": "Crafting intuitive, accessible, and delight-driven digital product experiences.",
+          "twitter": "https://twitter.com",
+          "industry": "Technology",
+          "linkedin": "https://linkedin.com",
+          "location": "Mumbai, India",
+          "shortBio": "Product designer with 4+ years of experience designing mobile & web apps, user research, wireframing, and Figma design systems.",
+          "resumeUrl": "#",
+          "imageStyle": "natural-portrait",
+          "profession": "Digital Marketer",
+          "heroCtaText": "View Case Studies",
+          "profileType": "designer",
+          "availability": "Available for Full-time Roles & Product Design Contracts",
+          "heroVisualType": "image",
+          "specialization": "Design Systems, User Research & Interactive Prototyping",
+          "showFreelancerCTA": false
+        },
+        "testimonials": []
+      },
+      "lastPublishedAt": "2026-10-08T16:30:25.368Z"
     }
   ],
   "resumes": [
     {
       "id": "res-1",
-      "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
       "url": "#",
-      "uploadDate": "2026-09-15",
+      "name": "Arun-Kumar-Senior-Java-Resume-2026.pdf",
       "sizeKb": 340,
-      "isActive": true
+      "isActive": true,
+      "uploadDate": "2026-09-15"
     },
     {
       "id": "res-2",
-      "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
       "url": "#",
-      "uploadDate": "2025-10-20",
+      "name": "Arun-Kumar-FullStack-Resume-2025.pdf",
       "sizeKb": 310,
-      "isActive": false
+      "isActive": false,
+      "uploadDate": "2025-10-20"
     }
   ],
-  "seo": {
-    "pageTitle": "Arun Kumar | Java Developer & Full-Stack Developer",
-    "metaDescription": "Senior Java & Full-Stack Developer specializing in Spring Boot microservices, high-throughput REST APIs, PostgreSQL optimization, and React web applications.",
-    "keywords": "Java Developer, Spring Boot, Microservices, React, Full-Stack, PostgreSQL, Telangana Developer",
-    "canonicalUrl": "https://portfolio.example.com/arun-kumar",
-    "author": "Arun Kumar",
-    "robots": "index, follow",
-    "socialShareTitle": "Arun Kumar — Java Developer & Full-Stack Engineer",
-    "socialShareDescription": "Explore real-world enterprise microservices, interactive code visualizers, and backend architecture portfolios.",
-    "socialShareImage": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
-  },
   "branding": {
-    "faviconUrl": "/favicon.svg",
     "logoUrl": "/icons.svg",
+    "faviconUrl": "/favicon.svg",
     "browserTitle": "Arun Kumar | Developer Portfolio & CMS"
-  }
+  },
+  "messages": [],
+  "projects": [],
+  "services": [],
+  "settings": {
+    "siteTitle": "Arun Kumar — Freelancer",
+    "accentColor": "emerald",
+    "metaDescription": "Portfolio website of Arun Kumar",
+    "themePreference": "dark"
+  },
+  "adminUser": {
+    "password": "admin123",
+    "username": "admin"
+  },
+  "education": [],
+  "activities": [
+    {
+      "id": "act-1791476777382",
+      "type": "media",
+      "timestamp": "2026-10-08T16:26:17.382Z",
+      "clientName": "ersi",
+      "description": "Uploaded asset to Neon storage: kjhb"
+    },
+    {
+      "id": "act-1791476265748",
+      "type": "media",
+      "timestamp": "2026-10-08T16:17:45.748Z",
+      "clientName": "ajay",
+      "description": "Deleted media asset: Profile Avatar Photo"
+    },
+    {
+      "id": "act-1791476256685",
+      "type": "media",
+      "timestamp": "2026-10-08T16:17:36.685Z",
+      "clientName": "ajay",
+      "description": "Deleted media asset: iuyg"
+    },
+    {
+      "id": "act-1791476174002",
+      "type": "media",
+      "timestamp": "2026-10-08T16:16:14.002Z",
+      "clientName": "ajay",
+      "description": "Uploaded asset to Neon storage: iuyg"
+    },
+    {
+      "id": "act-1791475377090",
+      "type": "media",
+      "timestamp": "2026-10-08T16:02:57.090Z",
+      "clientName": "ajay",
+      "description": "Deleted media asset: bjk"
+    },
+    {
+      "id": "act-1791475186387",
+      "type": "media",
+      "timestamp": "2026-10-08T15:59:46.387Z",
+      "clientName": "ajay",
+      "description": "Deleted media asset: kiuyhg"
+    },
+    {
+      "id": "act-1791475097802",
+      "type": "media",
+      "timestamp": "2026-10-08T15:58:17.802Z",
+      "clientName": "ajay",
+      "description": "Uploaded asset to Neon storage: kiuyhg"
+    },
+    {
+      "id": "act-1791474917239",
+      "type": "media",
+      "timestamp": "2026-10-08T15:55:17.239Z",
+      "clientName": "arun",
+      "description": "Uploaded asset to Neon storage: profile"
+    },
+    {
+      "id": "act-1791474828160",
+      "type": "media",
+      "timestamp": "2026-10-08T15:53:48.160Z",
+      "clientName": "Arun Kumar",
+      "description": "Uploaded asset to Neon storage: arun"
+    },
+    {
+      "id": "act-1791474792373",
+      "type": "media",
+      "timestamp": "2026-10-08T15:53:12.373Z",
+      "clientName": "Arun Kumar",
+      "description": "Deleted media asset: bhvjh"
+    },
+    {
+      "id": "act-1791474522983",
+      "type": "media",
+      "timestamp": "2026-10-08T15:48:42.983Z",
+      "clientName": "arun",
+      "description": "Uploaded asset to Neon storage: lk"
+    },
+    {
+      "id": "act-1791474135442",
+      "type": "media",
+      "timestamp": "2026-10-08T15:42:15.442Z",
+      "clientName": "utyty",
+      "description": "Uploaded asset to Neon storage: jlkjh"
+    },
+    {
+      "id": "act-1791474059748",
+      "type": "media",
+      "timestamp": "2026-10-08T15:40:59.748Z",
+      "clientName": "utyty",
+      "description": "Deleted media asset: gfh"
+    },
+    {
+      "id": "act-1791474041076",
+      "type": "media",
+      "timestamp": "2026-10-08T15:40:41.076Z",
+      "clientName": "utyty",
+      "description": "Uploaded asset to Neon storage: hhj"
+    },
+    {
+      "id": "act-1791473582387",
+      "type": "media",
+      "timestamp": "2026-10-08T15:33:02.387Z",
+      "clientName": "utyty",
+      "description": "Uploaded asset to Neon storage: gfh"
+    },
+    {
+      "id": "act-1791473088582",
+      "type": "media",
+      "timestamp": "2026-10-08T15:24:48.582Z",
+      "clientName": "ajay",
+      "description": "Uploaded asset to Neon storage: bjk"
+    },
+    {
+      "id": "act-1791472946848",
+      "type": "media",
+      "timestamp": "2026-10-08T15:22:26.848Z",
+      "clientName": "Arun Kumar",
+      "description": "Uploaded asset to Neon storage: bhvjh"
+    },
+    {
+      "id": "act-1791472882220",
+      "type": "media",
+      "timestamp": "2026-10-08T15:21:22.224Z",
+      "clientName": "Arun Kumar",
+      "description": "Deleted media asset: arun"
+    },
+    {
+      "id": "act-1791469097043",
+      "type": "media",
+      "timestamp": "2026-10-08T14:18:17.043Z",
+      "clientName": "kjjbj",
+      "description": "Uploaded asset to Neon storage: hghjgh"
+    },
+    {
+      "id": "act-1791468964795",
+      "type": "media",
+      "timestamp": "2026-10-08T14:16:04.795Z",
+      "clientName": "kjjbj",
+      "description": "Uploaded asset to Neon storage: gkjjk"
+    },
+    {
+      "id": "act-1791468688604",
+      "type": "media",
+      "timestamp": "2026-10-08T14:11:28.604Z",
+      "clientName": "ghfhf",
+      "description": "Uploaded asset to Neon storage: crtfr"
+    },
+    {
+      "id": "act-1791468641282",
+      "type": "media",
+      "timestamp": "2026-10-08T14:10:41.282Z",
+      "clientName": "ghfhf",
+      "description": "Deleted media asset: alex"
+    },
+    {
+      "id": "act-1791468344465",
+      "type": "media",
+      "timestamp": "2026-10-08T14:05:44.465Z",
+      "clientName": "ghfhf",
+      "description": "Uploaded asset to Neon storage: alex"
+    },
+    {
+      "id": "act-1791468305300",
+      "type": "media",
+      "timestamp": "2026-10-08T14:05:05.300Z",
+      "clientName": "ghfhf",
+      "description": "Deleted media asset: jake"
+    },
+    {
+      "id": "act-1791468222158",
+      "type": "media",
+      "timestamp": "2026-10-08T14:03:42.158Z",
+      "clientName": "ghfhf",
+      "description": "Replaced Neon asset: jake"
+    },
+    {
+      "id": "act-1791468075841",
+      "type": "media",
+      "timestamp": "2026-10-08T14:01:15.841Z",
+      "clientName": "ghfhf",
+      "description": "Uploaded asset to Neon storage: jake"
+    },
+    {
+      "id": "act-1791467857477",
+      "type": "media",
+      "timestamp": "2026-10-08T13:57:37.477Z",
+      "clientName": "ghfhf",
+      "description": "Deleted media asset: jak"
+    },
+    {
+      "id": "act-1791467576324",
+      "type": "media",
+      "timestamp": "2026-10-08T13:52:56.324Z",
+      "clientName": "ghfhf",
+      "description": "Replaced Neon asset: jak"
+    },
+    {
+      "id": "act-1791467160997",
+      "type": "media",
+      "timestamp": "2026-10-08T13:46:00.997Z",
+      "clientName": "ghfhf",
+      "description": "Uploaded asset to Neon storage: jak"
+    },
+    {
+      "id": "act-1791467085393",
+      "type": "media",
+      "timestamp": "2026-10-08T13:44:45.393Z",
+      "clientName": "kjjbj",
+      "description": "Uploaded asset to Neon storage: alex"
+    },
+    {
+      "id": "act-1791466655855",
+      "type": "media",
+      "timestamp": "2026-10-08T13:37:35.855Z",
+      "clientName": "ajay",
+      "description": "Deleted media asset: fh"
+    },
+    {
+      "id": "act-1791466628812",
+      "type": "media",
+      "timestamp": "2026-10-08T13:37:08.812Z",
+      "clientName": "kjjbj",
+      "description": "Deleted media asset: arun"
+    },
+    {
+      "id": "act-1791466599507",
+      "type": "media",
+      "timestamp": "2026-10-08T13:36:39.507Z",
+      "clientName": "ghfhf",
+      "description": "Deleted media asset: h"
+    },
+    {
+      "id": "act-1791466557635",
+      "type": "media",
+      "timestamp": "2026-10-08T13:35:57.635Z",
+      "clientName": "arun",
+      "description": "Deleted media asset: bnv"
+    },
+    {
+      "id": "act-1791466486889",
+      "type": "media",
+      "timestamp": "2026-10-08T13:34:46.889Z",
+      "clientName": "arun",
+      "description": "Deleted media asset: hgf"
+    },
+    {
+      "id": "act-1791310643462",
+      "type": "media",
+      "timestamp": "2026-10-06T18:17:23.462Z",
+      "clientName": "kjjbj",
+      "description": "Uploaded asset to Neon storage: arun"
+    },
+    {
+      "id": "act-1791286965451",
+      "type": "media",
+      "timestamp": "2026-10-06T11:42:45.451Z",
+      "clientName": "ghfhf",
+      "description": "Uploaded asset to Neon storage: h"
+    },
+    {
+      "id": "act-1791286539875",
+      "type": "media",
+      "timestamp": "2026-10-06T11:35:39.875Z",
+      "clientName": "ajay",
+      "description": "Replaced Neon asset: fh"
+    },
+    {
+      "id": "act-1791286394785",
+      "type": "media",
+      "timestamp": "2026-10-06T11:33:14.785Z",
+      "clientName": "arun",
+      "description": "Uploaded asset to Neon storage: hgf"
+    },
+    {
+      "id": "act-1791286297000",
+      "type": "media",
+      "timestamp": "2026-10-06T11:31:37.000Z",
+      "clientName": "arun",
+      "description": "Uploaded asset to Neon storage:  bnv"
+    },
+    {
+      "id": "act-1791286133900",
+      "type": "media",
+      "timestamp": "2026-10-06T11:28:53.900Z",
+      "clientName": "ajay",
+      "description": "Uploaded asset to Neon storage: fh"
+    },
+    {
+      "id": "act-1791285988576",
+      "type": "media",
+      "timestamp": "2026-10-06T11:26:28.576Z",
+      "clientName": "Arun Kumar",
+      "description": "Replaced Neon asset: arun"
+    },
+    {
+      "id": "act-1791285469767",
+      "type": "media",
+      "timestamp": "2026-10-06T11:17:49.767Z",
+      "clientName": "Arun Kumar",
+      "description": "Uploaded asset to Neon storage: arun"
+    },
+    {
+      "id": "act-1791284083300",
+      "type": "media",
+      "timestamp": "2026-10-06T10:54:43.300Z",
+      "clientName": "Amma Arun Kumar",
+      "description": "Uploaded asset to Neon storage: arun"
+    },
+    {
+      "id": "act-1791222349278",
+      "type": "media",
+      "timestamp": "2026-10-05T17:45:49.278Z",
+      "clientName": "Vikram Malhotra",
+      "description": "Uploaded asset to Neon storage: arun"
+    },
+    {
+      "id": "act-1",
+      "type": "publish",
+      "timestamp": "2026-09-24T10:00:00Z",
+      "clientName": "Arun Kumar",
+      "description": "Portfolio published to live domain"
+    },
+    {
+      "id": "act-2",
+      "type": "project",
+      "timestamp": "2026-09-23T15:30:00Z",
+      "clientName": "Arun Kumar",
+      "description": "Added project: Enterprise Java Microservice"
+    },
+    {
+      "id": "act-3",
+      "type": "design",
+      "timestamp": "2026-09-22T18:45:00Z",
+      "clientName": "Arun Kumar",
+      "description": "Applied Visual Template: Modern Dark"
+    }
+  ],
+  "experience": [],
+  "accentColor": "indigo",
+  "description": "Designed for business advisors, management consultants, and strategy leads showcasing client impact metrics, services, case studies, and advisory offerings.",
+  "designConfig": {
+    "fonts": {
+      "body": "Inter",
+      "heading": "Inter"
+    },
+    "colors": {
+      "text": "#f1f5f9",
+      "accent": "#059669",
+      "primary": "#10b981",
+      "surface": "#121723",
+      "secondary": "#14b8a6",
+      "background": "#0a0d14"
+    },
+    "layout": {
+      "hero": "centered",
+      "contact": "form",
+      "projects": "grid",
+      "navigation": "top"
+    },
+    "buttons": {
+      "size": "medium",
+      "style": "rounded"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "name": "Hero",
+        "order": 1,
+        "visible": true
+      },
+      {
+        "id": "about",
+        "name": "About",
+        "order": 2,
+        "visible": true
+      },
+      {
+        "id": "skills",
+        "name": "Skills",
+        "order": 3,
+        "visible": true
+      },
+      {
+        "id": "projects",
+        "name": "Projects Showcase",
+        "order": 4,
+        "visible": true
+      },
+      {
+        "id": "services",
+        "name": "Services",
+        "order": 5,
+        "visible": true
+      },
+      {
+        "id": "experience",
+        "name": "Work Experience",
+        "order": 6,
+        "visible": true
+      },
+      {
+        "id": "blog",
+        "name": "Blog / Articles",
+        "order": 7,
+        "visible": true
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "order": 8,
+        "visible": true
+      },
+      {
+        "id": "contact",
+        "name": "Contact",
+        "order": 9,
+        "visible": true
+      }
+    ],
+    "template": "modern-dark",
+    "themeMode": "light",
+    "animations": "standard"
+  },
+  "mediaLibrary": [
+    {
+      "id": "media-1791474828159",
+      "url": "/api/admin/media/serve/clients%2Fclient-1791285374962%2Fprofile%2F5079e9b5-1790-4efd-a56b-cd88895dbbba.jpg",
+      "name": "arun",
+      "type": "image",
+      "sizeKb": 105,
+      "category": "profile",
+      "mimeType": "image/jpeg",
+      "objectKey": "clients/client-1791285374962/profile/5079e9b5-1790-4efd-a56b-cd88895dbbba.jpg",
+      "dimensions": "Uploaded",
+      "uploadDate": "2026-10-08",
+      "portfolioId": "client-1791285374962",
+      "storageBackend": "neon"
+    },
+    {
+      "id": "media-1",
+      "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+      "name": "Profile Avatar Photo",
+      "type": "image",
+      "sizeKb": 245,
+      "category": "profile",
+      "dimensions": "600 x 600",
+      "uploadDate": "2026-09-01"
+    },
+    {
+      "id": "media-2",
+      "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+      "name": "Enterprise Microservices System",
+      "type": "image",
+      "sizeKb": 820,
+      "category": "projects",
+      "dimensions": "1200 x 800",
+      "uploadDate": "2026-09-05"
+    },
+    {
+      "id": "media-3",
+      "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+      "name": "React & Tailwind Dashboard",
+      "type": "image",
+      "sizeKb": 650,
+      "category": "projects",
+      "dimensions": "1200 x 800",
+      "uploadDate": "2026-09-10"
+    },
+    {
+      "id": "media-4",
+      "url": "#",
+      "name": "Official Resume 2026",
+      "type": "document",
+      "sizeKb": 340,
+      "category": "resume",
+      "dimensions": "PDF Document",
+      "uploadDate": "2026-09-12"
+    }
+  ],
+  "personalInfo": {
+    "bio": "Arun Kumar is a dedicated Freelancer.",
+    "name": "Arun Kumar",
+    "role": "Freelancer",
+    "email": "vsakshi@gmail.com",
+    "image": "neon::media-1791474828159",
+    "phone": "",
+    "github": "https://github.com",
+    "eyebrow": "FREELANCER ",
+    "tagline": "Professional Portfolio of Arun Kumar",
+    "twitter": "https://twitter.com",
+    "industry": "Technology",
+    "linkedin": "https://linkedin.com",
+    "location": "Telangana, India",
+    "shortBio": "Freelancer passionate about building impactful solutions.",
+    "resumeUrl": "#",
+    "profession": "Freelancer ",
+    "availability": "Available for New Projects & Consultations",
+    "heroVisualType": "image",
+    "specialization": "Freelancer Specialist"
+  },
+  "testimonials": [],
+  "activeClientId": "client-1791285374962",
+  "targetAudience": "Business Consultants, Strategy Advisors, Management Leads & Executive Coaches"
 }

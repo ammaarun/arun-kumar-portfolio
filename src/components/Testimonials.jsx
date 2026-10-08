@@ -10,7 +10,7 @@ export const Testimonials = () => {
   if (testimonials.length === 0) return null;
 
   return (
-    <section id="testimonials" className="py-20 relative bg-[#0a0d14] border-t border-slate-800/80">
+    <section id="testimonials" className="py-20 relative bg-slate-50 dark:bg-[#0a0d14] border-t border-slate-200/80 dark:border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -19,10 +19,10 @@ export const Testimonials = () => {
             <MessageSquare className="w-3.5 h-3.5" />
             <span>CLIENT & PEER FEEDBACK</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Endorsements & Recommendations
           </h2>
-          <p className="text-base text-slate-400">
+          <p className="text-base text-slate-600 dark:text-slate-400">
             {personalInfo.testimonialsSubtitle || 'What clients, directors, and peers say about working with me.'}
           </p>
         </div>
@@ -32,7 +32,7 @@ export const Testimonials = () => {
           {testimonials.map((item) => (
             <div 
               key={item.id}
-              className="p-8 rounded-2xl bg-[#121723] border border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between space-y-6"
+              className="p-8 rounded-2xl bg-white dark:bg-[#121723] border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
                 {/* Quote Icon & Rating Stars */}
@@ -47,13 +47,13 @@ export const Testimonials = () => {
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-300 leading-relaxed italic">
+                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed italic">
                   "{item.content}"
                 </p>
               </div>
 
               {/* Reviewer Profile Header */}
-              <div className="flex items-center space-x-3 pt-4 border-t border-slate-800">
+              <div className="flex items-center space-x-3 pt-4 border-t border-slate-200 dark:border-slate-800">
                 {item.image ? (
                   <img 
                     src={item.image} 
@@ -66,10 +66,10 @@ export const Testimonials = () => {
                   </div>
                 )}
                 <div>
-                  <h4 className="text-sm font-bold text-white">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                     {item.name}
                   </h4>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-600 dark:text-slate-400">
                     {item.role} {item.company && <span className="text-emerald-400">• {item.company}</span>}
                   </p>
                 </div>
