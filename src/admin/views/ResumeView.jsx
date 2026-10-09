@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
+import { MediaPickerModal } from '../components/MediaPickerModal';
 
 export const ResumeView = () => {
   const { token } = useAuth();
@@ -12,12 +13,9 @@ export const ResumeView = () => {
 
   const [resumes, setResumes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [uploadModalOpen, setUploadModalOpen] = useState(false);
+  const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
 
-  const [name, setName] = useState('');
-  const [url, setUrl] = useState('');
   const [submitting, setSubmitting] = useState(false);
-
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -43,13 +41,24 @@ export const ResumeView = () => {
     fetchResumes();
   }, [token]);
 
+  const resolveResumeUrl = (url) => {
+    if (!url || url === '#') return null;
+    if (url.startsWith('neon::')) {
+      return `/api/portfolio/media/${url.replace('neon::', '')}`;
+    }
+    return url;
+  };
   const activeResume = resumes.find(r => r.isActive) || resumes[0];
 
-  const handleUploadResume = async (e) => {
-    e.preventDefault();
-    if (!name || !url) return;
+  const handleSelectMedia = async (mediaRecord) => {
+    if (!mediaRecord) return;
     setSubmitting(true);
     setError('');
+    
+    const urlValue = mediaRecord.storageBackend === 'neon' 
+      ? `neon::${mediaRecord.id}` 
+      : (mediaRecord.url || '');
+      
     try {
       const res = await fetch('/api/admin/resumes', {
         method: 'POST',
@@ -58,26 +67,24 @@ export const ResumeView = () => {
           Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({
-          name,
-          url,
-          sizeKb: Math.floor(Math.random() * 200 + 250)
+          name: mediaRecord.name || 'Resume',
+          url: urlValue,
+          sizeKb: mediaRecord.sizeKb || Math.floor(Math.random() * 200 + 250)
         })
       });
       const resData = await res.json();
       if (resData.success) {
-        setUploadModalOpen(false);
-        setName('');
-        setUrl('');
+        setMediaPickerOpen(false);
         if (refreshData) await refreshData();
         fetchResumes();
-        setMessage('New resume version uploaded and activated!');
+        setMessage('New resume version selected and activated!');
         setTimeout(() => setMessage(''), 3000);
       } else {
-        setError(resData.message || 'Failed to upload resume.');
+        setError(resData.message || 'Failed to link resume.');
       }
     } catch (err) {
-      console.error('Error uploading resume:', err);
-      setError('Network error uploading resume.');
+      console.error('Error linking resume:', err);
+      setError('Network error saving resume version.');
     } finally {
       setSubmitting(false);
     }
@@ -139,7 +146,7 @@ export const ResumeView = () => {
         </div>
 
         <button
-          onClick={() => setUploadModalOpen(true)}
+          onClick={() => setMediaPickerOpen(true)}
           className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-xs font-bold text-white shadow-lg shadow-emerald-500/20 flex items-center space-x-2 transition-all self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
@@ -181,7 +188,7 @@ export const ResumeView = () => {
 
             <div className="flex items-center space-x-2">
               <a
-                href={activeResume.url}
+                href={resolveResumeUrl(activeResume.url)}
                 target="_blank"
                 rel="noreferrer"
                 className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-200 hover:text-white flex items-center space-x-1.5 transition-all"
@@ -191,7 +198,7 @@ export const ResumeView = () => {
               </a>
 
               <button
-                onClick={() => setUploadModalOpen(true)}
+                onClick={() => setMediaPickerOpen(true)}
                 className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white flex items-center space-x-1.5 transition-all"
               >
                 <Upload className="w-3.5 h-3.5 text-teal-400" />
@@ -286,65 +293,12 @@ export const ResumeView = () => {
         )}
       </div>
 
-      {/* UPLOAD MODAL */}
-      {uploadModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-          <div className="w-full max-w-md bg-[#121723] border border-slate-800 rounded-2xl p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 className="text-base font-bold text-white flex items-center space-x-2">
-                <Upload className="w-4 h-4 text-emerald-400" />
-                <span>Upload New Resume Version</span>
-              </h3>
-              <button onClick={() => setUploadModalOpen(false)} className="text-slate-400 hover:text-white">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleUploadResume} className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono text-slate-300">File Name</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Arun-Kumar-Resume-2026.pdf"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono text-slate-300">Resume PDF Document URL</label>
-                <input
-                  type="url"
-                  required
-                  placeholder="https://.../resume.pdf"
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-
-              <div className="pt-3 flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setUploadModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-900 text-xs font-semibold text-slate-300"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-500/20"
-                >
-                  {submitting ? 'Uploading...' : 'Save & Activate Version'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      <MediaPickerModal
+        isOpen={mediaPickerOpen}
+        onClose={() => setMediaPickerOpen(false)}
+        onSelectMedia={handleSelectMedia}
+        currentUrl={activeResume?.url || ''}
+      />
 
     </div>
   );

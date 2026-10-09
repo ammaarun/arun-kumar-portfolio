@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Image, Search, X, Check, FileText, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Image, Search, X, Check, FileText, AlertCircle, CloudUpload } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 // ── NeonThumb ─────────────────────────────────────────────────────────────────
@@ -40,12 +40,6 @@ const NeonThumb = ({ item, token, className }) => {
 };
 
 // ── MediaPickerModal ──────────────────────────────────────────────────────────
-// IMPORTANT CONTRACT CHANGE:
-//   onSelectMedia now receives the FULL media record object, NOT just a URL string.
-//   Callers must check media.storageBackend to decide what to store:
-//     storageBackend === 'neon'  → store 'neon::<media.id>'
-//     storageBackend === 'url'   → store media.url directly (backward-compatible)
-// ─────────────────────────────────────────────────────────────────────────────
 export const MediaPickerModal = ({ isOpen, onClose, onSelectMedia, currentUrl = '' }) => {
   const { token } = useAuth();
   const [mediaList, setMediaList] = useState([]);
@@ -59,7 +53,15 @@ export const MediaPickerModal = ({ isOpen, onClose, onSelectMedia, currentUrl = 
   const [newMediaUrl, setNewMediaUrl] = useState('');
   const [newCategory, setNewCategory] = useState('projects');
   const [uploading, setUploading] = useState(false);
-  const [activeTab, setActiveTab] = useState('library'); // 'library' | 'url'
+  const [activeTab, setActiveTab] = useState('library'); // 'library' | 'url' | 'upload'
+
+  // File upload state
+  const [uploadFile, setUploadFile] = useState(null);
+  const [uploadName, setUploadName] = useState('');
+  const [uploadCategory, setUploadCategory] = useState('projects');
+  const [uploadProgress, setUploadProgress] = useState(null);
+  const [uploadError, setUploadError] = useState('');
+  const fileInputRef = useRef(null);
 
   const fetchMedia = async () => {
     if (!token) return;
@@ -92,9 +94,41 @@ export const MediaPickerModal = ({ isOpen, onClose, onSelectMedia, currentUrl = 
 
   const handleConfirmSelection = () => {
     if (selectedMedia && onSelectMedia) {
-      // Pass the full record — caller decides what to store
       onSelectMedia(selectedMedia);
       onClose();
+    }
+  };
+
+  // ── File Upload → Neon ──────────────────────────────────────────────────────
+  const handleFileUpload = async (e) => {
+    e.preventDefault();
+    if (!uploadName) { setUploadError('Please enter an asset name.'); return; }
+    if (!uploadFile) { setUploadError('Please select a file to upload.'); return; }
+    setUploading(true); setUploadError(''); setUploadProgress('uploading');
+    try {
+      const formData = new FormData();
+      formData.append('file', uploadFile);
+      formData.append('name', uploadName);
+      formData.append('category', uploadCategory);
+      const res = await fetch('/api/admin/media/upload', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
+      const resData = await res.json();
+      if (resData.success && onSelectMedia) {
+        onSelectMedia(resData.data);
+        onClose();
+      } else {
+        setUploadProgress(null);
+        setUploadError(resData.message || 'Upload failed.');
+      }
+    } catch (err) {
+      console.error('Error uploading file:', err);
+      setUploadProgress(null);
+      setUploadError('Network error during upload.');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -168,6 +202,12 @@ export const MediaPickerModal = ({ isOpen, onClose, onSelectMedia, currentUrl = 
               Choose from Library
             </button>
             <button
+              onClick={() => setActiveTab('upload')}
+              className={`px-4 py-2 text-xs font-bold rounded-t-xl border-b-2 transition-all ${activeTab === 'upload' ? 'border-emerald-500 text-emerald-400 bg-[#121723]' : 'border-transparent text-slate-400 hover:text-white'}`}
+            >
+              Upload File
+            </button>
+            <button
               onClick={() => setActiveTab('url')}
               className={`px-4 py-2 text-xs font-bold rounded-t-xl border-b-2 transition-all ${activeTab === 'url' ? 'border-emerald-500 text-emerald-400 bg-[#121723]' : 'border-transparent text-slate-400 hover:text-white'}`}
             >
@@ -202,7 +242,104 @@ export const MediaPickerModal = ({ isOpen, onClose, onSelectMedia, currentUrl = 
 
         {/* Content */}
         <div className="p-6 overflow-y-auto flex-1 scrollbar-thin">
-          {activeTab === 'library' ? (
+          {activeTab === 'upload' ? (
+            <div className="max-w-xl mx-auto space-y-6 pt-4">
+              <div className="text-center space-y-1">
+                <CloudUpload className="w-8 h-8 text-emerald-400 mx-auto" />
+                <h3 className="text-sm font-bold text-white">Upload to Neon Object Storage</h3>
+                <p className="text-xs text-slate-400">Upload a new image or PDF document to your library.</p>
+              </div>
+
+              <form onSubmit={handleFileUpload} className="space-y-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-slate-300">Asset Name / Title</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Arun Resume 2026"
+                    value={uploadName}
+                    onChange={(e) => setUploadName(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-slate-300">
+                    File <span className="text-slate-500">(JPEG, PNG, WebP, GIF, PDF)</span>
+                  </label>
+                  <div
+                    onClick={() => fileInputRef.current?.click()}
+                    className={`w-full px-4 py-6 rounded-xl border-2 border-dashed cursor-pointer transition-colors text-center ${
+                      uploadFile ? 'border-emerald-500/60 bg-emerald-500/5' : 'border-slate-700 hover:border-emerald-500/50 bg-[#0a0d14]'
+                    }`}
+                  >
+                    {uploadFile ? (
+                      <div className="space-y-1">
+                        <CloudUpload className="w-6 h-6 text-emerald-400 mx-auto" />
+                        <p className="text-xs font-semibold text-emerald-400 truncate">{uploadFile.name}</p>
+                        <p className="text-[10px] font-mono text-slate-500">
+                          {Math.round(uploadFile.size / 1024)} KB · {uploadFile.type}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="space-y-1">
+                        <CloudUpload className="w-6 h-6 text-slate-500 mx-auto" />
+                        <p className="text-xs text-slate-400">Click to select a file</p>
+                      </div>
+                    )}
+                  </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
+                    className="hidden"
+                    onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) {
+                        setUploadFile(f);
+                        if (!uploadName) {
+                          setUploadName(f.name.replace(/\.[^/.]+$/, ""));
+                        }
+                      }
+                    }}
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono text-slate-300">Category</label>
+                  <select
+                    value={uploadCategory}
+                    onChange={(e) => setUploadCategory(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  >
+                    {categoriesList.filter(c => c.id !== 'all').map(c => (
+                      <option key={c.id} value={c.id}>{c.label}</option>
+                    ))}
+                    <option value="resume">Resume</option>
+                  </select>
+                </div>
+
+                {uploadError && <p className="text-xs text-rose-400 font-mono">{uploadError}</p>}
+                
+                {uploadProgress === 'uploading' && (
+                  <div className="flex items-center space-x-2 text-xs text-emerald-400 font-mono">
+                    <div className="w-3 h-3 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin" />
+                    <span>Uploading...</span>
+                  </div>
+                )}
+
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={uploading}
+                    className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-xs font-bold text-white transition-all shadow-lg shadow-emerald-500/20"
+                  >
+                    {uploading ? 'Uploading...' : 'Upload & Select File'}
+                  </button>
+                </div>
+              </form>
+            </div>
+          ) : activeTab === 'library' ? (
             loading ? (
               <div className="py-16 text-center text-xs font-mono text-slate-500">Loading media library...</div>
             ) : mediaList.length === 0 ? (

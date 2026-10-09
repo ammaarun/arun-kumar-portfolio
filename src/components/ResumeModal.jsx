@@ -16,6 +16,16 @@ export const ResumeModal = ({ isOpen, onClose }) => {
     window.print();
   };
 
+  const resolveResumeUrl = (url) => {
+    if (!url || url === '#') return null;
+    if (url.startsWith('neon::')) {
+      const mediaId = url.replace('neon::', '');
+      return `/api/portfolio/media/${mediaId}`;
+    }
+    return url;
+  };
+  const downloadUrl = resolveResumeUrl(personalInfo.resumeUrl);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 dark:bg-black/80 backdrop-blur-sm overflow-y-auto animate-fadeIn">
       <div 
@@ -31,12 +41,24 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             </h3>
           </div>
           <div className="flex items-center space-x-2">
+            {downloadUrl && (
+              <a
+                href={downloadUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+                title="Download Original PDF"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Original PDF</span>
+              </a>
+            )}
             <button
               onClick={handlePrint}
               className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-900 dark:text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Print / Download PDF</span>
+              <span>Print HTML</span>
             </button>
             <button
               onClick={onClose}
