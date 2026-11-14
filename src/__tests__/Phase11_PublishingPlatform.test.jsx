@@ -119,9 +119,9 @@ describe('Phase 3: Professional Portfolio Publishing & Management Tests', () => 
     }
     dbEngine.save(db);
 
-    dbEngine.switchActiveClient('client-1');
     const currentDb = dbEngine.get();
-    const activeClient = currentDb.clients.find(c => c.id === 'client-1') || currentDb.clients[0];
+    const activeClient = currentDb.clients.find(c => c.id === currentDb.activeClientId) || currentDb.clients[0];
+    currentDb.activeClientId = activeClient.id;
 
     // Change active client slug to 'arun-kumar-lead'
     activeClient.slug = 'arun-kumar-lead';

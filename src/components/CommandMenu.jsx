@@ -93,7 +93,7 @@ export const CommandMenu = ({ isOpen, onClose, onOpenResume }) => {
     },
     {
       id: 'resume',
-      label: 'Open Resume / CV Preview',
+      label: 'Download Resume / CV',
       category: 'Actions',
       icon: FileText,
       action: () => {

@@ -11,6 +11,31 @@ export const Hero = ({ onOpenResume, onOpenInquiry }) => {
 
   const [activeTab, setActiveTab] = useState('java');
   const [copied, setCopied] = useState(false);
+  const [resumeError, setResumeError] = useState('');
+
+  const activeResume = (data?.resumes || []).find(r => r.isActive) || (data?.resumes || [])[0];
+  const resumeUrl = activeResume?.url || personalInfo?.resumeUrl;
+  const hasResume = Boolean(resumeUrl && resumeUrl !== '#' && String(resumeUrl).trim() !== '');
+
+  const handleDownloadResume = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setResumeError('');
+
+    if (!hasResume) {
+      setResumeError('Resume document is currently unavailable.');
+      return;
+    }
+
+    const targetSlug = data?.slug || (typeof window !== 'undefined' && window.location.pathname.startsWith('/portfolio/') ? window.location.pathname.split('/')[2] : '');
+    const downloadEndpoint = `/api/portfolio/resume/download${targetSlug ? `/${encodeURIComponent(targetSlug)}` : ''}`;
+
+    const link = document.createElement('a');
+    link.href = downloadEndpoint;
+    link.setAttribute('download', activeResume?.name || `${personalInfo.name || 'Resume'}-Resume.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const currentSnippet = codeSnippets[activeTab] || { filename: 'snippet.java', code: '// Loading...' };
 
@@ -121,14 +146,24 @@ export const Hero = ({ onOpenResume, onOpenInquiry }) => {
                 <span>View Featured Work</span>
               </a>
 
-              <button
-                onClick={onOpenResume}
-                className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs transition-all"
-              >
-                <Download className="w-4 h-4 text-emerald-400" />
-                <span>View Resume</span>
-              </button>
+              {hasResume && (
+                <button
+                  type="button"
+                  onClick={handleDownloadResume}
+                  className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs transition-all"
+                  aria-label="Download Resume"
+                >
+                  <Download className="w-4 h-4 text-emerald-400" />
+                  <span>Download Resume</span>
+                </button>
+              )}
             </div>
+
+            {resumeError && (
+              <p className="text-xs text-rose-400 mt-2 font-medium animate-fadeIn" role="alert">
+                {resumeError}
+              </p>
+            )}
 
             {/* Social Links */}
             <div className="pt-4 flex items-center space-x-4 border-t border-slate-200/80 dark:border-slate-800/80 max-w-md">

@@ -158,11 +158,22 @@ function MainPublicPortfolio() {
     );
   }
 
+  const handleDownloadResume = () => {
+    const slug = data?.slug || (typeof window !== 'undefined' && window.location.pathname.startsWith('/portfolio/') ? window.location.pathname.split('/')[2] : '');
+    const downloadEndpoint = `/api/portfolio/resume/download${slug ? `/${encodeURIComponent(slug)}` : ''}`;
+    const link = document.createElement('a');
+    link.href = downloadEndpoint;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const sectionComponents = {
     hero: (
       <Hero 
         key="hero"
-        onOpenResume={() => setResumeOpen(true)}
+        onOpenResume={handleDownloadResume}
         onOpenInquiry={() => handleOpenInquiry('cms')}
         layoutVariant={designConfig.layout?.hero}
       />
@@ -213,7 +224,7 @@ function MainPublicPortfolio() {
     >
       <Navbar 
         onOpenCommand={() => setCommandOpen(true)}
-        onOpenResume={() => setResumeOpen(true)}
+        onOpenResume={handleDownloadResume}
         onOpenInquiry={() => handleOpenInquiry('cms')}
         activeTheme={activeTheme}
         onToggleTheme={() => toggleVisitorTheme(activeTheme)}
@@ -234,7 +245,7 @@ function MainPublicPortfolio() {
       <CommandMenu 
         isOpen={commandOpen}
         onClose={() => setCommandOpen(false)}
-        onOpenResume={() => setResumeOpen(true)}
+        onOpenResume={handleDownloadResume}
       />
 
       <ResumeModal

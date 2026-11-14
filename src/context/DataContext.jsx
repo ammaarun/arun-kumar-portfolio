@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { api } from '../services/api';
 import { portfolioData as fallbackData } from '../data/portfolioData';
 
-const DataContext = createContext();
+export const DataContext = createContext();
 
 const useSafeLocation = () => {
   try {

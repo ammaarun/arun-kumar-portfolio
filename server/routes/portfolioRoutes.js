@@ -77,6 +77,119 @@ router.get('/media/:mediaId', async (req, res) => {
   }
 });
 
+// ── Public Resume Direct Download ──
+// Directly downloads the active resume PDF for the current portfolio or specified client slug
+router.get(['/resume/download', '/resume/download/:slug', '/slug/:slug/resume/download'], async (req, res) => {
+  try {
+    const slug = req.params.slug || req.query.slug || req.query.client;
+    const db = dbEngine.get();
+
+    let targetClient = null;
+    let resumes = [];
+    let personalInfo = {};
+
+    if (slug) {
+      targetClient = (db.clients || []).find(c => c.id === slug || c.slug === slug);
+      if (!targetClient) {
+        const candidates = (db.clients || []).filter(c => c.slug === slug || c.id === slug);
+        if (candidates.length > 0) {
+          targetClient = candidates.find(c => c.id === db.activeClientId) ||
+                         candidates.find(c => c.status === 'PUBLISHED') ||
+                         candidates[0];
+        }
+      }
+
+      if (!targetClient) {
+        return res.status(404).json({ success: false, message: `Portfolio with slug '${slug}' not found.` });
+      }
+
+      const clientStatus = targetClient.status;
+      if (clientStatus && clientStatus !== 'PUBLISHED') {
+        return res.status(403).json({ success: false, message: 'Portfolio is not publicly available.' });
+      }
+
+      const pData = targetClient.portfolioData || {};
+      resumes = pData.resumes || [];
+      personalInfo = pData.personalInfo || {};
+    } else {
+      targetClient = (db.clients || []).find(c => c.id === db.activeClientId) || (db.clients || [])[0];
+      const clientStatus = targetClient?.status;
+      if (targetClient && clientStatus && clientStatus !== 'PUBLISHED') {
+        return res.status(403).json({ success: false, message: 'Portfolio is not publicly available.' });
+      }
+
+      resumes = (db.resumes && db.resumes.length > 0)
+        ? db.resumes
+        : (targetClient?.portfolioData?.resumes || []);
+      personalInfo = db.personalInfo || targetClient?.portfolioData?.personalInfo || {};
+    }
+
+    // 1. Identify the active resume record
+    let activeResume = (resumes || []).find(r => r.isActive);
+    if (!activeResume && (resumes || []).length > 0) {
+      activeResume = (resumes || []).find(r => r.url && r.url === personalInfo?.resumeUrl) || resumes[0];
+    }
+    const resumeUrl = activeResume?.url || personalInfo?.resumeUrl;
+
+    if (!resumeUrl || resumeUrl === '#') {
+      return res.status(404).json({ success: false, message: 'No active resume found for this portfolio.' });
+    }
+
+    // 2. Determine safe attachment filename
+    const candidateName = activeResume?.name || `${personalInfo?.name || 'Resume'}-Resume.pdf`;
+    const safeFilename = candidateName.toLowerCase().endsWith('.pdf') ? candidateName : `${candidateName}.pdf`;
+    const sanitizedFilename = safeFilename.replace(/[^\w.-]/g, '_');
+
+    // 3. Handle Neon Object Storage (`neon::<mediaId>`)
+    if (resumeUrl.startsWith('neon::')) {
+      const mediaId = resumeUrl.replace('neon::', '');
+      let mediaRecord = null;
+
+      // Check target client's mediaLibrary first
+      if (targetClient?.portfolioData?.mediaLibrary) {
+        mediaRecord = targetClient.portfolioData.mediaLibrary.find(m => m.id === mediaId);
+      }
+      // Check root db.mediaLibrary if it belongs to active client
+      if (!mediaRecord && (!slug || targetClient?.id === db.activeClientId)) {
+        mediaRecord = (db.mediaLibrary || []).find(m => m.id === mediaId);
+      }
+      // Check across all clients while verifying client ownership
+      if (!mediaRecord) {
+        for (const c of (db.clients || [])) {
+          const found = (c.portfolioData?.mediaLibrary || []).find(m => m.id === mediaId);
+          if (found && (!targetClient || c.id === targetClient.id)) {
+            mediaRecord = found;
+            break;
+          }
+        }
+      }
+
+      if (!mediaRecord) {
+        return res.status(404).json({ success: false, message: 'Resume media asset not found.' });
+      }
+
+      if (mediaRecord.storageBackend !== 'neon' || !mediaRecord.objectKey) {
+        return res.status(400).json({ success: false, message: 'Resume media asset is not stored in Neon Object Storage.' });
+      }
+
+      // Generate fresh presigned URL with attachment Content-Disposition
+      const presignedUrl = await getPresignedGetUrl(mediaRecord.objectKey, 60, {
+        downloadFilename: sanitizedFilename
+      });
+
+      res.setHeader('Content-Disposition', `attachment; filename="${sanitizedFilename}"`);
+      return res.redirect(302, presignedUrl);
+    }
+
+    // 4. Handle standard direct URL resume
+    res.setHeader('Content-Disposition', `attachment; filename="${sanitizedFilename}"`);
+    return res.redirect(302, resumeUrl);
+  } catch (err) {
+    console.error('[Public Resume Download] Error generating download:', err);
+    return res.status(500).json({ success: false, message: 'Failed to process resume download.' });
+  }
+});
+
 // Get full public portfolio data
 router.get('/', (req, res) => {
   const db = dbEngine.get();

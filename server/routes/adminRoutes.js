@@ -1057,8 +1057,19 @@ router.post('/resumes', (req, res) => {
     db.personalInfo.resumeUrl = url;
   }
 
-  dbEngine.logActivity('resume', `Uploaded resume version: ${name}`);
+  // Also sync with active client's portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.resumes = db.resumes;
+      if (activeClient.portfolioData.personalInfo) {
+        activeClient.portfolioData.personalInfo.resumeUrl = url;
+      }
+    }
+  }
+
   dbEngine.save(db);
+  dbEngine.logActivity('resume', `Uploaded resume version: ${name}`);
 
   res.json({ success: true, message: 'Resume uploaded and set as active version.', data: newResume });
 });
@@ -1084,8 +1095,19 @@ router.put('/resumes/:id/select', (req, res) => {
     db.personalInfo.resumeUrl = selected.url;
   }
 
-  dbEngine.logActivity('resume', `Set active resume version to: ${selected.name}`);
+  // Also sync with active client's portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.resumes = db.resumes;
+      if (activeClient.portfolioData.personalInfo) {
+        activeClient.portfolioData.personalInfo.resumeUrl = selected.url;
+      }
+    }
+  }
+
   dbEngine.save(db);
+  dbEngine.logActivity('resume', `Set active resume version to: ${selected.name}`);
 
   res.json({ success: true, message: `Active resume version set to ${selected.name}`, data: selected });
 });

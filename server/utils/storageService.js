@@ -149,10 +149,16 @@ export async function deleteFromStorage(objectKey) {
  *
  * @param {string} objectKey
  * @param {number} [expiresInSeconds=3600]
+ * @param {object} [options={}]
  * @returns {Promise<string>} presigned URL
  */
-export async function getPresignedGetUrl(objectKey, expiresInSeconds = 3600) {
+export async function getPresignedGetUrl(objectKey, expiresInSeconds = 3600, options = {}) {
   const s3 = getS3Client();
-  const command = new GetObjectCommand({ Bucket: BUCKET, Key: objectKey });
+  const commandParams = { Bucket: BUCKET, Key: objectKey };
+  if (options && options.downloadFilename) {
+    const safeName = options.downloadFilename.replace(/[^\w.-]/g, '_');
+    commandParams.ResponseContentDisposition = `attachment; filename="${safeName}"`;
+  }
+  const command = new GetObjectCommand(commandParams);
   return getSignedUrl(s3, command, { expiresIn: expiresInSeconds });
 }
