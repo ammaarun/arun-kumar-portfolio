@@ -1,12 +1,13 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import { dbEngine } from '../data/dbEngine.js';
 import { JWT_SECRET, verifyToken } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 // Admin Login
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const db = dbEngine.get();
 
@@ -16,7 +17,14 @@ router.post('/login', (req, res) => {
 
   const admin = db.adminUser || { username: 'admin', password: 'admin123' };
 
-  if (username === admin.username && password === admin.password) {
+  let isMatch = false;
+  if (admin.password && (admin.password.startsWith('$2a$') || admin.password.startsWith('$2b$'))) {
+    isMatch = await bcrypt.compare(password, admin.password);
+  } else {
+    isMatch = (admin.password === password);
+  }
+
+  if (username === admin.username && isMatch) {
     const token = jwt.sign(
       { username: admin.username, role: 'ADMIN' },
       JWT_SECRET,

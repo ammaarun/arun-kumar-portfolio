@@ -51,6 +51,23 @@ export const api = {
     return res.json();
   },
 
+  // Admin Account Settings
+  async getAccount() {
+    const res = await fetch(`${API_BASE}/admin/account`, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async updateAccount(payload) {
+    const res = await fetch(`${API_BASE}/admin/account`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(payload)
+    });
+    return res.json();
+  },
+
   // --- Admin Protected CRUD Endpoints ---
   async updateProfile(profileData) {
     const res = await fetch(`${API_BASE}/admin/profile`, {

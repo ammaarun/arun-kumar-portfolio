@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
 import { MediaPickerModal } from '../components/MediaPickerModal';
 
-export const SettingsView = () => {
+export const SettingsView = ({ setActiveTab: setParentTab }) => {
   const { token } = useAuth();
   const { data, refreshData, refetchData } = useData();
 
@@ -243,6 +243,28 @@ export const SettingsView = () => {
                 <option value="dark">Dark Theme (Default)</option>
                 <option value="light">Light Theme</option>
               </select>
+            </div>
+
+            {/* Admin Credentials Link */}
+            <div className="p-4 rounded-xl bg-[#0a0d14] border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-0.5">
+                <span className="text-xs font-bold text-white flex items-center space-x-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>Admin Security & Credentials</span>
+                </span>
+                <p className="text-[11px] text-slate-400">
+                  Update your Super Admin username and password securely.
+                </p>
+              </div>
+              {setParentTab && (
+                <button
+                  type="button"
+                  onClick={() => setParentTab('account')}
+                  className="px-3.5 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 text-xs font-semibold self-start sm:self-auto transition-colors"
+                >
+                  Account Settings →
+                </button>
+              )}
             </div>
           </div>
         </div>

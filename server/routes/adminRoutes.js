@@ -3,8 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import { dbEngine, defaultDesignConfig, defaultMediaLibrary, defaultResumes, defaultSeo, defaultBranding } from '../data/dbEngine.js';
-import { verifyToken } from '../middleware/authMiddleware.js';
+import { JWT_SECRET, verifyToken } from '../middleware/authMiddleware.js';
 import { visualTemplates } from '../templates/visualTemplates.js';
 import {
   generateObjectKey,
@@ -1168,6 +1170,160 @@ router.put('/slug', (req, res) => {
 router.get('/activities', (req, res) => {
   const db = dbEngine.get();
   res.json({ success: true, data: db.activities || [] });
+});
+
+// --- Admin Account Settings Endpoints (Super Admin Only) ---
+router.get('/account', (req, res) => {
+  const db = dbEngine.get();
+  const admin = db.adminUser || { username: 'admin', password: 'admin123' };
+  // Strictly return only non-sensitive account metadata
+  res.json({
+    success: true,
+    data: {
+      username: admin.username,
+      role: 'ADMIN'
+    }
+  });
+});
+
+router.put('/account', async (req, res) => {
+  const { currentPassword, newUsername, newPassword, confirmPassword } = req.body;
+  const db = dbEngine.get();
+  const admin = db.adminUser || { username: 'admin', password: 'admin123' };
+
+  // 1. Current password is mandatory to authorize any credential changes
+  if (!currentPassword || typeof currentPassword !== 'string' || !currentPassword.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: 'Current password is required to verify identity.'
+    });
+  }
+
+  // 2. Verify current password against stored credentials (bcrypt hash or legacy plaintext)
+  let isCurrentMatch = false;
+  if (admin.password && (admin.password.startsWith('$2a$') || admin.password.startsWith('$2b$'))) {
+    isCurrentMatch = await bcrypt.compare(currentPassword, admin.password);
+  } else {
+    isCurrentMatch = (admin.password === currentPassword);
+  }
+
+  if (!isCurrentMatch) {
+    return res.status(400).json({
+      success: false,
+      message: 'Current password verification failed. Please check your password and try again.'
+    });
+  }
+
+  let updatedUsername = admin.username;
+  let updatedPassword = admin.password;
+  let usernameChanged = false;
+  let passwordChanged = false;
+
+  // 3. Validate and apply Username Change if specified
+  if (newUsername !== undefined && newUsername !== null) {
+    const trimmedUser = String(newUsername).trim();
+    if (trimmedUser.length < 3 || trimmedUser.length > 50) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username must be between 3 and 50 characters long.'
+      });
+    }
+    const usernameRegex = /^[a-zA-Z0-9._-]+$/;
+    if (!usernameRegex.test(trimmedUser)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username can only contain letters, numbers, hyphens, underscores, and dots.'
+      });
+    }
+    if (trimmedUser !== admin.username) {
+      updatedUsername = trimmedUser;
+      usernameChanged = true;
+    }
+  }
+
+  // 4. Validate and apply Password Change if specified
+  if (newPassword || confirmPassword) {
+    if (!newPassword || !confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: 'Both new password and confirm password are required.'
+      });
+    }
+    if (typeof newPassword !== 'string' || typeof confirmPassword !== 'string') {
+      return res.status(400).json({
+        success: false,
+        message: 'Password fields must be valid text.'
+      });
+    }
+    if (newPassword !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: 'New password and confirmation password do not match.'
+      });
+    }
+    if (newPassword.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: 'New password must be at least 6 characters long.'
+      });
+    }
+    if (newPassword.length > 128) {
+      return res.status(400).json({
+        success: false,
+        message: 'New password cannot exceed 128 characters.'
+      });
+    }
+    if (currentPassword === newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: 'New password must be different from current password.'
+      });
+    }
+
+    // Hash new password using bcryptjs (10 salt rounds)
+    updatedPassword = await bcrypt.hash(newPassword, 10);
+    passwordChanged = true;
+  }
+
+  // 5. Ensure at least one credential modification occurred
+  if (!usernameChanged && !passwordChanged) {
+    return res.status(400).json({
+      success: false,
+      message: 'No changes detected. Please specify a new username or new password.'
+    });
+  }
+
+  // 6. Persist updated adminUser to database
+  db.adminUser = {
+    username: updatedUsername,
+    password: updatedPassword
+  };
+  dbEngine.save(db);
+
+  dbEngine.logActivity(
+    'account_update',
+    `Super Admin credentials updated${usernameChanged ? ' (username changed)' : ''}${passwordChanged ? ' (password changed)' : ''}`,
+    updatedUsername
+  );
+
+  // 7. Issue refreshed JWT token reflecting updated identity
+  const newToken = jwt.sign(
+    { username: updatedUsername, role: 'ADMIN' },
+    JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+
+  res.json({
+    success: true,
+    message: passwordChanged
+      ? 'Admin credentials successfully updated. For security, please sign in with your new password.'
+      : 'Admin username successfully updated.',
+    user: { username: updatedUsername, role: 'ADMIN' },
+    token: newToken,
+    usernameChanged,
+    passwordChanged,
+    requireRelogin: passwordChanged
+  });
 });
 
 export default router;

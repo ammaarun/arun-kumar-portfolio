@@ -16,6 +16,7 @@ import { BlogView } from './views/BlogView';
 import { TestimonialsView } from './views/TestimonialsView';
 import { MessagesView } from './views/MessagesView';
 import { SettingsView } from './views/SettingsView';
+import { AccountSettingsView } from './views/AccountSettingsView';
 
 import { SectionBuilderView } from './views/SectionBuilderView';
 
@@ -57,7 +58,9 @@ export const AdminDashboardPlaceholder = () => {
       case 'messages':
         return <MessagesView />;
       case 'settings':
-        return <SettingsView />;
+        return <SettingsView setActiveTab={setActiveTab} />;
+      case 'account':
+        return <AccountSettingsView setActiveTab={setActiveTab} />;
       default:
         return <OverviewView setActiveTab={setActiveTab} />;
     }

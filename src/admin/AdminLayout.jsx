@@ -128,6 +128,7 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
       collapsible: true,
       items: [
         { id: 'settings', label: 'Website Settings', icon: Settings },
+        { id: 'account', label: 'Account Settings', icon: ShieldCheck },
       ]
     }
   ];
