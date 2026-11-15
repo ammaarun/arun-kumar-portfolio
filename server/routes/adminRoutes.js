@@ -569,35 +569,78 @@ router.delete('/skills', (req, res) => {
 
 // --- Projects CRUD ---
 router.post('/projects', (req, res) => {
+  const { title, description } = req.body;
+  if (!title || !title.trim()) {
+    return res.status(400).json({ success: false, message: 'Project title is required' });
+  }
+  if (!description || !description.trim()) {
+    return res.status(400).json({ success: false, message: 'Project description is required' });
+  }
+
   const db = dbEngine.get();
   const newProject = {
     id: `proj-${Date.now()}`,
     ...req.body,
+    title: title.trim(),
+    description: description.trim(),
     featured: req.body.featured ?? true
   };
   db.projects = db.projects || [];
   db.projects.unshift(newProject);
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.projects = db.projects;
+    }
+  }
+
   dbEngine.save(db);
+  dbEngine.logActivity('project', `Added project: ${newProject.title}`);
   res.json({ success: true, message: 'Project added successfully', data: newProject });
 });
 
 router.put('/projects/:id', (req, res) => {
   const { id } = req.params;
   const db = dbEngine.get();
+  db.projects = db.projects || [];
   const idx = db.projects.findIndex(p => p.id === id);
   if (idx === -1) {
     return res.status(404).json({ success: false, message: 'Project not found' });
   }
   db.projects[idx] = { ...db.projects[idx], ...req.body };
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.projects = db.projects;
+    }
+  }
+
   dbEngine.save(db);
+  dbEngine.logActivity('project', `Updated project: ${db.projects[idx].title}`);
   res.json({ success: true, message: 'Project updated successfully', data: db.projects[idx] });
 });
 
 router.delete('/projects/:id', (req, res) => {
   const { id } = req.params;
   const db = dbEngine.get();
+  db.projects = db.projects || [];
+  const projectToDelete = db.projects.find(p => p.id === id);
   db.projects = db.projects.filter(p => p.id !== id);
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.projects = db.projects;
+    }
+  }
+
   dbEngine.save(db);
+  dbEngine.logActivity('project', `Deleted project: ${projectToDelete ? projectToDelete.title : id}`);
   res.json({ success: true, message: 'Project deleted successfully' });
 });
 

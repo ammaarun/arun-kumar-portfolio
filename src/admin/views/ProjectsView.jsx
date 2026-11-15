@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Plus, Trash2, Edit3, ExternalLink, Terminal, CheckCircle2, X } from 'lucide-react';
+import { Plus, Trash2, Edit3, ExternalLink, Terminal, CheckCircle2, AlertCircle, Loader2, X } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { api } from '../../services/api';
 import { MediaPickerModal } from '../components/MediaPickerModal';
@@ -26,6 +26,9 @@ export const ProjectsView = () => {
   });
 
   const [saving, setSaving] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [modalError, setModalError] = useState('');
 
   // Field updater — always uses functional setState to avoid stale-closure overwrites.
   const updateField = useCallback((field, value) => {
@@ -34,6 +37,8 @@ export const ProjectsView = () => {
 
   const openNewModal = () => {
     setEditingId(null);
+    setSaving(false);
+    setModalError('');
     setFormData({
       title: '',
       subtitle: '',
@@ -51,6 +56,8 @@ export const ProjectsView = () => {
 
   const openEditModal = (proj) => {
     setEditingId(proj.id);
+    setSaving(false);
+    setModalError('');
     setFormData({
       ...proj,
       techInput: proj.tech ? proj.tech.join(', ') : ''
@@ -58,26 +65,62 @@ export const ProjectsView = () => {
     setModalOpen(true);
   };
 
+  const closeModal = () => {
+    setModalOpen(false);
+    setSaving(false);
+    setModalError('');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (saving) return; // Prevent duplicate submissions
+
     setSaving(true);
-    // Capture current snapshot via functional read
-    let snapshot;
-    setFormData(prev => { snapshot = prev; return prev; });
-    const techArray = snapshot.techInput ? snapshot.techInput.split(',').map(s => s.trim()).filter(Boolean) : [];
-    const payload = { ...snapshot, tech: techArray };
-    delete payload.techInput;
+    setModalError('');
 
     try {
-      if (editingId) {
-        await api.updateProject(editingId, payload);
-      } else {
-        await api.addProject(payload);
+      if (!formData.title || !formData.title.trim()) {
+        throw new Error('Project title is required.');
       }
+      if (!formData.description || !formData.description.trim()) {
+        throw new Error('Short card description is required.');
+      }
+
+      const techArray = formData.techInput
+        ? formData.techInput.split(',').map(s => s.trim()).filter(Boolean)
+        : (Array.isArray(formData.tech) ? formData.tech : []);
+
+      const payload = {
+        ...formData,
+        title: formData.title.trim(),
+        subtitle: formData.subtitle?.trim() || '',
+        description: formData.description.trim(),
+        category: formData.category || 'Backend & Microservices',
+        tech: techArray,
+        image: formData.image || '',
+        github: formData.github || '',
+        live: formData.live || '',
+        featured: formData.featured ?? true
+      };
+      delete payload.techInput;
+
+      let res;
+      if (editingId) {
+        res = await api.updateProject(editingId, payload);
+      } else {
+        res = await api.addProject(payload);
+      }
+
+      if (!res || !res.success) {
+        throw new Error(res?.message || 'Failed to save project. Please check details and try again.');
+      }
+
       await refreshData();
-      setModalOpen(false);
+      closeModal();
+      setSuccessMessage(editingId ? 'Project updated successfully.' : 'Project added successfully.');
+      setTimeout(() => setSuccessMessage(''), 5000);
     } catch (err) {
-      alert('Failed to save project');
+      setModalError(err.message || 'Failed to save project. Please check your connection.');
     } finally {
       setSaving(false);
     }
@@ -86,10 +129,16 @@ export const ProjectsView = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this project?')) return;
     try {
-      await api.deleteProject(id);
+      const res = await api.deleteProject(id);
+      if (!res || !res.success) {
+        throw new Error(res?.message || 'Failed to delete project.');
+      }
       await refreshData();
+      setSuccessMessage('Project deleted successfully.');
+      setTimeout(() => setSuccessMessage(''), 5000);
     } catch (err) {
-      alert('Failed to delete project');
+      setErrorMessage(err.message || 'Failed to delete project.');
+      setTimeout(() => setErrorMessage(''), 5000);
     }
   };
 
@@ -102,12 +151,37 @@ export const ProjectsView = () => {
         </div>
         <button
           onClick={openNewModal}
-          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all flex items-center space-x-2"
+          className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all flex items-center space-x-2 shadow-lg shadow-emerald-950/20"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Project</span>
         </button>
       </div>
+
+      {/* Notifications */}
+      {successMessage && (
+        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs flex items-center justify-between" role="status">
+          <div className="flex items-center space-x-2">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            <span>{successMessage}</span>
+          </div>
+          <button onClick={() => setSuccessMessage('')} className="text-emerald-400/60 hover:text-emerald-400">
+            <X className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-center justify-between" role="alert">
+          <div className="flex items-center space-x-2">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>{errorMessage}</span>
+          </div>
+          <button onClick={() => setErrorMessage('')} className="text-rose-400/60 hover:text-rose-400">
+            <X className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -151,30 +225,42 @@ export const ProjectsView = () => {
               <h3 className="text-base font-bold text-white">
                 {editingId ? 'Edit Project' : 'Add New Project'}
               </h3>
-              <button onClick={() => setModalOpen(false)} className="text-slate-400 hover:text-white">
+              <button onClick={closeModal} disabled={saving} className="text-slate-400 hover:text-white disabled:opacity-50">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
+            {/* Modal Error Alert */}
+            {modalError && (
+              <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-center space-x-2" role="alert">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{modalError}</span>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs text-slate-300">Project Title *</label>
+                  <label htmlFor="project-title" className="text-xs text-slate-300">Project Title *</label>
                   <input
+                    id="project-title"
                     type="text"
                     required
+                    disabled={saving}
                     value={formData.title}
                     onChange={(e) => updateField('title', e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 disabled:opacity-60"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs text-slate-300">Category *</label>
+                  <label htmlFor="project-category" className="text-xs text-slate-300">Category *</label>
                   <select
+                    id="project-category"
+                    disabled={saving}
                     value={formData.category}
                     onChange={(e) => updateField('category', e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 disabled:opacity-60"
                   >
                     <option value="Backend & Microservices">Backend & Microservices</option>
                     <option value="Full Stack">Full Stack</option>
@@ -183,50 +269,59 @@ export const ProjectsView = () => {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-300">Subtitle / Tagline</label>
+                <label htmlFor="project-subtitle" className="text-xs text-slate-300">Subtitle / Tagline</label>
                 <input
+                  id="project-subtitle"
                   type="text"
+                  disabled={saving}
                   value={formData.subtitle}
                   onChange={(e) => updateField('subtitle', e.target.value)}
-                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 disabled:opacity-60"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-300">Short Card Description *</label>
+                <label htmlFor="project-description" className="text-xs text-slate-300">Short Card Description *</label>
                 <textarea
+                  id="project-description"
                   rows={2}
                   required
+                  disabled={saving}
                   value={formData.description}
                   onChange={(e) => updateField('description', e.target.value)}
-                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 disabled:opacity-60"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-300">Technologies (comma-separated)</label>
+                <label htmlFor="project-tech" className="text-xs text-slate-300">Technologies (comma-separated)</label>
                 <input
+                  id="project-tech"
                   type="text"
+                  disabled={saving}
                   placeholder="Java 17, Spring Boot, Kafka, React, Redis"
                   value={formData.techInput}
                   onChange={(e) => updateField('techInput', e.target.value)}
-                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono"
+                  className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono disabled:opacity-60"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-300">Project Image Cover</label>
+                <label htmlFor="project-image" className="text-xs text-slate-300">Project Image Cover</label>
                 <div className="flex items-center space-x-2">
                   <input
+                    id="project-image"
                     type="text"
+                    disabled={saving}
                     value={formData.image}
                     onChange={(e) => updateField('image', e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono disabled:opacity-60"
                   />
                   <button
                     type="button"
+                    disabled={saving}
                     onClick={() => setMediaPickerOpen(true)}
-                    className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white shrink-0"
+                    className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white shrink-0 disabled:opacity-60"
                   >
                     Choose Image
                   </button>
@@ -235,45 +330,64 @@ export const ProjectsView = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs text-slate-300">GitHub URL</label>
+                  <label htmlFor="project-github" className="text-xs text-slate-300">GitHub URL</label>
                   <input
+                    id="project-github"
                     type="url"
+                    disabled={saving}
                     value={formData.github}
                     onChange={(e) => updateField('github', e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 disabled:opacity-60"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs text-slate-300">Live Demo URL</label>
+                  <label htmlFor="project-live" className="text-xs text-slate-300">Live Demo URL</label>
                   <input
+                    id="project-live"
                     type="url"
+                    disabled={saving}
                     value={formData.live}
                     onChange={(e) => updateField('live', e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 disabled:opacity-60"
                   />
                 </div>
               </div>
 
               <div className="flex justify-end space-x-2 pt-3">
-                <button type="button" onClick={() => setModalOpen(false)} className="px-4 py-2 rounded-xl bg-slate-800 text-xs text-slate-300">
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  disabled={saving}
+                  className="px-4 py-2 rounded-xl bg-slate-800 text-xs text-slate-300 hover:bg-slate-700 transition-colors disabled:opacity-60"
+                >
                   Cancel
                 </button>
-                <button type="submit" disabled={saving} className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold text-white">
-                  {saving ? 'Saving...' : 'Save Project'}
+                <button
+                  type="submit"
+                  disabled={saving}
+                  className="inline-flex items-center space-x-2 px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold text-white transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-md shadow-emerald-950/20"
+                >
+                  {saving ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      <span>Saving...</span>
+                    </>
+                  ) : (
+                    <span>Save Project</span>
+                  )}
                 </button>
               </div>
             </form>
           </div>
         </div>
       )}
+
       {/* Media Picker Modal */}
       <MediaPickerModal
         isOpen={mediaPickerOpen}
         onClose={() => setMediaPickerOpen(false)}
         onSelectMedia={(mediaRecord) => {
-          // Store stable reference — never store presigned URLs or serve paths.
-          // Functional updater avoids stale-closure overwrite of current form state.
           const imageValue = mediaRecord.storageBackend === 'neon'
             ? `neon::${mediaRecord.id}`
             : (mediaRecord.url || '');

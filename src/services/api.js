@@ -97,29 +97,53 @@ export const api = {
   },
 
   async addProject(projectData) {
-    const res = await fetch(`${API_BASE}/admin/projects`, {
-      method: 'POST',
-      headers: getAuthHeaders(),
-      body: JSON.stringify(projectData)
-    });
-    return res.json();
+    try {
+      const res = await fetch(`${API_BASE}/admin/projects`, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(projectData)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
   },
 
   async updateProject(id, projectData) {
-    const res = await fetch(`${API_BASE}/admin/projects/${id}`, {
-      method: 'PUT',
-      headers: getAuthHeaders(),
-      body: JSON.stringify(projectData)
-    });
-    return res.json();
+    try {
+      const res = await fetch(`${API_BASE}/admin/projects/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(projectData)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
   },
 
   async deleteProject(id) {
-    const res = await fetch(`${API_BASE}/admin/projects/${id}`, {
-      method: 'DELETE',
-      headers: getAuthHeaders()
-    });
-    return res.json();
+    try {
+      const res = await fetch(`${API_BASE}/admin/projects/${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders()
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
   },
 
   async addService(serviceData) {
