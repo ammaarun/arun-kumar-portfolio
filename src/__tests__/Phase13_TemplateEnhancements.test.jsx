@@ -115,7 +115,7 @@ describe('Phase 13: Template-Specific Portfolio Management & Visibility Behavior
 
       expect(screen.getAllByText('Sarah Connor').length).toBeGreaterThan(0);
       expect(screen.getByText('Cybersecurity Engineer')).toBeInTheDocument();
-      expect(screen.getByText('SECURITY ARCHITECT')).toBeInTheDocument();
+      expect(screen.getAllByText('SECURITY ARCHITECT').length).toBeGreaterThan(0);
       expect(screen.getByText('Cloud Penetration & DevSecOps')).toBeInTheDocument();
     });
 

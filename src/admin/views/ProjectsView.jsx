@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Plus, Trash2, Edit3, ExternalLink, Terminal, CheckCircle2, AlertCircle, Loader2, X } from 'lucide-react';
+import { Plus, Trash2, Edit3, ExternalLink, Terminal, CheckCircle2, AlertCircle, Loader2, X, Star } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { api } from '../../services/api';
 import { MediaPickerModal } from '../components/MediaPickerModal';
@@ -142,6 +142,22 @@ export const ProjectsView = () => {
     }
   };
 
+  const handleToggleFeatured = async (proj) => {
+    try {
+      const updatedFeatured = !proj.featured;
+      const res = await api.updateProject(proj.id, { ...proj, featured: updatedFeatured });
+      if (!res || !res.success) {
+        throw new Error(res?.message || 'Failed to toggle featured status.');
+      }
+      await refreshData();
+      setSuccessMessage(updatedFeatured ? `Marked "${proj.title}" as Featured.` : `Unmarked "${proj.title}" from Featured.`);
+      setTimeout(() => setSuccessMessage(''), 4000);
+    } catch (err) {
+      setErrorMessage(err.message || 'Failed to toggle featured status.');
+      setTimeout(() => setErrorMessage(''), 4000);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -186,17 +202,50 @@ export const ProjectsView = () => {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((proj) => (
-          <div key={proj.id} className="p-6 rounded-2xl bg-[#121723] border border-slate-800 space-y-4 flex flex-col justify-between">
+          <div
+            key={proj.id}
+            className={`p-6 rounded-2xl bg-[#121723] border space-y-4 flex flex-col justify-between transition-all ${
+              proj.featured ? 'border-emerald-500/30' : 'border-slate-800'
+            }`}
+          >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 font-semibold">
-                  {proj.category}
-                </span>
+                <div className="flex items-center space-x-2">
+                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 font-semibold">
+                    {proj.category}
+                  </span>
+                  {proj.featured && (
+                    <span className="px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-md flex items-center space-x-1">
+                      <Star className="w-3 h-3 fill-emerald-400 text-emerald-400" />
+                      <span>Featured</span>
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-center space-x-1">
-                  <button onClick={() => openEditModal(proj)} className="p-1.5 text-slate-400 hover:text-emerald-400 rounded-lg">
+                  <button
+                    onClick={() => handleToggleFeatured(proj)}
+                    className={`p-1.5 rounded-lg transition-colors ${
+                      proj.featured
+                        ? 'text-amber-400 hover:text-amber-300 bg-amber-500/10'
+                        : 'text-slate-400 hover:text-amber-400 hover:bg-slate-800/50'
+                    }`}
+                    title={proj.featured ? 'Unmark as Featured' : 'Mark as Featured'}
+                    aria-label={proj.featured ? `Unmark ${proj.title} as Featured` : `Mark ${proj.title} as Featured`}
+                  >
+                    <Star className={`w-4 h-4 ${proj.featured ? 'fill-amber-400' : ''}`} />
+                  </button>
+                  <button
+                    onClick={() => openEditModal(proj)}
+                    className="p-1.5 text-slate-400 hover:text-emerald-400 rounded-lg transition-colors"
+                    aria-label={`Edit ${proj.title}`}
+                  >
                     <Edit3 className="w-4 h-4" />
                   </button>
-                  <button onClick={() => handleDelete(proj.id)} className="p-1.5 text-slate-400 hover:text-red-400 rounded-lg">
+                  <button
+                    onClick={() => handleDelete(proj.id)}
+                    className="p-1.5 text-slate-400 hover:text-red-400 rounded-lg transition-colors"
+                    aria-label={`Delete ${proj.title}`}
+                  >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
@@ -352,6 +401,21 @@ export const ProjectsView = () => {
                     className="w-full px-3.5 py-2 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500 disabled:opacity-60"
                   />
                 </div>
+              </div>
+
+              <div className="flex items-center space-x-2 pt-1 pb-1">
+                <input
+                  id="project-featured"
+                  type="checkbox"
+                  disabled={saving}
+                  checked={Boolean(formData.featured)}
+                  onChange={(e) => updateField('featured', e.target.checked)}
+                  className="w-4 h-4 rounded bg-[#0a0d14] border-slate-800 text-emerald-500 focus:ring-emerald-500 cursor-pointer"
+                />
+                <label htmlFor="project-featured" className="text-xs text-slate-300 font-medium cursor-pointer flex items-center space-x-1.5 select-none">
+                  <Star className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Mark as Featured Project (prominently showcased at the top of your portfolio)</span>
+                </label>
               </div>
 
               <div className="flex justify-end space-x-2 pt-3">

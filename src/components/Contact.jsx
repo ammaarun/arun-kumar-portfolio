@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
+import {
+  GithubIcon,
+  LinkedinIcon,
+  TwitterIcon,
+  YoutubeIcon,
+  InstagramIcon,
+  WebsiteIcon
+} from './SocialIcons';
 import { useData } from '../context/DataContext';
 import { api } from '../services/api';
 
@@ -111,41 +118,59 @@ export const Contact = () => {
               </div>
 
               {/* Social Buttons */}
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-2">
-                <span className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase">Social Channels:</span>
-                <div className="flex items-center space-x-2">
-                  {personalInfo.github && (
-                    <a
-                      href={personalInfo.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0a0d14] text-slate-700 dark:text-slate-300 hover:text-emerald-400 border border-slate-200 dark:border-slate-800 transition-colors"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                    </a>
-                  )}
-                  {personalInfo.linkedin && (
-                    <a
-                      href={personalInfo.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0a0d14] text-slate-700 dark:text-slate-300 hover:text-emerald-400 border border-slate-200 dark:border-slate-800 transition-colors"
-                    >
-                      <LinkedinIcon className="w-4 h-4" />
-                    </a>
-                  )}
-                  {personalInfo.twitter && (
-                    <a
-                      href={personalInfo.twitter}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0a0d14] text-slate-700 dark:text-slate-300 hover:text-emerald-400 border border-slate-200 dark:border-slate-800 transition-colors"
-                    >
-                      <TwitterIcon className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
+              {(() => {
+                const platforms = [
+                  { key: 'github', label: 'GitHub', icon: GithubIcon },
+                  { key: 'linkedin', label: 'LinkedIn', icon: LinkedinIcon },
+                  { key: 'twitter', label: 'Twitter / X', icon: TwitterIcon },
+                  { key: 'youtube', label: 'YouTube', icon: YoutubeIcon },
+                  { key: 'instagram', label: 'Instagram', icon: InstagramIcon },
+                  { key: 'website', label: 'Personal Website', icon: WebsiteIcon }
+                ];
+                const isValidUrl = (urlStr) => {
+                  if (!urlStr || typeof urlStr !== 'string') return false;
+                  const trimmed = urlStr.trim();
+                  if (!trimmed || trimmed === '#') return false;
+                  try {
+                    const u = new URL(trimmed);
+                    return u.protocol === 'http:' || u.protocol === 'https:';
+                  } catch (_) {
+                    return false;
+                  }
+                };
+                const visible = platforms.filter(p => {
+                  const url = personalInfo[p.key];
+                  if (!url || typeof url !== 'string' || !url.trim() || !isValidUrl(url)) return false;
+                  if (personalInfo.socialVisibility && personalInfo.socialVisibility[p.key] === false) return false;
+                  return true;
+                });
+
+                if (visible.length === 0) return null;
+
+                return (
+                  <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-2">
+                    <span className="text-xs font-mono text-slate-600 dark:text-slate-400 uppercase">Social Channels:</span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      {visible.map(p => {
+                        const IconComp = p.icon;
+                        return (
+                          <a
+                            key={p.key}
+                            href={personalInfo[p.key]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={p.label}
+                            title={p.label}
+                            className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0a0d14] text-slate-700 dark:text-slate-300 hover:text-emerald-400 border border-slate-200 dark:border-slate-800 transition-colors"
+                          >
+                            <IconComp className="w-4 h-4" />
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </div>
 

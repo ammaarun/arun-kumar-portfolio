@@ -146,6 +146,108 @@ export const api = {
     }
   },
 
+  // Experience CRUD
+  async addExperience(expData) {
+    try {
+      const res = await fetch(`${API_BASE}/admin/experience`, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(expData)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
+  },
+
+  async updateExperience(id, expData) {
+    try {
+      const res = await fetch(`${API_BASE}/admin/experience/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(expData)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
+  },
+
+  async deleteExperience(id) {
+    try {
+      const res = await fetch(`${API_BASE}/admin/experience/${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders()
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
+  },
+
+  // Education CRUD
+  async addEducation(eduData) {
+    try {
+      const res = await fetch(`${API_BASE}/admin/education`, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(eduData)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
+  },
+
+  async updateEducation(id, eduData) {
+    try {
+      const res = await fetch(`${API_BASE}/admin/education/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(eduData)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
+  },
+
+  async deleteEducation(id) {
+    try {
+      const res = await fetch(`${API_BASE}/admin/education/${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders()
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        return { success: false, message: data.message || `Server error (${res.status})` };
+      }
+      return data;
+    } catch (err) {
+      return { success: false, message: err.message || 'Network request failed' };
+    }
+  },
+
   async addService(serviceData) {
     const res = await fetch(`${API_BASE}/admin/services`, {
       method: 'POST',

@@ -532,6 +532,23 @@ router.post('/presets/:id/apply', (req, res) => {
 // --- Profile & About ---
 router.put('/profile', (req, res) => {
   const db = dbEngine.get();
+
+  // Validate social URLs if non-empty
+  const socialKeys = ['github', 'linkedin', 'twitter', 'youtube', 'instagram', 'website'];
+  for (const key of socialKeys) {
+    if (req.body[key] && typeof req.body[key] === 'string' && req.body[key].trim()) {
+      const val = req.body[key].trim();
+      try {
+        const u = new URL(val);
+        if (u.protocol !== 'http:' && u.protocol !== 'https:') {
+          return res.status(400).json({ success: false, message: `Invalid URL for ${key}. Must start with http:// or https://` });
+        }
+      } catch (_) {
+        return res.status(400).json({ success: false, message: `Invalid URL for ${key}. Must start with http:// or https://` });
+      }
+    }
+  }
+
   db.personalInfo = { ...db.personalInfo, ...req.body };
   dbEngine.save(db);
   res.json({ success: true, message: 'Profile updated successfully', data: db.personalInfo });
@@ -646,20 +663,218 @@ router.delete('/projects/:id', (req, res) => {
 
 // --- Experience & Education CRUD ---
 router.post('/experience', (req, res) => {
+  const { company, role } = req.body;
+  if (!company || !company.trim()) {
+    return res.status(400).json({ success: false, message: 'Company name is required' });
+  }
+  if (!role || !role.trim()) {
+    return res.status(400).json({ success: false, message: 'Role title is required' });
+  }
+
   const db = dbEngine.get();
-  const newExp = { id: `exp-${Date.now()}`, ...req.body };
+  const newExp = {
+    id: `exp-${Date.now()}`,
+    ...req.body,
+    company: company.trim(),
+    role: role.trim(),
+    period: req.body.period?.trim() || '2024 - Present',
+    location: req.body.location?.trim() || 'Telangana, India',
+    achievements: Array.isArray(req.body.achievements) ? req.body.achievements : [],
+    type: req.body.type || 'Full-time'
+  };
+
   db.experience = db.experience || [];
   db.experience.unshift(newExp);
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.experience = db.experience;
+    }
+  }
+
   dbEngine.save(db);
-  res.json({ success: true, message: 'Experience added', data: newExp });
+  dbEngine.logActivity('experience', `Added work role: ${newExp.role} at ${newExp.company}`);
+  res.json({ success: true, message: 'Experience added successfully', data: newExp });
+});
+
+router.put('/experience/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  db.experience = db.experience || [];
+  const idx = db.experience.findIndex(e => e.id === id);
+  if (idx === -1) {
+    return res.status(404).json({ success: false, message: 'Experience entry not found' });
+  }
+
+  const { company, role } = req.body;
+  if (company !== undefined && !company.trim()) {
+    return res.status(400).json({ success: false, message: 'Company name cannot be empty' });
+  }
+  if (role !== undefined && !role.trim()) {
+    return res.status(400).json({ success: false, message: 'Role title cannot be empty' });
+  }
+
+  db.experience[idx] = {
+    ...db.experience[idx],
+    ...req.body,
+    ...(company ? { company: company.trim() } : {}),
+    ...(role ? { role: role.trim() } : {})
+  };
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.experience = db.experience;
+    }
+  }
+
+  dbEngine.save(db);
+  dbEngine.logActivity('experience', `Updated work role: ${db.experience[idx].role} at ${db.experience[idx].company}`);
+  res.json({ success: true, message: 'Experience updated successfully', data: db.experience[idx] });
 });
 
 router.delete('/experience/:id', (req, res) => {
   const { id } = req.params;
   const db = dbEngine.get();
+  db.experience = db.experience || [];
+  const expToDelete = db.experience.find(e => e.id === id);
   db.experience = db.experience.filter(e => e.id !== id);
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.experience = db.experience;
+    }
+  }
+
   dbEngine.save(db);
-  res.json({ success: true, message: 'Experience deleted' });
+  dbEngine.logActivity('experience', `Deleted work role: ${expToDelete ? expToDelete.role : id}`);
+  res.json({ success: true, message: 'Experience deleted successfully' });
+});
+
+// --- Education CRUD ---
+router.post('/education', (req, res) => {
+  const { institution, degree, fieldOfStudy } = req.body;
+  if (!institution || !institution.trim()) {
+    return res.status(400).json({ success: false, message: 'Institution name is required' });
+  }
+  if (!degree || !degree.trim()) {
+    return res.status(400).json({ success: false, message: 'Degree / qualification is required' });
+  }
+  if (!fieldOfStudy || !fieldOfStudy.trim()) {
+    return res.status(400).json({ success: false, message: 'Field of study is required' });
+  }
+
+  const db = dbEngine.get();
+  const period = req.body.period?.trim() || (req.body.startDate && req.body.endDate 
+    ? `${req.body.startDate.trim()} - ${req.body.endDate.trim()}`
+    : (req.body.startDate ? `${req.body.startDate.trim()} - Present` : ''));
+
+  const newEdu = {
+    id: `edu-${Date.now()}`,
+    institution: institution.trim(),
+    degree: degree.trim(),
+    fieldOfStudy: fieldOfStudy.trim(),
+    period,
+    startDate: req.body.startDate?.trim() || '',
+    endDate: req.body.endDate?.trim() || '',
+    location: req.body.location?.trim() || '',
+    gradeGpa: req.body.gradeGpa?.trim() || '',
+    description: req.body.description?.trim() || ''
+  };
+
+  db.education = db.education || [];
+  db.education.unshift(newEdu);
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.education = db.education;
+    }
+  }
+
+  dbEngine.save(db);
+  dbEngine.logActivity('education', `Added education: ${newEdu.degree} from ${newEdu.institution}`);
+  res.json({ success: true, message: 'Education added successfully', data: newEdu });
+});
+
+router.put('/education/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  db.education = db.education || [];
+  const idx = db.education.findIndex(e => e.id === id);
+  if (idx === -1) {
+    return res.status(404).json({ success: false, message: 'Education entry not found' });
+  }
+
+  const { institution, degree, fieldOfStudy } = req.body;
+  if (institution !== undefined && !institution.trim()) {
+    return res.status(400).json({ success: false, message: 'Institution name cannot be empty' });
+  }
+  if (degree !== undefined && !degree.trim()) {
+    return res.status(400).json({ success: false, message: 'Degree cannot be empty' });
+  }
+  if (fieldOfStudy !== undefined && !fieldOfStudy.trim()) {
+    return res.status(400).json({ success: false, message: 'Field of study cannot be empty' });
+  }
+
+  const existing = db.education[idx];
+  const startDate = req.body.startDate !== undefined ? req.body.startDate.trim() : (existing.startDate || '');
+  const endDate = req.body.endDate !== undefined ? req.body.endDate.trim() : (existing.endDate || '');
+  const period = req.body.period !== undefined ? req.body.period.trim() : (
+    startDate && endDate ? `${startDate} - ${endDate}` : (existing.period || '')
+  );
+
+  db.education[idx] = {
+    ...existing,
+    ...req.body,
+    ...(institution ? { institution: institution.trim() } : {}),
+    ...(degree ? { degree: degree.trim() } : {}),
+    ...(fieldOfStudy ? { fieldOfStudy: fieldOfStudy.trim() } : {}),
+    period,
+    startDate,
+    endDate,
+    ...(req.body.location !== undefined ? { location: req.body.location.trim() } : {}),
+    ...(req.body.gradeGpa !== undefined ? { gradeGpa: req.body.gradeGpa.trim() } : {}),
+    ...(req.body.description !== undefined ? { description: req.body.description.trim() } : {})
+  };
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.education = db.education;
+    }
+  }
+
+  dbEngine.save(db);
+  dbEngine.logActivity('education', `Updated education: ${db.education[idx].degree} from ${db.education[idx].institution}`);
+  res.json({ success: true, message: 'Education updated successfully', data: db.education[idx] });
+});
+
+router.delete('/education/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dbEngine.get();
+  db.education = db.education || [];
+  const eduToDelete = db.education.find(e => e.id === id);
+  db.education = db.education.filter(e => e.id !== id);
+
+  // Sync with active client portfolioData
+  if (db.clients && db.activeClientId) {
+    const activeClient = db.clients.find(c => c.id === db.activeClientId);
+    if (activeClient && activeClient.portfolioData) {
+      activeClient.portfolioData.education = db.education;
+    }
+  }
+
+  dbEngine.save(db);
+  dbEngine.logActivity('education', `Deleted education: ${eduToDelete ? eduToDelete.degree : id}`);
+  res.json({ success: true, message: 'Education deleted successfully' });
 });
 
 // --- Services CRUD ---

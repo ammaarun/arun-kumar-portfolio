@@ -1,13 +1,128 @@
 import React, { useState } from 'react';
-import { ArrowRight, MapPin, Download, Mail, Check, Copy, Code2, Terminal, Sparkles, User } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
+import {
+  ArrowRight,
+  MapPin,
+  Download,
+  Mail,
+  Check,
+  Copy,
+  Code2,
+  Terminal,
+  Sparkles,
+  User,
+  ExternalLink
+} from 'lucide-react';
+import {
+  GithubIcon,
+  LinkedinIcon,
+  TwitterIcon,
+  YoutubeIcon,
+  InstagramIcon,
+  WebsiteIcon
+} from './SocialIcons';
 import { useData } from '../context/DataContext';
 import { NeonPublicImage } from './NeonPublicImage';
 
+const SOCIAL_PLATFORMS = [
+  { key: 'github', label: 'GitHub', icon: GithubIcon },
+  { key: 'linkedin', label: 'LinkedIn', icon: LinkedinIcon },
+  { key: 'twitter', label: 'Twitter / X', icon: TwitterIcon },
+  { key: 'youtube', label: 'YouTube', icon: YoutubeIcon },
+  { key: 'instagram', label: 'Instagram', icon: InstagramIcon },
+  { key: 'website', label: 'Personal Website', icon: WebsiteIcon },
+];
+
+const isValidUrl = (urlStr) => {
+  if (!urlStr || typeof urlStr !== 'string') return false;
+  const trimmed = urlStr.trim();
+  if (!trimmed || trimmed === '#') return false;
+  try {
+    const parsed = new URL(trimmed);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch (_) {
+    return false;
+  }
+};
+
+/**
+ * Resolves the list of Hero CTAs with independent label and action mapping.
+ * Provides backward compatibility for older client records and presets.
+ */
+export const resolveHeroCtas = (personalInfo, data) => {
+  if (Array.isArray(personalInfo?.heroCtas) && personalInfo.heroCtas.length > 0) {
+    return [...personalInfo.heroCtas].sort((a, b) => (a.order || 0) - (b.order || 0));
+  }
+
+  const isFreelancerCTA = personalInfo?.showFreelancerCTA !== undefined
+    ? personalInfo.showFreelancerCTA
+    : (personalInfo?.profileType === 'freelancer' || data?.profileType === 'freelancer');
+
+  const legacyCta = (personalInfo?.heroCtaText || '').trim();
+  const legacyProjectsCta = (personalInfo?.heroProjectsCtaText || '').trim();
+
+  let projectsLabel = 'View My Projects';
+  let contactLabel = isFreelancerCTA ? 'Request Custom Portfolio' : 'Contact Me';
+
+  if (legacyProjectsCta) {
+    projectsLabel = legacyProjectsCta;
+  }
+
+  if (legacyCta) {
+    const lower = legacyCta.toLowerCase();
+    const isProjectLike =
+      lower.includes('project') ||
+      lower.includes('work') ||
+      lower.includes('app') ||
+      lower.includes('case stud') ||
+      lower.includes('design') ||
+      lower.includes('course') ||
+      lower.includes('curriculum');
+
+    if (isProjectLike) {
+      // Legacy text was clearly intended for the projects button
+      projectsLabel = legacyCta;
+      contactLabel = isFreelancerCTA ? 'Request Custom Portfolio' : 'Contact Me';
+    } else {
+      // Legacy text was intended for the contact / inquiry button
+      contactLabel = legacyCta;
+      if (!legacyProjectsCta) {
+        projectsLabel = 'View My Projects';
+      }
+    }
+  }
+
+  return [
+    {
+      id: 'projects',
+      action: 'projects',
+      label: projectsLabel,
+      enabled: true,
+      style: 'primary',
+      order: 1
+    },
+    {
+      id: 'contact',
+      action: 'contact',
+      label: contactLabel,
+      enabled: true,
+      style: 'secondary',
+      order: 2
+    },
+    {
+      id: 'resume',
+      action: 'resume',
+      label: 'Download Resume',
+      enabled: true,
+      style: 'outline',
+      order: 3
+    }
+  ];
+};
+
 export const Hero = ({ onOpenResume, onOpenInquiry }) => {
   const { data } = useData();
-  const personalInfo = data.personalInfo || {};
-  const codeSnippets = data.codeSnippets || {};
+  const personalInfo = data?.personalInfo || {};
+  const codeSnippets = data?.codeSnippets || {};
 
   const [activeTab, setActiveTab] = useState('java');
   const [copied, setCopied] = useState(false);
@@ -55,24 +170,60 @@ export const Hero = ({ onOpenResume, onOpenInquiry }) => {
     ? personalInfo.showFreelancerCTA
     : (personalInfo.profileType === 'freelancer' || data?.profileType === 'freelancer');
 
-  const primaryCtaText = personalInfo.heroCtaText || (
-    isFreelancerCTA ? 'Request Custom Portfolio' : 'Get in Touch'
-  );
+  // Section visibility checks
+  const rawSections = data?.designConfig?.sections;
+  const isSectionVisible = (sectionId) => {
+    if (!rawSections || !Array.isArray(rawSections) || rawSections.length === 0) {
+      return true;
+    }
+    const sec = rawSections.find(s => s.id === sectionId);
+    return sec ? sec.visible !== false : true;
+  };
 
-  const handlePrimaryCtaClick = () => {
+  const showProjectsSection = isSectionVisible('projects');
+  const showContactSection = isSectionVisible('contact');
+
+  const handleScrollToProjects = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.getElementById('projects');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleContactClick = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
     if (isFreelancerCTA && onOpenInquiry) {
       onOpenInquiry();
-    } else {
-      const contactEl = document.getElementById('contact');
-      if (contactEl) {
-        contactEl.scrollIntoView({ behavior: 'smooth' });
-      } else if (personalInfo.email) {
-        window.location.href = `mailto:${personalInfo.email}`;
-      }
+      return;
+    }
+    const el = document.getElementById('contact');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else if (personalInfo.email) {
+      window.location.href = `mailto:${personalInfo.email}`;
     }
   };
 
   const showVisual = visualType !== 'none' && visualType !== 'hidden';
+
+  // Compute enabled and valid social links
+  const visibleSocialLinks = SOCIAL_PLATFORMS.filter(plat => {
+    const url = personalInfo[plat.key];
+    if (!url || typeof url !== 'string' || !url.trim() || !isValidUrl(url)) {
+      return false;
+    }
+    if (personalInfo.socialVisibility && personalInfo.socialVisibility[plat.key] === false) {
+      return false;
+    }
+    return true;
+  }).map(plat => ({
+    ...plat,
+    url: personalInfo[plat.key].trim()
+  }));
+
+  // Resolve independent Hero CTAs
+  const resolvedCtas = resolveHeroCtas(personalInfo, data);
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-slate-50 dark:bg-[#0a0d14]">
@@ -126,37 +277,84 @@ export const Hero = ({ onOpenResume, onOpenInquiry }) => {
               {personalInfo.shortBio || personalInfo.bio || personalInfo.tagline}
             </p>
 
-            {/* Action Buttons */}
+            {/* Dynamic Hero Action Buttons (CTAs) */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              {primaryCtaText ? (
-                <button
-                  onClick={handlePrimaryCtaClick}
-                  className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-900 dark:text-white font-bold text-xs shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02]"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>{primaryCtaText}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              ) : null}
+              {resolvedCtas.map(cta => {
+                if (cta.enabled === false) return null;
 
-              <a
-                href="#projects"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-white dark:bg-[#121723] hover:bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-bold text-xs transition-all"
-              >
-                <span>View Featured Work</span>
-              </a>
+                // Section visibility & availability checks
+                if (cta.action === 'projects' && !showProjectsSection) return null;
+                if (cta.action === 'contact' && !showContactSection) return null;
+                if (cta.action === 'resume' && !hasResume) return null;
+                if (cta.action === 'external' && !cta.url) return null;
 
-              {hasResume && (
-                <button
-                  type="button"
-                  onClick={handleDownloadResume}
-                  className="inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs transition-all"
-                  aria-label="Download Resume"
-                >
-                  <Download className="w-4 h-4 text-emerald-400" />
-                  <span>Download Resume</span>
-                </button>
-              )}
+                const styleClass = cta.style === 'primary'
+                  ? 'bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02]'
+                  : cta.style === 'outline'
+                  ? 'bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs transition-all'
+                  : 'bg-white dark:bg-[#121723] hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-bold text-xs transition-all';
+
+                if (cta.action === 'projects') {
+                  return (
+                    <a
+                      key={cta.id || 'projects'}
+                      href="#projects"
+                      onClick={handleScrollToProjects}
+                      className={`inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl ${styleClass}`}
+                    >
+                      <Code2 className="w-4 h-4" />
+                      <span>{cta.label}</span>
+                      {cta.style === 'primary' && <ArrowRight className="w-4 h-4" />}
+                    </a>
+                  );
+                }
+
+                if (cta.action === 'contact') {
+                  return (
+                    <button
+                      key={cta.id || 'contact'}
+                      type="button"
+                      onClick={handleContactClick}
+                      className={`inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl ${styleClass}`}
+                    >
+                      <Mail className="w-4 h-4 text-emerald-400" />
+                      <span>{cta.label}</span>
+                    </button>
+                  );
+                }
+
+                if (cta.action === 'resume') {
+                  return (
+                    <button
+                      key={cta.id || 'resume'}
+                      type="button"
+                      onClick={handleDownloadResume}
+                      className={`inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl ${styleClass}`}
+                      aria-label={cta.label}
+                    >
+                      <Download className="w-4 h-4 text-emerald-400" />
+                      <span>{cta.label}</span>
+                    </button>
+                  );
+                }
+
+                if (cta.action === 'external') {
+                  return (
+                    <a
+                      key={cta.id || 'external'}
+                      href={cta.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center space-x-2 px-5 py-3.5 rounded-xl ${styleClass}`}
+                    >
+                      <span>{cta.label}</span>
+                      <ExternalLink className="w-4 h-4 text-emerald-400" />
+                    </a>
+                  );
+                }
+
+                return null;
+              })}
             </div>
 
             {resumeError && (
@@ -166,159 +364,126 @@ export const Hero = ({ onOpenResume, onOpenInquiry }) => {
             )}
 
             {/* Social Links */}
-            <div className="pt-4 flex items-center space-x-4 border-t border-slate-200/80 dark:border-slate-800/80 max-w-md">
-              <span className="text-xs font-mono uppercase tracking-wider text-slate-500">
-                Connect:
-              </span>
-              <div className="flex items-center space-x-2">
-                {personalInfo.github && (
-                  <a
-                    href={personalInfo.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-emerald-400 hover:bg-white dark:bg-[#121723] transition-colors"
-                    title="GitHub Profile"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                  </a>
-                )}
-                {personalInfo.linkedin && (
-                  <a
-                    href={personalInfo.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-emerald-400 hover:bg-white dark:bg-[#121723] transition-colors"
-                    title="LinkedIn Profile"
-                  >
-                    <LinkedinIcon className="w-4 h-4" />
-                  </a>
-                )}
-                {personalInfo.twitter && (
-                  <a
-                    href={personalInfo.twitter}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-emerald-400 hover:bg-white dark:bg-[#121723] transition-colors"
-                    title="Twitter / X"
-                  >
-                    <TwitterIcon className="w-4 h-4" />
-                  </a>
-                )}
-                {personalInfo.email && (
-                  <a
-                    href={`mailto:${personalInfo.email}`}
-                    className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-emerald-400 hover:bg-white dark:bg-[#121723] transition-colors"
-                    title="Direct Email"
-                  >
-                    <Mail className="w-4 h-4" />
-                  </a>
-                )}
+            {(visibleSocialLinks.length > 0 || personalInfo.email) && (
+              <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-slate-200/80 dark:border-slate-800/80 max-w-lg">
+                <span className="text-xs font-mono uppercase tracking-wider text-slate-500">
+                  Connect:
+                </span>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {visibleSocialLinks.map((plat) => {
+                    const IconComp = plat.icon;
+                    return (
+                      <a
+                        key={plat.key}
+                        href={plat.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-[#121723] transition-colors"
+                        title={plat.label}
+                        aria-label={plat.label}
+                      >
+                        <IconComp className="w-4 h-4" />
+                      </a>
+                    );
+                  })}
+                  {personalInfo.email && (
+                    <a
+                      href={`mailto:${personalInfo.email}`}
+                      className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-[#121723] transition-colors"
+                      title="Direct Email"
+                      aria-label="Direct Email"
+                    >
+                      <Mail className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Right Column - Configurable Hero Visual */}
           {showVisual && (
-            <div className="lg:col-span-5">
-              {visualType === 'image' ? (
-                <div className="flex justify-center">
-                  <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl bg-white dark:bg-[#121723] group">
+            <div className="lg:col-span-5 relative mt-8 lg:mt-0">
+              {visualType === 'image' && personalInfo.image ? (
+                /* Profile / Avatar Image Visual */
+                <div className="relative mx-auto max-w-sm sm:max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 bg-[#0e131f] shadow-2xl p-3">
+                  <div className="w-full h-full rounded-2xl overflow-hidden relative">
                     <NeonPublicImage
                       src={personalInfo.image}
-                      alt={personalInfo.name || 'Hero'}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      fallback={
-                        <div className="w-full h-full flex items-center justify-center text-slate-500">
-                          <User className="w-20 h-20 text-emerald-500/30" />
-                        </div>
-                      }
+                      alt={personalInfo.name || 'Profile'}
+                      className="w-full h-full object-cover"
                     />
                   </div>
-                </div>
-              ) : visualType === 'highlights' ? (
-                <div className="p-6 rounded-2xl bg-white dark:bg-[#121723] border border-slate-200 dark:border-slate-800 space-y-4">
-                  <h3 className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Professional Highlights</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {(data.stats || []).map((s, idx) => (
-                      <div key={idx} className="p-4 rounded-xl bg-slate-50 dark:bg-[#0a0d14] border border-slate-200/80 dark:border-slate-800/80">
-                        <div className="text-2xl font-bold font-mono text-emerald-400">{s.value}</div>
-                        <div className="text-xs font-semibold text-slate-900 dark:text-white mt-1">{s.label}</div>
-                        <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{s.description}</div>
-                      </div>
-                    ))}
-                  </div>
+                  {/* Decorative Corner Accents */}
+                  <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-emerald-400" />
+                  <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-emerald-400" />
                 </div>
               ) : (
-                <div className="relative rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-[#0d1117] overflow-hidden group">
-                  <div className="flex items-center justify-between px-4 py-3 bg-slate-200 dark:bg-[#161b22] border-b border-slate-200 dark:border-slate-800">
+                /* Developer Terminal / Code Visual */
+                <div className="relative rounded-2xl bg-slate-900 dark:bg-[#0e131f] border border-slate-800 shadow-2xl overflow-hidden">
+                  {/* Terminal Header */}
+                  <div className="flex items-center justify-between px-4 py-3 bg-slate-950/80 border-b border-slate-800">
                     <div className="flex items-center space-x-2">
-                      <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block" />
-                      <span className="text-xs font-mono text-slate-500 dark:text-slate-400 ml-2 flex items-center space-x-1">
-                        <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>workstation:~</span>
+                      <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                      <span className="text-xs font-mono text-slate-400 ml-2">
+                        {currentSnippet.filename}
                       </span>
                     </div>
 
-                    <div className="flex items-center bg-slate-100 dark:bg-[#0d1117] p-1 rounded-lg border border-slate-200 dark:border-slate-800">
-                      <button
-                        onClick={() => setActiveTab('java')}
-                        className={`px-2.5 py-1 text-[11px] font-mono rounded-md transition-all ${
-                          activeTab === 'java'
-                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                            : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200'
-                        }`}
-                      >
-                        Backend
-                      </button>
-                      <button
-                        onClick={() => setActiveTab('react')}
-                        className={`px-2.5 py-1 text-[11px] font-mono rounded-md transition-all ${
-                          activeTab === 'react'
-                            ? 'bg-teal-500/20 text-teal-300 border border-teal-500/30'
-                            : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200'
-                        }`}
-                      >
-                        Frontend
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between px-4 py-2 bg-slate-200 dark:bg-[#12161f] border-b border-slate-200/60 dark:border-slate-800/60 text-xs font-mono text-slate-500 dark:text-slate-400">
                     <div className="flex items-center space-x-2">
-                      <Code2 className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-slate-800 dark:text-slate-200">{currentSnippet.filename}</span>
-                    </div>
-                    <button
-                      onClick={handleCopy}
-                      className="flex items-center space-x-1 text-[11px] text-slate-500 dark:text-slate-400 hover:text-emerald-400 transition-colors"
-                      title="Copy snippet"
-                    >
-                      {copied ? (
-                        <>
-                          <Check className="w-3 h-3 text-emerald-400" />
-                          <span className="text-emerald-400">Copied!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3 h-3" />
-                          <span>Copy</span>
-                        </>
+                      {codeSnippets.java && (
+                        <button
+                          onClick={() => setActiveTab('java')}
+                          className={`px-2 py-1 text-[11px] font-mono rounded transition-colors ${
+                            activeTab === 'java'
+                              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                              : 'text-slate-400 hover:text-white'
+                          }`}
+                        >
+                          Java
+                        </button>
                       )}
-                    </button>
+                      {codeSnippets.react && (
+                        <button
+                          onClick={() => setActiveTab('react')}
+                          className={`px-2 py-1 text-[11px] font-mono rounded transition-colors ${
+                            activeTab === 'react'
+                              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                              : 'text-slate-400 hover:text-white'
+                          }`}
+                        >
+                          React
+                        </button>
+                      )}
+                      <button
+                        onClick={handleCopy}
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        title="Copy code"
+                        aria-label="Copy code"
+                      >
+                        {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
                   </div>
 
-                  <pre className="p-4 text-xs font-mono text-emerald-300/90 overflow-x-auto leading-relaxed bg-slate-100 dark:bg-[#0d1117] max-h-80">
-                    <code>{currentSnippet.code}</code>
-                  </pre>
+                  {/* Terminal Code Body */}
+                  <div className="p-4 sm:p-5 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed bg-[#0a0d14]/90 max-h-[420px] text-left">
+                    <pre className="text-slate-300">
+                      <code>{currentSnippet.code}</code>
+                    </pre>
+                  </div>
 
-                  <div className="px-4 py-2 bg-slate-200 dark:bg-[#161b22] border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[10px] font-mono text-slate-500 dark:text-slate-400">
+                  {/* Terminal Footer */}
+                  <div className="px-4 py-2.5 bg-slate-950/80 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
                     <div className="flex items-center space-x-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                      <span>{personalInfo.availability ? personalInfo.availability.toUpperCase() : 'AVAILABLE FOR PROJECTS'}</span>
+                      <Terminal className="w-3 h-3 text-emerald-400" />
+                      <span>{personalInfo.eyebrow || 'READY'}</span>
                     </div>
-                    <span>UTF-8</span>
+                    <span className="text-emerald-400/80">
+                      {personalInfo.specialization ? `• ${personalInfo.specialization}` : '• UTF-8'}
+                    </span>
                   </div>
                 </div>
               )}

@@ -141,20 +141,36 @@ export const Experience = () => {
                   <GraduationCap className="w-6 h-6" />
                 </div>
                 <div className="space-y-2 flex-1">
-                  <div className="flex flex-wrap justify-between items-baseline">
+                  <div className="flex flex-wrap justify-between items-baseline gap-2">
                     <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                       {edu.degree}
+                      {edu.fieldOfStudy ? ` • ${edu.fieldOfStudy}` : ''}
                     </h3>
-                    <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-slate-50 dark:bg-[#0a0d14] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
-                      {edu.period}
-                    </span>
+                    {(edu.period || (edu.startDate && edu.endDate)) && (
+                      <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-slate-50 dark:bg-[#0a0d14] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+                        {edu.period || `${edu.startDate} - ${edu.endDate}`}
+                      </span>
+                    )}
                   </div>
-                  <p className="text-sm font-semibold text-emerald-400">
-                    {edu.institution}
-                  </p>
-                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {edu.description}
-                  </p>
+                  <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-emerald-400">
+                    <span>{edu.institution}</span>
+                    {edu.location && (
+                      <span className="text-xs font-normal text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <MapPin className="w-3 h-3 text-emerald-400" />
+                        {edu.location}
+                      </span>
+                    )}
+                    {edu.gradeGpa && (
+                      <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        GPA / Grade: {edu.gradeGpa}
+                      </span>
+                    )}
+                  </div>
+                  {edu.description && (
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {edu.description}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
