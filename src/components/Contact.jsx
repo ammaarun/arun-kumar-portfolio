@@ -24,17 +24,31 @@ export const Contact = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  if (data?.contactSettings?.enabled === false) {
+    return null;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMessage('');
     try {
-      await api.sendContactMessage(formData);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setSubmitted(false), 5000);
+      const res = await api.sendContactMessage({
+        ...formData,
+        slug: data?.slug
+      });
+      if (res && res.success === false) {
+        setErrorMessage(res.message || 'Failed to send message.');
+      } else {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      }
     } catch (err) {
       console.error('Failed to send contact message:', err);
+      setErrorMessage(err.message || 'Failed to send message. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -180,6 +194,12 @@ export const Contact = () => {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
                 Send a Message
               </h3>
+
+              {errorMessage && (
+                <div className="mb-4 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 dark:text-rose-400 text-xs font-semibold">
+                  {errorMessage}
+                </div>
+              )}
 
               {submitted ? (
                 <div className="p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3 animate-fadeIn">

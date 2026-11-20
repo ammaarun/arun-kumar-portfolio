@@ -210,8 +210,9 @@ function MainPublicPortfolio() {
     ? designConfig.sections
     : defaultSectionOrder;
 
+  const isContactEnabled = data?.contactSettings?.enabled !== false;
   const activeSections = [...rawSections]
-    .filter(s => s.visible !== false)
+    .filter(s => s.visible !== false && (s.id !== 'contact' || isContactEnabled))
     .sort((a, b) => (a.order || 0) - (b.order || 0));
 
   return (

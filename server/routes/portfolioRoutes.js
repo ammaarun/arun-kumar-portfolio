@@ -5,6 +5,11 @@ import { getPresignedGetUrl } from '../utils/storageService.js';
 
 const router = express.Router();
 
+// Rate limiting map for spam protection (per IP)
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const MAX_REQUESTS_PER_WINDOW = 10;
+
 // ── Public media resolver — serves Neon Object Storage assets to public portfolio visitors ──
 // Security model:
 //   1. Look up media record by mediaId (never trust client-supplied objectKey)
@@ -195,7 +200,16 @@ router.get('/', (req, res) => {
   const db = dbEngine.get();
   // Filter out admin details before returning to public client
   const { adminUser, ...publicData } = db;
-  res.json({ success: true, data: publicData });
+  const contactEnabled = db.contactSettings ? db.contactSettings.enabled !== false : true;
+  res.json({
+    success: true,
+    data: {
+      ...publicData,
+      contactSettings: {
+        enabled: contactEnabled
+      }
+    }
+  });
 });
 
 // Get public portfolio by slug or client ID
@@ -223,10 +237,16 @@ router.get('/slug/:slug', (req, res) => {
     ? designConfig.sections
     : defaultDesignConfig.sections;
 
+  const contactSettings = pData.contactSettings || (client.id === db.activeClientId ? db.contactSettings : null);
+  const contactEnabled = contactSettings ? contactSettings.enabled !== false : true;
+
   res.json({
     success: true,
     data: {
       ...pData,
+      contactSettings: {
+        enabled: contactEnabled
+      },
       designConfig: {
         ...designConfig,
         sections
@@ -241,32 +261,133 @@ router.get('/slug/:slug', (req, res) => {
 
 // Submit contact message / client inquiry
 router.post('/contact', async (req, res) => {
-  const { name, email, subject, message } = req.body;
-  if (!name || !email || !message) {
-    return res.status(400).json({ success: false, message: 'Name, email, and message are required.' });
+  const { name, email, subject, message, slug, clientId } = req.body;
+
+  // 1. Required field checks
+  if (!name || typeof name !== 'string' || !name.trim()) {
+    return res.status(400).json({ success: false, message: 'Name is required.' });
+  }
+  if (!email || typeof email !== 'string' || !email.trim()) {
+    return res.status(400).json({ success: false, message: 'Email is required.' });
+  }
+  if (!message || typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({ success: false, message: 'Message is required.' });
   }
 
+  // 2. Email format validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email.trim())) {
+    return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
+  }
+
+  // 3. Length validation & sanity limits
+  if (name.trim().length > 100) {
+    return res.status(400).json({ success: false, message: 'Name cannot exceed 100 characters.' });
+  }
+  if (email.trim().length > 150) {
+    return res.status(400).json({ success: false, message: 'Email cannot exceed 150 characters.' });
+  }
+  if (subject && subject.trim().length > 200) {
+    return res.status(400).json({ success: false, message: 'Subject cannot exceed 200 characters.' });
+  }
+  if (message.trim().length > 5000) {
+    return res.status(400).json({ success: false, message: 'Message cannot exceed 5000 characters.' });
+  }
+
+  // 4. Rate limiting (Spam prevention)
+  const clientIp = req.ip || req.connection?.remoteAddress || '127.0.0.1';
+  const now = Date.now();
+  const rateData = rateLimitMap.get(clientIp);
+  if (rateData) {
+    if (now - rateData.startTime < RATE_LIMIT_WINDOW_MS) {
+      if (rateData.count >= MAX_REQUESTS_PER_WINDOW) {
+        return res.status(429).json({
+          success: false,
+          message: 'Too many messages sent. Please wait a minute before trying again.'
+        });
+      }
+      rateData.count++;
+    } else {
+      rateLimitMap.set(clientIp, { startTime: now, count: 1 });
+    }
+  } else {
+    rateLimitMap.set(clientIp, { startTime: now, count: 1 });
+  }
+
+  // 5. Identify target client portfolio context
   const db = dbEngine.get();
+  const candidateIdentifier = slug || req.query.slug || clientId || req.query.clientId;
+  let targetClient = null;
+
+  if (candidateIdentifier) {
+    targetClient = (db.clients || []).find(c => c.id === candidateIdentifier || c.slug === candidateIdentifier);
+    if (!targetClient) {
+      targetClient = (db.clients || []).find(c => 
+        c.id.toLowerCase() === candidateIdentifier.toLowerCase() || 
+        (c.slug && c.slug.toLowerCase() === candidateIdentifier.toLowerCase())
+      );
+    }
+  }
+
+  if (!targetClient) {
+    targetClient = (db.clients || []).find(c => c.id === db.activeClientId) || (db.clients || [])[0];
+  }
+
+  // 6. Check if contact form is enabled for this portfolio
+  const pData = targetClient?.portfolioData || {};
+  const contactSettings = pData.contactSettings || (targetClient?.id === db.activeClientId ? db.contactSettings : null) || { enabled: true };
+
+  if (contactSettings.enabled === false) {
+    return res.status(403).json({
+      success: false,
+      message: 'The contact form for this portfolio is currently disabled.'
+    });
+  }
+
+  // 7. Sanitize inputs
+  const stripHtml = (str) => (str || '').replace(/<[^>]*>/g, '').trim();
+  const sanitizedName = stripHtml(name);
+  const sanitizedEmail = stripHtml(email);
+  const sanitizedSubject = stripHtml(subject) || 'General Inquiry';
+  const sanitizedMessage = stripHtml(message);
+
+  // 8. Save message to database FIRST (inbox persistence)
   const newMessage = {
-    id: `msg-${Date.now()}`,
-    name,
-    email,
-    subject: subject || 'General Inquiry',
-    message,
+    id: `msg-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+    clientId: targetClient?.id || db.activeClientId || 'client-1',
+    portfolioSlug: targetClient?.slug || 'default',
+    name: sanitizedName,
+    email: sanitizedEmail,
+    subject: sanitizedSubject,
+    message: sanitizedMessage,
     createdAt: new Date().toISOString(),
     read: false
   };
 
   db.messages = db.messages || [];
   db.messages.unshift(newMessage);
+
+  if (targetClient && targetClient.portfolioData) {
+    targetClient.portfolioData.messages = targetClient.portfolioData.messages || [];
+    targetClient.portfolioData.messages.unshift(newMessage);
+  }
+
   dbEngine.save(db);
 
-  // Asynchronously trigger email notification alert
-  sendInquiryNotification(newMessage).catch(err => {
+  // 9. Dispatch notification email asynchronously to portfolio-specific recipient
+  const recipientEmail = contactSettings.recipientEmail || targetClient?.email || pData.personalInfo?.email;
+  sendInquiryNotification(newMessage, {
+    recipientEmail,
+    portfolioName: targetClient?.name || 'Portfolio'
+  }).catch(err => {
     console.error('Error dispatching inquiry notification email:', err);
   });
 
-  res.json({ success: true, message: 'Message sent successfully!', data: newMessage });
+  return res.json({
+    success: true,
+    message: 'Message sent successfully! Thank you for reaching out.',
+    data: newMessage
+  });
 });
 
 export default router;

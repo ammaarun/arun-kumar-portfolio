@@ -935,10 +935,103 @@ router.delete('/testimonials/:id', (req, res) => {
   res.json({ success: true, message: 'Testimonial deleted successfully' });
 });
 
+// --- Contact Form Settings ---
+router.get('/contact-settings', (req, res) => {
+  const db = dbEngine.get();
+  const requestedClientId = req.query.clientId;
+  const targetClient = requestedClientId
+    ? (db.clients || []).find(c => c.id === requestedClientId)
+    : (db.clients || []).find(c => c.id === db.activeClientId) || (db.clients || [])[0];
+
+  if (!targetClient) {
+    return res.status(404).json({ success: false, message: 'Portfolio client not found.' });
+  }
+
+  const pData = targetClient.portfolioData || {};
+  const contactSettings = pData.contactSettings || (targetClient.id === db.activeClientId ? db.contactSettings : null) || {
+    enabled: true,
+    recipientEmail: targetClient.email || pData.personalInfo?.email || ''
+  };
+
+  res.json({
+    success: true,
+    data: {
+      enabled: contactSettings.enabled !== false,
+      recipientEmail: contactSettings.recipientEmail || ''
+    },
+    clientId: targetClient.id,
+    clientName: targetClient.name
+  });
+});
+
+router.put('/contact-settings', (req, res) => {
+  const { enabled, recipientEmail, clientId } = req.body;
+  const db = dbEngine.get();
+  const targetClientId = clientId || req.query.clientId || db.activeClientId;
+  const targetClient = (db.clients || []).find(c => c.id === targetClientId) || (db.clients || [])[0];
+
+  if (!targetClient) {
+    return res.status(404).json({ success: false, message: 'Target client not found.' });
+  }
+
+  // Validate recipientEmail if provided and non-empty
+  if (recipientEmail !== undefined && recipientEmail !== null && recipientEmail.trim() !== '') {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(recipientEmail.trim())) {
+      return res.status(400).json({ success: false, message: 'Please enter a valid recipient email address.' });
+    }
+  }
+
+  const updatedSettings = {
+    enabled: enabled !== false,
+    recipientEmail: (recipientEmail || '').trim()
+  };
+
+  if (!targetClient.portfolioData) {
+    targetClient.portfolioData = {};
+  }
+  targetClient.portfolioData.contactSettings = updatedSettings;
+  targetClient.lastUpdated = new Date().toISOString();
+
+  // If this client is active, also synchronize root db.contactSettings
+  if (targetClient.id === db.activeClientId) {
+    db.contactSettings = updatedSettings;
+  }
+
+  dbEngine.save(db);
+  dbEngine.logActivity(
+    'contact_settings_update',
+    `Updated contact form settings (Enabled: ${updatedSettings.enabled ? 'YES' : 'NO'}, Recipient: ${updatedSettings.recipientEmail || 'None'})`,
+    targetClient.name
+  );
+
+  res.json({
+    success: true,
+    message: 'Contact form settings saved successfully.',
+    data: updatedSettings,
+    clientId: targetClient.id,
+    clientName: targetClient.name
+  });
+});
+
 // --- Contact Messages Inbox ---
 router.get('/messages', (req, res) => {
   const db = dbEngine.get();
-  res.json({ success: true, data: db.messages || [] });
+  const requestedClientId = req.query.clientId;
+  const showAll = req.query.all === 'true';
+
+  if (showAll) {
+    return res.json({ success: true, data: db.messages || [] });
+  }
+
+  const targetClientId = requestedClientId || db.activeClientId;
+  const filtered = (db.messages || []).filter(m => {
+    // Legacy messages without clientId belong to active/default client
+    if (!m.clientId) return true;
+    return m.clientId === targetClientId;
+  });
+
+  res.json({ success: true, data: filtered, activeClientId: targetClientId });
 });
 
 router.put('/messages/:id/read', (req, res) => {
@@ -956,6 +1049,11 @@ router.delete('/messages/:id', (req, res) => {
   const { id } = req.params;
   const db = dbEngine.get();
   db.messages = (db.messages || []).filter(m => m.id !== id);
+  (db.clients || []).forEach(c => {
+    if (c.portfolioData && Array.isArray(c.portfolioData.messages)) {
+      c.portfolioData.messages = c.portfolioData.messages.filter(m => m.id !== id);
+    }
+  });
   dbEngine.save(db);
   res.json({ success: true, message: 'Message deleted' });
 });

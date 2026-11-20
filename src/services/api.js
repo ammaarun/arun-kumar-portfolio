@@ -322,6 +322,26 @@ export const api = {
     return res.json();
   },
 
+  // Contact Form Settings
+  async getContactSettings(clientId) {
+    const url = clientId
+      ? `${API_BASE}/admin/contact-settings?clientId=${encodeURIComponent(clientId)}`
+      : `${API_BASE}/admin/contact-settings`;
+    const res = await fetch(url, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async updateContactSettings(settingsData) {
+    const res = await fetch(`${API_BASE}/admin/contact-settings`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(settingsData)
+    });
+    return res.json();
+  },
+
   async updateSettings(settingsData) {
     const res = await fetch(`${API_BASE}/admin/settings`, {
       method: 'PUT',

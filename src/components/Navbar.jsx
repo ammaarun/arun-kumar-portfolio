@@ -50,16 +50,17 @@ export const Navbar = ({ onOpenCommand, onOpenResume, onOpenInquiry, activeTheme
     { id: 'contact', label: 'Contact', href: '#contact', icon: Mail },
   ];
 
+  const isContactEnabled = data?.contactSettings?.enabled !== false;
   const sectionsConfig = data?.designConfig?.sections;
-  const navLinks = Array.isArray(sectionsConfig) && sectionsConfig.length > 0
+  const navLinks = (Array.isArray(sectionsConfig) && sectionsConfig.length > 0
     ? [...sectionsConfig]
-        .filter(sec => sec.visible !== false && sec.id !== 'hero')
+        .filter(sec => sec.visible !== false && sec.id !== 'hero' && (sec.id !== 'contact' || isContactEnabled))
         .sort((a, b) => (a.order || 0) - (b.order || 0))
         .map(sec => {
           const match = allNavLinks.find(link => link.id === sec.id);
           return match || { id: sec.id, label: sec.name || sec.id, href: `#${sec.id}`, icon: User };
         })
-    : allNavLinks;
+    : allNavLinks).filter(link => link.id !== 'contact' || isContactEnabled);
 
   const eyebrowLabel = personalInfo.eyebrow !== undefined
     ? personalInfo.eyebrow

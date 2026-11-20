@@ -65,6 +65,11 @@ export const defaultBranding = {
   browserTitle: "Arun Kumar | Developer Portfolio & CMS"
 };
 
+export const defaultContactSettings = {
+  enabled: true,
+  recipientEmail: ""
+};
+
 export const defaultMediaLibrary = [
   {
     id: "media-1",
@@ -306,7 +311,11 @@ const ensureMultiClientStructure = (db) => {
         mediaLibrary: db.mediaLibrary || [ ...defaultMediaLibrary ],
         resumes: db.resumes || [ ...defaultResumes ],
         seo: db.seo || { ...defaultSeo },
-        branding: db.branding || { ...defaultBranding }
+        branding: db.branding || { ...defaultBranding },
+        contactSettings: db.contactSettings || {
+          enabled: true,
+          recipientEmail: db.personalInfo?.email || ''
+        }
       }
     };
 
@@ -346,6 +355,19 @@ const ensureMultiClientStructure = (db) => {
       if (!c.portfolioData.resumes) c.portfolioData.resumes = [ ...defaultResumes ];
       if (!c.portfolioData.seo) c.portfolioData.seo = { ...defaultSeo };
       if (!c.portfolioData.branding) c.portfolioData.branding = { ...defaultBranding };
+      if (!c.portfolioData.contactSettings) {
+        c.portfolioData.contactSettings = {
+          enabled: true,
+          recipientEmail: c.email || c.portfolioData.personalInfo?.email || ''
+        };
+      } else {
+        if (c.portfolioData.contactSettings.enabled === undefined) {
+          c.portfolioData.contactSettings.enabled = true;
+        }
+        if (c.portfolioData.contactSettings.recipientEmail === undefined) {
+          c.portfolioData.contactSettings.recipientEmail = c.email || c.portfolioData.personalInfo?.email || '';
+        }
+      }
     }
   });
 
@@ -369,6 +391,10 @@ const ensureMultiClientStructure = (db) => {
     db.resumes = p.resumes || [ ...defaultResumes ];
     db.seo = p.seo || { ...defaultSeo };
     db.branding = p.branding || { ...defaultBranding };
+    db.contactSettings = p.contactSettings || {
+      enabled: true,
+      recipientEmail: activeClient.email || p.personalInfo?.email || ''
+    };
   }
 
   return db;
@@ -477,6 +503,10 @@ export const dbEngine = {
       db.resumes = p.resumes || [ ...defaultResumes ];
       db.seo = p.seo || { ...defaultSeo };
       db.branding = p.branding || { ...defaultBranding };
+      db.contactSettings = p.contactSettings || {
+        enabled: true,
+        recipientEmail: targetClient.email || p.personalInfo?.email || ''
+      };
     }
 
     this.save(db);
@@ -523,7 +553,8 @@ export const dbEngine = {
           mediaLibrary: data.mediaLibrary || [ ...defaultMediaLibrary ],
           resumes: data.resumes || [ ...defaultResumes ],
           seo: data.seo || { ...defaultSeo },
-          branding: data.branding || { ...defaultBranding }
+          branding: data.branding || { ...defaultBranding },
+          contactSettings: data.contactSettings || (activeClient.portfolioData && activeClient.portfolioData.contactSettings) || { ...defaultContactSettings }
         };
       }
     }

@@ -180,8 +180,9 @@ export const Hero = ({ onOpenResume, onOpenInquiry }) => {
     return sec ? sec.visible !== false : true;
   };
 
+  const isContactEnabled = data?.contactSettings?.enabled !== false;
   const showProjectsSection = isSectionVisible('projects');
-  const showContactSection = isSectionVisible('contact');
+  const showContactSection = isSectionVisible('contact') && isContactEnabled;
 
   const handleScrollToProjects = (e) => {
     if (e && e.preventDefault) e.preventDefault();

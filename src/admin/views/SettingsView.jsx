@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Settings, Globe, Share2, Palette, ShieldCheck, Mail, Save, 
-  CheckCircle2, AlertTriangle, Eye, Edit3, Image, Lock, HelpCircle 
+  CheckCircle2, AlertTriangle, Eye, Edit3, Image, Lock, HelpCircle,
+  ToggleLeft, ToggleRight 
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
+import { api } from '../../services/api';
 import { MediaPickerModal } from '../components/MediaPickerModal';
 
 export const SettingsView = ({ setActiveTab: setParentTab }) => {
@@ -39,6 +41,10 @@ export const SettingsView = ({ setActiveTab: setParentTab }) => {
   });
 
   const [slug, setSlug] = useState('');
+  const [contactSettings, setContactSettings] = useState({
+    enabled: true,
+    recipientEmail: ''
+  });
 
   const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
   const [mediaTargetField, setMediaTargetField] = useState('');
@@ -53,8 +59,49 @@ export const SettingsView = ({ setActiveTab: setParentTab }) => {
       if (data.branding) setBranding(data.branding);
       if (data.settings) setSettings(data.settings);
       if (data.slug) setSlug(data.slug);
+      if (data.contactSettings) {
+        setContactSettings({
+          enabled: data.contactSettings.enabled !== false,
+          recipientEmail: data.contactSettings.recipientEmail || ''
+        });
+      }
     }
   }, [data]);
+
+  const handleSaveContact = async (e) => {
+    if (e) e.preventDefault();
+    setSaving(true);
+    setError('');
+    setMessage('');
+
+    if (contactSettings.recipientEmail && contactSettings.recipientEmail.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(contactSettings.recipientEmail.trim())) {
+        setError('Please enter a valid recipient email address.');
+        setSaving(false);
+        return;
+      }
+    }
+
+    try {
+      const res = await api.updateContactSettings({
+        enabled: contactSettings.enabled,
+        recipientEmail: contactSettings.recipientEmail.trim()
+      });
+      if (res.success) {
+        if (refreshData) await refreshData();
+        setMessage('Contact form settings saved successfully!');
+        setTimeout(() => setMessage(''), 3000);
+      } else {
+        setError(res.message || 'Failed to save contact settings.');
+      }
+    } catch (err) {
+      console.error('Error saving contact settings:', err);
+      setError('Network error saving contact settings.');
+    } finally {
+      setSaving(false);
+    }
+  };
 
   const handleOpenMediaPicker = (field) => {
     setMediaTargetField(field);
@@ -190,6 +237,7 @@ export const SettingsView = ({ setActiveTab: setParentTab }) => {
       <div className="flex items-center space-x-1.5 bg-[#121723] p-1.5 rounded-2xl border border-slate-800 overflow-x-auto scrollbar-none">
         {[
           { id: 'general', label: 'GENERAL', icon: Settings },
+          { id: 'contact', label: 'CONTACT FORM', icon: Mail },
           { id: 'branding', label: 'BRANDING', icon: Palette },
           { id: 'seo', label: 'SEO META', icon: Globe },
           { id: 'social', label: 'SOCIAL PREVIEW', icon: Share2 },
@@ -267,6 +315,90 @@ export const SettingsView = ({ setActiveTab: setParentTab }) => {
               )}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* TAB: CONTACT FORM CONFIGURATION */}
+      {activeTab === 'contact' && (
+        <div className="p-6 rounded-2xl bg-[#121723] border border-slate-800 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+            <div>
+              <h3 className="text-base font-bold text-white">Contact Form & Email Notifications</h3>
+              <p className="text-xs text-slate-400">Configure public contact form availability and email alert destinations.</p>
+            </div>
+            <div>
+              <span className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold uppercase ${
+                contactSettings.enabled 
+                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                  : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+              }`}>
+                {contactSettings.enabled ? '● Form Active' : '○ Form Disabled'}
+              </span>
+            </div>
+          </div>
+
+          <form onSubmit={handleSaveContact} className="space-y-5 max-w-xl">
+            {/* Enable/Disable Toggle */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-[#0a0d14] border border-slate-800 gap-4">
+              <div className="space-y-1">
+                <div className="text-sm font-bold text-white">Public Contact Form Status</div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  When enabled, visitors can submit inquiries from your public portfolio. When disabled, the contact form and navigation link are hidden.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setContactSettings(prev => ({ ...prev, enabled: !prev.enabled }))}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 ${
+                  contactSettings.enabled
+                    ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/20'
+                    : 'bg-slate-800 hover:bg-slate-700 text-slate-400'
+                }`}
+              >
+                {contactSettings.enabled ? (
+                  <>
+                    <ToggleRight className="w-4 h-4 text-emerald-300" />
+                    <span>Enabled</span>
+                  </>
+                ) : (
+                  <>
+                    <ToggleLeft className="w-4 h-4 text-slate-500" />
+                    <span>Disabled</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Notification Recipient Email */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
+                <span>Notification Recipient Email</span>
+                <span className="text-[11px] font-mono text-slate-500">Portfolio-Specific</span>
+              </label>
+              <input
+                type="email"
+                placeholder="e.g. owner@example.com"
+                value={contactSettings.recipientEmail}
+                onChange={(e) => setContactSettings(prev => ({ ...prev, recipientEmail: e.target.value }))}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-mono"
+              />
+              <p className="text-[11px] text-slate-400">
+                Visitor inquiries submitted on your portfolio will be forwarded to this email address.
+              </p>
+            </div>
+
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={saving}
+                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-500/20 transition-all flex items-center space-x-2 disabled:opacity-50"
+              >
+                <Save className="w-3.5 h-3.5" />
+                <span>{saving ? 'Saving...' : 'Save Contact Settings'}</span>
+              </button>
+            </div>
+          </form>
         </div>
       )}
 
