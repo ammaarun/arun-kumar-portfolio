@@ -169,4 +169,51 @@ describe('Contact Form Settings & Public Visibility Component Tests', () => {
     expect(screen.queryByRole('link', { name: /Contact/i })).not.toBeInTheDocument();
   });
 
+  it('6. MessagesView renders email delivery status badges for inbox messages', async () => {
+    vi.spyOn(api, 'getContactSettings').mockResolvedValue({
+      success: true,
+      data: { enabled: true, recipientEmail: 'owner@example.com' }
+    });
+    vi.spyOn(api, 'getMessages').mockResolvedValue({
+      success: true,
+      data: [
+        {
+          id: 'msg-1',
+          name: 'Delivered User',
+          email: 'user1@example.com',
+          subject: 'Delivered Message',
+          message: 'This email was delivered.',
+          createdAt: new Date().toISOString(),
+          read: false,
+          emailDelivery: { status: 'sent', recipient: 'owner@example.com' }
+        },
+        {
+          id: 'msg-2',
+          name: 'Failed User',
+          email: 'user2@example.com',
+          subject: 'Failed Message',
+          message: 'This email delivery failed.',
+          createdAt: new Date().toISOString(),
+          read: true,
+          emailDelivery: { status: 'failed', error: 'Authentication failed' }
+        }
+      ]
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthProvider>
+          <MessagesView />
+        </AuthProvider>
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Delivered User')).toBeInTheDocument();
+      expect(screen.getByText('Failed User')).toBeInTheDocument();
+      expect(screen.getByText('✓ Email: Sent')).toBeInTheDocument();
+      expect(screen.getByText('✗ Email: Failed')).toBeInTheDocument();
+    });
+  });
+
 });

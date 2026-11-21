@@ -342,6 +342,22 @@ export const api = {
     return res.json();
   },
 
+  async verifySmtp() {
+    const res = await fetch(`${API_BASE}/admin/contact-settings/verify-smtp`, {
+      headers: getAuthHeaders()
+    });
+    return res.json();
+  },
+
+  async sendTestEmail(payload) {
+    const res = await fetch(`${API_BASE}/admin/contact-settings/test-email`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(payload || {})
+    });
+    return res.json();
+  },
+
   async updateSettings(settingsData) {
     const res = await fetch(`${API_BASE}/admin/settings`, {
       method: 'PUT',

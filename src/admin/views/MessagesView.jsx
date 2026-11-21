@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Trash2, CheckCircle2, RefreshCw, Reply, ShieldAlert, ToggleLeft, ToggleRight, Save, Send } from 'lucide-react';
+import { Mail, Trash2, CheckCircle2, RefreshCw, Reply, ShieldAlert, ToggleLeft, ToggleRight, Save, Send, AlertCircle, Check } from 'lucide-react';
 import { api } from '../../services/api';
 
 export const MessagesView = () => {
@@ -15,6 +15,11 @@ export const MessagesView = () => {
   const [savingSettings, setSavingSettings] = useState(false);
   const [settingsSuccess, setSettingsSuccess] = useState('');
   const [settingsError, setSettingsError] = useState('');
+
+  // SMTP Testing and Diagnostics State
+  const [testingEmail, setTestingEmail] = useState(false);
+  const [checkingSmtp, setCheckingSmtp] = useState(false);
+  const [smtpStatus, setSmtpStatus] = useState(null);
 
   const fetchContactSettings = async () => {
     try {
@@ -88,6 +93,50 @@ export const MessagesView = () => {
       setSettingsError(err.message || 'Network error while saving settings.');
     } finally {
       setSavingSettings(false);
+    }
+  };
+
+  const handleVerifySmtp = async () => {
+    setCheckingSmtp(true);
+    setSettingsError('');
+    setSettingsSuccess('');
+    try {
+      const res = await api.verifySmtp();
+      setSmtpStatus(res);
+      if (res.connected) {
+        setSettingsSuccess(res.message);
+      } else {
+        setSettingsError(res.message);
+      }
+    } catch (err) {
+      setSettingsError(err.message || 'Failed to connect to SMTP server.');
+    } finally {
+      setCheckingSmtp(false);
+    }
+  };
+
+  const handleSendTestEmail = async () => {
+    if (!contactSettings.recipientEmail || !contactSettings.recipientEmail.trim()) {
+      setSettingsError('Please enter and save a recipient email address before sending a test notification.');
+      return;
+    }
+
+    setTestingEmail(true);
+    setSettingsError('');
+    setSettingsSuccess('');
+    try {
+      const res = await api.sendTestEmail({
+        recipientEmail: contactSettings.recipientEmail.trim()
+      });
+      if (res.success) {
+        setSettingsSuccess(res.message || 'Test email sent successfully! Please check your Gmail inbox and spam folder.');
+      } else {
+        setSettingsError(res.message || 'Failed to send test email.');
+      }
+    } catch (err) {
+      setSettingsError(err.message || 'Network error while sending test email.');
+    } finally {
+      setTestingEmail(false);
     }
   };
 
@@ -194,7 +243,7 @@ export const MessagesView = () => {
             </label>
             <input
               type="email"
-              placeholder="e.g. owner@example.com"
+              placeholder="e.g. owner@gmail.com"
               value={contactSettings.recipientEmail}
               onChange={(e) => setContactSettings(prev => ({ ...prev, recipientEmail: e.target.value }))}
               className="w-full px-4 py-2.5 rounded-xl bg-[#0a0d14] border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors font-mono"
@@ -204,11 +253,36 @@ export const MessagesView = () => {
             </p>
           </div>
 
-          <div className="flex justify-end pt-2">
+          {/* Action Buttons Row */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div className="flex items-center space-x-2">
+              <button
+                type="button"
+                onClick={handleVerifySmtp}
+                disabled={checkingSmtp}
+                className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition-all flex items-center space-x-1.5 disabled:opacity-50"
+                title="Verify SMTP connectivity with Gmail"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${checkingSmtp ? 'animate-spin' : ''}`} />
+                <span>{checkingSmtp ? 'Checking...' : 'Check SMTP Connection'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleSendTestEmail}
+                disabled={testingEmail || !contactSettings.recipientEmail}
+                className="px-3.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 font-semibold text-xs border border-emerald-500/30 transition-all flex items-center space-x-1.5 disabled:opacity-50"
+                title="Send a live test notification to the configured recipient email"
+              >
+                <Send className={`w-3.5 h-3.5 ${testingEmail ? 'animate-spin' : ''}`} />
+                <span>{testingEmail ? 'Sending Test...' : 'Send Test Notification'}</span>
+              </button>
+            </div>
+
             <button
               type="submit"
               disabled={savingSettings}
-              className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-500/20 transition-all flex items-center space-x-2 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-500/20 transition-all flex items-center space-x-2 disabled:opacity-50 ml-auto"
             >
               <Save className={`w-3.5 h-3.5 ${savingSettings ? 'animate-spin' : ''}`} />
               <span>{savingSettings ? 'Saving Settings...' : 'Save Contact Settings'}</span>
@@ -254,6 +328,22 @@ export const MessagesView = () => {
                     )}
                     <h3 className="text-base font-bold text-white">{msg.name}</h3>
                     <span className="text-xs text-slate-400 font-mono">({msg.email})</span>
+                    
+                    {/* Delivery Status Badge */}
+                    {msg.emailDelivery && (
+                      <span
+                        title={msg.emailDelivery.error || (msg.emailDelivery.status === 'sent' ? `Delivered to ${msg.emailDelivery.recipient}` : 'SMTP credentials not configured on server')}
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold uppercase ${
+                          msg.emailDelivery.status === 'sent'
+                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                            : msg.emailDelivery.status === 'failed'
+                            ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                            : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                        }`}
+                      >
+                        {msg.emailDelivery.status === 'sent' ? '✓ Email: Sent' : msg.emailDelivery.status === 'failed' ? '✗ Email: Failed' : '○ Email: Not Configured'}
+                      </span>
+                    )}
                   </div>
 
                   <div className="flex items-center space-x-2 text-xs font-mono text-slate-500">

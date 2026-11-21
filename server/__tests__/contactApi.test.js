@@ -247,4 +247,43 @@ describe('Contact Form Settings & Email Notifications API Integration Tests', ()
     expect(res.body.data.contactSettings.enabled).toBe(true);
   });
 
+  it('12. POST /api/portfolio/contact records emailDelivery metadata safely on message', async () => {
+    const res = await request(app)
+      .post('/api/portfolio/contact')
+      .send({
+        name: 'Delivery Audit',
+        email: 'audit@example.com',
+        subject: 'Audit Message',
+        message: 'Checking emailDelivery status record.'
+      });
+
+    expect(res.status).toBe(200);
+    expect(res.body.data.emailDelivery).toBeDefined();
+    expect(res.body.data.emailDelivery.status).toBeDefined();
+    expect(['sent', 'not_configured', 'failed']).toContain(res.body.data.emailDelivery.status);
+    expect(res.body.data.emailDelivery.attemptedAt).toBeDefined();
+  });
+
+  it('13. GET /api/admin/contact-settings/verify-smtp returns diagnostic connection status', async () => {
+    const res = await request(app)
+      .get('/api/admin/contact-settings/verify-smtp')
+      .set('Authorization', `Bearer ${authToken}`);
+
+    expect(res.status).toBe(200);
+    expect(res.body.configured).toBeDefined();
+    expect(res.body.connected).toBeDefined();
+    expect(res.body.message).toBeDefined();
+  });
+
+  it('14. POST /api/admin/contact-settings/test-email validates recipient email with 400', async () => {
+    const res = await request(app)
+      .post('/api/admin/contact-settings/test-email')
+      .set('Authorization', `Bearer ${authToken}`)
+      .send({ recipientEmail: 'invalid-email' });
+
+    expect(res.status).toBe(400);
+    expect(res.body.success).toBe(false);
+    expect(res.body.message).toMatch(/valid recipient email/i);
+  });
+
 });

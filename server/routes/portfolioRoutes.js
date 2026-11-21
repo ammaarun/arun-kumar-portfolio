@@ -351,7 +351,16 @@ router.post('/contact', async (req, res) => {
   const sanitizedSubject = stripHtml(subject) || 'General Inquiry';
   const sanitizedMessage = stripHtml(message);
 
-  // 8. Save message to database FIRST (inbox persistence)
+  // 8. Determine recipient email from saved portfolio settings (never visitor-submitted data)
+  const recipientEmail = (
+    contactSettings.recipientEmail ||
+    targetClient?.email ||
+    pData.personalInfo?.email ||
+    process.env.NOTIFICATION_EMAIL ||
+    ''
+  ).trim();
+
+  // 9. Save message to database FIRST (inbox persistence guarantees message is never lost)
   const newMessage = {
     id: `msg-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
     clientId: targetClient?.id || db.activeClientId || 'client-1',
@@ -361,7 +370,13 @@ router.post('/contact', async (req, res) => {
     subject: sanitizedSubject,
     message: sanitizedMessage,
     createdAt: new Date().toISOString(),
-    read: false
+    read: false,
+    emailDelivery: {
+      status: 'pending',
+      attemptedAt: null,
+      recipient: recipientEmail || null,
+      error: null
+    }
   };
 
   db.messages = db.messages || [];
@@ -374,20 +389,59 @@ router.post('/contact', async (req, res) => {
 
   dbEngine.save(db);
 
-  // 9. Dispatch notification email asynchronously to portfolio-specific recipient
-  const recipientEmail = contactSettings.recipientEmail || targetClient?.email || pData.personalInfo?.email;
-  sendInquiryNotification(newMessage, {
-    recipientEmail,
-    portfolioName: targetClient?.name || 'Portfolio'
-  }).catch(err => {
-    console.error('Error dispatching inquiry notification email:', err);
-  });
+  // 10. Attempt live email notification delivery to portfolio owner's Gmail
+  try {
+    const deliveryResult = await sendInquiryNotification(newMessage, {
+      recipientEmail,
+      portfolioName: targetClient?.name || 'Portfolio'
+    });
 
-  return res.json({
-    success: true,
-    message: 'Message sent successfully! Thank you for reaching out.',
-    data: newMessage
-  });
+    const deliveryStatus = deliveryResult.sent
+      ? 'sent'
+      : (deliveryResult.reason === 'NOT_CONFIGURED' ? 'not_configured' : 'failed');
+
+    newMessage.emailDelivery = {
+      status: deliveryStatus,
+      attemptedAt: new Date().toISOString(),
+      recipient: recipientEmail || null,
+      messageId: deliveryResult.messageId || null,
+      error: deliveryResult.error || (deliveryResult.reason ? `Delivery skipped: ${deliveryResult.reason}` : null)
+    };
+
+    // Update in database with final delivery tracking
+    dbEngine.save(db);
+
+    return res.json({
+      success: true,
+      message: 'Message sent successfully! Thank you for reaching out.',
+      data: newMessage,
+      emailDelivery: {
+        sent: deliveryResult.sent,
+        status: deliveryStatus,
+        reason: deliveryResult.reason || null
+      }
+    });
+  } catch (err) {
+    console.error('Unexpected error dispatching inquiry notification email:', err.message);
+    newMessage.emailDelivery = {
+      status: 'failed',
+      attemptedAt: new Date().toISOString(),
+      recipient: recipientEmail || null,
+      error: err.message
+    };
+    dbEngine.save(db);
+
+    return res.json({
+      success: true,
+      message: 'Message sent successfully! Thank you for reaching out.',
+      data: newMessage,
+      emailDelivery: {
+        sent: false,
+        status: 'failed',
+        error: err.message
+      }
+    });
+  }
 });
 
 export default router;

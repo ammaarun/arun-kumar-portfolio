@@ -14,4 +14,18 @@ services:
         value: "22"
       - key: DATABASE_URL
         sync: false  # Set this secret in the Render dashboard manually
+      - key: SMTP_USER
+        sync: false  # Sender Gmail address (e.g. owner@gmail.com)
+      - key: SMTP_PASS
+        sync: false  # 16-character Google App Password (generated from Google Account Security)
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "465"
+      - key: SMTP_SECURE
+        value: "true"
+      - key: NOTIFICATION_EMAIL
+        sync: false  # Optional fallback notification recipient email
+      - key: EMAIL_FROM
+        sync: false  # Optional custom From header (e.g. "Arun Kumar Portfolio" <owner@gmail.com>)
     healthCheckPath: /api/health

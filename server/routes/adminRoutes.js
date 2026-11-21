@@ -8,6 +8,7 @@ import bcrypt from 'bcryptjs';
 import { dbEngine, defaultDesignConfig, defaultMediaLibrary, defaultResumes, defaultSeo, defaultBranding } from '../data/dbEngine.js';
 import { JWT_SECRET, verifyToken } from '../middleware/authMiddleware.js';
 import { visualTemplates } from '../templates/visualTemplates.js';
+import { verifySmtpConnection, sendTestEmail } from '../utils/emailService.js';
 import {
   generateObjectKey,
   uploadToStorage,
@@ -1012,6 +1013,53 @@ router.put('/contact-settings', (req, res) => {
     clientId: targetClient.id,
     clientName: targetClient.name
   });
+});
+
+// Diagnostic: Verify live SMTP connection
+router.get('/contact-settings/verify-smtp', async (req, res) => {
+  const result = await verifySmtpConnection();
+  res.json({
+    success: result.connected,
+    ...result
+  });
+});
+
+// Diagnostic: Send test notification email
+router.post('/contact-settings/test-email', async (req, res) => {
+  const { recipientEmail, clientId } = req.body;
+  const db = dbEngine.get();
+  const targetClientId = clientId || db.activeClientId;
+  const targetClient = (db.clients || []).find(c => c.id === targetClientId) || (db.clients || [])[0];
+
+  const targetRecipient = recipientEmail || targetClient?.portfolioData?.contactSettings?.recipientEmail || targetClient?.email;
+
+  if (!targetRecipient || !targetRecipient.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: 'No recipient email configured. Please enter a recipient email address to send a test.'
+    });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(targetRecipient.trim())) {
+    return res.status(400).json({ success: false, message: 'Please enter a valid recipient email address.' });
+  }
+
+  const result = await sendTestEmail(targetRecipient.trim(), targetClient?.name || 'Portfolio CMS');
+  if (result.sent) {
+    return res.json({
+      success: true,
+      message: `Test email successfully sent to ${targetRecipient.trim()}! Please check your Gmail inbox (and spam folder).`,
+      messageId: result.messageId
+    });
+  } else {
+    return res.status(400).json({
+      success: false,
+      message: `Failed to deliver test email: ${result.error || result.reason || 'Unknown error'}. Please verify your Gmail SMTP credentials.`,
+      error: result.error,
+      reason: result.reason
+    });
+  }
 });
 
 // --- Contact Messages Inbox ---
